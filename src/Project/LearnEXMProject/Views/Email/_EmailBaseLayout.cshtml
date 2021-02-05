@@ -1,0 +1,45 @@
+﻿@using Sitecore.ExperienceForms.Mvc.Html
+@using Sitecore.Mvc.Analytics.Extensions
+@using LearnEXMProject.Models.Email
+@using Sitecore.Mvc.Presentation
+@using Sitecore.EmailCampaign.SampleNewsletter.Models
+
+@model RenderingModel
+@{
+
+  var repository = new EmailOptionsRepository();
+
+  var options = repository.Get(Model.Item);
+
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  @RenderSection("head", false)
+</head>
+
+<body style="font-family: Georgia, Times, Times New Roman, serif; background-color: black;">
+  <!-- START LIQUID WRAPPER-->
+  <!--[if mso]>
+        <table cellpadding="0" cellspacing="0" border="0" style="padding:0px;margin:0px;width:100%;">
+        <tr><td colspan="3" style="padding:0px;margin:0px;font-size:20px;height:20px;" height="20">&nbsp;</td></tr>
+        <tr>
+        <td style="padding:0px;margin:0px;">&nbsp;</td>
+        <td style="padding:0px;margin:0px;" width="832">
+    <![endif]-->
+  <div style="max-width: 832px; margin: auto;">
+    @Html.Raw(options.BeforeBodyHtml)
+    @RenderBody()
+    @Html.Raw(options.AfterBodyHtml)
+  </div>
+  <!--[if mso]>
+         </td>
+         <td style="padding:0px;margin:0px;">&nbsp;</td>
+         </tr>
+         <tr><td colspan="3" style="padding:0px;margin:0px;font-size:20px;height:20px;" height="20">&nbsp;</td></tr>
+         </table>
+     <![endif]-->
+  <!-- END LIQUID WRAPPER -->
+</body>
+</html>
