@@ -941,7 +941,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\web.config" />
+    <Content Include="Views\web.config" />
     <Content Include="libman.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

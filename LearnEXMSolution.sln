@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LearnEXMProject", "LearnEXM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXMProject", "src\Project\LearnEXMProject\LearnEXMProject.csproj", "{28384384-E216-48F6-9FB1-3C9DEED54415}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sitecore.Documentationxc", "Sitecore.Documentationxc", "{3921F4E3-9C56-42CF-910F-781BDE312A2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Documentation", "src\Project\Sitecore.Documentation\Sitecore.Documentation.csproj", "{7ED73699-2EE6-4318-A7BE-436D6C64C95E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,10 @@ Global
 		{28384384-E216-48F6-9FB1-3C9DEED54415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28384384-E216-48F6-9FB1-3C9DEED54415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28384384-E216-48F6-9FB1-3C9DEED54415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED73699-2EE6-4318-A7BE-436D6C64C95E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED73699-2EE6-4318-A7BE-436D6C64C95E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED73699-2EE6-4318-A7BE-436D6C64C95E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED73699-2EE6-4318-A7BE-436D6C64C95E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,9 +34,11 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{29095DDD-FD86-4C9C-81F7-CC8F3282D566} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
 		{28384384-E216-48F6-9FB1-3C9DEED54415} = {29095DDD-FD86-4C9C-81F7-CC8F3282D566}
+		{3921F4E3-9C56-42CF-910F-781BDE312A2D} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
+		{7ED73699-2EE6-4318-A7BE-436D6C64C95E} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
+		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 	EndGlobalSection
 EndGlobal
