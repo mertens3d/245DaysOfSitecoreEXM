@@ -6,8 +6,17 @@ namespace Sitecore.Documentation
   {
     public struct XConnect
     {
+
+
+
       public struct ContactIdentifiers
       {
+      public struct ExampleData
+        {
+          public static string MyrtleIdentifier = "myrtlesitecore9d1f652848f247219be9e1dbea4dd346";
+
+        }
+        
         public struct Sources
         {
           public static string Twitter = "twitter";
