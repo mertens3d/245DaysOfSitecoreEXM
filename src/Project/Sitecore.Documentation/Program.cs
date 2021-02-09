@@ -96,9 +96,16 @@ namespace Sitecore.Documentation
           // Create a new contact with the identifier
           Contact knownContact = new Contact(identifier);
 
+          PersonalInformation personalInformationFacet = new PersonalInformation();
+
+          personalInformationFacet.FirstName = "Myrtle";
+          personalInformationFacet.LastName = "McSitecore";
+          personalInformationFacet.JobTitle = "Programmer Writer";
+
+          client.SetFacet<PersonalInformation>(knownContact, PersonalInformation.DefaultFacetKey, personalInformationFacet);
+          
           client.AddContact(knownContact);
-
-
+          
           // Create a new interaction for that contact
           Interaction interaction = new Interaction(knownContact, InteractionInitiator.Brand, channelId, "");
 
@@ -107,10 +114,14 @@ namespace Sitecore.Documentation
           var xConnectEvent = new Goal(offlineGoal, DateTime.UtcNow);
           interaction.Events.Add(xConnectEvent);
 
+          IpInfo ipInfo = new IpInfo("127.0.0.1");
+          ipInfo.BusinessName = "Home";
+          client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, ipInfo);
+
           // Add the contact and interaction
           client.AddInteraction(interaction);
 
-          // Submit contact and interaction - a total of two operations
+          // Submit contact and interaction - a total of two operations (three)
           await client.SubmitAsync();
 
           var operations = client.LastBatch;
