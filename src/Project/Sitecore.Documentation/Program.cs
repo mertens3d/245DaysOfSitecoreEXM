@@ -23,7 +23,7 @@ namespace Sitecore.Documentation
 
     private static async Task MainAsync(string[] args)
     {
-      CertificateHttpClientHandlerModifierOptions options = CertificateHttpClientHandlerModifierOptions.Parse(Const.Certificate.CertificateStore + Const.Certificate.CertificateThumbprint);
+      CertificateHttpClientHandlerModifierOptions options = CertificateHttpClientHandlerModifierOptions.Parse(Const.XConnect.Certificate.CertificateStore + Const.XConnect.Certificate.CertificateThumbprint);
 
       var certificateModifier = new CertificateHttpClientHandlerModifier(options);
 
@@ -32,16 +32,16 @@ namespace Sitecore.Documentation
       var timeoutClientModifier = new TimeoutHttpClientModifier(new TimeSpan(0, 0, 20));
       clientModifiers.Add(timeoutClientModifier);
 
-      var collectionClient = new CollectionWebApiClient(new Uri(Const.EndPoints.Odata), clientModifiers, new[]
+      var collectionClient = new CollectionWebApiClient(new Uri(Const.XConnect.EndPoints.Odata), clientModifiers, new[]
       {
         certificateModifier
       });
 
-      var searchClient = new SearchWebApiClient(new Uri(Const.EndPoints.Odata), clientModifiers, new[] {
+      var searchClient = new SearchWebApiClient(new Uri(Const.XConnect.EndPoints.Odata), clientModifiers, new[] {
         certificateModifier
       });
 
-      var configurationClient = new ConfigurationWebApiClient(new Uri(Const.EndPoints.Configuration), clientModifiers, new[] { certificateModifier });
+      var configurationClient = new ConfigurationWebApiClient(new Uri(Const.XConnect.EndPoints.Configuration), clientModifiers, new[] { certificateModifier });
 
       var cfg = new XConnectClientConfiguration(new XdbRuntimeModel(CollectionModel.Model), collectionClient, searchClient, configurationClient);
 
@@ -81,6 +81,49 @@ namespace Sitecore.Documentation
       {
         try
         {
+          var offlineGoal = Const.XConnect.Goals.WatchedDemo;
+          var channelId = Const.XConnect.ChannelIds.OtherEvent;
+
+          // Identifier for a 'known' contact
+          var identifier = new ContactIdentifier[]
+          {
+            new ContactIdentifier(Const.XConnect.ContactIdentifiers.Sources.Twitter , "myrtlesitecore" + Guid.NewGuid().ToString("N"), ContactIdentifierType.Known)
+          };
+
+          // Print out identifier that is going to be used
+          Console.WriteLine("Identifier: " + identifier[0].Identifier);
+
+          // Create a new contact with the identifier
+          Contact knownContact = new Contact(identifier);
+
+          client.AddContact(knownContact);
+
+
+          // Create a new interaction for that contact
+          Interaction interaction = new Interaction(knownContact, InteractionInitiator.Brand, channelId, "");
+
+
+          // add events - all interactions must have at least one event
+          var xConnectEvent = new Goal(offlineGoal, DateTime.UtcNow);
+          interaction.Events.Add(xConnectEvent);
+
+          // Add the contact and interaction
+          client.AddInteraction(interaction);
+
+          // Submit contact and interaction - a total of two operations
+          await client.SubmitAsync();
+
+          var operations = client.LastBatch;
+
+          Console.WriteLine("RESULTS...");
+
+          // Loop through operations and check status
+          foreach (var operation in operations)
+          {
+            Console.WriteLine(operation.OperationType + operation.Target.GetType().ToString() + " Operation: " + operation.Status);
+          }
+
+          Console.ReadLine();
         }
         catch (XdbExecutionException ex)
         {
