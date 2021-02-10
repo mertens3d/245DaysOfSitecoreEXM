@@ -119,6 +119,7 @@ namespace Sitecore.Documentation
       Console.ForegroundColor = ConsoleColor.DarkGreen;
       Console.WriteLine("");
       Console.WriteLine("END OF PROGRAM");
+      Console.WriteLine("<Enter> to proceed");
       Console.ReadKey();
     }
 
@@ -152,12 +153,21 @@ namespace Sitecore.Documentation
             var existingContactFacetData = RetrieveExistingContactFacetData(client, existingContact);
 
             DisplayExistingContactFacetData(existingContactFacetData);
+
+            var interactionsReporter = new InteractionsReporter();
+
+            var interactions = existingContact.Interactions;
+             
+            interactionsReporter.ReportInteractionsForExistingContact(existingContact, interactions, client, existingContactFacetData);
+
+            
           }
           else
           {
             Console.WriteLine("ExistingContact is null");
           }
 
+          Console.WriteLine("<Enter> to proceed");
           Console.ReadLine();
         }
         catch (XdbExecutionException ex)
@@ -169,7 +179,7 @@ namespace Sitecore.Documentation
 
     private static void DisplayExistingContactData(Contact existingContact)
     {
-        Console.WriteLine("Contact ID: " + existingContact.Id.ToString());
+      Console.WriteLine("Contact ID: " + existingContact.Id.ToString());
     }
 
     private static void DisplayExistingContactFacetData(PersonalInformation existingContact)
@@ -223,7 +233,18 @@ namespace Sitecore.Documentation
       try
       {
         IdentifiedContactReference reference = new IdentifiedContactReference(Const.XConnect.ContactIdentifiers.Sources.Twitter, Const.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier);
-        existingContact = await client.GetAsync<Contact>(reference, new ContactExpandOptions(new string[] { PersonalInformation.DefaultFacetKey }));
+        existingContact = await client.GetAsync<Contact>(reference,
+          new ContactExpandOptions(new string[] {
+            PersonalInformation.DefaultFacetKey
+          }
+          )
+          {
+            Interactions = new RelatedInteractionsExpandOptions(IpInfo.DefaultFacetKey)
+            {
+              StartDateTime = DateTime.MinValue,
+              EndDateTime = DateTime.MaxValue
+            }
+          });
       }
       catch (Exception ex)
       {
