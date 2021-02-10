@@ -6,17 +6,19 @@ namespace Sitecore.Documentation
   {
     public struct XConnect
     {
+      public struct JobTitles
+      {
+          public static string ProgrammerWriter = "Programmer Writer";
 
-
+      }
 
       public struct ContactIdentifiers
       {
-      public struct ExampleData
+        public struct ExampleData
         {
           public static string MyrtleIdentifier = "myrtlesitecore9d1f652848f247219be9e1dbea4dd346";
-
         }
-        
+
         public struct Sources
         {
           public static string Twitter = "twitter";
@@ -27,9 +29,10 @@ namespace Sitecore.Documentation
       {
         public static Guid WatchedDemo = Guid.Parse("ad8ab7fe-ab48-4ea9-a976-ae7a268ae2f0");
       }
-       public struct ChannelIds
+
+      public struct ChannelIds
       {
-        public static Guid OtherEvent = Guid.Parse( "110cbf07-6b1a-4743-a398-6749acfcd7aa");
+        public static Guid OtherEvent = Guid.Parse("110cbf07-6b1a-4743-a398-6749acfcd7aa");
       }
 
       public struct Certificate
