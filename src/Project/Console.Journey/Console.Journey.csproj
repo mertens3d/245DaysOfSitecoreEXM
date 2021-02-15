@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7ED73699-2EE6-4318-A7BE-436D6C64C95E}</ProjectGuid>
+    <ProjectGuid>{79CB79D1-EF6D-431A-9798-C6B3708785F6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Sitecore.Documentation</RootNamespace>
-    <AssemblyName>Sitecore.Documentation</AssemblyName>
+    <RootNamespace>Console.Journey</RootNamespace>
+    <AssemblyName>Console.Journey</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -181,18 +181,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Const.cs" />
-    <Compile Include="ContactModel.cs" />
-    <Compile Include="Helpers\ConfigureHelper.cs" />
-    <Compile Include="Helpers\CreateHelper.cs" />
-    <Compile Include="Helpers\ReadHelper.cs" />
-    <Compile Include="Helpers\ReportingHelper.cs" />
-    <Compile Include="InteractionsReporter.cs" />
-    <Compile Include="Models\Tutorial4.cs" />
+    <Compile Include="Interactions\BuyCandyInteraction.cs" />
+    <Compile Include="Interactions\ReportContactData.cs" />
+    <Compile Include="Interactions\SelfServiceMachineInteraction.cs" />
+    <Compile Include="Interactions\_interactionBase.cs" />
+    <Compile Include="Interactions\RegisterStep.cs" />
+    <Compile Include="Interactions\WatchAMovieInteraction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helpers\UpdateHelper.cs" />
-    <Compile Include="TestData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -202,6 +198,10 @@
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
       <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SitecoreCinema\SitecoreCinema.csproj">
+      <Project>{bcb7c4d8-8788-4830-b98f-f37232d6a96d}</Project>
+      <Name>SitecoreCinema</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

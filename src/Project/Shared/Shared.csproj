@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7ED73699-2EE6-4318-A7BE-436D6C64C95E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Sitecore.Documentation</RootNamespace>
-    <AssemblyName>Sitecore.Documentation</AssemblyName>
+    <ProjectGuid>{44D6B78D-7D28-4ED7-A32C-78AA53040C7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shared</RootNamespace>
+    <AssemblyName>Shared</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -111,9 +109,6 @@
     <Reference Include="Sitecore.XConnect.Client, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Sitecore.XConnect.Client.9.3.0\lib\netstandard2.0\Sitecore.XConnect.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.XConnect.Collection.Model, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Sitecore.XConnect.Collection.Model.9.3.0\lib\netstandard2.0\Sitecore.XConnect.Collection.Model.dll</HintPath>
-    </Reference>
     <Reference Include="Sitecore.XConnect.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Sitecore.XConnect.Core.9.3.0\lib\netstandard2.0\Sitecore.XConnect.Core.dll</HintPath>
     </Reference>
@@ -181,28 +176,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CFGGenerator.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="ContactModel.cs" />
-    <Compile Include="Helpers\ConfigureHelper.cs" />
-    <Compile Include="Helpers\CreateHelper.cs" />
-    <Compile Include="Helpers\ReadHelper.cs" />
-    <Compile Include="Helpers\ReportingHelper.cs" />
-    <Compile Include="InteractionsReporter.cs" />
-    <Compile Include="Models\Tutorial4.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helpers\UpdateHelper.cs" />
-    <Compile Include="TestData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\Shared.csproj">
-      <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
-      <Name>Shared</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

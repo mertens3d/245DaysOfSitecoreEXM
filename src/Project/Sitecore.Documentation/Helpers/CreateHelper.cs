@@ -1,9 +1,5 @@
 ﻿using Sitecore.XConnect;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sitecore.Documentation
 {
@@ -14,7 +10,7 @@ namespace Sitecore.Documentation
       // Identifier for a 'known' contact
       var identifier = new ContactIdentifier[]
       {
-            new ContactIdentifier(Const.XConnect.ContactIdentifiers.Sources.Twitter , newContact.ContactIdentifier, ContactIdentifierType.Known)
+            new ContactIdentifier(Shared.Const.XConnect.ContactIdentifiers.Sources.Twitter , newContact.ContactIdentifier, ContactIdentifierType.Known)
       };
 
       // Print out identifier that is going to be used

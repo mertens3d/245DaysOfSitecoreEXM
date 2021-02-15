@@ -22,7 +22,6 @@ namespace Sitecore.Documentation
       var operations = client.LastBatch;
 
       Console.WriteLine("RESULTS...");
-
       // Loop through operations and check status
       foreach (var operation in operations)
       {

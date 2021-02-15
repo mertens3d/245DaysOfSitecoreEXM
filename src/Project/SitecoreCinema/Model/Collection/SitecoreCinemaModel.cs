@@ -1,0 +1,25 @@
+﻿using Sitecore.XConnect;
+using Sitecore.XConnect.Schema;
+
+namespace SitecoreCinema.Model.Collection
+{
+  public class SitecoreCinemaModel
+  {
+    public static XdbModel Model { get; set; } = BuildModel();
+
+    private static XdbModel BuildModel()
+    {
+      XdbModelBuilder modelBuilder = new XdbModelBuilder("SitecoreCinemaModel", new XdbModelVersion(1, 0));
+
+      modelBuilder.DefineFacet<Contact, CinemaVisitorInfo>(Const.FacetKeys.CinemaVisitorInfo);
+      modelBuilder.DefineFacet<Interaction, CinemaInfo>(Const.FacetKeys.CinemaInfo);
+      modelBuilder.DefineEventType<WatchMovie>(false);
+      modelBuilder.DefineEventType<BuyConcessions>(false);
+      modelBuilder.DefineEventType<UseSelfService>(false);
+
+      modelBuilder.ReferenceModel(Sitecore.XConnect.Collection.Model.CollectionModel.Model);
+
+      return modelBuilder.BuildModel();
+    }
+  }
+}

@@ -8,21 +8,7 @@ namespace Sitecore.Documentation
     {
       public struct JobTitles
       {
-          public static string ProgrammerWriter = "Programmer Writer";
-
-      }
-
-      public struct ContactIdentifiers
-      {
-        public struct ExampleData
-        {
-          public static string MyrtleIdentifier = "myrtlesitecore9d1f652848f247219be9e1dbea4dd346";
-        }
-
-        public struct Sources
-        {
-          public static string Twitter = "twitter";
-        }
+        public static string ProgrammerWriter = "Programmer Writer";
       }
 
       public struct Goals
@@ -33,18 +19,6 @@ namespace Sitecore.Documentation
       public struct ChannelIds
       {
         public static Guid OtherEvent = Guid.Parse("110cbf07-6b1a-4743-a398-6749acfcd7aa");
-      }
-
-      public struct Certificate
-      {
-        public static string CertificateStore = "StoreName=My;StoreLocation=LocalMachine;FindType=FindByThumbprint;FindValue=";
-        public static string CertificateThumbprint = "42829cff3fa746441d6faaf8e6af216c0063a685";
-      }
-
-      public struct EndPoints
-      {
-        public static string Odata = "https://LearnEXMxconnect.dev.local/odata";
-        public static string Configuration = "https://LearnEXMxconnect.dev.local/configuration";
       }
     }
   }

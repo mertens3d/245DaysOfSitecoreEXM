@@ -17,7 +17,7 @@ namespace Sitecore.Documentation.Helpers
 
       try
       {
-        CertificateHttpClientHandlerModifierOptions options = CertificateHttpClientHandlerModifierOptions.Parse(Const.XConnect.Certificate.CertificateStore + Const.XConnect.Certificate.CertificateThumbprint);
+        CertificateHttpClientHandlerModifierOptions options = CertificateHttpClientHandlerModifierOptions.Parse(Shared. Const.XConnect. Certificate.CertificateStore + Shared.Const.XConnect.Certificate.CertificateThumbprint);
 
         var certificateModifier = new CertificateHttpClientHandlerModifier(options);
 
@@ -26,16 +26,16 @@ namespace Sitecore.Documentation.Helpers
         var timeoutClientModifier = new TimeoutHttpClientModifier(new TimeSpan(0, 0, 20));
         clientModifiers.Add(timeoutClientModifier);
 
-        var collectionClient = new CollectionWebApiClient(new Uri(Const.XConnect.EndPoints.Odata), clientModifiers, new[]
+        var collectionClient = new CollectionWebApiClient(new Uri(Shared.Const.XConnect.EndPoints.Odata), clientModifiers, new[]
         {
           certificateModifier
         });
 
-        var searchClient = new SearchWebApiClient(new Uri(Const.XConnect.EndPoints.Odata), clientModifiers, new[] {
+        var searchClient = new SearchWebApiClient(new Uri(Shared.Const.XConnect.EndPoints.Odata), clientModifiers, new[] {
           certificateModifier
         });
 
-        var configurationClient = new ConfigurationWebApiClient(new Uri(Const.XConnect.EndPoints.Configuration), clientModifiers, new[] { certificateModifier });
+        var configurationClient = new ConfigurationWebApiClient(new Uri(Shared.Const.XConnect.EndPoints.Configuration), clientModifiers, new[] { certificateModifier });
 
         cfg = new XConnectClientConfiguration(new XdbRuntimeModel(CollectionModel.Model), collectionClient, searchClient, configurationClient);
 

@@ -14,7 +14,7 @@ namespace Sitecore.Documentation.Helpers
 
       try
       {
-        IdentifiedContactReference reference = new IdentifiedContactReference(Const.XConnect.ContactIdentifiers.Sources.Twitter, Const.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier);
+        IdentifiedContactReference reference = new IdentifiedContactReference(Shared.Const.XConnect.ContactIdentifiers.Sources.Twitter, Shared.Const.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier);
 
         var interactions = new RelatedInteractionsExpandOptions(IpInfo.DefaultFacetKey)
         {
@@ -54,7 +54,7 @@ namespace Sitecore.Documentation.Helpers
         }
         else
         {
-          Console.WriteLine($"Identifier {Const.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier} not found");
+          Console.WriteLine($"Identifier {Shared.Const.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier} not found");
         }
       }
       catch (Exception)
