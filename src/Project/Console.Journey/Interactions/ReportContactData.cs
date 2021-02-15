@@ -31,6 +31,7 @@ namespace Console.Journey.Interactions
           var details = contactAgain.GetFacet<PersonalInformation>();
           var movie = contactAgain.GetFacet<CinemaVisitorInfo>();
 
+          System.Console.WriteLine(String.Format("Contact id: " + contactAgain.Id));
           System.Console.WriteLine(String.Format("Your name is {0} {1} and your favorite movie is {2}", details.FirstName, details.LastName, movie.FavoriteMovie));
 
           System.Console.WriteLine("Today you have had " + contactAgain.Interactions.Count + " interactions with us");
