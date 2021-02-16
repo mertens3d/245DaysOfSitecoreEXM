@@ -8,34 +8,31 @@ using System.Threading.Tasks;
 
 namespace Console.Journey.Interactions
 {
-
-  public partial class WatchAMovieInteraction
+  public class SelfServiceMachineInteraction : _interactionBase
   {
-    public class SelfServiceMachineInteraction : _interactionBase
+    public SelfServiceMachineInteraction(string identifier) : base(identifier)
     {
-      public SelfServiceMachineInteraction(string identifier) : base(identifier)
-      {
-      }
+    }
 
-      public async Task SelfServiceMachine()
-      {
-        //   ___       _                      _   _               _  _   _
-        //  |_ _|_ __ | |_ ___ _ __ __ _  ___| |_(_) ___  _ __  _| || |_/ |
-        //   | || '_ \| __/ _ \ '__/ _  |/ __| __| |/ _ \| '_ \|_  ..  _| |
-        //   | || | | | ||  __/ | | (_| | (__| |_| | (_) | | | |_      _| |
-        //  |___|_| |_|\__\___|_|  \__,_|\___|\__|_|\___/|_| |_| |_||_| |_|
+    public async Task SelfServiceMachine()
+    {
+      //   ___       _                      _   _               _  _   _
+      //  |_ _|_ __ | |_ ___ _ __ __ _  ___| |_(_) ___  _ __  _| || |_/ |
+      //   | || '_ \| __/ _ \ '__/ _  |/ __| __| |/ _ \| '_ \|_  ..  _| |
+      //   | || | | | ||  __/ | | (_| | (__| |_| | (_) | | | |_      _| |
+      //  |___|_| |_|\__\___|_|  \__,_|\___|\__|_|\___/|_| |_| |_||_| |_|
 
-        // You cycle to the nearest Sitecore Cinema (which has great bicycle storage facilities, by the way)
-        // and use a self service machine to buy a ticket. You swipes your loyalty card - the machine
-        // immediately sends this interaction to xConnect. Because you're a loyalty card member
-        // you don't even pay at this point!
+      // You cycle to the nearest Sitecore Cinema (which has great bicycle storage facilities, by the way)
+      // and use a self service machine to buy a ticket. You swipes your loyalty card - the machine
+      // immediately sends this interaction to xConnect. Because you're a loyalty card member
+      // you don't even pay at this point!
 
-        var cfgGenerator = new CFGGenerator();
+      var cfgGenerator = new CFGGenerator();
 
-        var cfg = cfgGenerator.GetCFG(SitecoreCinemaModel.Model);
+      var cfg = cfgGenerator.GetCFG(SitecoreCinemaModel.Model);
 
-        var arr = new[]
-                  {
+      var arr = new[]
+                {
                         @" _____ _      _        _   ",
                         @"|_   _(_) ___| | _____| |_ ",
                         @"  | | | |/ __| |/ / _ \ __|",
@@ -43,43 +40,42 @@ namespace Console.Journey.Interactions
                         @"  |_| |_|\___|_|\_\___|\__|",
                         };
 
-        var initializer = new Initializer();
-        await initializer.InitCFGAsync(cfg, arr);
+      var initializer = new Initializer();
+      await initializer.InitCFGAsync(cfg, arr);
 
-        // Initialize a client using the validate configuration
+      // Initialize a client using the validate configuration
 
-        using (Client = new XConnectClient(cfg))
+      using (Client = new XConnectClient(cfg))
+      {
+        try
         {
-          try
+          DrawTriggerMessage("You swiped your loyalty card.");
+
+          await PopulateContactDataAsync();
+
+          if (Contact != null)
           {
-            DrawTriggerMessage("You swiped your loyalty card.");
+            System.Console.WriteLine("Why hello there " + PersonalInfo.FirstName + " " + PersonalInfo.LastName + ", whose favorite film is..." + CinemaInfo.FavoriteMovie + ". Wow, really? Ok, to each their own I guess.");
 
-            await PopulateContactDataAsync();
+            var interaction = new Interaction(Contact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtTicket, ""); // Guid should be from a channel in sitecore
 
-            if (Contact != null)
-            {
-              System.Console.WriteLine("Why hello there " + PersonalInfo.FirstName + " " + PersonalInfo.LastName + ", whose favorite film is..." + CinemaInfo.FavoriteMovie + ". Wow, really? Ok, to each their own I guess.");
+            Client.SetFacet(interaction, SitecoreCinema.Model.Collection.CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
 
-              var interaction = new Interaction(Contact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtTicket, ""); // Guid should be from a channel in sitecore
+            interaction.Events.Add(new UseSelfService(DateTime.UtcNow));
 
-              Client.SetFacet(interaction, SitecoreCinema.Model.Collection.CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
+            Client.AddInteraction(interaction);
 
-              interaction.Events.Add(new UseSelfService(DateTime.UtcNow));
+            await Client.SubmitAsync();
 
-              Client.AddInteraction(interaction);
-
-              await Client.SubmitAsync();
-
-              DrawPostInteractionMessage(new string[]{
+            DrawPostInteractionMessage(new string[]{
             "Here's your ticket - we'll charge you when you use it, in case you have some sort of emergency between here and the movie",
             "It's just one of those courtesies we offer loyalty card member! Now go buy some candy." }
-              );
-            }
+            );
           }
-          catch (Exception ex)
-          {
-            // deal with exception
-          }
+        }
+        catch (Exception ex)
+        {
+          // deal with exception
         }
       }
     }

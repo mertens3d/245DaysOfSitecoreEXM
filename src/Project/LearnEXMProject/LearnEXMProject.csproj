@@ -928,16 +928,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Styles\SitecoreCinema.css" />
     <Content Include="Views\Email\_EmailBaseLayout.cshtml" />
     <Content Include="Views\Email\EmailMainLayout.cshtml" />
+    <Content Include="Views\SitecoreCinemaLayout.cshtml" />
+    <Content Include="Views\SitecoreCinema\Register.cshtml" />
+    <Content Include="Views\SitecoreCinema\SelfServiceMachine.cshtml" />
+    <Content Include="Views\SitecoreCinema\WhatWeKnowAboutYou.cshtml" />
+    <Content Include="Views\SitecoreCinema\StartJourney.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\SitecoreCinemaController.cs" />
+    <Compile Include="DependencyInjection\DiConfigurator.cs" />
     <Compile Include="Models\Const.cs" />
     <Compile Include="Models\Email\EmailOptionsRepository.cs" />
+    <Compile Include="Models\SitecoreCinema\CandidateNamePair.cs" />
+    <Compile Include="Models\SitecoreCinema\CandidateNames.cs" />
+    <Compile Include="Models\SitecoreCinema\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -952,6 +963,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Config\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
