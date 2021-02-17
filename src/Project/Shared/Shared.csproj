@@ -109,6 +109,9 @@
     <Reference Include="Sitecore.XConnect.Client, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Sitecore.XConnect.Client.9.3.0\lib\netstandard2.0\Sitecore.XConnect.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.XConnect.Collection.Model, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sitecore.XConnect.Collection.Model.9.3.0\lib\netstandard2.0\Sitecore.XConnect.Collection.Model.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.XConnect.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Sitecore.XConnect.Core.9.3.0\lib\netstandard2.0\Sitecore.XConnect.Core.dll</HintPath>
     </Reference>
@@ -176,13 +179,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CFGGenerator.cs" />
+    <Compile Include="XConnect\CFGGenerator.cs" />
     <Compile Include="Const.cs" />
+    <Compile Include="XConnect\Initializer.cs" />
+    <Compile Include="XConnect\Interactions\BuyCandyInteraction.cs" />
+    <Compile Include="XConnect\Interactions\RegisterInteraction.cs" />
+    <Compile Include="XConnect\Interactions\ReportKnownData.cs" />
+    <Compile Include="XConnect\Interactions\SelfServiceMachineInteraction.cs" />
+    <Compile Include="XConnect\Interactions\WatchAMovieInteraction.cs" />
+    <Compile Include="XConnect\Interactions\WatchMovieInteraction.cs" />
+    <Compile Include="XConnect\_xconnectBase.cs" />
+    <Compile Include="Interfaces\IFeedback.cs" />
+    <Compile Include="Helpers\GetContactData.cs" />
+    <Compile Include="Models\KnownData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SitecoreCinema\SitecoreCinema.csproj">
+      <Project>{bcb7c4d8-8788-4830-b98f-f37232d6a96d}</Project>
+      <Name>SitecoreCinema</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interactions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

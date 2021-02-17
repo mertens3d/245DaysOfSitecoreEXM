@@ -181,12 +181,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interactions\BuyCandyInteraction.cs" />
-    <Compile Include="Interactions\ReportContactData.cs" />
-    <Compile Include="Interactions\SelfServiceMachineInteraction.cs" />
-    <Compile Include="Interactions\_interactionBase.cs" />
-    <Compile Include="Interactions\RegisterStep.cs" />
-    <Compile Include="Interactions\WatchAMovieInteraction.cs" />
+    <Compile Include="Steps\BuyCandyStep.cs" />
+    <Compile Include="ConsoleFeedback.cs" />
+    <Compile Include="Steps\ReportContactDataStep.cs" />
+    <Compile Include="Steps\ReportKnownData.cs" />
+    <Compile Include="Steps\RegisterStep.cs" />
+    <Compile Include="Steps\SelfServiceStep.cs" />
+    <Compile Include="Steps\WatchAMovieStep.cs" />
+    <Compile Include="Steps\_journeyStepBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

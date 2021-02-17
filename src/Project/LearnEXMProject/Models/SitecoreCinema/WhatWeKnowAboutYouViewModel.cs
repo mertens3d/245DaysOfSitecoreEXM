@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace LearnEXMProject.Models.SitecoreCinema
 {
-  public class RegisterViewModel
+  public class WhatWeKnowAboutYouViewModel
   {
-    public CandidateContactInfo CandidateContactInfo { get; set; }
+    public KnownData KnownData { get; set; }
   }
 }

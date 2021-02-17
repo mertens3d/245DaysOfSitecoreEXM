@@ -1,16 +1,13 @@
 ﻿@model LearnEXMProject.Models.SitecoreCinema.RegisterViewModel
 
 This is going to be the register page.
+<br />
+Thank you for registering <strong>  @Model.CandidateContactInfo.FirstName @Model.CandidateContactInfo.LastName </strong>.
 
+<br />
+We'll be sending you a confirmation email as soon as Gregory codes that in.
 
-<br/>
 <a href="@Const.Links.SitecoreCinema.SelfServiceMachine" target="_self">Self Service Machine</a>
 
+<br />
 
-
-Select one of these names to use
-@foreach(var namePair in Model.CandidateNames)
-{
-  <br/>
-  <a href="">@namePair.FirstName, @namePair.LastName</a>
-}
