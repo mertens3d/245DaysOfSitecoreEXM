@@ -1,5 +1,4 @@
-﻿using Shared.Interfaces;
-using Sitecore.XConnect;
+﻿using Sitecore.XConnect;
 using SitecoreCinema.Model.Collection;
 using System;
 
@@ -7,16 +6,12 @@ namespace Shared.XConnect.Interactions
 {
   public class WatchMovieInteraction : _xconnectBase
   {
-    public XConnectInitializer Initializer { get; set; }
-
-    public WatchMovieInteraction(IFeedback feedback, string identifier) : base(identifier)
+    public WatchMovieInteraction(string identifier) : base(identifier)
     {
     }
 
     public override async void InteractionBody()
     {
-      await PopulateContactDataAsync();
-
       if (Contact != null)
       {
         var interaction = new Interaction(Contact, InteractionInitiator.Contact, Const.XConnect.Channels.WatchedMovie, "");
@@ -31,6 +26,10 @@ namespace Shared.XConnect.Interactions
 
         Client.AddInteraction(interaction);
         await Client.SubmitAsync();
+      }
+      else
+      {
+        Errors.Add("Contact was null");
       }
     }
   }

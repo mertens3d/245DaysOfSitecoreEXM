@@ -1,12 +1,10 @@
-﻿using Console.Journey.Interactions;
-using Shared.Interfaces;
-using Shared.Models;
+﻿using Shared.Interfaces;
 using Shared.XConnect.Interactions;
 using SitecoreCinema.Model.Collection;
 using System;
 using System.Threading.Tasks;
 
-namespace Shared.Interactions
+namespace Console.Journey.Steps
 {
   public class ReportContactDataStep : _journeyStepBase
   {
@@ -24,31 +22,45 @@ namespace Shared.Interactions
         await knownDataReport.ExecuteInteraction();
         if (knownDataReport != null)
         {
-          Feedback.WriteLine(string.Format("Contact id: " + knownDataReport.KnownData.Id));
-          Feedback.WriteLine(string.Format("Your name is {0} {1} and your favorite movie is {2}", 
-            knownDataReport.KnownData.details.FirstName, 
-            knownDataReport.KnownData.details.LastName,
-            knownDataReport.KnownData.movie.FavoriteMovie));
-
-          Feedback.WriteLine("Today you have had " + knownDataReport.KnownData.Interactions.Count + " interactions with us");
-
-          var i = 0;
-
-          foreach (var interactionsToday in knownDataReport.KnownData.Interactions)
+          if (knownDataReport?.KnownData.Id != null)
           {
-            i++;
-            var cinemaId = interactionsToday.GetFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
-            Feedback.WriteLine("");
+            Feedback.WriteLine(string.Format("Contact id: " + knownDataReport.KnownData.Id));
+          }
 
-            Feedback.WriteLine("Interaction #" + i + (cinemaId != null ? " at Cinema #" + cinemaId.CinimaId : string.Empty));
+          if (knownDataReport?.KnownData?.details != null && knownDataReport?.KnownData.movie != null)
+          {
+            Feedback.WriteLine(string.Format("Your name is {0} {1} and your favorite movie is {2}",
+              knownDataReport.KnownData.details.FirstName,
+              knownDataReport.KnownData.details.LastName,
+              knownDataReport.KnownData.movie.FavoriteMovie));
+          }
+          else
+          {
+            Feedback.WriteLine("details or movie was null");
+          }
 
-            Feedback.WriteLine("Events: ");
+          if (knownDataReport?.KnownData?.Interactions != null)
+          {
+            Feedback.WriteLine("Today you have had " + knownDataReport.KnownData.Interactions.Count + " interactions with us");
 
-            foreach (var evv in interactionsToday.Events)
+            var i = 0;
+
+            foreach (var interactionsToday in knownDataReport.KnownData.Interactions)
             {
-              Feedback.WriteLine(evv.GetType().ToString() + "");
-            };
-            Feedback.WriteLine("");
+              i++;
+              var cinemaId = interactionsToday.GetFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
+              Feedback.WriteLine("");
+
+              Feedback.WriteLine("Interaction #" + i + (cinemaId != null ? " at Cinema #" + cinemaId.CinimaId : string.Empty));
+
+              Feedback.WriteLine("Events: ");
+
+              foreach (var evv in interactionsToday.Events)
+              {
+                Feedback.WriteLine(evv.GetType().ToString() + "");
+              };
+              Feedback.WriteLine("");
+            }
           }
         }
       }

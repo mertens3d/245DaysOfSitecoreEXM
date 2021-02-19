@@ -1,14 +1,11 @@
-﻿using Console.Journey.Interactions;
-using Console.Journey.Steps;
-using Shared.Interactions;
-using Shared.XConnect.Interactions;
+﻿using Console.Journey.Steps;
 using System.Threading.Tasks;
 
 namespace Console.Journey
 {
   internal class Program
   {
-    private static async Task AllStepsAsync()
+    private static void ExecuteAllSteps()
     {
       // Welcome to...
       //   _____ _ __                            _______
@@ -18,40 +15,29 @@ namespace Console.Journey
       // ____/_/\__/\___/\___/\____/_/   \___/\____/_/_/ /_/\___/_/ /_/ /_/\__,_/
 
       var feedback = new ConsoleFeedback();
+      string Identifier = string.Empty;
 
-      feedback.WriteLine("What is your first name?");
+      var registerStep = new RegisterStep(feedback);
+      Task.Run(async () => { Identifier = await registerStep.Register(); }).Wait();
 
-      var firstname = feedback.ReadLine();
-
-      feedback.WriteLine("What is your last name?");
-
-      var lastname = feedback.ReadLine();
-
-      feedback.WriteLine("Favorite movie?");
-
-      var favoriteMovie = feedback.ReadLine();
-
-      var registerStep = new RegisterInteraction(firstname, lastname, favoriteMovie);
-      Task.Run(async () => { await registerStep.ExecuteInteraction(); })
-        .Wait();
-
-      var selfServiceMachineStep = new SelfServiceStep(feedback, registerStep. Identifier);
-
+      var selfServiceMachineStep = new SelfServiceStep(feedback, Identifier);
       Task.Run(async () => { await selfServiceMachineStep.ExecuteStep(); }).Wait();
 
-      var buyCandyStep = new BuyCandyStep(feedback, registerStep.Identifier);
+      var buyCandyStep = new BuyCandyStep(feedback, Identifier);
       Task.Run(async () => { await buyCandyStep.BuyCandy(); }).Wait();
 
-      var watchMovieInteraction = new Interactions.WatchAMovieStep(feedback, registerStep.Identifier);
-      Task.Run(async () => { await watchMovieInteraction.WatchAMovieAsync(); }).Wait();
+      var watchMovieStep = new WatchAMovieStep(feedback, Identifier);
+      Task.Run(async () => { await watchMovieStep.WatchAMovieAsync(); }).Wait();
 
-      var reporter = new ReportContactDataStep(feedback, registerStep.Identifier);
+      var reporter = new ReportContactDataStep(feedback, Identifier);
       Task.Run(async () => { await reporter.ReportAsync(); }).Wait();
+
+      feedback.ReadKey();
     }
 
     private static void Main(string[] args)
     {
-      Task.Run(async () => { await AllStepsAsync(); });
+      ExecuteAllSteps();
     }
   }
 }

@@ -2,7 +2,7 @@
 using Shared.XConnect.Interactions;
 using System.Threading.Tasks;
 
-namespace Console.Journey.Interactions
+namespace Console.Journey.Steps
 {
   public class WatchAMovieStep : _journeyStepBase
   {
@@ -18,7 +18,7 @@ namespace Console.Journey.Interactions
 
     public async Task WatchAMovieAsync()
     {
-      var watchMovieInteration = new WatchMovieInteraction(Feedback, Identifier);
+      var watchMovieInteration = new WatchMovieInteraction(Identifier);
 
       var arr = new[]
                 {
@@ -29,12 +29,17 @@ namespace Console.Journey.Interactions
                         @"|_|  |_|\___/ \_/ |_|\___|",
                         };
 
-      if (watchMovieInteration.Initializer.InitSuccess)
-      {
-        await watchMovieInteration.ExecuteInteraction();
+      DrawStepTitle(arr);
+      await watchMovieInteration.ExecuteInteraction();
 
+      if (watchMovieInteration.KnownData?.details != null)
+      {
         System.Console.WriteLine("Enjoy your movie, " + watchMovieInteration.KnownData.details.FirstName + "!");
         System.Console.WriteLine("Since you're a loyalty card holder, we'll take payment for your ticket now.");
+      }
+      else
+      {
+        System.Console.WriteLine("Details was null");
       }
 
       // Initialize a client using the validate configuration

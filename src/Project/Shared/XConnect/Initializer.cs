@@ -7,15 +7,11 @@ namespace Shared.XConnect
   {
     public List<string> Errors { get; set; } = new List<string>();
 
-    public bool InitSuccess { get; private set; } = false;
-
     public async System.Threading.Tasks.Task InitCFGAsync(XConnectClientConfiguration cfg)
     {
       try
       {
         await cfg.InitializeAsync();
-
-        InitSuccess = true;
       }
       catch (XdbModelConflictException ce)
       {

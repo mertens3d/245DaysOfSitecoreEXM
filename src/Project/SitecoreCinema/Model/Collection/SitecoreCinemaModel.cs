@@ -18,7 +18,6 @@ namespace SitecoreCinema.Model.Collection
       modelBuilder.DefineEventType<BuyConcessions>(false);
       modelBuilder.DefineEventType<UseSelfService>(false);
 
-
       return modelBuilder.BuildModel();
     }
   }

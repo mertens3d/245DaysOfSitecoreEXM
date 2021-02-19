@@ -1,7 +1,7 @@
 ﻿using Shared.Interfaces;
 using System;
 
-namespace Console.Journey.Interactions
+namespace Console.Journey.Steps
 {
   public abstract class _journeyStepBase
   {
@@ -10,8 +10,8 @@ namespace Console.Journey.Interactions
 
     protected _journeyStepBase(IFeedback feedback, string identifier)
     {
-      this.Feedback = feedback;
-      this.Identifier = identifier;
+      Feedback = feedback;
+      Identifier = identifier;
     }
 
 
@@ -29,6 +29,17 @@ namespace Console.Journey.Interactions
 
       Feedback.WriteLine("Press any key to continue");
       Feedback.ReadKey();
+    }
+    protected void DrawStepTitle(string[] arr)
+    {
+      System.Console.WindowWidth = 160;
+      foreach (string line in arr)
+      {
+        System.Console.WriteLine(line);
+      }
+      System.Console.WriteLine(); // Extra space
+
+
     }
     protected void DrawTriggerMessage(string message)
     {

@@ -186,7 +186,6 @@
     <Compile Include="XConnect\Interactions\RegisterInteraction.cs" />
     <Compile Include="XConnect\Interactions\ReportKnownData.cs" />
     <Compile Include="XConnect\Interactions\SelfServiceMachineInteraction.cs" />
-    <Compile Include="XConnect\Interactions\WatchAMovieInteraction.cs" />
     <Compile Include="XConnect\Interactions\WatchMovieInteraction.cs" />
     <Compile Include="XConnect\_xconnectBase.cs" />
     <Compile Include="Interfaces\IFeedback.cs" />

@@ -1,12 +1,11 @@
-﻿using Console.Journey.Interactions;
-using Shared.Interfaces;
+﻿using Shared.Interfaces;
 using Shared.XConnect.Interactions;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 using System;
 using System.Threading.Tasks;
 
-namespace Console.Journey.JourneySteps
+namespace Console.Journey.Steps
 {
   public class RegisterStep : _journeyStepBase
   {
@@ -39,12 +38,7 @@ namespace Console.Journey.JourneySteps
                         @"             |___/                      ",
                         };
 
-        System.Console.WindowWidth = 160;
-        foreach (string line in arr)
-        {
-          System.Console.WriteLine(line);
-        }
-        System.Console.WriteLine(); // Extra space
+        DrawStepTitle(arr);
       }
       catch (Exception ex)
       {
@@ -77,9 +71,16 @@ namespace Console.Journey.JourneySteps
         var registerInteraction = new RegisterInteraction(firstname, lastname, favouriteMovie);
         await registerInteraction.ExecuteInteraction();
 
+        Identifier = registerInteraction.Identifier;
+
+
         System.Console.WriteLine("Alright, your ID is - drumroll please... - " + registerInteraction.Identifier + "! Congratulations. Ctrl +c, Ctrl+v that number into your brain");
         System.Console.Write("Great! See you at the cinema. :) Press any key to continue.");
         System.Console.ReadKey();
+
+
+
+        Feedback.ReportErrors(registerInteraction.Errors);
       }
       catch (XdbExecutionException ex)
       {

@@ -11,7 +11,7 @@ namespace Shared.XConnect
   {
     public XConnectClientConfiguration GetCFG(XdbModel xdbModel)
     {
-      CertificateHttpClientHandlerModifierOptions options = CertificateHttpClientHandlerModifierOptions.Parse(Const.XConnect.Certificate.CertificateStore + Const.XConnect.Certificate.CertificateThumbprint);
+      var options = CertificateHttpClientHandlerModifierOptions.Parse(Const.XConnect.Certificate.CertificateStore + Const.XConnect.Certificate.CertificateThumbprint);
 
       var certificateModifier = new CertificateHttpClientHandlerModifier(options);
 

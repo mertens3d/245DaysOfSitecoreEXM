@@ -4,6 +4,7 @@ using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
 using SitecoreCinema.Model.Collection;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Shared.XConnect
@@ -24,23 +25,39 @@ namespace Shared.XConnect
       var cfg = cfgGenerator.GetCFG(SitecoreCinemaModel.Model);
 
       var initializer = new XConnectInitializer();
-      await initializer.InitCFGAsync(cfg);
 
-      // Initialize a client using the validated configuration
-
-      using (Client = new XConnectClient(cfg))
+      if (!initializer.Errors.Any())
       {
-        try
+        await initializer.InitCFGAsync(cfg);
+
+        if (!initializer.Errors.Any())
         {
-          InteractionBody();
+          // Initialize a client using the validated configuration
+
+          using (Client = new XConnectClient(cfg))
+          {
+            try
+            {
+              //await PopulateContactDataAsync();
+              InteractionBody();
+              await PopulateContactDataAsync();
+            }
+            catch (XdbExecutionException ex)
+            {
+              Errors.Add(ex.Message);
+            }
+          }
         }
-        catch (XdbExecutionException ex)
+        else
         {
-          Errors.Add(ex.Message);
+          Errors.AddRange(initializer.Errors);
         }
       }
+      else
+      {
+        Errors.AddRange(initializer.Errors);
+      }
     }
-
 
     public List<string> Errors { get; set; } = new List<string>();
     protected XConnectClient Client { get; set; }
@@ -49,24 +66,36 @@ namespace Shared.XConnect
     protected IdentifiedContactReference IdentifiedContactReference { get; set; }
     public KnownData KnownData { get; private set; }
 
-    protected async Task PopulateContactDataAsync()
+    private async Task PopulateContactDataAsync()
     {
-       KnownData = new KnownData();
+      KnownData = new KnownData();
 
-      if (Identifier != null)
+      if (!string.IsNullOrEmpty(Identifier))
       {
         IdentifiedContactReference = new IdentifiedContactReference(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, Identifier);
 
         if (Client != null)
         {
-          Contact = await Client.GetAsync(IdentifiedContactReference, new ContactExpandOptions(PersonalInformation.DefaultFacetKey, CinemaVisitorInfo.DefaultFacetKey));
-          if (Contact != null)
+          try
           {
-            KnownData.Id = Contact.Id;
-            KnownData.details = Contact.GetFacet<PersonalInformation>();
-            KnownData.movie = Contact.GetFacet<CinemaVisitorInfo>();
+            var expandOptions = new ContactExpandOptions(PersonalInformation.DefaultFacetKey, CinemaVisitorInfo.DefaultFacetKey);
+            Contact = await Client.GetAsync(IdentifiedContactReference, expandOptions);
+            if (Contact != null)
+            {
+              KnownData.Id = Contact.Id;
+              KnownData.details = Contact.GetFacet<PersonalInformation>();
+              KnownData.movie = Contact.GetFacet<CinemaVisitorInfo>();
 
-            KnownData.Interactions = Contact.Interactions;
+              KnownData.Interactions = Contact.Interactions;
+            }
+            else
+            {
+              Errors.Add("Contact was null");
+            }
+          }
+          catch (System.Exception ex)
+          {
+            Errors.Add(ex.Message);
           }
         }
         else

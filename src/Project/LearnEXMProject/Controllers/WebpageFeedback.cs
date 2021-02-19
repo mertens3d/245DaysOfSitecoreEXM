@@ -23,6 +23,11 @@ namespace LearnEXMProject.Controllers
       return string.Empty;
     }
 
+    public void ReportErrors(List<string> errors)
+    {
+      throw new NotImplementedException();
+    }
+
     public void WindowWidth(int v)
     {
       // do nothing

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Shared.Interfaces
 {
@@ -13,5 +14,6 @@ namespace Shared.Interfaces
     void WindowWidth(int v);
 
     void WriteLine(string message);
+    void ReportErrors(List<string> errors);
   }
 }

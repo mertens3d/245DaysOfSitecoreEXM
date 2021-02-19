@@ -12,12 +12,9 @@ namespace Shared.XConnect.Interactions
 
     public override async void InteractionBody()
     {
-      await PopulateContactDataAsync();
 
       if (Contact != null)
       {
-        System.Console.WriteLine("Why hello again " + KnownData.details.FirstName + "!");
-        System.Console.WriteLine("Candy? You got it.");
 
         var interaction = new Interaction(Contact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtCandy, "");
         Client.SetFacet(interaction, SitecoreCinema.Model.Collection.CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });

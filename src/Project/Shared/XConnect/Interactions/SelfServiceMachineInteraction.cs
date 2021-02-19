@@ -1,5 +1,4 @@
-﻿using Shared.XConnect;
-using Sitecore.XConnect;
+﻿using Sitecore.XConnect;
 using SitecoreCinema.Model.Collection;
 using System;
 
@@ -23,10 +22,6 @@ namespace Shared.XConnect.Interactions
       // and use a self service machine to buy a ticket. You swipes your loyalty card - the machine
       // immediately sends this interaction to xConnect. Because you're a loyalty card member
       // you don't even pay at this point!
-
-
-
-      await PopulateContactDataAsync();
 
       if (Contact != null)
       {
