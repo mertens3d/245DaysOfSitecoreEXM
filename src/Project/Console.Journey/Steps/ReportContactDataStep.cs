@@ -1,6 +1,7 @@
 ﻿using Shared.Interfaces;
-using Shared.XConnect.Interactions;
-using SitecoreCinema.Model.Collection;
+using Shared.Models;
+using Shared.Models.SitecoreCinema.Collection;
+using Shared.XConnect;
 using System;
 using System.Threading.Tasks;
 
@@ -18,34 +19,36 @@ namespace Console.Journey.Steps
       {
         Feedback.WriteLine("Before you go - do you want to see the data we collected about you today? :)");
 
-        var knownDataReport = new ReportKnownData(Identifier);
-        await knownDataReport.ExecuteInteraction();
-        if (knownDataReport != null)
+        var dataReporter = new DataReporter();
+
+        KnownData knownData = await dataReporter.GetKnownDataByIdentifier(Identifier);
+
+        if (dataReporter != null)
         {
-          if (knownDataReport?.KnownData.Id != null)
+          if (knownData.Id != null)
           {
-            Feedback.WriteLine(string.Format("Contact id: " + knownDataReport.KnownData.Id));
+            Feedback.WriteLine(string.Format("Contact id: " + knownData.Id));
           }
 
-          if (knownDataReport?.KnownData?.details != null && knownDataReport?.KnownData.movie != null)
+          if (knownData?.details != null && knownData.movie != null)
           {
             Feedback.WriteLine(string.Format("Your name is {0} {1} and your favorite movie is {2}",
-              knownDataReport.KnownData.details.FirstName,
-              knownDataReport.KnownData.details.LastName,
-              knownDataReport.KnownData.movie.FavoriteMovie));
+              knownData.details.FirstName,
+              knownData.details.LastName,
+              knownData.movie.FavoriteMovie));
           }
           else
           {
             Feedback.WriteLine("details or movie was null");
           }
 
-          if (knownDataReport?.KnownData?.Interactions != null)
+          if (knownData?.Interactions != null)
           {
-            Feedback.WriteLine("Today you have had " + knownDataReport.KnownData.Interactions.Count + " interactions with us");
+            Feedback.WriteLine("Today you have had " + knownData.Interactions.Count + " interactions with us");
 
             var i = 0;
 
-            foreach (var interactionsToday in knownDataReport.KnownData.Interactions)
+            foreach (var interactionsToday in knownData.Interactions)
             {
               i++;
               var cinemaId = interactionsToday.GetFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);

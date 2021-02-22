@@ -84,6 +84,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SitecoreCinema\SitecoreCinema.csproj">
       <Project>{bcb7c4d8-8788-4830-b98f-f37232d6a96d}</Project>
       <Name>SitecoreCinema</Name>

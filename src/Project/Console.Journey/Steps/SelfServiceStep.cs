@@ -1,4 +1,6 @@
 ﻿using Shared.Interfaces;
+using Shared.Models;
+using Shared.XConnect;
 using Shared.XConnect.Interactions;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,13 +31,16 @@ namespace Console.Journey.Steps
 
       await selfServiceMachineInteraction.ExecuteInteraction();
 
-      if (!selfServiceMachineInteraction.Errors.Any() && selfServiceMachineInteraction.KnownData?.details != null
-        && selfServiceMachineInteraction.KnownData.movie != null)
+      var reporter = new DataReporter();
+      KnownData knownData = await reporter.GetKnownDataByIdentifier(Identifier);
+
+      if (!selfServiceMachineInteraction.Errors.Any() && knownData?.details != null
+        && knownData.movie != null)
       {
         Feedback.WriteLine("Why hello there " +
-          selfServiceMachineInteraction.KnownData.details.FirstName + " "
-          + selfServiceMachineInteraction.KnownData.details.LastName
-          + ", whose favorite film is..." + selfServiceMachineInteraction.KnownData.movie.FavoriteMovie
+          knownData.details.FirstName + " "
+          + knownData.details.LastName
+          + ", whose favorite film is..." + knownData.movie.FavoriteMovie
           + ". Wow, really? Ok, to each their own I guess.");
 
         DrawPostInteractionMessage(new string[]{

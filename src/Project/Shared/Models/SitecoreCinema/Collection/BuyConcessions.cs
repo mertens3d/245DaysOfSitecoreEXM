@@ -1,7 +1,7 @@
 ﻿using Sitecore.XConnect;
 using System;
 
-namespace SitecoreCinema.Model.Collection
+namespace Shared.Models.SitecoreCinema.Collection
 {
   public class BuyConcessions : Outcome
   {

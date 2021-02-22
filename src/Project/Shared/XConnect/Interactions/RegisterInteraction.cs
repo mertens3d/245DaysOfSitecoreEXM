@@ -1,24 +1,25 @@
-﻿using Sitecore.XConnect;
+﻿using Shared.Models.SitecoreCinema;
+using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
-using SitecoreCinema.Model.Collection;
 using System;
 
 namespace Shared.XConnect.Interactions
 {
-  public class RegisterInteraction : _xconnectBase
+  public class RegisterInteraction : _interactionBase
   {
-    public RegisterInteraction(string firstName, string lastName, string favoriteMovie) : base("")
+    public RegisterInteraction(string firstName, string lastName, string favoriteMovie, string userId = "") : base("")
     {
       FirstName = firstName;
       LastName = lastName;
       FavoriteMovie = favoriteMovie;
+      UserId = userId;
     }
 
     private string FirstName { get; }
     private string LastName { get; }
     private string FavoriteMovie { get; }
+    public string UserId { get; set; }
 
- 
     public override async void InteractionBody()
     {
       //   ____            _     _
@@ -33,8 +34,12 @@ namespace Shared.XConnect.Interactions
 
       // Initialize a client using the validate configuration
 
-      ContactIdentifier contactIdentifier = new ContactIdentifier(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema,
-     "L94564543543543534" + Guid.NewGuid(), ContactIdentifierType.Known);
+      if (string.IsNullOrEmpty(UserId))
+      {
+        UserId = "L94564543543543534" + Guid.NewGuid();
+      }
+
+      ContactIdentifier contactIdentifier = new ContactIdentifier(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, UserId, ContactIdentifierType.Known);
 
       // Let's save this for later
       Identifier = contactIdentifier.Identifier;
@@ -62,17 +67,13 @@ namespace Shared.XConnect.Interactions
 
       interaction.Events.Add(new Goal(registrationGoalId, DateTime.UtcNow));
 
-
-
       try
       {
-
-      Client.AddInteraction(interaction);
-      await Client.SubmitAsync();
+        Client.AddInteraction(interaction);
+        await Client.SubmitAsync();
       }
       catch (Exception ex)
       {
-
         Errors.Add(ex.Message);
       }
     }

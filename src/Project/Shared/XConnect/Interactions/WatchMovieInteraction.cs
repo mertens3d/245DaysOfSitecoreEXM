@@ -1,10 +1,10 @@
-﻿using Sitecore.XConnect;
-using SitecoreCinema.Model.Collection;
+﻿using Shared.Models.SitecoreCinema.Collection;
+using Sitecore.XConnect;
 using System;
 
 namespace Shared.XConnect.Interactions
 {
-  public class WatchMovieInteraction : _xconnectBase
+  public class WatchMovieInteraction : _interactionBase
   {
     public WatchMovieInteraction(string identifier) : base(identifier)
     {
@@ -22,7 +22,7 @@ namespace Shared.XConnect.Interactions
         }
           );
 
-        Client.SetFacet(interaction, SitecoreCinema.Model.Collection.CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
+        Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
 
         Client.AddInteraction(interaction);
         await Client.SubmitAsync();

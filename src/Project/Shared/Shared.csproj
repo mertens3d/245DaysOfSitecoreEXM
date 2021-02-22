@@ -179,15 +179,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="XConnect\CFGGenerator.cs" />
+    <Compile Include="Models\SitecoreCinema\CinemaVisitorInfo.cs" />
+    <Compile Include="Models\SitecoreCinema\Collection\BuyConcessions.cs" />
+    <Compile Include="Models\SitecoreCinema\Collection\CinemaInfo.cs" />
+    <Compile Include="Models\SitecoreCinema\Collection\SitecoreCinemaModel.cs" />
+    <Compile Include="Models\SitecoreCinema\Collection\UseSelfService.cs" />
+    <Compile Include="Models\SitecoreCinema\Collection\WatchMovie.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="XConnect\Client\CFGGenerator.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="XConnect\Initializer.cs" />
+    <Compile Include="XConnect\Client\Initializer.cs" />
+    <Compile Include="XConnect\Helpers\XConnectConfigHelper.cs" />
     <Compile Include="XConnect\Interactions\BuyCandyInteraction.cs" />
     <Compile Include="XConnect\Interactions\RegisterInteraction.cs" />
-    <Compile Include="XConnect\Interactions\ReportKnownData.cs" />
+    <Compile Include="XConnect\DataReporter.cs" />
     <Compile Include="XConnect\Interactions\SelfServiceMachineInteraction.cs" />
     <Compile Include="XConnect\Interactions\WatchMovieInteraction.cs" />
-    <Compile Include="XConnect\_xconnectBase.cs" />
+    <Compile Include="XConnect\Helpers\XConnectClientHelper.cs" />
+    <Compile Include="XConnect\Interactions\_interactionBase.cs" />
     <Compile Include="Interfaces\IFeedback.cs" />
     <Compile Include="Helpers\GetContactData.cs" />
     <Compile Include="Models\KnownData.cs" />

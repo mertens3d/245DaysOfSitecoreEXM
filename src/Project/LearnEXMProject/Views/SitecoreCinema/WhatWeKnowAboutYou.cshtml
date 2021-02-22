@@ -1,4 +1,12 @@
-﻿
+﻿@model  Shared.Models.KnownData
 <aside>
   <h3>What we know about you to date</h3>
+  <br />
+  User Id: @Model.IdAsString()
+  <br />
+  First Name: @Model.details.FirstName
+  <br />
+  Last Name: @Model.details.LastName
+  <br />
+  Favorite Movie: @Model.movie.FavoriteMovie
 </aside>

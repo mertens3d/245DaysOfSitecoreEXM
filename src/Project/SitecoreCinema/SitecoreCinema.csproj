@@ -75,18 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Const.cs" />
-    <Compile Include="Model\Collection\BuyConcessions.cs" />
-    <Compile Include="Model\Collection\CinemaInfo.cs" />
-    <Compile Include="Model\Collection\CinemaVisitorInfo.cs" />
-    <Compile Include="Model\Collection\SitecoreCinemaModel.cs" />
-    <Compile Include="Model\Collection\UseSelfService.cs" />
-    <Compile Include="Model\Collection\WatchMovie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

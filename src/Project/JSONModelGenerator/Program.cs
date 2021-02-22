@@ -7,7 +7,7 @@ namespace JSONModelGenerator
     private static void Main(string[] args)
     {
       System.Console.WriteLine("Generating your model...");
-      var model = SitecoreCinema.Model.Collection.SitecoreCinemaModel.Model;
+      var model = Shared.Models.SitecoreCinema.Collection.SitecoreCinemaModel.Model;
 
       var serializedModel = Sitecore.XConnect.Serialization.XdbModelWriter.Serialize(model);
 

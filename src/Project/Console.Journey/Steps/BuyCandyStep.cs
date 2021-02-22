@@ -1,4 +1,6 @@
 ﻿using Shared.Interfaces;
+using Shared.Models;
+using Shared.XConnect;
 using Shared.XConnect.Interactions;
 using System.Threading.Tasks;
 
@@ -39,7 +41,11 @@ namespace Console.Journey.Steps
 
       if (buyCandyInteraction.Contact != null)
       {
-        System.Console.WriteLine("Why hello again " + buyCandyInteraction.KnownData.details.FirstName + "!");
+        var reporter = new DataReporter();
+        KnownData knownData = await reporter.GetKnownDataByIdentifier(Identifier);
+
+
+        System.Console.WriteLine("Why hello again " + knownData.details.FirstName + "!");
         System.Console.WriteLine("Candy? You got it.");
 
         DrawPostInteractionMessage("Enjoy the movie!");

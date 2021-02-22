@@ -1,4 +1,6 @@
 ﻿using Shared.Interfaces;
+using Shared.Models;
+using Shared.XConnect;
 using Shared.XConnect.Interactions;
 using System.Threading.Tasks;
 
@@ -32,9 +34,14 @@ namespace Console.Journey.Steps
       DrawStepTitle(arr);
       await watchMovieInteration.ExecuteInteraction();
 
-      if (watchMovieInteration.KnownData?.details != null)
+
+      var reporter = new DataReporter();
+      KnownData knownData = await reporter.GetKnownDataByIdentifier(Identifier);
+
+
+      if (knownData?.details != null)
       {
-        System.Console.WriteLine("Enjoy your movie, " + watchMovieInteration.KnownData.details.FirstName + "!");
+        System.Console.WriteLine("Enjoy your movie, " + knownData.details.FirstName + "!");
         System.Console.WriteLine("Since you're a loyalty card holder, we'll take payment for your ticket now.");
       }
       else

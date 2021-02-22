@@ -9,7 +9,7 @@ namespace LearnEXMProject.Models.SitecoreCinema
     {
       "Pulp Fiction",
       "Reservoir Dogs",
-      "Close Enounters of the Third Kind",
+      "Close Encounters of the Third Kind",
       "Mr. Holland's Opus",
       "The Big Chill",
       "Big Fish",
@@ -81,7 +81,12 @@ namespace LearnEXMProject.Models.SitecoreCinema
         }
       }
 
-      return ContactInfo[random.Next(ContactInfo.Count + 1)];
+      var idxFinal = ContactInfo.Count + 1;
+      if(idxFinal > ContactInfo.Count)
+      {
+        idxFinal = ContactInfo.Count;
+      }
+      return ContactInfo[random.Next(idxFinal)];
     }
 
     private List<string> Shuffle(List<string> names)

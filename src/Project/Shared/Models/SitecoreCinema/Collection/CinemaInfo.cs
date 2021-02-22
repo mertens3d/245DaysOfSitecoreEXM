@@ -1,6 +1,7 @@
-﻿using Sitecore.XConnect;
+﻿using Shared;
+using Sitecore.XConnect;
 
-namespace SitecoreCinema.Model.Collection
+namespace Shared.Models.SitecoreCinema.Collection
 {
   [FacetKey(DefaultFacetKey)]
   public class CinemaInfo : Facet

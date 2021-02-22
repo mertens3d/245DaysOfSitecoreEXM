@@ -5,7 +5,7 @@ using Sitecore.Xdb.Common.Web;
 using System;
 using System.Collections.Generic;
 
-namespace Shared.XConnect
+namespace Shared.XConnect.Client
 {
   public class CFGGenerator
   {

@@ -1,10 +1,10 @@
-﻿using Sitecore.XConnect;
-using SitecoreCinema.Model.Collection;
+﻿using Shared.Models.SitecoreCinema.Collection;
+using Sitecore.XConnect;
 using System;
 
 namespace Shared.XConnect.Interactions
 {
-  public class SelfServiceMachineInteraction : _xconnectBase
+  public class SelfServiceMachineInteraction : _interactionBase
   {
     public SelfServiceMachineInteraction(string identifier) : base(identifier)
     {
@@ -27,7 +27,7 @@ namespace Shared.XConnect.Interactions
       {
         var interaction = new Interaction(Contact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtTicket, ""); // Guid should be from a channel in sitecore
 
-        Client.SetFacet(interaction, SitecoreCinema.Model.Collection.CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
+        Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
 
         interaction.Events.Add(new UseSelfService(DateTime.UtcNow));
 

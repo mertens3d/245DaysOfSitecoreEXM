@@ -1,7 +1,7 @@
 ﻿using Sitecore.XConnect;
 using Sitecore.XConnect.Schema;
 
-namespace SitecoreCinema.Model.Collection
+namespace Shared.Models.SitecoreCinema.Collection
 {
   public class SitecoreCinemaModel
   {
