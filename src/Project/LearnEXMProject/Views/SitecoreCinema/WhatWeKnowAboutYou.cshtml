@@ -1,12 +1,102 @@
-﻿@model  Shared.Models.KnownData
+﻿@model  LearnEXMProject.Models.SitecoreCinema.WhatWeKnowAboutYouViewModel
+
 <aside>
   <h3>What we know about you to date</h3>
   <br />
-  User Id: @Model.IdAsString()
-  <br />
-  First Name: @Model.details.FirstName
-  <br />
-  Last Name: @Model.details.LastName
-  <br />
-  Favorite Movie: @Model.movie.FavoriteMovie
+
+  <h2>Tracker</h2>
+  @if (Model?.KnownDataTracker != null)
+  {
+
+    <p>Is new: @Model.KnownDataTracker.IsNew.ToString()</p>
+
+  }
+
+  <h2>XConnect</h2>
+
+  @if (Model?.KnownDataXConnect != null)
+  {
+
+    <br />
+    <p>Contact Id: @Model.KnownDataXConnect.ContactIdAsString()</p>
+    <p>User Id: @Model.KnownDataXConnect.UserId</p>
+    <p>Identifiers: </p>
+
+    <ul>
+      @if (Model.KnownDataXConnect.Identifiers.Any())
+      {
+        foreach (var identifier in Model.KnownDataXConnect.Identifiers)
+        {
+          <li>@identifier</li>
+        }
+      }
+      else
+      {
+        <li>{none}</li>
+      }
+    </ul>
+
+    if (Model.KnownDataXConnect.PersonalInformationDetails != null)
+    {
+
+      <p>First Name: @Model.KnownDataXConnect.PersonalInformationDetails.FirstName</p>
+
+      <p>Last Name: @Model.KnownDataXConnect.PersonalInformationDetails.LastName</p>
+    }
+    else
+    {
+      <p>{Null Model.detail}</p>
+    }
+
+    if (Model.KnownDataXConnect.VisitorInfoMovie != null)
+    {
+
+      <p>Favorite Movie: @Model.KnownDataXConnect.VisitorInfoMovie.FavoriteMovie</p>
+    }
+    else
+    {
+      <p>{Null model.movie}</p>
+    }
+
+    <p>Interactions:</p>
+    if (Model.KnownDataXConnect.KnownInteractions != null && Model.KnownDataXConnect.KnownInteractions.Any())
+    {
+      <ul>
+        @foreach (var interactionProxy in Model.KnownDataXConnect.KnownInteractions)
+        {
+          <li>Interaction</li>
+          <ul>
+            <li>ChannelId: @interactionProxy.ChannelId.ToString()</li>
+            <li>Channel Name: @interactionProxy.ChannelName</li>
+            <li>
+              Device Profile:
+              @if (interactionProxy.DeviceProfile != null)
+              {
+                interactionProxy.DeviceProfile.ToString();
+              }
+              else
+              {
+                @Html.Raw("{none}")
+              }
+            </li>
+            <li>Start Date Time: @interactionProxy.StartDateTime.ToString()</li>
+            <li>Initiator: @interactionProxy.InitiatorStr</li>
+            <li>Id: @interactionProxy.Id.ToString()</li>
+            <li>Duration: @interactionProxy.Duration.ToString()</li>
+            <li>CampaignId: @interactionProxy.CampaignId.ToString()</li>
+          </ul>
+        }
+      </ul>
+
+    }
+    else
+    {
+      <span>{No interactions}</span>
+    }
+
+  }
+  else
+  {
+    <h3>Null Model</h3>
+  }
 </aside>

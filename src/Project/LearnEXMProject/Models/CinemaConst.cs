@@ -1,14 +1,41 @@
-﻿namespace LearnEXMProject.Models
+﻿using Sitecore.Data;
+using System;
+
+namespace LearnEXMProject.Models
 {
-  public struct Const
+  public struct CinemaConst
   {
+    public struct Items
+    {
+      public struct Content
+      {
+        public static ID MovieTicketRootItem = new ID("{8F47ACF2-8BD8-4C28-AD54-C34684B82565}");
+      }
+
+      public struct Templates
+      {
+        public struct Feature
+        {
+          public struct SitecoreCinema
+          {
+            public static ID MovieTicket = new ID("{D20A7653-E33C-4A1F-A67D-E7958CC25EE7}");
+          }
+        }
+      }
+    }
+
     public struct Links
     {
       public struct SitecoreCinema
       {
-        public static string SelfServiceMachine = "/Sitecorecinema/self-service-machine";
-        public static string Register = "/Sitecorecinema/register";
+        private static string root = "/Sitecorecinema";
+        public static string SelfServiceMachine = root + "/self-service-machine";
+        public static string BuyTicket = root + "/buy-ticket";
+        public static string Register = root + "/register";
 
+        public static string Lobby = root + "/Lobby";
+        public static string BuyConcessions = Lobby + "/BuyConcessions";
+        public static string WatchMovie = Lobby + "/WatchMovie";
       }
     }
 

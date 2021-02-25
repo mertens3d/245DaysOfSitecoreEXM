@@ -8,6 +8,7 @@ namespace LearnEXMProject.Models.SitecoreCinema
 {
   public class WhatWeKnowAboutYouViewModel
   {
-    public KnownData KnownData { get; set; }
+    public KnownDataXConnect KnownDataXConnect { get; set; }
+    public KnownDataTracker KnownDataTracker { get; internal set; }
   }
 }

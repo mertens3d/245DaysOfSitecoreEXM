@@ -23,9 +23,9 @@ namespace Shared.XConnect.Interactions
       // immediately sends this interaction to xConnect. Because you're a loyalty card member
       // you don't even pay at this point!
 
-      if (Contact != null)
+      if (XConnectContact != null)
       {
-        var interaction = new Interaction(Contact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtTicket, ""); // Guid should be from a channel in sitecore
+        var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtTicket, ""); // Guid should be from a channel in sitecore
 
         Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
 

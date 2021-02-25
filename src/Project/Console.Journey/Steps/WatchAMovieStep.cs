@@ -1,6 +1,7 @@
 ﻿using Shared.Interfaces;
 using Shared.Models;
 using Shared.XConnect;
+using Shared.XConnect.Helpers;
 using Shared.XConnect.Interactions;
 using System.Threading.Tasks;
 
@@ -36,12 +37,13 @@ namespace Console.Journey.Steps
 
 
       var reporter = new DataReporter();
-      KnownData knownData = await reporter.GetKnownDataByIdentifier(Identifier);
+      var knownDataHelper = new KnownDataHelper();
+      KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifier(Identifier);
 
 
-      if (knownData?.details != null)
+      if (knownData?.PersonalInformationDetails != null)
       {
-        System.Console.WriteLine("Enjoy your movie, " + knownData.details.FirstName + "!");
+        System.Console.WriteLine("Enjoy your movie, " + knownData.PersonalInformationDetails.FirstName + "!");
         System.Console.WriteLine("Since you're a loyalty card holder, we'll take payment for your ticket now.");
       }
       else
@@ -51,7 +53,7 @@ namespace Console.Journey.Steps
 
       // Initialize a client using the validate configuration
 
-      if (watchMovieInteration.Contact != null)
+      if (watchMovieInteration.XConnectContact != null)
       {
         DrawTriggerMessage("You scanned your ticket - the bar code has your loyalty card information embedded in it.");
       }

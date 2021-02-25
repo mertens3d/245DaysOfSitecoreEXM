@@ -7,7 +7,8 @@ namespace Shared.Models.SitecoreCinema.Collection
   {
     public static Guid EventDefinitionId { get; } = Const.EventId.UseSelfService;
 
-    public UseSelfService(DateTime timeStamp) : base(EventDefinitionId, timeStamp) { }
-
+    public UseSelfService(DateTime timeStamp) : base(EventDefinitionId, timeStamp)
+    {
+    }
   }
 }

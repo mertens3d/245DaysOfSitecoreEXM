@@ -1,6 +1,7 @@
 ﻿using Shared.Interfaces;
 using Shared.Models;
 using Shared.XConnect;
+using Shared.XConnect.Helpers;
 using Shared.XConnect.Interactions;
 using System.Threading.Tasks;
 
@@ -39,13 +40,13 @@ namespace Console.Journey.Steps
 
       DrawTriggerMessage("You swiped your loyalty card.");
 
-      if (buyCandyInteraction.Contact != null)
+      if (buyCandyInteraction.XConnectContact != null)
       {
-        var reporter = new DataReporter();
-        KnownData knownData = await reporter.GetKnownDataByIdentifier(Identifier);
+        var knownDataHelper = new KnownDataHelper();
+        KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifier(Identifier);
 
 
-        System.Console.WriteLine("Why hello again " + knownData.details.FirstName + "!");
+        System.Console.WriteLine("Why hello again " + knownData.PersonalInformationDetails.FirstName + "!");
         System.Console.WriteLine("Candy? You got it.");
 
         DrawPostInteractionMessage("Enjoy the movie!");

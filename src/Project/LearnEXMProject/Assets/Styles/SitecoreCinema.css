@@ -1,12 +1,19 @@
-﻿.main{
-  display: inline-block;
-  width: 75%;
+﻿body{
+  box-sizing: border-box;
+}
+.main{
   background-color: lightblue;
+  display: inline-block;
+  padding: 10px;
+  width: 65%;
+  box-sizing: border-box;
 }
 
 .right-aside {
-  display: inline-block;
-  width: 25%;
-  float: right;
   background-color: lightcoral;
+  display: inline-block;
+  float: right;
+  padding: 10px;
+  width: 35%;
+  box-sizing: border-box;
 }

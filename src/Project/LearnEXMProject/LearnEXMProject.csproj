@@ -936,21 +936,29 @@
     <Content Include="Views\SitecoreCinema\SelfServiceMachine.cshtml" />
     <Content Include="Views\SitecoreCinema\WhatWeKnowAboutYou.cshtml" />
     <Content Include="Views\SitecoreCinema\StartJourney.cshtml" />
+    <Content Include="Views\SitecoreCinema\BuyConcessions.cshtml" />
+    <Content Include="Views\SitecoreCinema\LobbyOptions.cshtml" />
+    <Content Include="Views\SitecoreCinema\WatchMovie.cshtml" />
+    <Content Include="Views\SitecoreCinema\RegisterThankYou.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\Helpers\MovieTicketHelper.cs" />
     <Compile Include="Controllers\SitecoreCinemaController.cs" />
     <Compile Include="Controllers\WebpageFeedback.cs" />
     <Compile Include="DependencyInjection\DiConfigurator.cs" />
-    <Compile Include="Models\Const.cs" />
+    <Compile Include="Models\CinemaConst.cs" />
     <Compile Include="Models\Email\EmailOptionsRepository.cs" />
+    <Compile Include="Models\SitecoreCinema\BuyConcessionsViewModel.cs" />
     <Compile Include="Models\SitecoreCinema\CandidateContactInfo.cs" />
     <Compile Include="Models\SitecoreCinema\CandidateInfoGenerator.cs" />
+    <Compile Include="Models\SitecoreCinema\LobbyOptionsViewModel.cs" />
     <Compile Include="Models\SitecoreCinema\WhatWeKnowAboutYouViewModel.cs" />
     <Compile Include="Models\SitecoreCinema\RegisterViewModel.cs" />
+    <Compile Include="Models\SitecoreCinema\_baseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1005,8 +1013,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('packages\RazorGenerator.MsBuild.2.4.7\build\RazorGenerator.MsBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\RazorGenerator.MsBuild.2.4.7\build\RazorGenerator.MsBuild.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
   <Import Project="packages\RazorGenerator.MsBuild.2.4.7\build\RazorGenerator.MsBuild.targets" Condition="Exists('packages\RazorGenerator.MsBuild.2.4.7\build\RazorGenerator.MsBuild.targets')" />
+  <Import Project="..\..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -12,7 +12,18 @@ namespace Shared.XConnect
       Identifier = identifier;
     }
 
-    public abstract void InteractionBody();
+    protected _interactionBase(Contact xConnectcontact)
+    {
+      XConnectContact = xConnectcontact;
+    }
+
+    public List<string> Errors { get; set; } = new List<string>();
+
+    public string Identifier { get; set; }
+
+    public Contact XConnectContact { get; set; } = null;
+
+    protected XConnectClient Client { get; set; }
 
     public async Task ExecuteInteraction()
     {
@@ -25,6 +36,13 @@ namespace Shared.XConnect
       {
         try
         {
+          var clientHelper = new XConnectClientHelper(Client);
+
+          if (!string.IsNullOrEmpty(Identifier))
+          {
+            XConnectContact = await clientHelper.GetXConnectContactByIdentifierAsync(Identifier);
+          }
+
           InteractionBody();
         }
         catch (XdbExecutionException ex)
@@ -33,11 +51,8 @@ namespace Shared.XConnect
         }
       }
     }
-    public List<string> Errors { get; set; } = new List<string>();
-    protected XConnectClient Client { get; set; }
-    public Contact Contact { get; set; } = null;
-    public string Identifier { get; set; }
 
+    public abstract void InteractionBody();
     //protected IdentifiedContactReference IdentifiedContactReference { get; set; }
     //public KnownData KnownData { get; private set; }
   }

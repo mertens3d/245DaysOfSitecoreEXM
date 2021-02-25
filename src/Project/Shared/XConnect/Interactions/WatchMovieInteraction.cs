@@ -12,9 +12,9 @@ namespace Shared.XConnect.Interactions
 
     public override async void InteractionBody()
     {
-      if (Contact != null)
+      if (XConnectContact != null)
       {
-        var interaction = new Interaction(Contact, InteractionInitiator.Contact, Const.XConnect.Channels.WatchedMovie, "");
+        var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, Const.XConnect.Channels.WatchedMovie, "");
 
         interaction.Events.Add(new WatchMovie(DateTime.UtcNow, "Dkk", 100m)
         {

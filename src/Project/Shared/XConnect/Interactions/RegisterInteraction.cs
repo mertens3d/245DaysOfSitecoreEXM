@@ -43,7 +43,7 @@ namespace Shared.XConnect.Interactions
 
       // Let's save this for later
       Identifier = contactIdentifier.Identifier;
-      Contact = new Contact(new ContactIdentifier[] { contactIdentifier });
+      XConnectContact = new Contact(new ContactIdentifier[] { contactIdentifier });
 
       PersonalInformation personalInfo = new PersonalInformation()
       {
@@ -56,16 +56,13 @@ namespace Shared.XConnect.Interactions
         FavoriteMovie = this.FavoriteMovie
       };
 
-      Client.AddContact(Contact);
-      Client.SetFacet<CinemaVisitorInfo>(Contact, CinemaVisitorInfo.DefaultFacetKey, visitorInfo);
-      Client.SetFacet<PersonalInformation>(Contact, PersonalInformation.DefaultFacetKey, personalInfo);
+      Client.AddContact(XConnectContact);
+      Client.SetFacet<CinemaVisitorInfo>(XConnectContact, CinemaVisitorInfo.DefaultFacetKey, visitorInfo);
+      Client.SetFacet<PersonalInformation>(XConnectContact, PersonalInformation.DefaultFacetKey, personalInfo);
 
-      var offlineChannel = Guid.NewGuid();
-      var registrationGoalId = Guid.NewGuid();
+      Interaction interaction = new Interaction(XConnectContact, InteractionInitiator.Brand, Const.XConnect.Channels.RegisterInteractionCode, string.Empty);
 
-      Interaction interaction = new Interaction(Contact, InteractionInitiator.Brand, offlineChannel, string.Empty);
-
-      interaction.Events.Add(new Goal(registrationGoalId, DateTime.UtcNow));
+      interaction.Events.Add(new Goal(Const.XConnect.Goals.RegistrationGoal, DateTime.UtcNow));
 
       try
       {

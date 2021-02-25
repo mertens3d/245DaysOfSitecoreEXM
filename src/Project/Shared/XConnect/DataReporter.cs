@@ -1,9 +1,4 @@
-﻿using Shared.Models;
-using Sitecore.XConnect;
-using Sitecore.XConnect.Client;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Shared.XConnect
 {
@@ -16,57 +11,32 @@ namespace Shared.XConnect
 
     public List<string> Errors { get; set; } = new List<string>();
 
-    public async Task<KnownData> GetKnownDataByContactId(Guid contactGuid)
-    {
-      KnownData toReturn = null;
+    //public async Task<KnownData> GetKnownDataByContactId(Guid contactGuid)
+    //{
+    //  KnownData toReturn = null;
 
-      XConnectConfigHelper configHelper = new XConnectConfigHelper();
-      XConnectClientConfiguration cfg = await configHelper.ConfigureClient();
-      using (var Client = new XConnectClient(cfg))
-      {
-        try
-        {
-          var xConnectClientHelper = new XConnectClientHelper(Client);
-          if (contactGuid != Guid.Empty)
-          {
-            var contact = xConnectClientHelper.GetContactById(contactGuid);
-            toReturn = xConnectClientHelper.GetKnownDataFromContact(contact);
-          }
-        }
-        catch (XdbExecutionException ex)
-        {
-          Errors.Add(ex.Message);
-        }
-      }
+    //  XConnectConfigHelper configHelper = new XConnectConfigHelper();
+    //  XConnectClientConfiguration cfg = await configHelper.ConfigureClient();
+    //  using (var Client = new XConnectClient(cfg))
+    //  {
+    //    try
+    //    {
+    //      var xConnectClientHelper = new XConnectClientHelper(Client);
+    //      if (contactGuid != Guid.Empty)
+    //      {
+    //        var contact = xConnectClientHelper.GetContactById(contactGuid);
+    //        var knownDataHelper = new KnownDataHelper();
+    //        toReturn = knownDataHelper.GetKnownDataFromXConnectContact(contact);
+    //      }
+    //    }
+    //    catch (XdbExecutionException ex)
+    //    {
+    //      Errors.Add(ex.Message);
+    //    }
+    //  }
 
-      return toReturn;
-    }
-
-    public async Task<KnownData> GetKnownDataByIdentifier(string Identifier)
-    {
-      KnownData toReturn = null;
-
-      XConnectConfigHelper configHelper = new XConnectConfigHelper();
-      XConnectClientConfiguration cfg = await configHelper.ConfigureClient();
-      using (var Client = new XConnectClient(cfg))
-      {
-        try
-        {
-          var xConnectClientHelper = new XConnectClientHelper(Client);
-          var contact = await xConnectClientHelper.GetContactByIdentifierAsync(Identifier);
-          if (contact != null)
-          {
-            toReturn = xConnectClientHelper.GetKnownDataFromContact(contact);
-          }
-        }
-        catch (XdbExecutionException ex)
-        {
-          Errors.Add(ex.Message);
-        }
-      }
-
-      return toReturn;
-    }
+    //  return toReturn;
+    //}
   }
 }
 
