@@ -1,27 +1,20 @@
 ﻿@model  LearnEXMProject.Models.SitecoreCinema.WhatWeKnowAboutYouViewModel
 
 <aside>
-  <h3>What we know about you to date</h3>
-  <br />
-
+  <h3>What we know about you</h3>
   <h2>Tracker</h2>
   @if (Model?.KnownDataTracker != null)
   {
-
-    <p>Is new: @Model.KnownDataTracker.IsNew.ToString()</p>
-
+    <p><strong>Is new:</strong> @Model.KnownDataTracker.IsNew.ToString()</p>
   }
 
   <h2>XConnect</h2>
 
   @if (Model?.KnownDataXConnect != null)
   {
-
-    <br />
-    <p>Contact Id: @Model.KnownDataXConnect.ContactIdAsString()</p>
-    <p>User Id: @Model.KnownDataXConnect.UserId</p>
-    <p>Identifiers: </p>
-
+    <p><strong>Contact Id:</strong> @Model.KnownDataXConnect.ContactIdAsString()</p>
+    <p><strong>User Id</strong>: @Model.KnownDataXConnect.UserId</p>
+    <p><strong>Identifiers:</strong></p>
     <ul>
       @if (Model.KnownDataXConnect.Identifiers.Any())
       {
@@ -39,9 +32,8 @@
     if (Model.KnownDataXConnect.PersonalInformationDetails != null)
     {
 
-      <p>First Name: @Model.KnownDataXConnect.PersonalInformationDetails.FirstName</p>
+      <p><strong>Name</strong>: @Model.KnownDataXConnect.PersonalInformationDetails.FirstName @Model.KnownDataXConnect.PersonalInformationDetails.LastName</p>
 
-      <p>Last Name: @Model.KnownDataXConnect.PersonalInformationDetails.LastName</p>
     }
     else
     {
@@ -51,40 +43,20 @@
     if (Model.KnownDataXConnect.VisitorInfoMovie != null)
     {
 
-      <p>Favorite Movie: @Model.KnownDataXConnect.VisitorInfoMovie.FavoriteMovie</p>
+      <p><strong>Favorite Movie:</strong> @Model.KnownDataXConnect.VisitorInfoMovie.FavoriteMovie</p>
     }
     else
     {
       <p>{Null model.movie}</p>
     }
 
-    <p>Interactions:</p>
+    <strong>Interactions:</strong>
     if (Model.KnownDataXConnect.KnownInteractions != null && Model.KnownDataXConnect.KnownInteractions.Any())
     {
       <ul>
         @foreach (var interactionProxy in Model.KnownDataXConnect.KnownInteractions)
         {
-          <li>Interaction</li>
-          <ul>
-            <li>ChannelId: @interactionProxy.ChannelId.ToString()</li>
-            <li>Channel Name: @interactionProxy.ChannelName</li>
-            <li>
-              Device Profile:
-              @if (interactionProxy.DeviceProfile != null)
-              {
-                interactionProxy.DeviceProfile.ToString();
-              }
-              else
-              {
-                @Html.Raw("{none}")
-              }
-            </li>
-            <li>Start Date Time: @interactionProxy.StartDateTime.ToString()</li>
-            <li>Initiator: @interactionProxy.InitiatorStr</li>
-            <li>Id: @interactionProxy.Id.ToString()</li>
-            <li>Duration: @interactionProxy.Duration.ToString()</li>
-            <li>CampaignId: @interactionProxy.CampaignId.ToString()</li>
-          </ul>
+        <li>@interactionProxy.ChannelName  @interactionProxy.ChannelId.ToString()</li>
         }
       </ul>
 

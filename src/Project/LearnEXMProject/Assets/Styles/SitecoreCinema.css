@@ -1,11 +1,12 @@
-﻿body{
+﻿body {
   box-sizing: border-box;
 }
-.main{
+
+.main {
   background-color: lightblue;
   display: inline-block;
   padding: 10px;
-  width: 65%;
+  width: 40%;
   box-sizing: border-box;
 }
 
@@ -14,6 +15,17 @@
   display: inline-block;
   float: right;
   padding: 10px;
-  width: 35%;
+  width: 60%;
   box-sizing: border-box;
+}
+
+.form-section input, .form-section select {
+  display: block;
+}
+
+.form-label {
+  display: block;
+}
+
+.form-input {
 }

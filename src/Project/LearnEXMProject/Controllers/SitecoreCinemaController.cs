@@ -119,9 +119,11 @@ namespace LearnEXMProject.Controllers
 
       knownDataTracker.IsNew = trackingContact.IsNew;
 
-      knownDataXConnect.UserId = UserId;
-
-      knownDataHelper.AppendCurrentContextData(knownDataXConnect, Sitecore.Context.Database);
+      if (knownDataXConnect != null)
+      {
+        knownDataXConnect.UserId = UserId;
+        knownDataHelper.AppendCurrentContextData(knownDataXConnect, Sitecore.Context.Database);
+      }
 
       var viewModel = new WhatWeKnowAboutYouViewModel
       {
