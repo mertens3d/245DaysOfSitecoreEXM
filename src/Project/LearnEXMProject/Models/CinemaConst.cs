@@ -31,7 +31,9 @@ namespace LearnEXMProject.Models
         private static string root = "/Sitecorecinema";
         public static string SelfServiceMachine = root + "/self-service-machine";
         public static string BuyTicket = root + "/buy-ticket";
+        public static string Landing = root;
         public static string Register = root + "/register";
+        public static string RegisterViaForm = root + "/registerviaform";
 
         public static string Lobby = root + "/Lobby";
         public static string BuyConcessions = Lobby + "/BuyConcessions";
