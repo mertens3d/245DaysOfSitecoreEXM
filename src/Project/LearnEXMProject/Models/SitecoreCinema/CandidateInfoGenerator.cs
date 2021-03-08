@@ -42,7 +42,7 @@ namespace LearnEXMProject.Models.SitecoreCinema
       "Clark",
       "Reed",
       "Milkman",
-      "Red",
+      "RedFace",
       "Green",
       "Star",
       "Moonbeam"

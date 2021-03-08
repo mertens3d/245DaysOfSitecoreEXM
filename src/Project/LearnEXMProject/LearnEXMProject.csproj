@@ -958,6 +958,7 @@
     <Compile Include="Models\SitecoreCinema\CandidateContactInfo.cs" />
     <Compile Include="Models\SitecoreCinema\CandidateInfoGenerator.cs" />
     <Compile Include="Models\SitecoreCinema\LobbyOptionsViewModel.cs" />
+    <Compile Include="Models\SitecoreCinema\SelfServiceMachineViewModel.cs" />
     <Compile Include="Models\SitecoreCinema\WhatWeKnowAboutYouViewModel.cs" />
     <Compile Include="Models\SitecoreCinema\RegisterViewModel.cs" />
     <Compile Include="Models\SitecoreCinema\_baseViewModel.cs" />

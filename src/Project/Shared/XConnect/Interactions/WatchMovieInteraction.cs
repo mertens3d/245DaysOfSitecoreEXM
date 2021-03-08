@@ -19,8 +19,7 @@ namespace Shared.XConnect.Interactions
         interaction.Events.Add(new WatchMovie(DateTime.UtcNow, "Dkk", 100m)
         {
           EIDR = Const.XConnect.MovieEIDR.DieHard
-        }
-          );
+        });
 
         Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
 

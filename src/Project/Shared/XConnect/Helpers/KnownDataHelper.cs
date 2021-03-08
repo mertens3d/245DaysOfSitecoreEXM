@@ -83,7 +83,8 @@ namespace Shared.XConnect.Helpers
             InitiatorStr = interaction.Initiator.ToString(),
             Id = interaction.Id,
             Duration = interaction.Duration,
-            CampaignId = interaction.CampaignId
+            CampaignId = interaction.CampaignId,
+            
           });
         }
       }
@@ -97,6 +98,9 @@ namespace Shared.XConnect.Helpers
       if (xconnectContact != null)
       {
         knownData.ContactId = xconnectContact.Id;
+
+        knownData.IsKnown = xconnectContact.IsKnown;
+
         knownData.PersonalInformationDetails = xconnectContact.GetFacet<PersonalInformation>();
         knownData.VisitorInfoMovie = xconnectContact.GetFacet<CinemaVisitorInfo>();
 

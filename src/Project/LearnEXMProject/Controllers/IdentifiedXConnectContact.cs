@@ -30,8 +30,23 @@ namespace LearnEXMProject.Controllers
 
         if (!string.IsNullOrEmpty(UserId))
         {
-          Tracker.Current.Session.IdentifyAs(Shared.Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, UserId);
-          toReturn = true;
+          if (Tracker.Current != null && Tracker.Current.Contact.IdentificationLevel != Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
+          {
+            try
+            {
+              Tracker.Current.Session.IdentifyAs(Shared.Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, UserId);
+              toReturn = true;
+            }
+            catch (System.Exception ex)
+            {
+
+              Sitecore.Diagnostics.Log.Error(UserId, this);
+              Sitecore.Diagnostics.Log.Error(ex.Message, this);
+            }
+            
+          }
+
+          toReturn = Tracker.Current.Contact.IdentificationLevel != Sitecore.Analytics.Model.ContactIdentificationLevel.Known;
         }
       }
 

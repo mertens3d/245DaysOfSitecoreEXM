@@ -36,6 +36,14 @@ namespace LearnEXMProject.Controllers
     }
 
     [IdentifiedXConnectContact]
+    public ActionResult BuyTicket()
+    {
+      var buyTicketInteraction = new SelfServiceMachineInteraction(QueryStringHelper.UserId);
+      Task.Run(async () => await buyTicketInteraction.ExecuteInteraction()).Wait();
+      return Redirect(CinemaConst.Links.SitecoreCinema.Lobby + QueryStringHelper.UserIdQueryString());
+    }
+
+    [IdentifiedXConnectContact]
     public ActionResult LobbyOptions()
     {
       var viewModel = new LobbyOptionsViewModel()
@@ -69,12 +77,24 @@ namespace LearnEXMProject.Controllers
     [IdentifiedXConnectContact]
     public ActionResult SelfServiceMachine()
     {
-      return View();
+      var viewModel = new SelfServiceMachineViewModel()
+      {
+        UserId = QueryStringHelper.UserId
+      };
+
+      return View(viewModel);
     }
 
     public ActionResult StartJourney()
     {
-      return View();
+      if (!string.IsNullOrEmpty(QueryStringHelper.UserId))
+      {
+        return Redirect(CinemaConst.Links.SitecoreCinema.SelfServiceMachine);
+      }
+      else
+      {
+        return View();
+      }
     }
 
     [IdentifiedXConnectContact]
@@ -87,7 +107,7 @@ namespace LearnEXMProject.Controllers
 
     public ActionResult WhatWeKnowAboutYou()
     {
-      Contact trackingContact = Tracker.Current.Session.Contact;
+      Contact trackingContact = Tracker.Current.Contact;
       //var xconnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>(name: "XConnectFacets");
 
       var knownDataHelper = new KnownDataHelper();
@@ -95,9 +115,12 @@ namespace LearnEXMProject.Controllers
       KnownDataXConnect knownDataXConnect = null;
       KnownDataTracker knownDataTracker = new KnownDataTracker();
 
-      Task.Run(async () => { knownDataXConnect = await knownDataHelper.GetKnownDataByIdentifier(QueryStringHelper.UserId); }).Wait();
+      //Task.Run(async () => { knownDataXConnect = await knownDataHelper.GetKnownDataByIdentifier(QueryStringHelper.UserId); }).Wait();
 
-      knownDataTracker.IsNew = trackingContact.IsNew;
+      Tracker.Current.Contact // <--- Use this
+        // use other Contact outside of a webpage.
+
+      //knownDataTracker.IsNew = trackingContact.IsNew;
 
       if (knownDataXConnect != null)
       {

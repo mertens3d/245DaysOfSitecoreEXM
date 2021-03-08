@@ -15,7 +15,7 @@ namespace Shared.Models.SitecoreCinema.Collection
       modelBuilder.DefineFacet<Contact, CinemaVisitorInfo>(Const.FacetKeys.CinemaVisitorInfo);
       modelBuilder.DefineFacet<Interaction, CinemaInfo>(Const.FacetKeys.CinemaInfo);
       modelBuilder.DefineEventType<WatchMovie>(false);
-      modelBuilder.DefineEventType<BuyConcessions>(false);
+      modelBuilder.DefineEventType<BuyConcessionOutcome>(false);
       modelBuilder.DefineEventType<UseSelfService>(false);
 
       return modelBuilder.BuildModel();

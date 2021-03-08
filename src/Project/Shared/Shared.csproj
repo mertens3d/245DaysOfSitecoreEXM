@@ -274,7 +274,7 @@
     <Compile Include="Models\InteractionProxy.cs" />
     <Compile Include="Models\KnownDataTracker.cs" />
     <Compile Include="Models\SitecoreCinema\CinemaVisitorInfo.cs" />
-    <Compile Include="Models\SitecoreCinema\Collection\BuyConcessions.cs" />
+    <Compile Include="Models\SitecoreCinema\Collection\BuyConcessionOutcome.cs" />
     <Compile Include="Models\SitecoreCinema\Collection\CinemaInfo.cs" />
     <Compile Include="Models\SitecoreCinema\Collection\SitecoreCinemaModel.cs" />
     <Compile Include="Models\SitecoreCinema\Collection\UseSelfService.cs" />

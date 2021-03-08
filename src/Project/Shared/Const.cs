@@ -4,9 +4,17 @@ namespace Shared
 {
   public struct Const
   {
+    public struct SitecoreCinema
+    {
+        public const string CurrencyCode = "Dkk";
+      public struct ConcessionPrices
+      {
+        public const decimal PopCorn = 150m;
+      }
+    }
     public struct EventId
     {
-      public static Guid BuyConcension = new Guid("5A33A52E-E6EB-49F0-9F62-6F0381F1FA32");
+      public static Guid BuyConcession = new Guid("{5A33A52E-E6EB-49F0-9F62-6F0381F1FA32}");
       public static Guid UseSelfService = new Guid("1BCD1800-2376-4725-A5FB-7182550F4FCB");
       public static Guid WatchMovie = new Guid("{5144AF17-F42B-47D3-A001-D97B8340669D}");
     }

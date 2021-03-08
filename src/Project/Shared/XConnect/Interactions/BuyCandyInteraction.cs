@@ -21,8 +21,9 @@ namespace Shared.XConnect.Interactions
         var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtCandy, "");
         Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
 
-        interaction.Events.Add(new BuyConcessions(DateTime.UtcNow, "Dkk", 150m));
-
+        var eventItem = new BuyConcessionOutcome(DateTime.UtcNow, Const.SitecoreCinema.CurrencyCode, Const.SitecoreCinema.ConcessionPrices.PopCorn);
+        interaction.Events.Add(eventItem);
+        
         Client.AddInteraction(interaction);
 
         await Client.SubmitAsync();
