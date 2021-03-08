@@ -947,7 +947,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\Helpers\MovieTicketHelper.cs" />
-    <Compile Include="Controllers\Helpers\QueryStringHelper.cs" />
     <Compile Include="Controllers\IdentifiedXConnectContact.cs" />
     <Compile Include="Controllers\SitecoreCinemaController.cs" />
     <Compile Include="Controllers\WebpageFeedback.cs" />

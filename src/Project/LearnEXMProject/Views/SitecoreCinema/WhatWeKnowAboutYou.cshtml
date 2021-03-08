@@ -19,9 +19,11 @@
     <ul>
       @if (Model.KnownDataXConnect.Identifiers.Any())
       {
-        foreach (var identifier in Model.KnownDataXConnect.Identifiers)
+        foreach (var identifierPair in Model.KnownDataXConnect.Identifiers)
         {
-          <li>@identifier</li>
+          <li>
+            @identifierPair.Identifier - @identifierPair.Source
+          </li>
         }
       }
       else
@@ -57,7 +59,7 @@
       <ul>
         @foreach (var interactionProxy in Model.KnownDataXConnect.KnownInteractions)
         {
-        <li>@interactionProxy.ChannelName  @interactionProxy.ChannelId.ToString()</li>
+          <li>@interactionProxy.ChannelName  @interactionProxy.ChannelId.ToString()</li>
         }
       </ul>
 

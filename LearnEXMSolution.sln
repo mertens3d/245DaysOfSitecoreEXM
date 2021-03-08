@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONModelGenerator", "src\P
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSONModelGenerator", "JSONModelGenerator", "{001515D2-AE10-4866-84D7-2FA92FECE088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console.Journey", "src\Project\Console.Journey\Console.Journey.csproj", "{79CB79D1-EF6D-431A-9798-C6B3708785F6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "src\Project\Shared\Shared.csproj", "{44D6B78D-7D28-4ED7-A32C-78AA53040C7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCinema", "src\Project\SitecoreCinema\SitecoreCinema.csproj", "{BCB7C4D8-8788-4830-B98F-F37232D6A96D}"
@@ -49,10 +47,6 @@ Global
 		{736E87BD-03A8-45A1-B7FD-F457FAB0F118}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{736E87BD-03A8-45A1-B7FD-F457FAB0F118}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{736E87BD-03A8-45A1-B7FD-F457FAB0F118}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79CB79D1-EF6D-431A-9798-C6B3708785F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79CB79D1-EF6D-431A-9798-C6B3708785F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79CB79D1-EF6D-431A-9798-C6B3708785F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79CB79D1-EF6D-431A-9798-C6B3708785F6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{44D6B78D-7D28-4ED7-A32C-78AA53040C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{44D6B78D-7D28-4ED7-A32C-78AA53040C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44D6B78D-7D28-4ED7-A32C-78AA53040C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,7 +71,6 @@ Global
 		{3B9EB64A-2500-4EE9-B8BA-E578660D4171} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
 		{736E87BD-03A8-45A1-B7FD-F457FAB0F118} = {001515D2-AE10-4866-84D7-2FA92FECE088}
 		{001515D2-AE10-4866-84D7-2FA92FECE088} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
-		{79CB79D1-EF6D-431A-9798-C6B3708785F6} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
 		{44D6B78D-7D28-4ED7-A32C-78AA53040C7D} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
 		{BCB7C4D8-8788-4830-B98F-F37232D6A96D} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
 		{74CE6B3D-FA8C-4352-9D88-8723AB702515} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
@@ -85,7 +78,7 @@ Global
 		{23D7B1FF-C5F3-4340-B24A-658D5C2ED667} = {0801768B-32BC-4EB1-A979-2DA68BF46912}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
+		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 	EndGlobalSection
 EndGlobal

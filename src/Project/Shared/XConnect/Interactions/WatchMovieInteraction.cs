@@ -6,17 +6,24 @@ namespace Shared.XConnect.Interactions
 {
   public class WatchMovieInteraction : _interactionBase
   {
+    private Sitecore.Analytics.Tracking.Contact contact;
+
     public WatchMovieInteraction(string identifier) : base(identifier)
     {
     }
 
-    public override async void InteractionBody()
+    public WatchMovieInteraction(Sitecore.Analytics.Tracking.Contact trackerContact) : base(trackerContact)
+    {
+     
+    }
+
+    public override  void InteractionBody()
     {
       if (XConnectContact != null)
       {
-        var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, Const.XConnect.Channels.WatchedMovie, "");
+        var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, Const.XConnect.Channels.WatchedMovie, string.Empty);
 
-        interaction.Events.Add(new WatchMovie(DateTime.UtcNow, "Dkk", 100m)
+        interaction.Events.Add(new WatchMovie(DateTime.UtcNow, Shared.Const.SitecoreCinema.CurrencyCode, Shared.Const.SitecoreCinema.ConcessionPrices.WatchMovie)
         {
           EIDR = Const.XConnect.MovieEIDR.DieHard
         });
@@ -24,7 +31,6 @@ namespace Shared.XConnect.Interactions
         Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
 
         Client.AddInteraction(interaction);
-        await Client.SubmitAsync();
       }
       else
       {

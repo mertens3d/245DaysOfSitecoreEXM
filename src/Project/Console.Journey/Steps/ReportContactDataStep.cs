@@ -21,7 +21,7 @@ namespace Console.Journey.Steps
 
         var knownDataHelper = new KnownDataHelper();
 
-        KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifier(Identifier);
+        KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifierViaXConnect(Identifier);
 
         if (knownDataHelper != null)
         {

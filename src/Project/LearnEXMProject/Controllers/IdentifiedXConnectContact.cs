@@ -24,31 +24,31 @@ namespace LearnEXMProject.Controllers
     {
       bool toReturn = false;
 
-      if (filtercontext.HttpContext.Request != null)
-      {
-        var UserId = new QueryStringHelper(filtercontext.HttpContext).UserId;
+      //if (filtercontext.HttpContext.Request != null)
+      //{
+      //  var UserId = new QueryStringHelper(filtercontext.HttpContext).UserId;
 
-        if (!string.IsNullOrEmpty(UserId))
-        {
-          if (Tracker.Current != null && Tracker.Current.Contact.IdentificationLevel != Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
-          {
-            try
-            {
-              Tracker.Current.Session.IdentifyAs(Shared.Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, UserId);
-              toReturn = true;
-            }
-            catch (System.Exception ex)
-            {
+      //  if (!string.IsNullOrEmpty(UserId))
+      //  {
+      //    if (Tracker.Current != null && Tracker.Current.Contact.IdentificationLevel != Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
+      //    {
+      //      try
+      //      {
+      //        Tracker.Current.Session.IdentifyAs(Shared.Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, UserId);
+      //        toReturn = true;
+      //      }
+      //      catch (System.Exception ex)
+      //      {
 
-              Sitecore.Diagnostics.Log.Error(UserId, this);
-              Sitecore.Diagnostics.Log.Error(ex.Message, this);
-            }
+      //        Sitecore.Diagnostics.Log.Error(UserId, this);
+      //        Sitecore.Diagnostics.Log.Error(ex.Message, this);
+      //      }
             
-          }
+      //    }
 
-          toReturn = Tracker.Current.Contact.IdentificationLevel != Sitecore.Analytics.Model.ContactIdentificationLevel.Known;
-        }
-      }
+      //  }
+      //}
+          toReturn = Tracker.Current.Contact.IdentificationLevel == Sitecore.Analytics.Model.ContactIdentificationLevel.Known;
 
       return toReturn;
     }

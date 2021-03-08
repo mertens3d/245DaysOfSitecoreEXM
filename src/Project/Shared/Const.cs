@@ -10,6 +10,7 @@ namespace Shared
       public struct ConcessionPrices
       {
         public const decimal PopCorn = 150m;
+        public const decimal WatchMovie = 0m;
       }
     }
     public struct EventId

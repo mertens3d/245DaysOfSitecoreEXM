@@ -71,7 +71,8 @@ namespace LearnEXMProject.Models.SitecoreCinema
         {
           FirstName = firstName,
           LastName = LastNames[idx],
-          FavoriteMovie = Movies[idx]
+          FavoriteMovie = Movies[idx],
+          Id = random.Next(10000)
         }); ;
 
         idx++;

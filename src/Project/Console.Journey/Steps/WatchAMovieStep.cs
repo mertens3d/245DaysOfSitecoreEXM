@@ -38,7 +38,7 @@ namespace Console.Journey.Steps
 
       var reporter = new DataReporter();
       var knownDataHelper = new KnownDataHelper();
-      KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifier(Identifier);
+      KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifierViaXConnect(Identifier);
 
 
       if (knownData?.PersonalInformationDetails != null)

@@ -43,7 +43,7 @@ namespace Console.Journey.Steps
       if (buyCandyInteraction.XConnectContact != null)
       {
         var knownDataHelper = new KnownDataHelper();
-        KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifier(Identifier);
+        KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifierViaXConnect(Identifier);
 
 
         System.Console.WriteLine("Why hello again " + knownData.PersonalInformationDetails.FirstName + "!");

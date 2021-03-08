@@ -9,7 +9,7 @@ namespace Shared.Models
   public class KnownDataXConnect
   {
     public Guid? ContactId { get; set; }
-    public List<string> Identifiers { get; set; }
+    public List<ContactIdentifier> Identifiers { get; set; }
     public List<InteractionProxy> KnownInteractions { get;  set; }
     public bool IsKnown { get; set; }
     

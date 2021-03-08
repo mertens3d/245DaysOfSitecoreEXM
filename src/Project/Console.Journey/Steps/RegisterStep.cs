@@ -68,7 +68,7 @@ namespace Console.Journey.Steps
 
         var favouriteMovie = System.Console.ReadLine();
 
-        var registerInteraction = new RegisterInteraction(firstname, lastname, favouriteMovie);
+        var registerInteraction = new UpdateContactInfoInteraction(firstname, lastname, favouriteMovie);
         await registerInteraction.ExecuteInteraction();
 
         Identifier = registerInteraction.Identifier;

@@ -1,7 +1,16 @@
-﻿namespace LearnEXMProject.Models.SitecoreCinema
+﻿using Sitecore.Analytics.Tracking;
+
+namespace LearnEXMProject.Models.SitecoreCinema
 {
   public class SelfServiceMachineViewModel : _baseViewModel
   {
-    public string TicketLink() => CinemaConst.Links.SitecoreCinema.BuyTicket + UserIdQueryString();
+    private Contact TrackingContact;
+
+    public SelfServiceMachineViewModel(Contact trackingContact)
+    {
+      this.TrackingContact = trackingContact;
+    }
+
+    public string TicketLink() => CinemaConst.Links.SitecoreCinema.BuyTicket;// + UserIdQueryString();
   }
 }

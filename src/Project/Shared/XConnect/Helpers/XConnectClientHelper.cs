@@ -42,13 +42,13 @@ namespace Shared.XConnect
       return toReturn;
     }
 
-    public async Task<Contact> GetXConnectContactByIdentifierAsync(string identifier)
+    public async Task<Contact> GetXConnectContactByIdentifierAsync(string source, string identifier)
     {
       Contact toReturn = null;
 
       if (!string.IsNullOrEmpty(identifier))
       {
-        var IdentifiedContactReference = new IdentifiedContactReference(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, identifier);
+        var IdentifiedContactReference = new IdentifiedContactReference(source, identifier);
         if (Client != null)
         {
           try

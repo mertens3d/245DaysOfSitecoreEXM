@@ -1,31 +1,32 @@
-﻿using Shared.Models.SitecoreCinema.Collection;
+﻿using Shared.Models;
+using Shared.Models.SitecoreCinema.Collection;
 using Sitecore.XConnect;
+using Sitecore.XConnect.Client;
+using Sitecore.XConnect.Collection.Model;
 using System;
 
 namespace Shared.XConnect.Interactions
 {
   public class SelfServiceMachineInteraction : _interactionBase
   {
-    public SelfServiceMachineInteraction(string identifier) : base(identifier)
+
+    public SelfServiceMachineInteraction(string identifier) : base(identifier) { }
+    public SelfServiceMachineInteraction(Sitecore.Analytics.Model.Entities.ContactIdentifier identifierSourcePair) : base(identifierSourcePair.Identifier)
     {
     }
 
-    public override async void InteractionBody()
+    public SelfServiceMachineInteraction(Sitecore.Analytics.Tracking.Contact trackingContact):base(trackingContact)
     {
-      //   ___       _                      _   _               _  _   _
-      //  |_ _|_ __ | |_ ___ _ __ __ _  ___| |_(_) ___  _ __  _| || |_/ |
-      //   | || '_ \| __/ _ \ '__/ _  |/ __| __| |/ _ \| '_ \|_  ..  _| |
-      //   | || | | | ||  __/ | | (_| | (__| |_| | (_) | | | |_      _| |
-      //  |___|_| |_|\__\___|_|  \__,_|\___|\__|_|\___/|_| |_| |_||_| |_|
+    }
 
-      // You cycle to the nearest Sitecore Cinema (which has great bicycle storage facilities, by the way)
-      // and use a self service machine to buy a ticket. You swipes your loyalty card - the machine
-      // immediately sends this interaction to xConnect. Because you're a loyalty card member
-      // you don't even pay at this point!
 
-      if (XConnectContact != null)
+    public override  void InteractionBody()
+    {
+      if (TrackingContact != null && XConnectContact != null)
       {
-        var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtTicket, ""); // Guid should be from a channel in sitecore
+        var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, Const.XConnect.Channels.BoughtTicket, string.Empty); 
+
+        //var contact = Client.Get<Contact>(IdentifiedContactReference, new Sitecore.XConnect.ExpandOptions(PersonalInformation.DefaultFacetKey));
 
         Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = Const.XConnect.CinemaId.Theater22 });
 
@@ -33,7 +34,10 @@ namespace Shared.XConnect.Interactions
 
         Client.AddInteraction(interaction);
 
-        await Client.SubmitAsync();
+      }
+      else
+      {
+        Sitecore.Diagnostics.Log.Error("Tracking contact or Xconnect contact is null", this);
       }
     }
   }

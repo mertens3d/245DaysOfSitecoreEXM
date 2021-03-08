@@ -33,7 +33,7 @@ namespace Console.Journey.Steps
       await selfServiceMachineInteraction.ExecuteInteraction();
 
       var knownDataHelper = new KnownDataHelper();
-      KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifier(Identifier);
+      KnownDataXConnect knownData = await knownDataHelper.GetKnownDataByIdentifierViaXConnect(Identifier);
 
       if (!selfServiceMachineInteraction.Errors.Any() && knownData?.PersonalInformationDetails != null
         && knownData.VisitorInfoMovie != null)

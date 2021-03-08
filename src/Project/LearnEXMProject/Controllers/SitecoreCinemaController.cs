@@ -1,11 +1,14 @@
 ﻿using LearnEXMProject.Controllers.Helpers;
 using LearnEXMProject.Models;
 using LearnEXMProject.Models.SitecoreCinema;
+using Shared;
 using Shared.Models;
 using Shared.XConnect.Helpers;
 using Shared.XConnect.Interactions;
 using Sitecore.Analytics;
+using Sitecore.Analytics.Model.Entities;
 using Sitecore.Analytics.Tracking;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -13,81 +16,85 @@ namespace LearnEXMProject.Controllers
 {
   public class SitecoreCinemaController : Controller
   {
-    private QueryStringHelper _queryStringHelper;
 
     public SitecoreCinemaController()
     {
     }
 
-    public QueryStringHelper QueryStringHelper
-    {
-      get
-      {
-        return _queryStringHelper ?? (_queryStringHelper = new QueryStringHelper(HttpContext));
-      }
-    }
 
     [IdentifiedXConnectContact]
     public ActionResult BuyConcessions()
     {
-      var buyConcessionsInteraction = new BuyCandyInteraction(QueryStringHelper.UserId);
-      Task.Run(async () => await buyConcessionsInteraction.ExecuteInteraction()).Wait();
-      return Redirect(CinemaConst.Links.SitecoreCinema.Lobby + QueryStringHelper.UserIdQueryString());
+      var buyConcessionsInteraction = new BuyCandyInteraction(Tracker.Current.Contact);
+      buyConcessionsInteraction.ExecuteInteraction();
+      return Redirect(CinemaConst.Links.SitecoreCinema.Lobby );
+    }
+
+    private ContactIdentifier GetSitecoreCinemaContactIdentifier()
+    {
+      //I think i am not identifiying as correctly in the auto so the tracker doesn't know i'm known
+
+      ContactIdentifier toReturn = Tracker.Current.Contact.Identifiers.FirstOrDefault(x => x.Source == Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema);
+      return toReturn;
     }
 
     [IdentifiedXConnectContact]
     public ActionResult BuyTicket()
     {
-      var buyTicketInteraction = new SelfServiceMachineInteraction(QueryStringHelper.UserId);
-      Task.Run(async () => await buyTicketInteraction.ExecuteInteraction()).Wait();
-      return Redirect(CinemaConst.Links.SitecoreCinema.Lobby + QueryStringHelper.UserIdQueryString());
+      var buyTicketInteraction = new SelfServiceMachineInteraction(Tracker.Current.Contact);
+      buyTicketInteraction.ExecuteInteraction();
+      return Redirect(CinemaConst.Links.SitecoreCinema.Lobby );
     }
 
     [IdentifiedXConnectContact]
     public ActionResult LobbyOptions()
     {
-      var viewModel = new LobbyOptionsViewModel()
-      {
-        UserId = QueryStringHelper.UserId
-      };
-
+      var viewModel = new LobbyOptionsViewModel();
       return View(viewModel);
     }
 
-    public ActionResult Register()
+    public ActionResult RegisterViaAutoRandom()
     {
-      var viewModel = new RegisterViewModel();
-      var candidateInfoGenerator = new CandidateInfoGenerator();
-      viewModel.CandidateContactInfo = candidateInfoGenerator.GetRandomContactInfo();
+      
+        var candidateInfoGenerator = new CandidateInfoGenerator();
+        var CandidateContactInfo = candidateInfoGenerator.GetRandomContactInfo();
 
-      var registerInteraction = new RegisterInteraction(
-        viewModel.CandidateContactInfo.FirstName,
-        viewModel.CandidateContactInfo.LastName,
-        viewModel.CandidateContactInfo.FavoriteMovie,
-        viewModel.CandidateContactInfo.Email
-        );
+      try
+      {
 
-      Task.Run(async () => { await registerInteraction.ExecuteInteraction(); }).Wait();
+        Tracker.Current.Session.IdentifyAs(Shared.Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, CandidateContactInfo.Email);
 
-      var idToUse = viewModel.CandidateContactInfo.Email;
+        var registerInteraction = new UpdateContactInfoInteraction(
+          CandidateContactInfo.FirstName,
+          CandidateContactInfo.LastName,
+          CandidateContactInfo.FavoriteMovie,
+          CandidateContactInfo.Email,
+          Tracker.Current.Contact
+          );
 
-      return Redirect(CinemaConst.Links.SitecoreCinema.SelfServiceMachine + QueryStringHelper.UserIdQueryString(idToUse));
+        registerInteraction.UpdateData();
+
+      }
+      catch (System.Exception ex)
+      {
+        Sitecore.Diagnostics.Log.Error(ex.Message, this);
+      }
+
+      return Redirect(CinemaConst.Links.SitecoreCinema.SelfServiceMachine);
     }
 
     [IdentifiedXConnectContact]
     public ActionResult SelfServiceMachine()
     {
-      var viewModel = new SelfServiceMachineViewModel()
-      {
-        UserId = QueryStringHelper.UserId
-      };
+      var viewModel = new SelfServiceMachineViewModel(Tracker.Current.Contact);
+     
 
       return View(viewModel);
     }
 
     public ActionResult StartJourney()
     {
-      if (!string.IsNullOrEmpty(QueryStringHelper.UserId))
+      if (Tracker.Current.Session.Contact.IdentificationLevel == Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
       {
         return Redirect(CinemaConst.Links.SitecoreCinema.SelfServiceMachine);
       }
@@ -100,38 +107,46 @@ namespace LearnEXMProject.Controllers
     [IdentifiedXConnectContact]
     public ActionResult WatchMovie()
     {
-      var watchMovieInteraction = new WatchMovieInteraction(QueryStringHelper.UserId);
-      Task.Run(async () => await watchMovieInteraction.ExecuteInteraction()).Wait();
-      return Redirect(CinemaConst.Links.SitecoreCinema.Lobby + QueryStringHelper.UserIdQueryString());
+      var watchMovieInteraction = new WatchMovieInteraction(Tracker.Current.Contact);
+      watchMovieInteraction.ExecuteInteraction();
+      return Redirect(CinemaConst.Links.SitecoreCinema.Lobby);
     }
 
     public ActionResult WhatWeKnowAboutYou()
     {
       Contact trackingContact = Tracker.Current.Contact;
-      //var xconnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>(name: "XConnectFacets");
 
       var knownDataHelper = new KnownDataHelper();
 
       KnownDataXConnect knownDataXConnect = null;
-      KnownDataTracker knownDataTracker = new KnownDataTracker();
 
-      //Task.Run(async () => { knownDataXConnect = await knownDataHelper.GetKnownDataByIdentifier(QueryStringHelper.UserId); }).Wait();
+      //Task.Run(async () =>
+      //{
+      //  knownDataXConnect = await knownDataHelper.GetKnownDataByIdentifierViaXConnect(QueryStringHelper.UserId);
+      //}
+      //).Wait();
 
-      Tracker.Current.Contact // <--- Use this
-        // use other Contact outside of a webpage.
+      KnownDataXConnect knownDataViaTracker = null;
+
+      Task.Run(async () =>
+      {
+        knownDataViaTracker = await knownDataHelper.GetKnownDataViaTrackerAsync(trackingContact);
+      }).Wait();
+
+      //Tracker.Current.Contact // <--- Use this
+      // use other Contact outside of a web page.
 
       //knownDataTracker.IsNew = trackingContact.IsNew;
 
       if (knownDataXConnect != null)
       {
-        knownDataXConnect.UserId = QueryStringHelper.UserId;
         knownDataHelper.AppendCurrentContextData(knownDataXConnect, Sitecore.Context.Database);
       }
 
       var viewModel = new WhatWeKnowAboutYouViewModel
       {
-        KnownDataXConnect = knownDataXConnect,
-        KnownDataTracker = knownDataTracker
+        KnownDataXConnect = knownDataViaTracker,
+        KnownDataTracker = null
       };
       return View(viewModel);
     }
