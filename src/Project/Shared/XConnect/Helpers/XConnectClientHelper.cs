@@ -59,7 +59,11 @@ namespace Shared.XConnect
               EndDateTime = DateTime.MaxValue
             };
 
-            var expandOptions = new ContactExpandOptions(PersonalInformation.DefaultFacetKey, CinemaVisitorInfo.DefaultFacetKey)
+            var expandOptions = new ContactExpandOptions(
+              PersonalInformation.DefaultFacetKey, 
+              CinemaVisitorInfo.DefaultFacetKey,
+              EmailAddressList.DefaultFacetKey
+              )
             {
               Interactions = interactions
             };

@@ -1,9 +1,9 @@
-﻿using Sitecore.XConnect;
+﻿using Shared.Models.SitecoreCinema.Collection;
+using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shared.XConnect
 {
@@ -21,8 +21,6 @@ namespace Shared.XConnect
     protected _interactionBase(Contact xConnectcontact)
     {
       XConnectContact = xConnectcontact;
-
-      //Identifier = xConnectcontact.Identifiers.
     }
 
     protected _interactionBase(Sitecore.Analytics.Tracking.Contact trackingContact)
@@ -30,7 +28,6 @@ namespace Shared.XConnect
       this.TrackingContact = trackingContact;
       AnyIdentifier = Sitecore.Analytics.Tracker.Current.Contact.Identifiers.FirstOrDefault();
       IdentifiedContactReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
-      
     }
 
     public List<string> Errors { get; set; } = new List<string>();
@@ -41,23 +38,22 @@ namespace Shared.XConnect
 
     protected XConnectClient Client { get; set; }
 
-    public Sitecore.Analytics.Tracking.ContactManager Manager { get; set; }
+    private Sitecore.Analytics.Tracking.ContactManager Manager { get; set; }
 
     public void ExecuteInteraction()
     {
-      using (Client =  Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+
+      using (Client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
       {
         try
         {
-          //var clientHelper = new XConnectClientHelper(Client);
+          var identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
+          var expandOptions = new ExpandOptions(new[]{
+              PersonalInformation.DefaultFacetKey,
+              EmailAddressList.DefaultFacetKey,
+              CinemaInfo.DefaultFacetKey});
 
-          //if (!string.IsNullOrEmpty(Identifier))
-          //{
-          //  XConnectContact = await clientHelper.GetXConnectContactByIdentifierAsync(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, Identifier);
-          //}
-
-          XConnectContact = Client.Get<Contact>(new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier), new Sitecore.XConnect.ExpandOptions(PersonalInformation.DefaultFacetKey));
-          Manager = Sitecore.Configuration.Factory.CreateObject("tracking/contactManager", true) as Sitecore.Analytics.Tracking.ContactManager;
+          XConnectContact = Client.Get<Contact>(identifiedReference, expandOptions);
 
           if (!Sitecore.Analytics.Tracker.Current.Contact.IsNew)
           {
@@ -68,13 +64,9 @@ namespace Shared.XConnect
             Sitecore.Diagnostics.Log.Error("Contact is new. Ensure contact exists before executing interaction", this);
           }
 
-
           Client.Submit();
-
-          Manager.RemoveFromSession(Sitecore.Analytics.Tracker.Current.Contact.ContactId);
-          Sitecore.Analytics.Tracker.Current.Session.Contact = Manager.LoadContact(Sitecore.Analytics.Tracker.Current.Contact.ContactId);
-
-
+          ResetSession();
+          
         }
         catch (XdbExecutionException ex)
         {
@@ -82,7 +74,12 @@ namespace Shared.XConnect
         }
       }
     }
-
+    private void ResetSession()
+    {
+      Manager = Sitecore.Configuration.Factory.CreateObject("tracking/contactManager", true) as Sitecore.Analytics.Tracking.ContactManager;
+      Manager.RemoveFromSession(Sitecore.Analytics.Tracker.Current.Contact.ContactId);
+      Sitecore.Analytics.Tracker.Current.Session.Contact = Manager.LoadContact(Sitecore.Analytics.Tracker.Current.Contact.ContactId);
+    }
     public abstract void InteractionBody();
 
     //protected IdentifiedContactReference IdentifiedContactReference { get; set; }

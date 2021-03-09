@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Shared.Models
 {
-  public class KnownDataXConnect
+  public class KnownData
   {
     public Guid? ContactId { get; set; }
     public List<ContactIdentifier> Identifiers { get; set; }
@@ -16,6 +16,8 @@ namespace Shared.Models
     public PersonalInformation PersonalInformationDetails { get; set; }
     public string UserId { get; set; }
     public CinemaVisitorInfo VisitorInfoMovie { get; set; }
+    public EmailAddressList EmailAddressList { get; internal set; }
+
     public string ContactIdAsString (){
       string toReturn = "{unknown}";
       if(ContactId != null)

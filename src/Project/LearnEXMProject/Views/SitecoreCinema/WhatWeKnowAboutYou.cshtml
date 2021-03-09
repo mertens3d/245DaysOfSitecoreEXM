@@ -17,7 +17,7 @@
     <p><strong>Is Known</strong>: @Model.KnownDataXConnect.IsKnown</p>
     <p><strong>Identifiers:</strong></p>
     <ul>
-      @if (Model.KnownDataXConnect.Identifiers.Any())
+      @if (Model.KnownDataXConnect.Identifiers != null && Model.KnownDataXConnect.Identifiers.Any())
       {
         foreach (var identifierPair in Model.KnownDataXConnect.Identifiers)
         {

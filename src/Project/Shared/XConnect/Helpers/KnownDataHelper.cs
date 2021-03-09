@@ -1,5 +1,8 @@
 ﻿using Shared.Models;
 using Shared.Models.SitecoreCinema;
+using Shared.Models.SitecoreCinema.Collection;
+using Sitecore.Analytics;
+using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.Data;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
@@ -7,58 +10,109 @@ using Sitecore.XConnect.Collection.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shared.XConnect.Helpers
 {
   public class KnownDataHelper
   {
-    public async Task<KnownDataXConnect> GetKnownDataViaTrackerAsync(Sitecore.Analytics.Tracking.Contact trackingContact)
-    {
-      KnownDataXConnect toReturn = null;
+    private IXConnectFacets XConnectFacets { get; set; }
 
-      XConnectConfigHelper configHelper = new XConnectConfigHelper();
-      XConnectClientConfiguration cfg = await configHelper.ConfigureClient();
-      using (var Client = new XConnectClient(cfg))
+    public void AppendCurrentContextData(KnownData knownDataXConnect, Database database)
+    {
+      if (knownDataXConnect != null && database != null)
+      {
+        foreach (var interaction in knownDataXConnect.KnownInteractions)
+        {
+          if (interaction.ChannelId != Guid.Empty)
+          {
+            interaction.ChannelName = GetChannelName(interaction.ChannelId);
+          }
+          else
+          {
+            Sitecore.Diagnostics.Log.Error($"Interaction guid was empty", this);
+          }
+        }
+      }
+    }
+
+    public KnownData GetKnownDataFromTrackingContact()
+    {
+      var toReturn = new KnownData();
+
+      return toReturn;
+    }
+
+    public KnownData GetKnownDataFromXConnectContact(Sitecore.Analytics.Tracking.Contact trackingContact)
+    {
+      var knownData = new KnownData();
+      if (trackingContact != null)
+      {
+        XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
+
+        knownData.VisitorInfoMovie = XConnectFacets.Facets[CinemaVisitorInfo.DefaultFacetKey] as CinemaVisitorInfo;
+        knownData.PersonalInformationDetails = XConnectFacets.Facets[PersonalInformation.DefaultFacetKey] as PersonalInformation;
+        knownData.EmailAddressList = XConnectFacets.Facets[EmailAddressList.DefaultFacetKey] as EmailAddressList;
+
+        //knownData.ContactId = trackingContact.Id;
+        //knownData.IsKnown = trackingContact.IsKnown;
+        //knownData.KnownInteractions = GetKnownInteractions(trackingContact);
+
+        //knownData.Identifiers = trackingContact.Identifiers.ToList();
+
+        //knownData.IsKnown = trackingContact.IsKnown;
+      }
+      else
+      {
+        Sitecore.Diagnostics.Log.Error(Const.Logger.CinemaPrefix + "Contact was null", this);
+      }
+      return knownData;
+    }
+
+    public KnownData GetKnownDataViaTracker(Sitecore.Analytics.Tracking.Contact trackingContact)
+    {
+      KnownData toReturn = null;
+
+      //XConnectConfigHelper configHelper = new XConnectConfigHelper();
+      using (XConnectClient xConnectClient = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
       {
         try
         {
-          var xConnectClientHelper = new XConnectClientHelper(Client);
-          var identifierForSitecoreCinema = trackingContact.Identifiers.FirstOrDefault(x => x.Source == Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema);
+          //var xConnectClientHelper = new XConnectClientHelper(Client);
+          //var identifierForSitecoreCinema = trackingContact.Identifiers.FirstOrDefault(x => x.Source == Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema);
 
-          if (identifierForSitecoreCinema != null)
+          toReturn = new KnownData();
+          if (trackingContact != null && trackingContact.IdentificationLevel == Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
           {
-            var xConnectContact = await xConnectClientHelper.GetXConnectContactByIdentifierAsync(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, identifierForSitecoreCinema.Identifier);
-            if (xConnectContact != null)
+            var AnyIdentifier = Sitecore.Analytics.Tracker.Current.Contact.Identifiers.FirstOrDefault();
+            var identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
+            var expandOptions = new ExpandOptions(new[]{
+              PersonalInformation.DefaultFacetKey,
+              //EmailAddressList.DefaultFacetKey,
+              //CinemaInfo.DefaultFacetKey
+            });
+
+            Sitecore.XConnect.Contact XConnectContact = xConnectClient.Get<Contact>(identifiedReference, expandOptions);
+
+            XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
+
+            if (XConnectFacets != null)
             {
-              toReturn = GetKnownDataFromXConnectContact(xConnectContact);
+              toReturn.PersonalInformationDetails = XConnectFacets.Facets[PersonalInformation.DefaultFacetKey] as PersonalInformation;
+              //toReturn.EmailAddressList = XConnectFacets.Facets[EmailAddressList.DefaultFacetKey] as EmailAddressList;
+              //toReturn.VisitorInfoMovie = XConnectFacets.Facets[CinemaVisitorInfo.DefaultFacetKey] as CinemaVisitorInfo;
             }
+
+            //knownData.ContactId = trackingContact.Id;
+            //knownData.IsKnown = trackingContact.IsKnown;
+            //knownData.KnownInteractions = GetKnownInteractions(trackingContact);
+
+            //knownData.Identifiers = trackingContact.Identifiers.ToList();
+
+            //knownData.IsKnown = trackingContact.IsKnown;
           }
-        }
-        catch (XdbExecutionException ex)
-        {
-          Sitecore.Diagnostics.Log.Error(Const.Logger.CinemaPrefix + ex.Message, this);
-        }
-      }
-
-      return toReturn;
-    }
-
-    public async Task<KnownDataXConnect> GetKnownDataByIdentifierViaXConnect(string Identifier)
-    {
-      KnownDataXConnect toReturn = null;
-
-      XConnectConfigHelper configHelper = new XConnectConfigHelper();
-      XConnectClientConfiguration cfg = await configHelper.ConfigureClient();
-      using (var Client = new XConnectClient(cfg))
-      {
-        try
-        {
-          var xConnectClientHelper = new XConnectClientHelper(Client);
-          var xConnectContact = await xConnectClientHelper.GetXConnectContactByIdentifierAsync(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, Identifier);
-          if (xConnectContact != null)
+          else
           {
-            toReturn = GetKnownDataFromXConnectContact(xConnectContact);
+            Sitecore.Diagnostics.Log.Error(Const.Logger.CinemaPrefix + "Contact was null", this);
           }
         }
         catch (XdbExecutionException ex)
@@ -69,6 +123,32 @@ namespace Shared.XConnect.Helpers
 
       return toReturn;
     }
+
+    //public async Task<KnownDataXConnect> GetKnownDataByIdentifierViaXConnect(string Identifier)
+    //{
+    //  KnownDataXConnect toReturn = null;
+
+    //  XConnectConfigHelper configHelper = new XConnectConfigHelper();
+    //  XConnectClientConfiguration cfg = await configHelper.ConfigureClient();
+    //  using (var Client = new XConnectClient(cfg))
+    //  {
+    //    try
+    //    {
+    //      var xConnectClientHelper = new XConnectClientHelper(Client);
+    //      var xConnectContact = await xConnectClientHelper.GetXConnectContactByIdentifierAsync(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, Identifier);
+    //      if (xConnectContact != null)
+    //      {
+    //        toReturn = GetKnownDataFromXConnectContact(xConnectContact);
+    //      }
+    //    }
+    //    catch (XdbExecutionException ex)
+    //    {
+    //      Sitecore.Diagnostics.Log.Error(Const.Logger.CinemaPrefix + ex.Message, this);
+    //    }
+    //  }
+
+    //  return toReturn;
+    //}
 
     private string GetChannelName(Guid channelId)
     {
@@ -120,56 +200,6 @@ namespace Shared.XConnect.Helpers
       }
 
       return toReturn;
-    }
-
-    public KnownDataXConnect GetKnownDataFromXConnectContact(Contact xconnectContact)
-    {
-      var knownData = new KnownDataXConnect();
-      if (xconnectContact != null)
-      {
-        knownData.ContactId = xconnectContact.Id;
-
-        knownData.IsKnown = xconnectContact.IsKnown;
-
-        knownData.PersonalInformationDetails = xconnectContact.GetFacet<PersonalInformation>();
-        knownData.VisitorInfoMovie = xconnectContact.GetFacet<CinemaVisitorInfo>();
-
-        knownData.KnownInteractions = GetKnownInteractions(xconnectContact);
-
-        knownData.Identifiers = xconnectContact.Identifiers.ToList();
-          
-          
-        //  .ToList().Select(x => new IdentifierSourcePair()
-        //{
-        //  Identifier = x.Identifier,
-        //  Source = x.Source
-        //}).ToList();
-
-        knownData.IsKnown = xconnectContact.IsKnown;
-      }
-      else
-      {
-        Sitecore.Diagnostics.Log.Error(Const.Logger.CinemaPrefix + "Contact was null", this);
-      }
-      return knownData;
-    }
-
-    public void AppendCurrentContextData(KnownDataXConnect knownDataXConnect, Database database)
-    {
-      if (knownDataXConnect != null && database != null)
-      {
-        foreach (var interaction in knownDataXConnect.KnownInteractions)
-        {
-          if (interaction.ChannelId != Guid.Empty)
-          {
-            interaction.ChannelName = GetChannelName(interaction.ChannelId);
-          }
-          else
-          {
-            Sitecore.Diagnostics.Log.Error($"Interaction guid was empty", this);
-          }
-        }
-      }
     }
   }
 }

@@ -419,7 +419,7 @@
     <Compile Include="XConnect\Interactions\_interactionBase.cs" />
     <Compile Include="Interfaces\IFeedback.cs" />
     <Compile Include="Helpers\GetContactData.cs" />
-    <Compile Include="Models\KnownDataXConnect.cs" />
+    <Compile Include="Models\KnownData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

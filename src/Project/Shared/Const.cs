@@ -13,9 +13,13 @@ namespace Shared
         public const decimal WatchMovie = 0m;
       }
     }
+    public struct OutcomeId
+    {
+      public static Guid BuyConcession = new Guid("{B90D20F5-9641-467E-B8E3-68DD4B1FA315}");
+
+    }
     public struct EventId
     {
-      public static Guid BuyConcession = new Guid("{5A33A52E-E6EB-49F0-9F62-6F0381F1FA32}");
       public static Guid UseSelfService = new Guid("1BCD1800-2376-4725-A5FB-7182550F4FCB");
       public static Guid WatchMovie = new Guid("{5144AF17-F42B-47D3-A001-D97B8340669D}");
     }

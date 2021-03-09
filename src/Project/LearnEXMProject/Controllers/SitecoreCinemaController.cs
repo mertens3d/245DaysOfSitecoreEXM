@@ -69,10 +69,11 @@ namespace LearnEXMProject.Controllers
           CandidateContactInfo.LastName,
           CandidateContactInfo.FavoriteMovie,
           CandidateContactInfo.Email,
+          CandidateContactInfo.Email,
           Tracker.Current.Contact
           );
 
-        registerInteraction.UpdateData();
+        registerInteraction.ExecuteInteraction();
 
       }
       catch (System.Exception ex)
@@ -118,7 +119,7 @@ namespace LearnEXMProject.Controllers
 
       var knownDataHelper = new KnownDataHelper();
 
-      KnownDataXConnect knownDataXConnect = null;
+      KnownData knownDataXConnect = null;
 
       //Task.Run(async () =>
       //{
@@ -126,12 +127,8 @@ namespace LearnEXMProject.Controllers
       //}
       //).Wait();
 
-      KnownDataXConnect knownDataViaTracker = null;
 
-      Task.Run(async () =>
-      {
-        knownDataViaTracker = await knownDataHelper.GetKnownDataViaTrackerAsync(trackingContact);
-      }).Wait();
+      KnownData knownDataViaTracker = null;// knownDataHelper.GetKnownDataViaTracker(trackingContact);
 
       //Tracker.Current.Contact // <--- Use this
       // use other Contact outside of a web page.

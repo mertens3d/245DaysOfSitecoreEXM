@@ -10,7 +10,7 @@ namespace Shared.Models.SitecoreCinema.Collection
       Text = "this is the Event text";
     }
 
-    public static Guid EventDefintionId { get; } = Const.EventId.BuyConcession;
+    public static Guid EventDefintionId { get; } = Const.OutcomeId.BuyConcession;
     public bool BoughtAlchoholicDrink { get; set; }
   }
 }
