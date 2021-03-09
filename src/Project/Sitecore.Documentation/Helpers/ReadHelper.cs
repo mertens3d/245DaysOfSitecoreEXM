@@ -1,4 +1,5 @@
-﻿using Sitecore.XConnect;
+﻿using LearnEXM.Foundation.CollectionModel.Builder;
+using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
 using System;
@@ -14,7 +15,7 @@ namespace Sitecore.Documentation.Helpers
 
       try
       {
-        IdentifiedContactReference reference = new IdentifiedContactReference(Shared.Const.XConnect.ContactIdentifiers.Sources.Twitter, Shared.Const.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier);
+        IdentifiedContactReference reference = new IdentifiedContactReference(CollectionConst.XConnect.ContactIdentifiers.Sources.Twitter, CollectionConst.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier);
 
         var interactions = new RelatedInteractionsExpandOptions(IpInfo.DefaultFacetKey)
         {
@@ -54,7 +55,7 @@ namespace Sitecore.Documentation.Helpers
         }
         else
         {
-          Console.WriteLine($"Identifier {Shared.Const.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier} not found");
+          Console.WriteLine($"Identifier {CollectionConst.XConnect.ContactIdentifiers.ExampleData.MyrtleIdentifier} not found");
         }
       }
       catch (Exception)

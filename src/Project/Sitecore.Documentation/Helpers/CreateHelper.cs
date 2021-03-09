@@ -1,4 +1,5 @@
-﻿using Sitecore.XConnect;
+﻿using LearnEXM.Foundation.CollectionModel.Builder;
+using Sitecore.XConnect;
 using System;
 
 namespace Sitecore.Documentation
@@ -10,7 +11,7 @@ namespace Sitecore.Documentation
       // Identifier for a 'known' contact
       var identifier = new ContactIdentifier[]
       {
-            new ContactIdentifier(Shared.Const.XConnect.ContactIdentifiers.Sources.Twitter , newContact.ContactIdentifier, ContactIdentifierType.Known)
+            new ContactIdentifier(CollectionConst.XConnect.ContactIdentifiers.Sources.Twitter , newContact.ContactIdentifier, ContactIdentifierType.Known)
       };
 
       // Print out identifier that is going to be used
