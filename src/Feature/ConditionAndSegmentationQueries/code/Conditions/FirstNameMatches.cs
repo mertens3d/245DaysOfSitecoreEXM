@@ -5,7 +5,7 @@ using Sitecore.XConnect.Segmentation.Predicates;
 using System;
 using System.Linq.Expressions;
 
-namespace LearnEXM.Foundation.ConditionAndSegmentationQueries.Conditions
+namespace LearnEXM.Feature.ConditionAndSegmentationQueries.Conditions
 {
   public class FirstNameMatches : ICondition, IContactSearchQueryFactory
   {

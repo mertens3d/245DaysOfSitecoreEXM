@@ -1,59 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LearnEXMProject.Models.SitecoreCinema
+namespace LearnEXM.Feature.MockContactGenerator
 {
-  public class CandidateInfoGenerator
+
+
+  public class MockContactGenerator
   {
-    private List<string> Movies = new List<string>
-    {
-      "Pulp Fiction",
-      "Reservoir Dogs",
-      "Close Encounters of the Third Kind",
-      "Mr. Holland's Opus",
-      "The Big Chill",
-      "Big Fish",
-      "Pink Floyd's the Wall",
-      "Breakfast Club",
-      "Up",
-      "Amadeus"
-    };
-
-
-    private List<string> FirstNames = new List<string>
-    {
-      "Bob",
-      "Susan",
-      "Gregory",
-      "Pete",
-      "Scooby",
-      "Marvin" ,
-      "Wendy",
-      "Donna",
-      "Fred",
-      "Nick"
-          };
-
-    private List<string> LastNames = new List<string>
-    {
-      "Schwartsburg",
-      "Anthony",
-      "Einstein",
-      "Clark",
-      "Reed",
-      "Milkman",
-      "RedFace",
-      "Green",
-      "Star",
-      "Moonbeam"
-    };
-
-    public CandidateInfoGenerator()
+    
+    public MockContactGenerator()
     {
       random = new Random();
+      var sources = new SourceLists();
+      FirstNames = sources.FirstNames;
+      LastNames = sources.LastNames;
+      Movies = sources.Movies;
     }
 
     public Random random { get; }
+    public List<string> FirstNames { get; private set; }
+    public List<string> LastNames { get; private set; }
+    public List<string> Movies { get; private set; }
 
     public CandidateContactInfo GetRandomContactInfo()
     {
@@ -72,6 +39,7 @@ namespace LearnEXMProject.Models.SitecoreCinema
           FirstName = firstName,
           LastName = LastNames[idx],
           FavoriteMovie = Movies[idx],
+          Gender = RandomGender(),
           Id = random.Next(10000)
         }); ;
 
@@ -83,11 +51,16 @@ namespace LearnEXMProject.Models.SitecoreCinema
       }
 
       var idxFinal = ContactInfo.Count + 1;
-      if(idxFinal > ContactInfo.Count)
+      if (idxFinal > ContactInfo.Count)
       {
         idxFinal = ContactInfo.Count;
       }
       return ContactInfo[random.Next(idxFinal)];
+    }
+
+    private string RandomGender()
+    {
+     return random.Next(2) == 0? "Male":"Female";
     }
 
     private List<string> Shuffle(List<string> names)

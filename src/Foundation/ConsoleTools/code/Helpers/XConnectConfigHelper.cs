@@ -1,5 +1,5 @@
 ﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels;
-using LearnEXM.Foundation.CollectionModel.Builder.XConnect.Client;
+using LearnEXM.Foundation.ConsoleTools.XConnect.Client;
 using Sitecore.XConnect.Client;
 using System.Collections.Generic;
 using System.Linq;

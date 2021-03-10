@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace LearnEXM.Foundation.ConditionAndSegmentationQueries.Conditions
+namespace LearnEXM.Feature.ConditionAndSegmentationQueries.Conditions
 {
   public class PreferredCinemaMatches : ICondition, IContactSearchQueryFactory
   {

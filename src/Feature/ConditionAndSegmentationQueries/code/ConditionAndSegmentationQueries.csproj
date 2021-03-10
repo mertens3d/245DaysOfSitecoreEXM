@@ -7,8 +7,8 @@
     <ProjectGuid>{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LearnEXM.Foundation.ConditionAndSegmentationQueries</RootNamespace>
-    <AssemblyName>LearnEXM.Foundation.ConditionAndSegmentationQueries</AssemblyName>
+    <RootNamespace>LearnEXM.Feature.ConditionAndSegmentationQueries</RootNamespace>
+    <AssemblyName>LearnEXM.Feature.ConditionAndSegmentationQueries</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -247,7 +247,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CollectionModel.Builder\code\CollectionModel.Builder.csproj">
+    <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\CollectionModel.Builder.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
       <Name>CollectionModel.Builder</Name>
     </ProjectReference>

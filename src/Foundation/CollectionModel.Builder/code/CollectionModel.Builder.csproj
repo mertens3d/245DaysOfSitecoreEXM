@@ -401,9 +401,7 @@
     <Compile Include="Models\CollectionModels\SitecoreCinemaModel.cs" />
     <Compile Include="Models\Events\UseSelfServiceEvent.cs" />
     <Compile Include="Models\Outcomes\WatchMovieOutcome.cs" />
-    <Compile Include="XConnect\Client\CFGGenerator.cs" />
     <Compile Include="CollectionConst.cs" />
-    <Compile Include="XConnect\Client\Initializer.cs" />
     <Compile Include="Interactions\BuyCandyInteraction.cs" />
     <Compile Include="Interactions\UpdateContactInfoInteraction.cs" />
     <Compile Include="Interactions\SelfServiceMachineInteraction.cs" />

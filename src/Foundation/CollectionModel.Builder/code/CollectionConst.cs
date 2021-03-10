@@ -56,6 +56,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
 
     public struct XConnect
     {
+          public const string EmailPreferredKey = "Work";
       public struct Certificate
       {
         public static string CertificateStore = "StoreName=My;StoreLocation=LocalMachine;FindType=FindByThumbprint;FindValue=";

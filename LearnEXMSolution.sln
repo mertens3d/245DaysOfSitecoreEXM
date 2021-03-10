@@ -43,8 +43,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XConnect", "XConnect", "{B0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConditionAndSegmentationQueries", "ConditionAndSegmentationQueries", "{6E970F6E-6AE7-4027-9539-B2A86F075F8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionAndSegmentationQueries", "src\Foundation\ConditionAndSegmentationQueries\code\ConditionAndSegmentationQueries.csproj", "{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{81C437AB-8C7F-4046-BA49-41C963774D8D}"
 	ProjectSection(SolutionItems) = preProject
 		src\Deployment\{wwwroot}\{XConnect Instance}\App_data\Config\sitecore\Segmentation\sc.XConnect.Segmentation.Predicates.Model.FirstNameMatches.xml = src\Deployment\{wwwroot}\{XConnect Instance}\App_data\Config\sitecore\Segmentation\sc.XConnect.Segmentation.Predicates.Model.FirstNameMatches.xml
@@ -56,6 +54,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		XConnectDeploy.md = XConnectDeploy.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionAndSegmentationQueries", "src\Feature\ConditionAndSegmentationQueries\code\ConditionAndSegmentationQueries.csproj", "{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MockContactGenerator", "MockContactGenerator", "{751E0B65-7098-42BF-9D73-29CE1BE54749}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockContactGenerator", "src\Feature\MockContactGenerator\code\MockContactGenerator.csproj", "{D2A31477-28F1-4EF6-B73D-7F015A7C920A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +103,10 @@ Global
 		{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A31477-28F1-4EF6-B73D-7F015A7C920A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A31477-28F1-4EF6-B73D-7F015A7C920A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A31477-28F1-4EF6-B73D-7F015A7C920A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A31477-28F1-4EF6-B73D-7F015A7C920A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,11 +128,13 @@ Global
 		{E818CB10-9D62-4F12-9A02-329E9EA6C1DA} = {A1AD2291-7237-4AE6-A4AD-3A2BC590AE90}
 		{44D6B78D-7D28-4ED7-A32C-78AA53040C7D} = {D4CB9905-0E0B-4873-9D9A-0FCA6CF43FA4}
 		{B0F2FC0C-9C26-4EA2-9368-4097C5F56C46} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
-		{6E970F6E-6AE7-4027-9539-B2A86F075F8B} = {74CE6B3D-FA8C-4352-9D88-8723AB702515}
+		{6E970F6E-6AE7-4027-9539-B2A86F075F8B} = {24405DB2-AE2D-4D75-9FDE-58072B1390BD}
 		{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B} = {6E970F6E-6AE7-4027-9539-B2A86F075F8B}
+		{751E0B65-7098-42BF-9D73-29CE1BE54749} = {24405DB2-AE2D-4D75-9FDE-58072B1390BD}
+		{D2A31477-28F1-4EF6-B73D-7F015A7C920A} = {751E0B65-7098-42BF-9D73-29CE1BE54749}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
+		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 	EndGlobalSection
 EndGlobal

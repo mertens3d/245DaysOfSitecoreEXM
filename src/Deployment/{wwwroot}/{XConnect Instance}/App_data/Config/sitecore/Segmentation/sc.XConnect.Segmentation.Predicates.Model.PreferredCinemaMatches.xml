@@ -7,7 +7,7 @@
             <PredicateDescriptors>
               <PreferredCinemaMatches>
                 <id>{1D4B3BA2-D925-4182-8F65-BC762378F846}</id>
-                <type>LearnEXM.Foundation.ConditionAndSegmentationQueries.Conditions.PreferredCinemaMatches, LearnEXM.Foundation.ConditionAndSegmentationQueries</type>
+                <type>LearnEXM.Feature.ConditionAndSegmentationQueries.Conditions.PreferredCinemaMatches, LearnEXM.Foundation.ConditionAndSegmentationQueries</type>
               </PreferredCinemaMatches>
             </PredicateDescriptors>
           </Options>

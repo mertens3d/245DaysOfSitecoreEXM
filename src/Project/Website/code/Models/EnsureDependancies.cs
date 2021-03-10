@@ -1,4 +1,4 @@
-﻿using LearnEXM.Foundation.ConditionAndSegmentationQueries.Conditions;
+﻿using LearnEXM.Feature.ConditionAndSegmentationQueries.Conditions;
 
 namespace LearnEXMProject.Models
 {

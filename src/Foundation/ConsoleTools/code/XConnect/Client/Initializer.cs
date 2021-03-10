@@ -1,7 +1,7 @@
 ﻿using Sitecore.XConnect.Client;
 using System.Collections.Generic;
 
-namespace LearnEXM.Foundation.CollectionModel.Builder.XConnect.Client
+namespace LearnEXM.Foundation.ConsoleTools.XConnect.Client
 {
   public class XConnectInitializer
   {

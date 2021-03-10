@@ -1,4 +1,5 @@
-﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
+﻿using LearnEXM.Feature.MockContactGenerator;
+using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
 using LearnEXM.Feature.WhatWeKnowAboutYou.Models;
 using LearnEXM.Foundation.CollectionModel.Builder.Interactions;
 using LearnEXMProject.Models;
@@ -50,7 +51,7 @@ namespace LearnEXMProject.Controllers
 
     public ActionResult RegisterViaAutoRandom()
     {
-      var candidateInfoGenerator = new CandidateInfoGenerator();
+      var candidateInfoGenerator = new LearnEXM.Feature.MockContactGenerator.MockContactGenerator();
       var CandidateContactInfo = candidateInfoGenerator.GetRandomContactInfo();
 
       try

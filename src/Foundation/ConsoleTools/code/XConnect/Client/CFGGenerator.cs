@@ -1,11 +1,12 @@
-﻿using Sitecore.XConnect.Client;
+﻿using LearnEXM.Foundation.CollectionModel.Builder;
+using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.WebApi;
 using Sitecore.XConnect.Schema;
 using Sitecore.Xdb.Common.Web;
 using System;
 using System.Collections.Generic;
 
-namespace LearnEXM.Foundation.CollectionModel.Builder.XConnect.Client
+namespace LearnEXM.Foundation.ConsoleTools.XConnect.Client
 {
   public class CFGGenerator
   {
