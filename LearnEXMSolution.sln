@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionAndSegmentationQue
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{81C437AB-8C7F-4046-BA49-41C963774D8D}"
 	ProjectSection(SolutionItems) = preProject
+		src\Deployment\{wwwroot}\{XConnect Instance}\App_data\Config\sitecore\Segmentation\sc.XConnect.Segmentation.Predicates.Model.FirstNameMatches.xml = src\Deployment\{wwwroot}\{XConnect Instance}\App_data\Config\sitecore\Segmentation\sc.XConnect.Segmentation.Predicates.Model.FirstNameMatches.xml
+		src\Deployment\{wwwroot}\{XConnect Instance}\App_data\Config\sitecore\Segmentation\sc.XConnect.Segmentation.Predicates.Model.PreferredCinemaMatches.xml = src\Deployment\{wwwroot}\{XConnect Instance}\App_data\Config\sitecore\Segmentation\sc.XConnect.Segmentation.Predicates.Model.PreferredCinemaMatches.xml
 		TextFile1.md = TextFile1.md
 	EndProjectSection
 EndProject

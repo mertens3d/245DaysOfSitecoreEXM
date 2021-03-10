@@ -1,0 +1,18 @@
+﻿<Settings>
+  <Sitecore>
+    <XConnect>
+      <Services>
+        <DescriptorLocator>
+          <Options>
+            <PredicateDescriptors>
+              <PreferredCinemaMatches>
+                <id>{9D30E12C-2A74-406B-947E-CB4306DDAAA2}</id>
+                <type>LearnEXM.Foundation.ConditionAndSegmentationQueries.Conditions.FirstNameMatches, LearnEXM.Foundation.ConditionAndSegmentationQueries</type>
+              </PreferredCinemaMatches>
+            </PredicateDescriptors>
+          </Options>
+        </DescriptorLocator>
+      </Services>
+    </XConnect>
+  </Sitecore>
+</Settings>
