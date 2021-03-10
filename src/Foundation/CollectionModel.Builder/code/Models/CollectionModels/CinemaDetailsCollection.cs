@@ -10,10 +10,10 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels
 
     private static XdbModel BuildModel()
     {
-      XdbModelBuilder modelBuilder = new XdbModelBuilder(CollectionConst.SitecoreCinema.CollectionModelNames.CinemaDetailsCollection, new XdbModelVersion(1, 0));
+      XdbModelBuilder modelBuilder = new XdbModelBuilder(CollectionConst.SitecoreCinema.CollectionModelNames.CinemaDetailsCollection, new XdbModelVersion(1, 1));
 
       modelBuilder.ReferenceModel(Sitecore.XConnect.Collection.Model.CollectionModel.Model);
-      modelBuilder.DefineFacet<Contact, CinemaInfoFacet>(CollectionConst.FacetKeys.CinemaDetails);
+      modelBuilder.DefineFacet<Contact, CinemaDetails>(CollectionConst.FacetKeys.CinemaDetails);
 
       return modelBuilder.BuildModel();
     }

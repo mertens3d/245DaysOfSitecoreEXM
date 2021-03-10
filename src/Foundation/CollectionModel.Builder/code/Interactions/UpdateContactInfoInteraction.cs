@@ -5,7 +5,7 @@ using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 using System;
 
-namespace LearnEXM.Foundation.CollectionModel.Builder.XConnect.Interactions
+namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 {
   public class UpdateContactInfoInteraction : _interactionBase
   {

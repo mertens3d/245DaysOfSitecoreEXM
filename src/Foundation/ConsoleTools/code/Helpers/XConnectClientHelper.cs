@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LearnEXM.Foundation.CollectionModel.Builder.XConnect.Helpers
+namespace LearnEXM.Foundation.ConsoleTools.Helpers
 {
   public class XConnectClientHelper
   {

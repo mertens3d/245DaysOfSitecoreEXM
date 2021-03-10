@@ -5,7 +5,7 @@ using Sitecore.XConnect.Collection.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LearnEXM.Foundation.CollectionModel.Builder.XConnect.Interactions
+namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 {
   public abstract class _interactionBase
   {

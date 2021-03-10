@@ -3,7 +3,7 @@ using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using Sitecore.XConnect;
 using System;
 
-namespace LearnEXM.Foundation.CollectionModel.Builder.XConnect.Interactions
+namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 {
   public class SelfServiceMachineInteraction : _interactionBase
   {

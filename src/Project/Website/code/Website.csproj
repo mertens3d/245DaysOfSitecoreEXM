@@ -942,6 +942,8 @@
     <Content Include="Views\SitecoreCinema\LobbyOptions.cshtml" />
     <Content Include="Views\SitecoreCinema\WatchMovie.cshtml" />
     <Content Include="Views\SitecoreCinema\RegisterThankYou.cshtml" />
+    <Content Include="App_Config\Sitecore\XConnect.Client.Configuration\Sitecore.XConnect.Client.SitecoreCinemaModel.config" />
+    <Content Include="App_Config\Sitecore\XConnect.Client.Configuration\Sitecore.XConnect.Client.CinemaDetailsCollection.config" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -952,6 +954,7 @@
     <Compile Include="Controllers\IdentifiedXConnectContact.cs" />
     <Compile Include="Controllers\SitecoreCinemaController.cs" />
     <Compile Include="DependencyInjection\DiConfigurator.cs" />
+    <Compile Include="Models\EnsureDependancies.cs" />
     <Compile Include="Models\WebConst.cs" />
     <Compile Include="Models\Email\EmailOptionsRepository.cs" />
     <Compile Include="Models\SitecoreCinema\BuyConcessionsViewModel.cs" />
@@ -976,7 +979,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Config\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -987,6 +989,10 @@
     <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\CollectionModel.Builder.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
       <Name>CollectionModel.Builder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\ConditionAndSegmentationQueries\code\ConditionAndSegmentationQueries.csproj">
+      <Project>{26a62704-7b6e-464d-a4e4-d32a0a7ffb4b}</Project>
+      <Name>ConditionAndSegmentationQueries</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

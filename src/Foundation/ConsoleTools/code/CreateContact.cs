@@ -1,8 +1,9 @@
-﻿using LearnEXM.Foundation.CollectionModel.Builder.XConnect.Helpers;
+﻿using LearnEXM.Foundation.CollectionModel.Builder;
+using LearnEXM.Foundation.ConsoleTools.Helpers;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 
-namespace LearnEXM.Foundation.CollectionModel.Builder.XConnect.Interactions
+namespace LearnEXM.Foundation.ConsoleTools
 {
   public class CreateContact
   {

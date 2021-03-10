@@ -1,7 +1,6 @@
 ﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
 using LearnEXM.Feature.WhatWeKnowAboutYou.Models;
-using LearnEXM.Foundation.CollectionModel.Builder;
-using LearnEXM.Foundation.CollectionModel.Builder.XConnect.Interactions;
+using LearnEXM.Foundation.CollectionModel.Builder.Interactions;
 using LearnEXMProject.Models;
 using LearnEXMProject.Models.SitecoreCinema;
 using Sitecore.Analytics;
