@@ -1,0 +1,64 @@
+﻿@using Feature.Marketing.Email
+@using Feature.Marketing.Email.Extensions
+@model Feature.Marketing.Email.Models.ImageOverTextFullWidthViewModel
+
+@Html.EETableStart()
+@if (Model?.DataSource != null)
+{
+
+  <tr>
+    <td style="display: block; padding: 0; margin-top: 8px">
+      @Html.Sitecore().Field(Const.Fields.ImageOverTextFullWidth.Image, Model.DataSource,
+
+     new
+     {
+         width = "600",
+         height = "200",
+         style = "display: block; width: 600px; height: 200px;"
+     })
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding: 30px 20px; background-color: @Const.Styling.HexColors.White; text-align: left; display: inline-block;">
+      <p style="margin-top: 0; margin-bottom: 0; font-size: 15px; line-height: 24px; font-weight: bold;">
+        @Html.Sitecore().Field(Const.Fields.ImageOverTextFullWidth.Title, Model.DataSource)
+      </p>
+      <p style="color: @Const.Styling.HexColors.OuterSpace; font-size: 15px; line-height: 24px; margin-top: 0; margin-bottom: 30px;">
+        @Html.Sitecore().Field(Const.Fields.ImageOverTextFullWidth.Text, Model.DataSource)
+      </p>
+      <p style="margin: 0;">
+
+
+
+        @if (Model.LinkData.ShowLink)
+        {
+
+          if (!Model.LinkData.LinkUrlIsValid)
+          {
+            @Html.EEWarning(Const.ExperienceEditor.CTAInvalidURLWarning);
+          }
+
+
+          @Html.Sitecore().BeginField(Const.Fields.ImageOverTextFullWidth.Link, Model.DataSource, new
+          {
+         style = "background: " + @Const.Styling.HexColors.BrightBlue + "; text-transform: uppercase; text-decoration: none; padding: 10px 38px; color: " + @Const.Styling.HexColors.White + "; display: inline-block; mso-padding-alt: 0;",
+              text = " "
+     })
+
+          <!--[if mso]>
+          <i style="letter-spacing: 38px; mso-font-width:-100%; mso-text-raise:18pt">&nbsp;</i><![endif]-->
+          <span style="mso-text-raise: 12px; font-size: 12px; font-weight: bold; color: @Const.Styling.HexColors.White">@Model.LinkData.LinkText</span>
+          <!--[if mso]><i style="letter-spacing: 38px; mso-font-width:-100%">&nbsp;</i><![endif]-->
+          @Html.Sitecore().EndField();
+
+
+
+        }
+      </p>
+      <p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+    </td>
+  </tr>
+
+}
+@Html.EETableEnd()

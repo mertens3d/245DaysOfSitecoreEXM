@@ -18,6 +18,7 @@ namespace LearnEXM.Feature.MockContactGenerator
         ContactIdentifier identifier = new ContactIdentifier(CollectionConst.XConnect.ContactIdentifiers.Sources.SitecoreCinema, identifierId, ContactIdentifierType.Known);
 
         Contact contact = new Contact(new ContactIdentifier[] { identifier });
+        client.AddContact(contact);
 
         PersonalInformation personalInfo = new PersonalInformation()
         {
@@ -27,7 +28,6 @@ namespace LearnEXM.Feature.MockContactGenerator
           Gender = candidateContactInfo.Gender,
         };
 
-        client.AddContact(contact);
         client.SetFacet(contact, PersonalInformation.DefaultFacetKey, personalInfo);
 
 
@@ -52,7 +52,7 @@ namespace LearnEXM.Feature.MockContactGenerator
     {
       var cfgGenerator = new CFGGenerator();
 
-      var cfg = cfgGenerator.GetCFG(SitecoreCinemaModel.Model);
+      var cfg = cfgGenerator.GetCFG(SitecoreCinemaModelBuilder.Model);
 
       try
       {

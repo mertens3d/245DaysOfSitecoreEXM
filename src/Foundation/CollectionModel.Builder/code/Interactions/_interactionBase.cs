@@ -51,7 +51,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
           var expandOptions = new ExpandOptions(new[]{
               PersonalInformation.DefaultFacetKey,
               EmailAddressList.DefaultFacetKey,
-              CinemaInfoFacet.DefaultFacetKey});
+              CinemaInfo.DefaultFacetKey});
 
           XConnectContact = Client.Get(identifiedReference, expandOptions);
 

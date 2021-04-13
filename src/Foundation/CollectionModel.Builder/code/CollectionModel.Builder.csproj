@@ -393,12 +393,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CollectionModels\SitecoreInfoModelBuilder.cs" />
+    <Compile Include="Models\Facets\Marketing.cs" />
+    <Compile Include="Models\CollectionModels\MarketingModelBuilder.cs" />
     <Compile Include="Models\Facets\CinemaDetails.cs" />
     <Compile Include="Models\Facets\CinemaVisitorInfo.cs" />
-    <Compile Include="Models\CollectionModels\CinemaDetailsCollection.cs" />
+    <Compile Include="Models\CollectionModels\CinemaDetailsModelBuilder.cs" />
     <Compile Include="Models\Outcomes\BuyConcessionOutcome.cs" />
-    <Compile Include="Models\Facets\CinemaInfoFacet.cs" />
-    <Compile Include="Models\CollectionModels\SitecoreCinemaModel.cs" />
+    <Compile Include="Models\Facets\CinemaInfo.cs" />
+    <Compile Include="Models\CollectionModels\SitecoreCinemaModelBuilder.cs" />
     <Compile Include="Models\Events\UseSelfServiceEvent.cs" />
     <Compile Include="Models\Outcomes\WatchMovieOutcome.cs" />
     <Compile Include="CollectionConst.cs" />
@@ -419,6 +422,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="{wwwroot}\{Sitecore Instance}\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Marketing\code\Marketing.csproj">
+      <Project>{e050fb26-1994-4f4f-b471-0ae360589a1f}</Project>
+      <Name>Marketing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

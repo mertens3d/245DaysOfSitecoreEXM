@@ -1,0 +1,34 @@
+﻿@using Sitecore.Foundation.SitecoreExtensions.Extensions;
+@using Feature.Marketing.Email;
+@using Sitecore.Data.Fields
+@using Feature.Marketing.Email.Extensions
+@model Feature.Marketing.Email.Models.ImageOverTextSmall
+
+@if (Model?.DataSource != null)
+{
+  <td align="center" style="text-align: center; width: 33.3%; padding: 0 8px">
+    <p style="margin: 0;">
+      @if (Model.LinkData.ShowLink)
+      {
+        if (!Model.LinkData.LinkUrlIsValid)
+        {
+          @Html.EEWarning(Const.ExperienceEditor.CTAInvalidURLWarning);
+        }
+
+        @Html.Sitecore().BeginField(Model.Link, Model.DataSource,
+            new
+               {
+                   style = "background: " + Const.Styling.HexColors.VividCyan + "; text-transform: uppercase; text-decoration: none; padding: 10px 38px; color:" + @Const.Styling.HexColors.White + "; display: inline-block; mso-padding-alt: 0;",
+                   text = " ",
+               })
+        <!--[if mso]>
+        <i style="letter-spacing: 38px; mso-font-width:-100%; mso-text-raise:18pt">&nbsp;</i><![endif]-->
+        <span style="mso-text-raise: 12px; font-size: 12px; font-weight: bold; color: @Const.Styling.HexColors.White">@Model.LinkData.LinkText</span>
+        <!--[if mso]><i style="letter-spacing: 38px; mso-font-width:-100%">&nbsp;</i><![endif]-->
+
+        @Html.Sitecore().EndField()
+
+      }
+    </p>
+  </td>
+}

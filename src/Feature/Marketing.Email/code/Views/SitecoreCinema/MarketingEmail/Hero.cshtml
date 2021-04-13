@@ -1,0 +1,45 @@
+﻿@using Feature.Marketing.Email
+@model Feature.Marketing.Email.Models.SocialViewModel
+
+@if (Model?.DataSource != null)
+{
+  @Html.Raw(Environment.NewLine) <!--TODO - Remove before PR* -->
+
+  if (!Sitecore.Context.PageMode.IsExperienceEditor)
+  {
+    @Html.Raw("<td valign=\"top\" style=\"text-align: center; padding: 0 6px;\">");
+  }
+  else
+  {
+    @Html.Raw("<div valign=\"top\" style=\"text-align: center; padding: 0 6px; display: inline-block;\">")
+  }
+
+  @Html.Raw(Environment.NewLine)
+
+  @Html.Sitecore().BeginField(Const.Fields.Social.Link, Model.DataSource,
+      new
+          {
+         style = "display: inline-block; text-decoration: none;",
+         text = " "
+      })
+
+  @Html.Raw(Environment.NewLine)
+  @Html.Sitecore().Field(Const.Fields.SocialTarget.Icon, Model.DataSource,
+      new
+           {
+          width = "54",
+          height = "54",
+          style = "display: inline-block; width: 54px; height: 54px; padding: 5px"
+      })
+
+  @Html.Sitecore().EndField()
+
+  if (!Sitecore.Context.PageMode.IsExperienceEditor)
+  {
+    @Html.Raw("</td>");
+  }
+  else
+  {
+    @Html.Raw("</div>")
+  }
+}

@@ -25,7 +25,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       {
         var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, CollectionConst.XConnect.Channels.BoughtCandy, string.Empty);
 
-        Client.SetFacet(interaction, CinemaInfoFacet.DefaultFacetKey, new CinemaInfoFacet() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 });
+        Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 });
 
         var eventItem = new BuyConcessionOutcome(DateTime.UtcNow, CollectionConst.SitecoreCinema.CurrencyCode, CollectionConst.SitecoreCinema.ConcessionPrices.PopCorn);
         interaction.Events.Add(eventItem);

@@ -1,0 +1,22 @@
+﻿---
+ID: "a7dad79b-01ac-4ff7-94c4-56946b499a91"
+Parent: "5816c7c1-d1c6-40e1-88bd-f6a5b8d4f7fb"
+Template: "3a45a723-64ee-4919-9d41-02fd40fd1466"
+Path: /sitecore/layout/Layouts/SitecoreCinema/Project/SitecoreCinemaLayout
+DB: master
+SharedFields:
+- ID: "a036b2bc-ba04-44f6-a75f-bae6cd242abf"
+  Hint: Path
+  Value: /views/SitecoreCinemaLayout.cshtml
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20160816T053416Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

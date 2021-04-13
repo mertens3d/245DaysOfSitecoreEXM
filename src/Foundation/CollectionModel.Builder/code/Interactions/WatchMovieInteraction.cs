@@ -28,7 +28,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
           EIDR = CollectionConst.XConnect.MovieEIDR.DieHard
         });
 
-        Client.SetFacet(interaction, CinemaInfoFacet.DefaultFacetKey, new CinemaInfoFacet() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 });
+        Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 });
 
         Client.AddInteraction(interaction);
       }

@@ -1,0 +1,16 @@
+﻿@using Sitecore.Foundation.SitecoreExtensions.Extensions;
+@using Feature.Marketing.Email;
+@model Feature.Marketing.Email.Models.ImageOverTextSmall
+
+@if (Model?.DataSource != null)
+{
+  <td align="center" style="text-align: center; width: 33.3%; padding: 0 8px;">
+    @Html.Sitecore().Field(Model.Image, Model.DataSource,
+        new
+             {
+            width = "88",
+            height = "88",
+            style = "display: inline-block; width: 88px; height: 88px; border: 2px solid " + @Const.Styling.HexColors.Grey + "; "
+        })
+  </td>
+}

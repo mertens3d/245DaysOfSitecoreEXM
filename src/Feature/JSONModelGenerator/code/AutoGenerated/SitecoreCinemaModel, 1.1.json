@@ -1,0 +1,79 @@
+{
+  "Name": "SitecoreCinemaModel",
+  "Version": "1.1",
+  "References": [
+    {
+      "Name": "XConnect",
+      "Version": "1.0"
+    },
+    {
+      "Name": "Sitecore.XConnect.Collection.Model",
+      "Version": "9.3"
+    }
+  ],
+  "Types": {
+    "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaVisitorInfo": {
+      "Type": "Facet",
+      "BaseType": "Sitecore.XConnect.Facet",
+      "ClrType": "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaVisitorInfo, LearnEXM.Foundation.CollectionModel.Builder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "FavoriteMovie": {
+          "Type": "String"
+        },
+        "OwnedMovieTickets": {
+          "Type": [
+            "Guid"
+          ]
+        }
+      }
+    },
+    "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaInfoFacet": {
+      "Type": "Facet",
+      "BaseType": "Sitecore.XConnect.Facet",
+      "ClrType": "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaInfoFacet, LearnEXM.Foundation.CollectionModel.Builder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "CinimaId": {
+          "Type": "Int32"
+        }
+      }
+    },
+    "LearnEXM.Foundation.CollectionModel.Builder.Models.Outcomes.WatchMovieOutcome": {
+      "Type": "Event",
+      "BaseType": "Sitecore.XConnect.Outcome",
+      "ClrType": "LearnEXM.Foundation.CollectionModel.Builder.Models.Outcomes.WatchMovieOutcome, LearnEXM.Foundation.CollectionModel.Builder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "EIDR": {
+          "Type": "String"
+        }
+      }
+    },
+    "LearnEXM.Foundation.CollectionModel.Builder.Models.Outcomes.BuyConcessionOutcome": {
+      "Type": "Event",
+      "BaseType": "Sitecore.XConnect.Outcome",
+      "ClrType": "LearnEXM.Foundation.CollectionModel.Builder.Models.Outcomes.BuyConcessionOutcome, LearnEXM.Foundation.CollectionModel.Builder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "BoughtAlchoholicDrink": {
+          "Type": "Boolean"
+        }
+      }
+    },
+    "LearnEXM.Foundation.CollectionModel.Builder.Models.Events.UseSelfServiceEvent": {
+      "Type": "Event",
+      "BaseType": "Sitecore.XConnect.Event",
+      "ClrType": "LearnEXM.Foundation.CollectionModel.Builder.Models.Events.UseSelfServiceEvent, LearnEXM.Foundation.CollectionModel.Builder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {}
+    }
+  },
+  "Facets": [
+    {
+      "Target": "Contact",
+      "Name": "CinemaVisitorInfo",
+      "Type": "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaVisitorInfo"
+    },
+    {
+      "Target": "Interaction",
+      "Name": "CinemaInfo",
+      "Type": "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaInfoFacet"
+    }
+  ]
+}

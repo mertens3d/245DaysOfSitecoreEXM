@@ -27,7 +27,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
         //var contact = Client.Get<Contact>(IdentifiedContactReference, new Sitecore.XConnect.ExpandOptions(PersonalInformation.DefaultFacetKey));
 
-        Client.SetFacet(interaction, CinemaInfoFacet.DefaultFacetKey, new CinemaInfoFacet() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 });
+        Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, new CinemaInfo() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 });
 
         interaction.Events.Add(new UseSelfServiceEvent(DateTime.UtcNow));
 

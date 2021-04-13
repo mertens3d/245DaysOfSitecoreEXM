@@ -1,0 +1,41 @@
+﻿@using Feature.Marketing.Email
+@using Feature.Marketing.Email.Extensions
+@using Sitecore.Foundation.SitecoreExtensions.Extensions;
+
+@model Feature.Marketing.Email.Models.ImageOverTextThreeColumnViewModel
+
+@Html.EETableStart()
+
+@if (Model?.DataSource != null)
+{
+
+  var eeFixClass = string.Empty;
+
+  if (Sitecore.Context.PageMode.IsExperienceEditor)
+  {
+    eeFixClass = "class='ee-fix-force-white-text'";
+  }
+
+  <tr @Html.Raw(eeFixClass)>
+    <td style="padding: 30px 20px; background-color:@Const.Styling.HexColors.CobaltBlue;">
+      <table role="presentation" valign="top" style="width: 100%; border: none; border-spacing: 0;">
+        <tr>
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Left)
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Middle)
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Right)
+        </tr>
+        <tr>
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Left)
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Middle)
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Right)
+        </tr>
+        <tr>
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Left)
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Middle)
+          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Right)
+        </tr>
+      </table>
+    </td>
+  </tr>
+}
+@Html.EETableEnd()

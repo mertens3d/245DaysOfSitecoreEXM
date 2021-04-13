@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{735F4DED-0166-41DB-807D-84AEEE068704}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Feature.Marketing.B</RootNamespace>
+    <AssemblyName>Feature.Marketing.B</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Sitecore.Framework.Rules, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.3.3.0\lib\netstandard2.0\Sitecore.Framework.Rules.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Framework.Rules.Abstractions, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Framework.Rules.Abstractions.3.3.0\lib\netstandard2.0\Sitecore.Framework.Rules.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel, Version=14.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Kernel.9.3.0\lib\net471\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ListManagement, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ListManagement.9.3.0\lib\net471\Sitecore.ListManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ListManagement.XConnect.Web, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ListManagement.XConnect.Web.9.3.0\lib\net471\Sitecore.ListManagement.XConnect.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.9.3.0\lib\netstandard2.0\Sitecore.XConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect.Collection.Model, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.Collection.Model.9.3.0\lib\netstandard2.0\Sitecore.XConnect.Collection.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.Core.9.3.0\lib\netstandard2.0\Sitecore.XConnect.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect.Segmentation.Predicates, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.Segmentation.Predicates.9.3.0\lib\net471\Sitecore.XConnect.Segmentation.Predicates.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect.Segmentation.Predicates.Model, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.Segmentation.Predicates.Model.9.3.0\lib\net471\Sitecore.XConnect.Segmentation.Predicates.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="sysglobl" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Linq" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.InteropServices" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Threading.Thread" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conditions\MarketingFavoriteMovie.cs" />
+    <Compile Include="Import\MarketingFacetMapper.cs" />
+    <Compile Include="Import\MarketingAddressFacetMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="appSettings.CertificateStore.user.config" />
+    <None Include="App_Config\Include\Feature\Marketing.Base.ListManagement.Import.config">
+      <Generator>SitecoreCodeGenerationTool</Generator>
+    </None>
+    <None Include="packages.config" />
+    <Content Include="PredicateDescriptors\sc.XConnect.Segmentation.Predicates.Model.Marketing.ContactDivision.xml">
+      <Generator>SitecoreCodeGenerationTool</Generator>
+    </Content>
+    <Content Include="PredicateDescriptors\sc.XConnect.Segmentation.Predicates.Model.Marketing.ContactLineOfBusiness.xml">
+      <Generator>SitecoreCodeGenerationTool</Generator>
+    </Content>
+    <Content Include="PredicateDescriptors\sc.XConnect.Segmentation.Predicates.Model.Marketing.ContactType.xml">
+      <Generator>SitecoreCodeGenerationTool</Generator>
+    </Content>
+    <Content Include="PredicateDescriptors\sc.XConnect.Segmentation.Predicates.Model.Marketing.CompanyName.xml">
+      <Generator>SitecoreCodeGenerationTool</Generator>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\CollectionModel.Builder.csproj">
+      <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
+      <Name>CollectionModel.Builder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\Marketing\code\Marketing.csproj">
+      <Project>{e050fb26-1994-4f4f-b471-0ae360589a1f}</Project>
+      <Name>Marketing</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PredicateDescriptors\sc.XConnect.Segmentation.Predicates.Model.Marketing.FavoriteMovide.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

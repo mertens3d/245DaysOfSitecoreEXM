@@ -1,0 +1,27 @@
+﻿@using Feature.Marketing.Email;
+@model Feature.Marketing.Email.Models.ImageBesideTextViewModel
+
+@Html.EETableStart()
+@if (Model?.DataSource != null)
+{
+  <tr>
+
+    <td style="padding: 30px 20px; background-color: @Model.BackgroundColor;">
+      <table role="presentation" style="width: 100%; border: none; border-spacing: 0;">
+        <tr>
+          @if (Model.ImageIsLeft)
+          {
+            @Html.Partial(Const.Views.Partials.ImageBesideText.ImageBesideText_Image, Model)
+            @Html.Partial(Const.Views.Partials.ImageBesideText.ImageBesideText_Text, Model)
+          }
+          else
+          {
+            @Html.Partial(Const.Views.Partials.ImageBesideText.ImageBesideText_Text, Model)
+            @Html.Partial(Const.Views.Partials.ImageBesideText.ImageBesideText_Image, Model)
+          }
+        </tr>
+      </table>
+    </td>
+  </tr>
+}
+@Html.EETableEnd()

@@ -1,0 +1,18 @@
+﻿<Settings>
+  <Sitecore>
+    <XConnect>
+      <Services>
+        <DescriptorLocator>
+          <Options>
+            <PredicateDescriptors>
+              <CompanyNameMatches>
+                <id>{}</id>
+                <type>Feature.Marketing.Conditions.MarketingCompanyName, Feature.Marketing.B</type>
+              </CompanyNameMatches>
+            </PredicateDescriptors>
+          </Options>
+        </DescriptorLocator>
+      </Services>
+    </XConnect>
+  </Sitecore>
+</Settings>

@@ -1,0 +1,51 @@
+﻿@using Feature.Marketing.Email
+@using Feature.Marketing.Email.Extensions
+@model Feature.Marketing.Email.Models.FooterViewModel
+
+@Html.EETableStart()
+
+@if (Model?.DataSource != null)
+{
+  <tr>
+    <td style="padding: 30px 20px; background-color: @Const.Styling.HexColors.LightGrey; text-align: center;">
+      <p style="margin-top: 0; margin-bottom: 0; color: @Const.Styling.HexColors.BrightBlue; font-size: 18px; line-height: 24px; font-weight: bold; text-transform: uppercase;">
+        @Html.Sitecore().Field(Const.Fields.Footer.Name)
+      </p>
+      <p style="@("color: " + @Const.Styling.HexColors.MediumGrey + "; font-size: 12px; line-height: 15px; margin-top: 0; margin-bottom: 0;")">
+        @Html.Sitecore().Field(Const.Fields.Footer.Address)
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center" style="@("padding: 30px 20px; background-color: " + @Const.Styling.HexColors.White + "; text-align: center;")">
+      <table role="presentation" align="center" valign="top" style="margin: 0 auto; width: 50%; border: none; border-spacing: 0;">
+        <tr>
+          @Html.Sitecore().Placeholder(Const.PlaceHolders.Social)
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding: 0 20px 30px 20px; background-color:@Const.Styling.HexColors.White;">
+      <p style="color: @Const.Styling.HexColors.OuterSpace; font-size: 12px; line-height: 20px; margin-top: 0; margin-bottom: 0">
+        @Html.Sitecore().Field(Const.Fields.Footer.Text)
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center" style="padding: 30px 20px; background-color:@Const.Styling.HexColors.White; color: @Const.Styling.HexColors.BrightBlue; text-align: center; font-size: 16px; font-weight: bold;">
+      <a href="/sitecore%20modules/Web/EXM/UnsubscribeFromAll.aspx" style="color: @Const.Styling.HexColors.BrightBlue; font-size: 16px; font-weight: bold; text-decoration: none;">
+        @Html.Sitecore().Field(Const.Fields.Footer.Unsubscribe)
+      </a>
+      <span style="color: @Const.Styling.HexColors.BrightBlue">|</span>
+      <a href="/sitecore%20modules/Web/EXM/SubscriptionPreferences.ashx" style="color: @Const.Styling.HexColors.BrightBlue; font-size: 16px; font-weight: bold; text-decoration: none;">
+        @Html.Sitecore().Field(Const.Fields.Footer.UpdatePreferences)
+      </a>
+    </td>
+  </tr>
+}
+
+@Html.EETableEnd()
