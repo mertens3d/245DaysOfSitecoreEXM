@@ -3,7 +3,7 @@ using Sitecore.Data.Fields;
 using Sitecore.Resources.Media;
 using Sitecore;
 
-namespace Marketing.Email.Extensions
+namespace LearnEXM.Feature.Marketing.Email.Extensions
 {
   public static class FieldExtensions
   {

@@ -1,9 +1,11 @@
-﻿using Marketing.Email.Models;
-
-namespace Feature.Marketing.Email.Models
+﻿using Feature.Marketing.Email.Models;
+namespace LearnEXM.Feature.Marketing.Email.Models
 {
   public class SocialViewModel : _baseMarketingEmailViewModel
   {
-    public LinkData LinkData { get; set; }
+    public LinkData LinkData
+    {
+      get; set;
+    }
   }
 }

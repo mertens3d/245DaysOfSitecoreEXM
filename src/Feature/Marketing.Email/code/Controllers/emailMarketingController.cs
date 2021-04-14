@@ -1,15 +1,9 @@
-﻿using Feature.Marketing.Email;
-using Feature.Marketing.Email.Controllers;
-using Feature.Marketing.Email.Models;
-using Marketing.Email.Models;
+﻿using Feature.Marketing.Email.Models;
+using LearnEXM.Feature.Marketing.Email.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Marketing.Email.Controllers
+namespace LearnEXM.Feature.Marketing.Email.Controllers
 {
   public class EmailMarketingController : Controller
   {

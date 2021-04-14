@@ -1,8 +1,7 @@
 ﻿using Sitecore.XConnect;
 using Sitecore.XConnect.Schema;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
-
-using Foundation.Marketing;
+using LearnEXM.Foundation.Marketing;
 
 namespace LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels
 {

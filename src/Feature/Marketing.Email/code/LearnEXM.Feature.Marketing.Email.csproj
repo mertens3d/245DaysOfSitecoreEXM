@@ -8,8 +8,8 @@
     <ProjectGuid>{234CBF14-7322-41AD-B9FD-AE4CAED9F760}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Feature.Marketing.Email</RootNamespace>
-    <AssemblyName>Feature.Marketing.Email</AssemblyName>
+    <RootNamespace>LearnEXM.Feature.Marketing.Email</RootNamespace>
+    <AssemblyName>LearnEXM.Feature.Marketing.Email</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -97,9 +97,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Controllers\emailMarketingController.cs" />
+    <Compile Include="Controllers\EmailMarketingController.cs" />
     <Compile Include="Controllers\EmailMarketingControllerHelper.cs" />
     <Compile Include="Extensions\extensions.cs" />
     <Compile Include="Extensions\FieldExtensions.cs" />

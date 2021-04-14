@@ -1,11 +1,6 @@
 ﻿using Sitecore.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Feature.Marketing.Email
+namespace LearnEXM.Feature.Marketing.Email
 {
   public static class Const
   {

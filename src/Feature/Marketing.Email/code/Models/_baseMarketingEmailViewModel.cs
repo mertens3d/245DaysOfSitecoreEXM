@@ -1,5 +1,4 @@
-﻿using Feature.Marketing.Email;
-using Sitecore.Data;
+﻿using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Mvc.Presentation;
 using System;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Marketing.Email.Models
+namespace LearnEXM.Feature.Marketing.Email.Models
 {
   public abstract class _baseMarketingEmailViewModel
   {
@@ -26,9 +25,9 @@ namespace Marketing.Email.Models
           Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix + "null or empty datasource", this);
         }
       }
-      catch (System.Exception ex)
+      catch (Exception ex)
       {
-        Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix + this.GetType().Name, ex, this);
+        Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix + GetType().Name, ex, this);
       }
     }
 

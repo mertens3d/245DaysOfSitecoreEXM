@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Marketing.Email.Extensions
+namespace LearnEXM.Feature.Marketing.Email.Extensions
 {
   public static class Extensions
   {

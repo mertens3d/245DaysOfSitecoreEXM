@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using LearnEXM.Feature.Marketing.Email.Extensions;
 using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
 using Sitecore.Diagnostics;
+using Sitecore.Foundation.SitecoreExtensions.Services;
 using Sitecore.Links;
 using Sitecore.Resources.Media;
 using Sitecore.Xml.Xsl;
-using Sitecore.Foundation.SitecoreExtensions.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace Marketing.Email.Extensions
+namespace LearnEXM.Feature.Marketing.Email.Extensions
 {
   public static class ItemExtensions
   {
@@ -59,7 +56,6 @@ namespace Marketing.Email.Extensions
       var targetItem = item.TargetItem(mediaFieldId);
       return targetItem == null ? string.Empty : (MediaManager.GetMediaUrl(targetItem) ?? string.Empty);
     }
-
 
     public static bool IsImage(this Item item)
     {
@@ -126,6 +122,7 @@ namespace Marketing.Email.Extensions
     {
       return item.LinkFieldOptions(fieldID, LinkFieldOption.Class);
     }
+
     public static string LinkFieldOptions(this Item item, ID fieldID, LinkFieldOption option)
     {
       XmlField field = item.Fields[fieldID];
@@ -133,16 +130,22 @@ namespace Marketing.Email.Extensions
       {
         case LinkFieldOption.Text:
           return field?.GetAttribute("text");
+
         case LinkFieldOption.LinkType:
           return field?.GetAttribute("linktype");
+
         case LinkFieldOption.Class:
           return field?.GetAttribute("class");
+
         case LinkFieldOption.Alt:
           return field?.GetAttribute("title");
+
         case LinkFieldOption.Target:
           return field?.GetAttribute("target");
+
         case LinkFieldOption.QueryString:
           return field?.GetAttribute("querystring");
+
         default:
           throw new ArgumentOutOfRangeException(nameof(option), option, null);
       }
@@ -152,7 +155,6 @@ namespace Marketing.Email.Extensions
     {
       return item?.Visualization?.Layout != null;
     }
-
 
     public static bool IsDerived(this Item item, ID templateId)
     {
@@ -223,9 +225,6 @@ namespace Marketing.Email.Extensions
 
 namespace Sitecore.Foundation.SitecoreExtensions.Services
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Web;
   using Sitecore.Data;
   using Sitecore.Data.Items;
   using Sitecore.Diagnostics;
@@ -234,6 +233,9 @@ namespace Sitecore.Foundation.SitecoreExtensions.Services
   using Sitecore.Pipelines;
   using Sitecore.Pipelines.RenderField;
   using Sitecore.Web.UI.WebControls;
+  using System;
+  using System.Collections.Generic;
+  using System.Web;
 
   public class FieldRendererService
   {

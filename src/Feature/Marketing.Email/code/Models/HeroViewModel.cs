@@ -1,4 +1,4 @@
-﻿using Marketing.Email.Models;
+﻿using LearnEXM.Feature.Marketing.Email.Models;
 
 namespace Feature.Marketing.Email.Models
 {

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Globalization;
-using Feature.Marketing.Email;
-using Feature.Marketing.Email.Models;
-using Marketing.Email.Extensions;
+﻿using LearnEXM.Feature.Marketing.Email.Extensions;
+using LearnEXM.Feature.Marketing.Email.Models;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Mvc.Presentation;
+using System;
+using System.Globalization;
 
-namespace Feature.Marketing.Email.Controllers
+namespace LearnEXM.Feature.Marketing.Email.Controllers
 {
   public class EmailMarketingControllerHelper
   {

@@ -1,14 +1,13 @@
-﻿using Feature.Marketing.Email;
-using Marketing.Email.Models;
+﻿using LearnEXM.Feature.Marketing.Email.Controllers;
 using Sitecore.Data.Items;
 
-namespace Feature.Marketing.Email.Models
+namespace LearnEXM.Feature.Marketing.Email.Models
 {
   public class ImageOverTextSmall : _baseMarketingEmailViewModel
   {
     private readonly string Suffix;
 
-    public ImageOverTextSmall(Item dataSource, string suffix, Controllers.EmailMarketingControllerHelper controllerHelper)
+    public ImageOverTextSmall(Item dataSource, string suffix, EmailMarketingControllerHelper controllerHelper)
     {
       Suffix = suffix;
       LinkData = controllerHelper.GetLinkData(DataSource, Link, Const.Fields.ImageOverTextThreeColumn.LinkTextFallBack);

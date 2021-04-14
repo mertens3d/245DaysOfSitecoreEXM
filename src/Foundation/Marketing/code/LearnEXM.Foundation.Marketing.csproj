@@ -7,8 +7,8 @@
     <ProjectGuid>{E050FB26-1994-4F4F-B471-0AE360589A1F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Foundation.Marketing</RootNamespace>
-    <AssemblyName>Foundation.Marketing</AssemblyName>
+    <RootNamespace>LearnEXM.Foundation.Marketing</RootNamespace>
+    <AssemblyName>LearnEXM.Foundation.Marketing</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="MarketingConst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

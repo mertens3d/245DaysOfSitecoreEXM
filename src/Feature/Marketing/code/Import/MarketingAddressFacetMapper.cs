@@ -1,11 +1,10 @@
-﻿using Foundation.Marketing;
-using Marketing;
+﻿using LearnEXM.Foundation.Marketing;
 using Sitecore.ListManagement.Import;
 using Sitecore.ListManagement.XConnect.Web.Import;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 
-namespace Marketing.Base.Import
+namespace LearnEXM.Feature.Marketing.Import
 {
   public class MarketingAddressFacetMapper : IFacetMapper
   {

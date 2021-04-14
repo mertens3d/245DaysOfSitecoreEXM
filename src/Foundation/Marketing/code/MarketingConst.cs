@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Foundation.Marketing
+namespace LearnEXM.Foundation.Marketing
 {
   public struct MarketingConst
   {
