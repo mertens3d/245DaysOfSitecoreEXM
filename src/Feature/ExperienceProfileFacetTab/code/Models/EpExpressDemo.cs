@@ -1,9 +1,9 @@
 ﻿using EPExpressTab.Data;
 using EPExpressTab.Repositories;
-using Foundation.Marketing;
+using LearnEXM.Foundation.Marketing;
 using System;
 
-namespace ExperienceProfileFacetTab.Models
+namespace LearnEXM.Feature.ExperienceProfileFacetTab.Models
 {
   public class EpExpressDemo : EpExpressModel
   {

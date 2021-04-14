@@ -17,17 +17,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CollectionModel.Builder", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{24405DB2-AE2D-4D75-9FDE-58072B1390BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONModelGenerator", "src\Feature\JSONModelGenerator\code\JSONModelGenerator.csproj", "{736E87BD-03A8-45A1-B7FD-F457FAB0F118}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.JSONModelGenerator", "src\Feature\JSONModelGenerator\code\LearnEXM.Feature.JSONModelGenerator.csproj", "{736E87BD-03A8-45A1-B7FD-F457FAB0F118}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WhatWeKnowAboutYou", "WhatWeKnowAboutYou", "{075DED5D-8B23-4BC5-A1C2-7A656B0C5794}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsoleTools", "ConsoleTools", "{A1AD2291-7237-4AE6-A4AD-3A2BC590AE90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatWeKnowAboutYou", "src\Feature\WhatWeKnowAboutYou\code\WhatWeKnowAboutYou.csproj", "{C87503BC-F5F8-430C-B228-B444FBD37208}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.WhatWeKnowAboutYou", "src\Feature\WhatWeKnowAboutYou\code\LearnEXM.Feature.WhatWeKnowAboutYou.csproj", "{C87503BC-F5F8-430C-B228-B444FBD37208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTools", "src\Foundation\ConsoleTools\code\ConsoleTools.csproj", "{E818CB10-9D62-4F12-9A02-329E9EA6C1DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Foundation.ConsoleTools", "src\Foundation\ConsoleTools\code\LearnEXM.Foundation.ConsoleTools.csproj", "{E818CB10-9D62-4F12-9A02-329E9EA6C1DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionModel.Builder", "src\Foundation\CollectionModel.Builder\code\CollectionModel.Builder.csproj", "{44D6B78D-7D28-4ED7-A32C-78AA53040C7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Foundation.CollectionModel.Builder", "src\Foundation\CollectionModel.Builder\code\LearnEXM.Foundation.CollectionModel.Builder.csproj", "{44D6B78D-7D28-4ED7-A32C-78AA53040C7D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XConnect", "XConnect", "{B0F2FC0C-9C26-4EA2-9368-4097C5F56C46}"
 EndProject
@@ -47,41 +47,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		XConnectDeploy.md = XConnectDeploy.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionAndSegmentationQueries", "src\Feature\ConditionAndSegmentationQueries\code\ConditionAndSegmentationQueries.csproj", "{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.ConditionAndSegmentationQueries", "src\Feature\ConditionAndSegmentationQueries\code\LearnEXM.Feature.ConditionAndSegmentationQueries.csproj", "{26A62704-7B6E-464D-A4E4-D32A0A7FFB4B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MockContactGenerator", "MockContactGenerator", "{751E0B65-7098-42BF-9D73-29CE1BE54749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockContactGenerator", "src\Feature\MockContactGenerator\code\MockContactGenerator.csproj", "{D2A31477-28F1-4EF6-B73D-7F015A7C920A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.MockContactGenerator", "src\Feature\MockContactGenerator\code\LearnEXM.Feature.MockContactGenerator.csproj", "{D2A31477-28F1-4EF6-B73D-7F015A7C920A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Marketing", "Marketing", "{5DA71C02-F787-4D7F-BF9B-D02039B7DAFF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Marketing.Email", "Marketing.Email", "{D961E89B-6F3C-47BA-B231-AAF852323B89}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Marketing.B", "Marketing.B", "{9E7B48FD-B221-4973-91A3-829732277421}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Marketing", "Marketing", "{9E7B48FD-B221-4973-91A3-829732277421}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FacetProfileTab", "FacetProfileTab", "{CB7B2E93-7480-4E47-A32F-8D87A788D104}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebsiteRoot", "WebsiteRoot", "{9A7A870E-B3F3-4749-9222-C254953C2A48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Website", "src\Website\Website\code\Website.csproj", "{28384384-E216-48F6-9FB1-3C9DEED54415}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Website", "src\Website\Website\code\LearnEXM.Website.csproj", "{28384384-E216-48F6-9FB1-3C9DEED54415}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Documentation", "src\Project\Sitecore.Documentation\code\Sitecore.Documentation.csproj", "{7ED73699-2EE6-4318-A7BE-436D6C64C95E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Project.Sitecore.Documentation", "src\Project\Sitecore.Documentation\code\LearnEXM.Project.Sitecore.Documentation.csproj", "{7ED73699-2EE6-4318-A7BE-436D6C64C95E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SitecoreCinema", "SitecoreCinema", "{BC5BE2A9-616F-4232-BAC4-DF0236997D48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCinema", "src\Project\SitecoreCinema\code\SitecoreCinema.csproj", "{BCB7C4D8-8788-4830-B98F-F37232D6A96D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Project.SitecoreCinema", "src\Project\SitecoreCinema\code\LearnEXM.Project.SitecoreCinema.csproj", "{BCB7C4D8-8788-4830-B98F-F37232D6A96D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExperienceProfileFacetTab", "src\Feature\ExperienceProfileFacetTab\code\ExperienceProfileFacetTab.csproj", "{7C86A457-C221-490F-B926-057AF2ADEA10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.ExperienceProfileFacetTab", "src\Feature\ExperienceProfileFacetTab\code\LearnEXM.Feature.ExperienceProfileFacetTab.csproj", "{7C86A457-C221-490F-B926-057AF2ADEA10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateContactDetailsSubmitAction", "src\Foundation\UpdateContactDetailsSubmitAction\code\UpdateContactDetailsSubmitAction.csproj", "{23D7B1FF-C5F3-4340-B24A-658D5C2ED667}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Foundation.UpdateContactDetailsSubmitAction", "src\Foundation\UpdateContactDetailsSubmitAction\code\LearnEXM.Foundation.UpdateContactDetailsSubmitAction.csproj", "{23D7B1FF-C5F3-4340-B24A-658D5C2ED667}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console.Journey", "Console.Journey", "{67452E3C-04EF-4E6C-AE58-28A625F0C94F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketing.Email", "src\Feature\Marketing.Email\code\Marketing.Email.csproj", "{234CBF14-7322-41AD-B9FD-AE4CAED9F760}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.Marketing.Email", "src\Feature\Marketing.Email\code\LearnEXM.Feature.Marketing.Email.csproj", "{234CBF14-7322-41AD-B9FD-AE4CAED9F760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketing.B", "src\Feature\Marketing.Base\code\Marketing.B.csproj", "{735F4DED-0166-41DB-807D-84AEEE068704}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Foundation.Marketing", "src\Foundation\Marketing\code\LearnEXM.Foundation.Marketing.csproj", "{E050FB26-1994-4F4F-B471-0AE360589A1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketing", "src\Foundation\Marketing\code\Marketing.csproj", "{E050FB26-1994-4F4F-B471-0AE360589A1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.Marketing", "src\Feature\Marketing\code\LearnEXM.Feature.Marketing.csproj", "{735F4DED-0166-41DB-807D-84AEEE068704}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,14 +137,14 @@ Global
 		{234CBF14-7322-41AD-B9FD-AE4CAED9F760}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{234CBF14-7322-41AD-B9FD-AE4CAED9F760}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{234CBF14-7322-41AD-B9FD-AE4CAED9F760}.Release|Any CPU.Build.0 = Release|Any CPU
-		{735F4DED-0166-41DB-807D-84AEEE068704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{735F4DED-0166-41DB-807D-84AEEE068704}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{735F4DED-0166-41DB-807D-84AEEE068704}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{735F4DED-0166-41DB-807D-84AEEE068704}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E050FB26-1994-4F4F-B471-0AE360589A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E050FB26-1994-4F4F-B471-0AE360589A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E050FB26-1994-4F4F-B471-0AE360589A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E050FB26-1994-4F4F-B471-0AE360589A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735F4DED-0166-41DB-807D-84AEEE068704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735F4DED-0166-41DB-807D-84AEEE068704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735F4DED-0166-41DB-807D-84AEEE068704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735F4DED-0166-41DB-807D-84AEEE068704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,8 +177,8 @@ Global
 		{23D7B1FF-C5F3-4340-B24A-658D5C2ED667} = {0801768B-32BC-4EB1-A979-2DA68BF46912}
 		{67452E3C-04EF-4E6C-AE58-28A625F0C94F} = {71E11302-DE97-4BF7-A189-CE882CBD2311}
 		{234CBF14-7322-41AD-B9FD-AE4CAED9F760} = {D961E89B-6F3C-47BA-B231-AAF852323B89}
-		{735F4DED-0166-41DB-807D-84AEEE068704} = {9E7B48FD-B221-4973-91A3-829732277421}
 		{E050FB26-1994-4F4F-B471-0AE360589A1F} = {5DA71C02-F787-4D7F-BF9B-D02039B7DAFF}
+		{735F4DED-0166-41DB-807D-84AEEE068704} = {9E7B48FD-B221-4973-91A3-829732277421}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}

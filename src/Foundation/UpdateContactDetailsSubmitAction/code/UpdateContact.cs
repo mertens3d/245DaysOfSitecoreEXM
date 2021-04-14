@@ -1,27 +1,24 @@
-﻿using Sitecore.ExperienceForms.Models;
-using Sitecore.ExperienceForms.Processing.Actions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Sitecore.Analytics;
+﻿using Sitecore.Analytics;
 using Sitecore.Diagnostics;
+using Sitecore.ExperienceForms.Models;
 using Sitecore.ExperienceForms.Processing;
+using Sitecore.ExperienceForms.Processing.Actions;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Configuration;
 using Sitecore.XConnect.Collection.Model;
-using Sitecore.Analytics.Tracking;
-using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using XConnectContact = Sitecore.XConnect.Contact;
 
-namespace UpdateContactDetailsSubmitAction
+namespace LearnEXM.Foundation.UpdateContactDetailsSubmitAction
 {
   public class UpdateContact : SubmitActionBase<UpdateContactData>
   {
     public UpdateContact(ISubmitActionData submitActionData) : base(submitActionData)
     {
     }
-
 
     protected virtual ITracker CurrentTracker => Tracker.Current;
 
@@ -49,7 +46,7 @@ namespace UpdateContactDetailsSubmitAction
           CurrentTracker.Session.IdentifyAs(source, id);
           var trackerIdentifier = new IdentifiedContactReference(source, id);
 
-          var expandOptions = new ContactExpandOptions(CollectionModel.FacetKeys.PersonalInformation,
+          var expandOptions = new ContactExpandOptions(PersonalInformation.DefaultFacetKey,
             CollectionModel.FacetKeys.EmailAddressList);
 
           XConnectContact contact = client.Get(trackerIdentifier, expandOptions);
@@ -62,38 +59,36 @@ namespace UpdateContactDetailsSubmitAction
         }
         catch (Exception ex)
         {
-
           Logger.LogError(ex.Message, ex);
           return false;
         }
       }
-
     }
 
     private static void SetEmail(string email, XConnectContact contact, IXdbContext client)
     {
       if (string.IsNullOrEmpty(email))
       {
-           return;
-
+        return;
       }
       EmailAddressList emailFacet = contact.Emails();
-      if(emailFacet == null)
+      if (emailFacet == null)
       {
         emailFacet = new EmailAddressList(new EmailAddress(email, false), "Preferred");
       }
       else
       {
-        if(emailFacet.PreferredEmail?.SmtpAddress == email)
+        if (emailFacet.PreferredEmail?.SmtpAddress == email)
         {
           return;
         }
 
         emailFacet.PreferredEmail = new EmailAddress(email, false);
       }
-      
+
       client.SetEmails(contact, emailFacet);
     }
+
     public static string GetValue(object field)
     {
       return field?.GetType().GetProperty("Value")?.GetValue(field, null)?.ToString() ?? string.Empty;
@@ -101,24 +96,24 @@ namespace UpdateContactDetailsSubmitAction
 
     private static void SetPersonalInformation(string firsName, string lastName, XConnectContact contact, IXdbContext client)
     {
-      if(string.IsNullOrEmpty(firsName) && string.IsNullOrEmpty(lastName) ){
+      if (string.IsNullOrEmpty(firsName) && string.IsNullOrEmpty(lastName))
+      {
         return;
       }
 
       PersonalInformation personalInfoFacet = contact.Personal() ?? new PersonalInformation();
 
-      if(personalInfoFacet.FirstName == firsName && personalInfoFacet.LastName == lastName)
+      if (personalInfoFacet.FirstName == firsName && personalInfoFacet.LastName == lastName)
       {
         return;
-
       }
 
       personalInfoFacet.FirstName = firsName;
       personalInfoFacet.LastName = lastName;
 
       client.SetPersonal(contact, personalInfoFacet);
-
     }
+
     protected virtual IXdbContext CreateClient()
     {
       return SitecoreXConnectClientConfiguration.GetClient();

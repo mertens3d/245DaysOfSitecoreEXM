@@ -3,11 +3,8 @@ using System.Collections.Generic;
 
 namespace LearnEXM.Feature.MockContactGenerator
 {
-
-
   public class MockContactGenerator
   {
-    
     public MockContactGenerator()
     {
       random = new Random();
@@ -60,7 +57,7 @@ namespace LearnEXM.Feature.MockContactGenerator
 
     private string RandomGender()
     {
-     return random.Next(2) == 0? "Male":"Female";
+      return random.Next(2) == 0 ? "Male" : "Female";
     }
 
     private List<string> Shuffle(List<string> names)

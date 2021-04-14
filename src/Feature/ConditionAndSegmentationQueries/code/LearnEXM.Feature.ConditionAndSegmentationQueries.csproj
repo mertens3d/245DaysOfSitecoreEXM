@@ -247,9 +247,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\CollectionModel.Builder.csproj">
+    <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\LearnEXM.Foundation.CollectionModel.Builder.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
-      <Name>CollectionModel.Builder</Name>
+      <Name>LearnEXM.Foundation.CollectionModel.Builder</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

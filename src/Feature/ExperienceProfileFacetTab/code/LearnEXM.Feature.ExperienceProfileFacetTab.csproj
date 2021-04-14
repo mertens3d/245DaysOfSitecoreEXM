@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExperienceProfileFacetTab</RootNamespace>
-    <AssemblyName>ExperienceProfileFacetTab</AssemblyName>
+    <RootNamespace>LearnEXM.Feature.ExperienceProfileFacetTab</RootNamespace>
+    <AssemblyName>LearnEXM.Feature.ExperienceProfileFacetTab</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -121,11 +121,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\EpExpressTab.config" />
+    <Content Include="App_Config\Include\Feature\LearnEXM.Feature.EpExpressTab.config" />
+    <Content Include="Views\Feature\ExperienceProfileFacetTab\EpExpressDemo.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\EpExpressDemo.cs" />
+    <Compile Include="Models\EpExpressDemoB.cs" />
+    <Compile Include="Models\EpExpressDemoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +146,13 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\Marketing\code\Marketing.csproj">
+    <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\LearnEXM.Foundation.CollectionModel.Builder.csproj">
+      <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
+      <Name>LearnEXM.Foundation.CollectionModel.Builder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\Marketing\code\LearnEXM.Foundation.Marketing.csproj">
       <Project>{e050fb26-1994-4f4f-b471-0ae360589a1f}</Project>
-      <Name>Marketing</Name>
+      <Name>LearnEXM.Foundation.Marketing</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

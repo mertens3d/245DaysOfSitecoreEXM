@@ -1,15 +1,14 @@
-﻿using LearnEXM.Feature.MockContactGenerator;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
-namespace MockContactGenerator
+namespace LearnEXM.Feature.MockContactGenerator
 {
   internal class Program
   {
     private static void Main(string[] args)
     {
       bool keepGoing = true;
-      var candidateInfoGenerator = new LearnEXM.Feature.MockContactGenerator.MockContactGenerator();
+      var candidateInfoGenerator = new MockContactGenerator();
       var contactCreator = new ContactCreator();
 
       while (keepGoing)

@@ -5,10 +5,10 @@
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
   </PropertyGroup>
   
-  <!-- <ItemGroup> -->
-    <!-- <ProjectReference Include="..\..\..\Foundation\*\code\*.csproj" /> -->
-    <!-- <ProjectReference Include="..\..\..\Feature\*\code\*.csproj" /> -->
-    <!-- <ProjectReference Include="..\..\..\Project\*\code\*.csproj" /> -->
-  <!-- </ItemGroup> -->
+   <ItemGroup> 
+     <ProjectReference Include="..\..\..\Foundation\*\code\*.csproj" /> 
+     <ProjectReference Include="..\..\..\Feature\*\code\*.csproj" /> 
+     <ProjectReference Include="..\..\..\Project\*\code\*.csproj" /> 
+   </ItemGroup> 
 
 </Project>

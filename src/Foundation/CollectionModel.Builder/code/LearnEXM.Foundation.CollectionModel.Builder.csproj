@@ -417,16 +417,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ReadMe.txt" />
-    <Content Include="{wwwroot}\{XConnect Instance}\App_data\jobs\continuous\AutomationEngine\AppData\config\sitecore\sc.CinemaDetailsCollection.CustomModel.xml" />
+    <None Include="{wwwroot}\{XConnect Instance}\App_data\jobs\continuous\AutomationEngine\AppData\config\sitecore\sc.CinemaDetailsCollection.CustomModel.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="{wwwroot}\{Sitecore Instance}\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Marketing\code\Marketing.csproj">
+    <ProjectReference Include="..\..\Marketing\code\LearnEXM.Foundation.Marketing.csproj">
       <Project>{e050fb26-1994-4f4f-b471-0ae360589a1f}</Project>
-      <Name>Marketing</Name>
+      <Name>LearnEXM.Foundation.Marketing</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
