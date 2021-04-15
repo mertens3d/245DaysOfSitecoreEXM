@@ -86,9 +86,10 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
             var AnyIdentifier = Tracker.Current.Contact.Identifiers.FirstOrDefault();
             var identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
             var expandOptions = new ExpandOptions(new[]{
+              CinemaInfo.DefaultFacetKey,
+              CinemaVisitorInfo.DefaultFacetKey,
+              EmailAddressList.DefaultFacetKey,
               PersonalInformation.DefaultFacetKey,
-              //EmailAddressList.DefaultFacetKey,
-              //CinemaInfo.DefaultFacetKey
             });
 
             Contact XConnectContact = xConnectClient.Get(identifiedReference, expandOptions);
@@ -97,16 +98,39 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
 
             if (XConnectFacets != null)
             {
-              toReturn.PersonalInformationDetails = XConnectFacets.Facets[PersonalInformation.DefaultFacetKey] as PersonalInformation;
-              //toReturn.EmailAddressList = XConnectFacets.Facets[EmailAddressList.DefaultFacetKey] as EmailAddressList;
-              //toReturn.VisitorInfoMovie = XConnectFacets.Facets[CinemaVisitorInfo.DefaultFacetKey] as CinemaVisitorInfo;
+              if (XConnectFacets.Facets.ContainsKey(PersonalInformation.DefaultFacetKey))
+              {
+                toReturn.PersonalInformationDetails = XConnectFacets.Facets[PersonalInformation.DefaultFacetKey] as PersonalInformation;
+              }
+              else
+              {
+                Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "facet key not present: " + PersonalInformation.DefaultFacetKey, this);
+              }
+
+              if (XConnectFacets.Facets.ContainsKey(EmailAddressList.DefaultFacetKey))
+              {
+                toReturn.EmailAddressList = XConnectFacets.Facets[EmailAddressList.DefaultFacetKey] as EmailAddressList;
+              }
+              else
+              {
+                Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "facet key not present: " + EmailAddressList.DefaultFacetKey, this);
+              }
+
+              if (XConnectFacets.Facets.ContainsKey(CinemaVisitorInfo.DefaultFacetKey))
+              {
+                toReturn.VisitorInfoMovie = XConnectFacets.Facets[CinemaVisitorInfo.DefaultFacetKey] as CinemaVisitorInfo;
+              }
+              else
+              {
+                Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "facet key not present: " + CinemaVisitorInfo.DefaultFacetKey, this);
+              }
             }
 
             //knownData.ContactId = trackingContact.Id;
             //knownData.IsKnown = trackingContact.IsKnown;
             //knownData.KnownInteractions = GetKnownInteractions(trackingContact);
 
-            //knownData.Identifiers = trackingContact.Identifiers.ToList();
+            toReturn.Identifiers = Tracker.Current.Contact.Identifiers.ToList();
 
             //knownData.IsKnown = trackingContact.IsKnown;
           }

@@ -17,7 +17,7 @@ namespace LearnEXM.Feature.ExperienceProfileFacetTab.Models
       return new EpExpressDemoModel
       {
         ContactId = contact.Id.ToString(),
-        VisitCount = (int)((dynamic)contact).VisitCount
+        //VisitCount = (int)((dynamic)contact).VisitCount
       };
     }
 

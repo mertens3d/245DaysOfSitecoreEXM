@@ -393,15 +393,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CollectionModels\SitecoreInfoModelBuilder.cs" />
+    <Compile Include="Models\CollectionModels\CinemaInfoCollectionModel.cs" />
     <Compile Include="Models\Facets\Marketing.cs" />
-    <Compile Include="Models\CollectionModels\MarketingModelBuilder.cs" />
+    <Compile Include="Models\CollectionModels\MarketingCollectionModel.cs" />
     <Compile Include="Models\Facets\CinemaDetails.cs" />
     <Compile Include="Models\Facets\CinemaVisitorInfo.cs" />
-    <Compile Include="Models\CollectionModels\CinemaDetailsModelBuilder.cs" />
+    <Compile Include="Models\CollectionModels\CinemaDetailsCollectionModel.cs" />
     <Compile Include="Models\Outcomes\BuyConcessionOutcome.cs" />
     <Compile Include="Models\Facets\CinemaInfo.cs" />
-    <Compile Include="Models\CollectionModels\SitecoreCinemaModelBuilder.cs" />
+    <Compile Include="Models\CollectionModels\SitecoreCinemaCollectionModel.cs" />
     <Compile Include="Models\Events\UseSelfServiceEvent.cs" />
     <Compile Include="Models\Outcomes\WatchMovieOutcome.cs" />
     <Compile Include="CollectionConst.cs" />

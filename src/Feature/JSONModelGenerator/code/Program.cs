@@ -11,9 +11,10 @@ namespace LearnEXM.Feature.JSONModelGenerator
   {
     private static void Main(string[] args)
     {
-      GenericGenerator(SitecoreCinemaModelBuilder.Model, CollectionConst.SitecoreCinema.CollectionModelNames.SitecoreCinemaModel);
-      GenericGenerator(CinemaDetailsModelBuilder.Model, CollectionConst.SitecoreCinema.CollectionModelNames.CinemaDetailsCollection);
-      GenericGenerator(MarketingModelBuilder.Model, CollectionConst.SitecoreCinema.CollectionModelNames.MarketingModelBuilder);
+      GenericGenerator(SitecoreCinemaCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.SitecoreCinemaCollectionModel);
+      GenericGenerator(CinemaDetailsCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.CinemaDetailsCollectionModel);
+      GenericGenerator(MarketingCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.MarketingCollectionModel);
+      GenericGenerator(CinemaInfoCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.CinemaInfoCollectionModel);
     }
 
     private static DirectoryInfo GetAutoBuildFolder()
@@ -43,7 +44,9 @@ namespace LearnEXM.Feature.JSONModelGenerator
       {
         var serializedModel = Sitecore.XConnect.Serialization.XdbModelWriter.Serialize(model);
 
-        var jsonFileName = targetDirectory.FullName + "\\" + model.FullName + ".json";
+        var jsonFilePrefix = "";// do not change the file name per https://doc.sitecore.com/developers/93/sitecore-experience-platform/en/deploy-a-custom-model.html "LearnEXM.";
+
+        var jsonFileName = targetDirectory.FullName + "\\" + jsonFilePrefix +  model.FullName + ".json";
 
         File.WriteAllText(jsonFileName, serializedModel);
 

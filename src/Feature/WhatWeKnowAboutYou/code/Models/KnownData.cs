@@ -9,7 +9,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
   public class KnownData
   {
     public Guid? ContactId { get; set; }
-    public List<ContactIdentifier> Identifiers { get; set; }
+    public List<Sitecore.Analytics.Model.Entities.ContactIdentifier> Identifiers { get; set; }
     public List<InteractionProxy> KnownInteractions { get; set; }
     public bool IsKnown { get; set; }
 

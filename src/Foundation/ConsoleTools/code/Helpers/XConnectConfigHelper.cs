@@ -16,7 +16,7 @@ namespace LearnEXM.Foundation.ConsoleTools.Helpers
       XConnectClientConfiguration toReturn;
 
       var cfgGenerator = new CFGGenerator();
-      toReturn = cfgGenerator.GetCFG(SitecoreCinemaModelBuilder.Model);
+      toReturn = cfgGenerator.GetCFG(SitecoreCinemaCollectionModel.Model);
       var initializer = new XConnectInitializer();
       if (!initializer.Errors.Any())
       {

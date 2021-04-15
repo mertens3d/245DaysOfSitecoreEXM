@@ -963,8 +963,8 @@
     <Content Include="Views\SitecoreCinema\LobbyOptions.cshtml" />
     <Content Include="Views\SitecoreCinema\WatchMovie.cshtml" />
     <Content Include="Views\SitecoreCinema\RegisterThankYou.cshtml" />
-    <Content Include="App_Config\Sitecore\XConnect.Client.Configuration\Sitecore.XConnect.Client.SitecoreCinemaModel.config" />
-    <Content Include="App_Config\Sitecore\XConnect.Client.Configuration\Sitecore.XConnect.Client.CinemaDetailsCollection.config" />
+    <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.CinemaInfoCollectionModel.config" />
+    <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.CinemaDetailsCollectionModel.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config.disabled" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.DeployedContentEditorWarnings.config.disabled" />
@@ -985,6 +985,8 @@
     <Content Include="App_Config\Include\SitecoreCinema\Unicorn.Configs.SitecoreCinema.config" />
     <None Include="App_Config\Include\SitecoreCinema\Unicorn.UI.IdentityServer.SitecoreCinema.config" />
     <Content Include="App_Config\Include\SitecoreCinema\zDeveloper.config" />
+    <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.SitecoreCinemaCollectionModel.config" />
+    <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.MarketingCollectionModel.config" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

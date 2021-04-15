@@ -5,9 +5,9 @@
         <XConnect.Client.Configuration>
           <Options>
             <Models>
-              <CinemaDetailsCollectionModel>
-                <TypeName>LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels.CinemaDetailsCollectionModel, LearnEXM.Foundation.CollectionModel.Builder</TypeName>
-              </CinemaDetailsCollectionModel>
+              <CinemaInfoCollectionModel>
+                <TypeName>LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels.CinemaInfoCollectionModel, LearnEXM.Foundation.CollectionModel.Builder</TypeName>
+              </CinemaInfoCollectionModel>
             </Models>
           </Options>
         </XConnect.Client.Configuration>

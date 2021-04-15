@@ -78,8 +78,6 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       var preferredKey = "Work";
       var preferredEmail = new EmailAddress(EmailAddress, true);
 
-      EmailAddressList emailAddressListFacet = XConnectFacets.Facets[EmailAddressList.DefaultFacetKey] as EmailAddressList;
-
       var emailFacet = new EmailAddressList(preferredEmail, preferredKey)
       {
         Others = new System.Collections.Generic.Dictionary<string, EmailAddress>()

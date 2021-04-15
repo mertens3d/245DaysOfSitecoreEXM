@@ -42,16 +42,17 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
     public void ExecuteInteraction()
     {
-
       using (Client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
       {
         try
         {
           var identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
           var expandOptions = new ExpandOptions(new[]{
-              PersonalInformation.DefaultFacetKey,
+            CinemaInfo.DefaultFacetKey,
+              CinemaVisitorInfo.DefaultFacetKey,
               EmailAddressList.DefaultFacetKey,
-              CinemaInfo.DefaultFacetKey});
+              PersonalInformation.DefaultFacetKey,
+          });
 
           XConnectContact = Client.Get(identifiedReference, expandOptions);
 
@@ -66,7 +67,6 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
           Client.Submit();
           ResetSession();
-
         }
         catch (XdbExecutionException ex)
         {
@@ -74,12 +74,14 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         }
       }
     }
+
     private void ResetSession()
     {
       Manager = Sitecore.Configuration.Factory.CreateObject("tracking/contactManager", true) as Sitecore.Analytics.Tracking.ContactManager;
       Manager.RemoveFromSession(Sitecore.Analytics.Tracker.Current.Contact.ContactId);
       Sitecore.Analytics.Tracker.Current.Session.Contact = Manager.LoadContact(Sitecore.Analytics.Tracker.Current.Contact.ContactId);
     }
+
     public abstract void InteractionBody();
 
     //protected IdentifiedContactReference IdentifiedContactReference { get; set; }

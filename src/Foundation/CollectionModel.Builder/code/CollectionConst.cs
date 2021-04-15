@@ -33,10 +33,10 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
 
       public struct CollectionModelNames
       {
-        public const string CinemaInfo = "CinemaInfo";
-        public const string CinemaDetailsCollection = "CinemaDetailsCollection";
-        public const string SitecoreCinemaModel = "SitecoreCinemaModel";
-        public const string MarketingModelBuilder = "MarketingModelBuilder";
+        public const string CinemaDetailsCollectionModel = "CinemaDetailsCollectionModel";
+        public const string CinemaInfoCollectionModel = "CinemaInfoCollectionModel";
+        public const string MarketingCollectionModel = "MarketingCollectionModel";
+        public const string SitecoreCinemaCollectionModel = "SitecoreCinemaCollectionModel";
       }
       public struct ConcessionPrices
       {

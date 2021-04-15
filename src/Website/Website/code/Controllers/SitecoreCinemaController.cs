@@ -120,7 +120,8 @@ namespace LearnEXM.Project.Website.Controllers
       //}
       //).Wait();
 
-      KnownData knownDataViaTracker = null;// knownDataHelper.GetKnownDataViaTracker(trackingContact);
+      //KnownData knownDataViaTracker = null;// knownDataHelper.GetKnownDataViaTracker(trackingContact);
+      KnownData knownDataViaTracker = knownDataHelper.GetKnownDataViaTracker(trackingContact);
 
       //Tracker.Current.Contact // <--- Use this
       // use other Contact outside of a web page.

@@ -1,5 +1,5 @@
 {
-  "Name": "SitecoreCinemaModel",
+  "Name": "SitecoreCinemaCollectionModel",
   "Version": "1.1",
   "References": [
     {
@@ -24,16 +24,6 @@
           "Type": [
             "Guid"
           ]
-        }
-      }
-    },
-    "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaInfo": {
-      "Type": "Facet",
-      "BaseType": "Sitecore.XConnect.Facet",
-      "ClrType": "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaInfo, LearnEXM.Foundation.CollectionModel.Builder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "CinimaId": {
-          "Type": "Int32"
         }
       }
     },
@@ -69,11 +59,6 @@
       "Target": "Contact",
       "Name": "CinemaVisitorInfo",
       "Type": "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaVisitorInfo"
-    },
-    {
-      "Target": "Interaction",
-      "Name": "CinemaInfo",
-      "Type": "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.CinemaInfo"
     }
   ]
 }
