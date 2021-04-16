@@ -1,0 +1,24 @@
+﻿---
+ID: "5d3e6704-362b-4aa4-92d6-0d6354ccd915"
+Parent: "c50d639c-9302-4973-817d-a92c917a4657"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/MovieTicket/Movie/Movie Name
+DB: master
+SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{F25B0FE8-819B-4989-BA01-8F90ABACB6D6}"
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Treelist
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210223T191449Z

@@ -42,32 +42,6 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
       return toReturn;
     }
 
-    public KnownData GetKnownDataFromXConnectContact(Sitecore.Analytics.Tracking.Contact trackingContact)
-    {
-      var knownData = new KnownData();
-      if (trackingContact != null)
-      {
-        XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
-
-        knownData.VisitorInfoMovie = XConnectFacets.Facets[CinemaVisitorInfo.DefaultFacetKey] as CinemaVisitorInfo;
-        knownData.PersonalInformationDetails = XConnectFacets.Facets[PersonalInformation.DefaultFacetKey] as PersonalInformation;
-        knownData.EmailAddressList = XConnectFacets.Facets[EmailAddressList.DefaultFacetKey] as EmailAddressList;
-
-        //knownData.ContactId = trackingContact.Id;
-        //knownData.IsKnown = trackingContact.IsKnown;
-        //knownData.KnownInteractions = GetKnownInteractions(trackingContact);
-
-        //knownData.Identifiers = trackingContact.Identifiers.ToList();
-
-        //knownData.IsKnown = trackingContact.IsKnown;
-      }
-      else
-      {
-        Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "Contact was null", this);
-      }
-      return knownData;
-    }
-
     public KnownData GetKnownDataViaTracker(Sitecore.Analytics.Tracking.Contact trackingContact)
     {
       KnownData toReturn = null;
@@ -90,6 +64,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
               CinemaVisitorInfo.DefaultFacetKey,
               EmailAddressList.DefaultFacetKey,
               PersonalInformation.DefaultFacetKey,
+              CinemaDetails.DefaultFacetKey,
             });
 
             Contact XConnectContact = xConnectClient.Get(identifiedReference, expandOptions);
@@ -98,32 +73,13 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
 
             if (XConnectFacets != null)
             {
-              if (XConnectFacets.Facets.ContainsKey(PersonalInformation.DefaultFacetKey))
-              {
-                toReturn.PersonalInformationDetails = XConnectFacets.Facets[PersonalInformation.DefaultFacetKey] as PersonalInformation;
-              }
-              else
-              {
-                Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "facet key not present: " + PersonalInformation.DefaultFacetKey, this);
-              }
+              var facetHelper = new FacetHelper(XConnectFacets);
 
-              if (XConnectFacets.Facets.ContainsKey(EmailAddressList.DefaultFacetKey))
-              {
-                toReturn.EmailAddressList = XConnectFacets.Facets[EmailAddressList.DefaultFacetKey] as EmailAddressList;
-              }
-              else
-              {
-                Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "facet key not present: " + EmailAddressList.DefaultFacetKey, this);
-              }
-
-              if (XConnectFacets.Facets.ContainsKey(CinemaVisitorInfo.DefaultFacetKey))
-              {
-                toReturn.VisitorInfoMovie = XConnectFacets.Facets[CinemaVisitorInfo.DefaultFacetKey] as CinemaVisitorInfo;
-              }
-              else
-              {
-                Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "facet key not present: " + CinemaVisitorInfo.DefaultFacetKey, this);
-              }
+              toReturn.FacetData.CinemaDetails = facetHelper.SafeGetFacet<CinemaDetails>(CinemaDetails.DefaultFacetKey);
+              toReturn.FacetData.CinemaInfo = facetHelper.SafeGetFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
+              toReturn.FacetData.CinemaVisitorInfo = facetHelper.SafeGetFacet<CinemaVisitorInfo>(CinemaVisitorInfo.DefaultFacetKey);
+              toReturn.FacetData.EmailAddressList = facetHelper.SafeGetFacet<EmailAddressList>(EmailAddressList.DefaultFacetKey);
+              toReturn.FacetData.PersonalInformationDetails = facetHelper.SafeGetFacet<PersonalInformation>(PersonalInformation.DefaultFacetKey);
             }
 
             //knownData.ContactId = trackingContact.Id;

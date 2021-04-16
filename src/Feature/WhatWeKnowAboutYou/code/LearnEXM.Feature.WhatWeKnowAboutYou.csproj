@@ -393,9 +393,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\FacetHelper.cs" />
     <Compile Include="Helpers\KnownDataHelper.cs" />
     <Compile Include="Models\InteractionProxy.cs" />
     <Compile Include="Models\KnownData.cs" />
+    <Compile Include="Models\KnownDataFacets.cs" />
     <Compile Include="Models\KnownDataTracker.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

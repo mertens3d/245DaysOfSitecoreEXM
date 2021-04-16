@@ -122,16 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Feature\LearnEXM.Feature.EpExpressTab.config" />
-    <Content Include="Views\Feature\ExperienceProfileFacetTab\EpExpressDemo.cshtml" />
     <Content Include="Views\Feature\ExperienceProfileFacetTab\CinemaVisitorInfo.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\EpExpressCinemaVisitorInfoModel.cs" />
-    <Compile Include="Models\EpExpressDemo.cs" />
     <Compile Include="Models\EpExpress.CinemaVisitorInfo.cs" />
-    <Compile Include="Models\EpExpressDemoB.cs" />
-    <Compile Include="Models\EpExpressDemoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

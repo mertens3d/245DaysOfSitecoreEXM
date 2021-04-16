@@ -1,0 +1,13 @@
+﻿@using LearnEXM.Project.SitecoreCinema.Model;
+@model LearnEXM.Project.SitecoreCinema.Model.LobbyOptionsViewModel
+<h2>Lobby Options</h2>
+
+<br />
+@if (Model != null)
+{
+
+  <a href="@(WebConst.Links.SitecoreCinema.BuyConcessions )">Buy Concessions</a>
+  <br />
+  <a href="@(WebConst.Links.SitecoreCinema.WatchMovie)">Watch Movie</a>
+}
+<br />

@@ -1,0 +1,44 @@
+﻿@using LearnEXM.Project.SitecoreCinema.Model;
+@model  LearnEXM.Project.SitecoreCinema.Model.WhatWeKnowAboutYouViewModel
+
+<aside>
+  <h3>What we know about you</h3>
+  <h2>Tracker</h2>
+  @if (Model?.KnownDataTracker != null)
+  {
+    <p><strong>Is new:</strong> @Model.KnownDataTracker.IsNew.ToString()</p>
+  }
+
+  <h2>XConnect</h2>
+
+  @if (Model?.KnownDataXConnect != null)
+  {
+    <p><strong>Contact Id:</strong> @Model.KnownDataXConnect.ContactIdAsString()</p>
+    <p><strong>User Id</strong>: @Model.KnownDataXConnect.UserId</p>
+    <p><strong>Is Known</strong>: @Model.KnownDataXConnect.IsKnown</p>
+    <p><strong>Identifiers:</strong></p>
+    <ul>
+      @if (Model.KnownDataXConnect.Identifiers != null && Model.KnownDataXConnect.Identifiers.Any())
+      {
+        foreach (var identifierPair in Model.KnownDataXConnect.Identifiers)
+        {
+          <li>
+            @identifierPair.Identifier - @identifierPair.Source
+          </li>
+        }
+      }
+      else
+      {
+        <li>{none}</li>
+      }
+    </ul>
+
+    @Html.Partial(WebConst.Views.WhatWeKnowAboutYou.facets, Model)
+    @Html.Partial(WebConst.Views.WhatWeKnowAboutYou.Interactions, Model)
+
+  }
+  else
+  {
+    <h3>Null Model</h3>
+  }
+</aside>

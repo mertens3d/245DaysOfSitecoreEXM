@@ -1,0 +1,14 @@
+﻿---
+ID: "eb49c4eb-08be-4173-8b40-3a0b92b0462c"
+Parent: "2f909bc4-eda4-43c9-8a6d-3ac7f9c64c9c"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/Movie/Movie
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210304T025730Z

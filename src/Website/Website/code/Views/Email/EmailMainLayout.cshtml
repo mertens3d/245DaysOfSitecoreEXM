@@ -1,9 +1,10 @@
 ﻿@using LearnEXMProject.Models.Email;
 @using Sitecore.Mvc.Presentation;
+@using LearnEXM.Project.Website.Models;
 @using Sitecore.Mvc;
 
 @{
-  Layout = Const.EXM.Views.EmailBaseLayout;
+  Layout = EmailConst.EXM.Views.EmailBaseLayout;
 }
 @model RenderingModel
 @{
@@ -14,8 +15,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@Html.Sitecore().Field(Const.EXM.Fields.PageTitle, new { DisableWebEdit = true })</title>
-  @Html.Sitecore().Placeholder(Const.EXM.PlaceHolders.NewsLetterHead)
+  <title>@Html.Sitecore().Field(EmailConst.EXM.Fields.PageTitle, new { DisableWebEdit = true })</title>
+  @Html.Sitecore().Placeholder(EmailConst.EXM.PlaceHolders.NewsLetterHead)
   <style type="text/css">
     #outlook a {
       padding: 0;
@@ -40,11 +41,11 @@
     }
   </style>
 
-  <table id="backgroundTable" @Html.Raw(Const.EXM.HTML.MinTableAttributes)>
+  <table id="backgroundTable" @Html.Raw(EmailConst.EXM.HTML.MinTableAttributes)>
     <tr>
 
       <td>
-        <table width="832" align="center" @Html.Raw(Const.EXM.HTML.MinTableAttributes)>
+        <table width="832" align="center" @Html.Raw(EmailConst.EXM.HTML.MinTableAttributes)>
           <tr>
             <td colspan="3" align="center">
               <br />
@@ -53,33 +54,33 @@
           </tr>
           <tr>
             <td colspan="3" align="center">
-              @Html.Sitecore().Placeholder(Const.EXM.PlaceHolders.TopImage)
+              @Html.Sitecore().Placeholder(EmailConst.EXM.PlaceHolders.TopImage)
             </td>
           </tr>
           <tr>
-            <td colspan="3" bgcolor="@Html.Raw(Const.EXM.Colors.ColorF7F2E7)" align="center">
-              @Html.Sitecore().Placeholder(Const.EXM.PlaceHolders.EmailLogo)
+            <td colspan="3" bgcolor="@Html.Raw(EmailConst.EXM.Colors.ColorF7F2E7)" align="center">
+              @Html.Sitecore().Placeholder(EmailConst.EXM.PlaceHolders.EmailLogo)
               <br />
               <br />
             </td>
           </tr>
           <tr>
-            <td width="8%" valign="top" bgcolor="@Html.Raw(Const.EXM.Colors.ColorF7F2E7)"></td>
-            <td width="84%" valign="top" bgcolor="@Html.Raw(Const.EXM.Colors.ColorF7F2E7)" style="line-height: 1.4; font-size: 16px;">
-              @Html.Sitecore().Placeholder(Const.EXM.PlaceHolders.PrimaryContent)
+            <td width="8%" valign="top" bgcolor="@Html.Raw(EmailConst.EXM.Colors.ColorF7F2E7)"></td>
+            <td width="84%" valign="top" bgcolor="@Html.Raw(EmailConst.EXM.Colors.ColorF7F2E7)" style="line-height: 1.4; font-size: 16px;">
+              @Html.Sitecore().Placeholder(EmailConst.EXM.PlaceHolders.PrimaryContent)
             </td>
-            <td width="8%" valign="top" bgcolor="@Html.Raw(Const.EXM.Colors.ColorF7F2E7)"></td>
-          </tr>
-          <tr>
-            <td colspan="3" align="center">
-              @Html.Sitecore().Placeholder(Const.EXM.PlaceHolders.BottomImage)
-            </td>
+            <td width="8%" valign="top" bgcolor="@Html.Raw(EmailConst.EXM.Colors.ColorF7F2E7)"></td>
           </tr>
           <tr>
             <td colspan="3" align="center">
+              @Html.Sitecore().Placeholder(EmailConst.EXM.PlaceHolders.BottomImage)
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center">
               <br />
               <br />
-              @Html.Sitecore().Placeholder(Const.EXM.PlaceHolders.FooterLogo)
+              @Html.Sitecore().Placeholder(EmailConst.EXM.PlaceHolders.FooterLogo)
             </td>
           </tr>
         </table>

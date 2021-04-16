@@ -1,0 +1,61 @@
+﻿@using LearnEXM.Project.SitecoreCinema.Model
+@model  LearnEXM.Project.SitecoreCinema.Model.WhatWeKnowAboutYouViewModel
+
+<h3>Facet Data</h3>
+
+@if (Model != null)
+{
+
+  <h4>Personal Information Details</h4>
+
+  if (Model.KnownDataXConnect.FacetData.PersonalInformationDetails != null)
+  {
+    <ul>
+
+      <li>
+        <strong>Name : </strong>
+        @Model.KnownDataXConnect.FacetData.PersonalInformationDetails.FirstName @Model.KnownDataXConnect.FacetData.PersonalInformationDetails.LastName
+      </li>
+      <li>
+        <strong>Birthdate : </strong> @Model.KnownDataXConnect.FacetData.PersonalInformationDetails.Birthdate.ToString()
+      </li>
+      <li>
+        <strong>Gender : </strong> @Model.KnownDataXConnect.FacetData.PersonalInformationDetails.Gender
+      </li>
+    </ul>
+  }
+  else
+  {
+    <p>{Null PersonalInformationDetails}</p>
+  }
+
+  <h4>Cinema Visitor Info</h4>
+
+  if (Model.KnownDataXConnect.FacetData.CinemaVisitorInfo != null)
+  {
+    <ul>
+      <li><strong>Favorite Movie:</strong> @Model.KnownDataXConnect.FacetData.CinemaVisitorInfo.FavoriteMovie</li>
+    </ul>
+  }
+
+  else
+  {
+    <p>{Null CinemaVisitorInfo}</p>
+  }
+
+  <h4>Cinema Info</h4>
+
+  if (Model.KnownDataXConnect.FacetData.CinemaInfo != null)
+  {
+    <ul>
+
+      <li><strong>Cinema Id:</strong> @Model.KnownDataXConnect.FacetData.CinemaInfo.CinimaId</li>
+    </ul>
+  }
+
+  else
+  {
+    <p>{Null CinemaInfo}</p>
+  }
+
+}

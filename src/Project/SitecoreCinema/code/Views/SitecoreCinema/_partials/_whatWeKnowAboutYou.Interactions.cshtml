@@ -1,0 +1,23 @@
+﻿@using LearnEXM.Project.SitecoreCinema.Model
+@model  LearnEXM.Project.SitecoreCinema.Model.WhatWeKnowAboutYouViewModel
+
+@if (Model != null)
+{
+
+  <strong>Interactions:</strong>
+  if (Model.KnownDataXConnect.KnownInteractions != null && Model.KnownDataXConnect.KnownInteractions.Any())
+  {
+    <ul>
+      @foreach (var interactionProxy in Model.KnownDataXConnect.KnownInteractions)
+      {
+        <li>@interactionProxy.ChannelName  @interactionProxy.ChannelId.ToString()</li>
+      }
+    </ul>
+
+  }
+  else
+  {
+    <span>{No interactions}</span>
+  }
+
+}

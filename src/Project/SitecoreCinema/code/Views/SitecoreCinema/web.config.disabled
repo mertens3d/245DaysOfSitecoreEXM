@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+
+<configuration>
+  <system.web.webPages.razor>
+    <pages pageBaseType="System.Web.Mvc.WebViewPage">
+      <namespaces>
+        <add namespace="LearnEXM.Project.SitecoreCinema.Model" />
+        <add namespace="Sitecore" />
+        <add namespace="Sitecore.ExperienceForms.Mvc" />
+        <add namespace="Sitecore.Mvc" />
+        <add namespace="Sitecore.Mvc.Presentation" />
+        <add namespace="System.Web.Mvc" />
+        <add namespace="System.Web.Mvc.Ajax" />
+        <add namespace="System.Web.Mvc.Html" />
+        <add namespace="System.Web.Routing" />
+      </namespaces>
+    </pages>
+  </system.web.webPages.razor>
+</configuration>

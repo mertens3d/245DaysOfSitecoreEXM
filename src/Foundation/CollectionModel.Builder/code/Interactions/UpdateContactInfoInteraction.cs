@@ -1,4 +1,5 @@
-﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
+using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using Sitecore.Analytics;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect;
@@ -24,6 +25,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     public string EmailAddress { get; }
     public string SitecoreCinemaIdentifier { get; set; }
     private IXConnectFacets XConnectFacets { get; set; }
+    private FacetHelper FacetHelper { get;  set; }
 
     public override void InteractionBody()
     {
@@ -35,13 +37,35 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         SetPersonalInformationFacet();
         SetCinemaVisitorInfoFacet();
         SetEmailFacet();
+        SetCinemaInfoFacet();
       }
+
+      FacetHelper = new FacetHelper(XConnectFacets);
 
       Interaction interaction = new Interaction(XConnectContact, InteractionInitiator.Brand, CollectionConst.XConnect.Channels.RegisterInteractionCode, string.Empty);
 
       interaction.Events.Add(new Goal(CollectionConst.XConnect.Goals.RegistrationGoal, DateTime.UtcNow));
 
       Client.AddInteraction(interaction);
+    }
+
+    private void SetCinemaInfoFacet()
+    {
+      CinemaInfo cinemaInfo = FacetHelper.SafeGetFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
+
+      if (cinemaInfo != null)
+      {
+        cinemaInfo.CinimaId = 33;
+      }
+      else
+      {
+        cinemaInfo = new CinemaInfo
+        {
+          CinimaId = 22
+        };
+        
+      }
+        Client.SetFacet<CinemaInfo>(XConnectContact, CinemaInfo.DefaultFacetKey, cinemaInfo);
     }
 
     private void SetPersonalInformationFacet()

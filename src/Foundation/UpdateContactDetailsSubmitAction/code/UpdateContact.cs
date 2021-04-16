@@ -46,7 +46,8 @@ namespace LearnEXM.Foundation.UpdateContactDetailsSubmitAction
           CurrentTracker.Session.IdentifyAs(source, id);
           var trackerIdentifier = new IdentifiedContactReference(source, id);
 
-          var expandOptions = new ContactExpandOptions(PersonalInformation.DefaultFacetKey,
+          var expandOptions = new ContactExpandOptions(
+            PersonalInformation.DefaultFacetKey,
             CollectionModel.FacetKeys.EmailAddressList);
 
           XConnectContact contact = client.Get(trackerIdentifier, expandOptions);

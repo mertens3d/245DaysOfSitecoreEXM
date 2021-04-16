@@ -2,6 +2,7 @@
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -46,15 +47,27 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       {
         try
         {
-          var identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
+          IdentifiedContactReference identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
+          var interactionThing = Guid.Parse("E6067926-1F45-E611-82E6-34E6D7117DCB");
+
+          Sitecore.XConnect.InteractionReference interactionReference = new InteractionReference(identifiedReference, interactionThing);
+
+          var references = new List<InteractionReference>() {
+            interactionReference
+          };
+
+
+
+
           var expandOptions = new ExpandOptions(new[]{
-            CinemaInfo.DefaultFacetKey,
+              CinemaInfo.DefaultFacetKey,
               CinemaVisitorInfo.DefaultFacetKey,
               EmailAddressList.DefaultFacetKey,
               PersonalInformation.DefaultFacetKey,
           });
 
-          XConnectContact = Client.Get(identifiedReference, expandOptions);
+          var interactions = Client.Get<Interaction>(references, expandOptions);
+
 
           if (!Sitecore.Analytics.Tracker.Current.Contact.IsNew)
           {
