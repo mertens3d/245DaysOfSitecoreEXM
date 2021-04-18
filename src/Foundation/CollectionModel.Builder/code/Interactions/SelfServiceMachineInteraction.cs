@@ -1,5 +1,7 @@
 ﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Events;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using Sitecore.Analytics;
+using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect;
 using System;
 
@@ -21,25 +23,25 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
     public override void InteractionBody()
     {
-      if (TrackingContact != null && XConnectContact != null)
-      {
-        var interaction = new Interaction(XConnectContact, InteractionInitiator.Contact, CollectionConst.XConnect.Channels.BoughtTicket, string.Empty);
+
+
+      XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
+
+
+
+
+        var interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Contact, CollectionConst.XConnect.Channels.BoughtTicket, string.Empty);
 
         //var contact = Client.Get<Contact>(IdentifiedContactReference, new Sitecore.XConnect.ExpandOptions(PersonalInformation.DefaultFacetKey));
 
 
         var cinemaInfoFacet = new CinemaInfo() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 };
 
-        Client.SetFacet(interaction, CinemaInfo.DefaultFacetKey, cinemaInfoFacet);
+        Client.SetFacet(IdentifiedContactReference, CinemaInfo.DefaultFacetKey, cinemaInfoFacet);
 
-        interaction.Events.Add(new UseSelfServiceEvent(DateTime.UtcNow));
+      interaction.Events.Add(new UseSelfServiceEvent(DateTime.UtcNow));
 
-        Client.AddInteraction(interaction);
-      }
-      else
-      {
-        Sitecore.Diagnostics.Log.Error("Tracking contact or Xconnect contact is null", this);
-      }
+      Client.AddInteraction(interaction);
     }
   }
 }

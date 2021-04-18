@@ -6,6 +6,12 @@
 
 #$src = "..\..\path"
 
+
+Stop-Service -Name $serviceAutomationEngine
+Stop-Service -Name $serviceProcessingEngine
+Stop-Service -Name $serviceIndexer
+iisreset /stop
+
 $xConnectWebRoot = "C:\inetpub\wwwroot\LearnEXMxconnect.dev.local"
 
 $solutionSourceRoot = "C:\projects\25DaysOfSitecoreEXM\src"
@@ -81,8 +87,8 @@ CopyFiles $xmlPredicateDescriptors $xConnectAutomationEngineSegmentation
 
 CopyFiles $xmlConfigurationFiles $xConnectApp_dataAutomationEngineAppDataSitecore
 
-iisreset
-iisreset
+
+iisreset /restart
 
 Restart-Service -Name $serviceAutomationEngine
 Restart-Service -Name $serviceProcessingEngine

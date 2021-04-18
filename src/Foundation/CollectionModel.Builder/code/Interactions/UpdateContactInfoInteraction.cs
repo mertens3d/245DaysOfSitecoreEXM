@@ -24,7 +24,6 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     private string FavoriteMovie { get; }
     public string EmailAddress { get; }
     public string SitecoreCinemaIdentifier { get; set; }
-    private IXConnectFacets XConnectFacets { get; set; }
     private FacetHelper FacetHelper { get;  set; }
 
     public override void InteractionBody()
@@ -41,8 +40,8 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       }
 
       FacetHelper = new FacetHelper(XConnectFacets);
-
-      Interaction interaction = new Interaction(XConnectContact, InteractionInitiator.Brand, CollectionConst.XConnect.Channels.RegisterInteractionCode, string.Empty);
+      
+      Interaction interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Brand, CollectionConst.XConnect.Channels.RegisterInteractionCode, string.Empty);
 
       interaction.Events.Add(new Goal(CollectionConst.XConnect.Goals.RegistrationGoal, DateTime.UtcNow));
 
@@ -51,7 +50,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
     private void SetCinemaInfoFacet()
     {
-      CinemaInfo cinemaInfo = FacetHelper.SafeGetFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
+      CinemaInfo cinemaInfo = FacetHelper.SafeGetCreateFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
 
       if (cinemaInfo != null)
       {
@@ -65,7 +64,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         };
         
       }
-        Client.SetFacet<CinemaInfo>(XConnectContact, CinemaInfo.DefaultFacetKey, cinemaInfo);
+        Client.SetFacet<CinemaInfo>(IdentifiedContactReference, CinemaInfo.DefaultFacetKey, cinemaInfo);
     }
 
     private void SetPersonalInformationFacet()
@@ -84,7 +83,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       personalInformation.FirstName = FirstName;
       personalInformation.LastName = LastName;
 
-      Client.SetFacet(XConnectContact, PersonalInformation.DefaultFacetKey, personalInformation);
+      Client.SetFacet(IdentifiedContactReference, PersonalInformation.DefaultFacetKey, personalInformation);
     }
 
     private void SetCinemaVisitorInfoFacet()
@@ -94,7 +93,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         FavoriteMovie = FavoriteMovie
       };
 
-      Client.SetFacet(XConnectContact, CinemaVisitorInfo.DefaultFacetKey, visitorInfo);
+      Client.SetFacet(IdentifiedContactReference, CinemaVisitorInfo.DefaultFacetKey, visitorInfo);
     }
 
     private void SetEmailFacet()
@@ -110,7 +109,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         },
       };
 
-      Client.SetFacet(new FacetReference(XConnectContact, EmailAddressList.DefaultFacetKey), emailFacet);
+      Client.SetFacet(new FacetReference(IdentifiedContactReference, EmailAddressList.DefaultFacetKey), emailFacet);
     }
   }
 }

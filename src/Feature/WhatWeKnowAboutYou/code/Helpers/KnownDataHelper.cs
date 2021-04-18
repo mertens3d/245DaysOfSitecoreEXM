@@ -42,6 +42,15 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
       return toReturn;
     }
 
+    public string[] AllFacetKeys { get; set; } = new[] {
+              CinemaInfo.DefaultFacetKey,
+              CinemaVisitorInfo.DefaultFacetKey,
+              EmailAddressList.DefaultFacetKey,
+              PersonalInformation.DefaultFacetKey,
+              CinemaDetails.DefaultFacetKey,
+    };
+
+
     public KnownData GetKnownDataViaTracker(Sitecore.Analytics.Tracking.Contact trackingContact)
     {
       KnownData toReturn = null;
@@ -59,13 +68,18 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
           {
             var AnyIdentifier = Tracker.Current.Contact.Identifiers.FirstOrDefault();
             var identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
-            var expandOptions = new ExpandOptions(new[]{
-              CinemaInfo.DefaultFacetKey,
-              CinemaVisitorInfo.DefaultFacetKey,
-              EmailAddressList.DefaultFacetKey,
-              PersonalInformation.DefaultFacetKey,
-              CinemaDetails.DefaultFacetKey,
-            });
+            var expandOptions = new ContactExpandOptions(AllFacetKeys)
+            {
+              Interactions = new RelatedInteractionsExpandOptions()
+              {
+                StartDateTime = DateTime.MinValue,
+                Limit = int.MaxValue
+              }
+
+              //Interactions = new RelatedInteractionsExpandOptions(AllFacetKeys)
+
+
+            };
 
             Contact XConnectContact = xConnectClient.Get(identifiedReference, expandOptions);
 
@@ -75,16 +89,23 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
             {
               var facetHelper = new FacetHelper(XConnectFacets);
 
-              toReturn.FacetData.CinemaDetails = facetHelper.SafeGetFacet<CinemaDetails>(CinemaDetails.DefaultFacetKey);
-              toReturn.FacetData.CinemaInfo = facetHelper.SafeGetFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
-              toReturn.FacetData.CinemaVisitorInfo = facetHelper.SafeGetFacet<CinemaVisitorInfo>(CinemaVisitorInfo.DefaultFacetKey);
-              toReturn.FacetData.EmailAddressList = facetHelper.SafeGetFacet<EmailAddressList>(EmailAddressList.DefaultFacetKey);
-              toReturn.FacetData.PersonalInformationDetails = facetHelper.SafeGetFacet<PersonalInformation>(PersonalInformation.DefaultFacetKey);
+              toReturn.FacetData.CinemaDetails = facetHelper.SafeGetCreateFacet<CinemaDetails>(CinemaDetails.DefaultFacetKey);
+              toReturn.FacetData.CinemaInfo = facetHelper.SafeGetCreateFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
+
+              if (toReturn.FacetData.CinemaInfo == null)
+              {
+                toReturn.FacetData.CinemaInfo = new CinemaInfo();
+              }
+
+              toReturn.FacetData.CinemaVisitorInfo = facetHelper.SafeGetCreateFacet<CinemaVisitorInfo>(CinemaVisitorInfo.DefaultFacetKey);
+              toReturn.FacetData.EmailAddressList = facetHelper.SafeGetCreateFacet<EmailAddressList>(EmailAddressList.DefaultFacetKey);
+
+              toReturn.FacetData.PersonalInformationDetails = facetHelper.SafeGetCreateFacet<PersonalInformation>(PersonalInformation.DefaultFacetKey);
             }
 
             //knownData.ContactId = trackingContact.Id;
             //knownData.IsKnown = trackingContact.IsKnown;
-            //knownData.KnownInteractions = GetKnownInteractions(trackingContact);
+            toReturn.KnownInteractions = GetKnownInteractions(XConnectContact, xConnectClient);
 
             toReturn.Identifiers = Tracker.Current.Contact.Identifiers.ToList();
 
@@ -154,9 +175,13 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
       return toReturn;
     }
 
-    private List<InteractionProxy> GetKnownInteractions(Contact xconnectContact)
+    private List<InteractionProxy> GetKnownInteractions(Contact xconnectContact, XConnectClient xConnectClient)
     {
       var toReturn = new List<InteractionProxy>();
+
+
+      //xConnectClient.Get<Interaction>(interactionRef,
+      //    new Sitecore.XConnect.InteractionExpandOptions(AllFacetKeys));
 
       if (xconnectContact?.Interactions != null && xconnectContact.Interactions.Any())
       {

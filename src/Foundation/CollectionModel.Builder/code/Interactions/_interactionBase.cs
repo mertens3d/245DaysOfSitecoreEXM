@@ -1,4 +1,6 @@
 ﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using Sitecore.Analytics;
+using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
@@ -40,7 +42,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     protected XConnectClient Client { get; set; }
 
     private Sitecore.Analytics.Tracking.ContactManager Manager { get; set; }
-
+    protected IXConnectFacets XConnectFacets { get; set; }
     public void ExecuteInteraction()
     {
       using (Client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
@@ -48,13 +50,16 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         try
         {
           IdentifiedContactReference identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
-          var interactionThing = Guid.Parse("E6067926-1F45-E611-82E6-34E6D7117DCB");
+          //var interactionThing = Guid.Parse("E6067926-1F45-E611-82E6-34E6D7117DCB");
 
-          Sitecore.XConnect.InteractionReference interactionReference = new InteractionReference(identifiedReference, interactionThing);
+          //Sitecore.XConnect.InteractionReference interactionReference = new InteractionReference(identifiedReference, interactionThing);
 
-          var references = new List<InteractionReference>() {
-            interactionReference
-          };
+          XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
+
+
+          //var references = new List<InteractionReference>() {
+          //  interactionReference
+          //};
 
 
 
@@ -66,7 +71,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
               PersonalInformation.DefaultFacetKey,
           });
 
-          var interactions = Client.Get<Interaction>(references, expandOptions);
+          //var interactions = Client.Get<Interaction>(references, expandOptions);
 
 
           if (!Sitecore.Analytics.Tracker.Current.Contact.IsNew)

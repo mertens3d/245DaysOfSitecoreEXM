@@ -978,6 +978,9 @@
     </Content>
     <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.SitecoreCinemaCollectionModel.config" />
     <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.MarketingCollectionModel.config" />
+    <Content Include="..\..\..\Project\SitecoreCinema\code\App_Start\RazorGeneratorMvcStart.cs.disabled">
+      <Link>App_Start\RazorGeneratorMvcStart.cs.disabled</Link>
+    </Content>
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

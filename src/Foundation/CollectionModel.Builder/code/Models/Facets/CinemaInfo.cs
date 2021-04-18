@@ -1,7 +1,9 @@
 ﻿using Sitecore.XConnect;
+using System;
 
 namespace LearnEXM.Foundation.CollectionModel.Builder.Models.Facets
 {
+  [Serializable]
   [FacetKey(DefaultFacetKey)]
   public class CinemaInfo : Facet
   {
