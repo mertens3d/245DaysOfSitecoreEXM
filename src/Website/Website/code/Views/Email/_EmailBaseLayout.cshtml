@@ -1,15 +1,12 @@
-﻿@using Sitecore.ExperienceForms.Mvc.Html
-@using Sitecore.Mvc.Analytics.Extensions
-@using LearnEXMProject.Models.Email
+﻿@using LearnEXM.Project.Website.Models.Email
 @using Sitecore.Mvc.Presentation
-@using Sitecore.EmailCampaign.SampleNewsletter.Models
 
 @model RenderingModel
 @{
 
   var repository = new EmailOptionsRepository();
 
-  var options = repository.Get(Model.Item);
+var options = repository.Get(Model.Item);
 
 }
 

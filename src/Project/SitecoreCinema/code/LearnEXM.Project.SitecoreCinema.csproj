@@ -943,19 +943,18 @@
     <Compile Include="Controllers\Helpers\MovieTicketHelper.cs" />
     <Compile Include="Controllers\IdentifiedXConnectContact.cs" />
     <Compile Include="Controllers\SitecoreCinemaController.cs" />
-    <Compile Include="Model\BuyConcessionsViewModel.cs" />
-    <Compile Include="Model\LobbyOptionsViewModel.cs" />
-    <Compile Include="Model\RegisterViewModel.cs" />
-    <Compile Include="Model\SelfServiceMachineViewModel.cs" />
+    <Compile Include="Model\ViewModels\BuyConcessionsViewModel.cs" />
+    <Compile Include="Model\ViewModels\LobbyOptionsViewModel.cs" />
+    <Compile Include="Model\MovieShowTime.cs" />
+    <Compile Include="Model\ViewModels\RegisterViewModel.cs" />
+    <Compile Include="Model\ViewModels\SelfServiceMachineViewModel.cs" />
+    <Compile Include="Model\ViewModels\WatchMovieViewModel.cs" />
     <Compile Include="Model\WebConst.cs" />
-    <Compile Include="Model\WhatWeKnowAboutYouViewModel.cs" />
-    <Compile Include="Model\_baseViewModel.cs" />
+    <Compile Include="Model\ViewModels\_baseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Content Include="Views\SitecoreCinema\_partials\_whatWeKnowAboutYou.Facets.cshtml" />
-    <Content Include="Views\SitecoreCinema\_partials\_whatWeKnowAboutYou.Interactions.cshtml" />
     <Content Include="Views\SitecoreCinema\BuyConcessions.cshtml" />
     <Content Include="Views\SitecoreCinema\LobbyOptions.cshtml" />
     <Content Include="Views\SitecoreCinema\Register.cshtml" />
@@ -963,7 +962,6 @@
     <Content Include="Views\SitecoreCinema\SelfServiceMachine.cshtml" />
     <Content Include="Views\SitecoreCinema\StartJourney.cshtml" />
     <Content Include="Views\SitecoreCinema\WatchMovie.cshtml" />
-    <Content Include="Views\SitecoreCinema\WhatWeKnowAboutYou.cshtml" />
     <Content Include="Views\SitecoreCinema\SitecoreCinemaLayout.cshtml" />
     <Content Include="App_Config\Include\Project\SitecoreCinema\Unicorn.Configs.SitecoreCinema.config" />
     <Content Include="App_Config\Include\Project\SitecoreCinema\Unicorn.UI.IdentityServer.SitecoreCinema.config" />
@@ -987,6 +985,7 @@
     <None Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config.disabled" />
     <None Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
     <None Include="packages.config" />
+    <Content Include="Views\SitecoreCinema\not used.cshtml" />
     <None Include="Views\SitecoreCinema\web.config.disabled" />
     <None Include="Views\web.config" />
     <None Include="Web.config" />

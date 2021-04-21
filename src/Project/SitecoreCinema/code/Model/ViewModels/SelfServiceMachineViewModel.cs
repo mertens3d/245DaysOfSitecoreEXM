@@ -1,4 +1,7 @@
-﻿using Sitecore.Analytics.Tracking;
+﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Models;
+using Sitecore.Analytics.Tracking;
+using System;
+using System.Collections.Generic;
 
 namespace LearnEXM.Project.SitecoreCinema.Model
 {
@@ -10,6 +13,8 @@ namespace LearnEXM.Project.SitecoreCinema.Model
     {
       TrackingContact = trackingContact;
     }
+
+    public List<MovieShowTime> ShowTimes { get;  set; }
 
     public string TicketLink() => WebConst.Links.SitecoreCinema.BuyTicket;// + UserIdQueryString();
   }

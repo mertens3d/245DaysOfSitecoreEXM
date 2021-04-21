@@ -1,17 +1,19 @@
-﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Models;
+﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
 using LearnEXM.Foundation.CollectionModel.Builder;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using Newtonsoft.Json;
 using Sitecore.Analytics;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.Data;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
+using Sitecore.XConnect.Client.Serialization;
 using Sitecore.XConnect.Collection.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
+namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
 {
   public class KnownDataHelper
   {
@@ -26,6 +28,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
           if (interaction.ChannelId != Guid.Empty)
           {
             interaction.ChannelName = GetChannelName(interaction.ChannelId);
+            interaction.Events = interaction.Events;
           }
           else
           {
@@ -49,7 +52,6 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
               PersonalInformation.DefaultFacetKey,
               CinemaDetails.DefaultFacetKey,
     };
-
 
     public KnownData GetKnownDataViaTracker(Sitecore.Analytics.Tracking.Contact trackingContact)
     {
@@ -77,8 +79,6 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
               }
 
               //Interactions = new RelatedInteractionsExpandOptions(AllFacetKeys)
-
-
             };
 
             Contact XConnectContact = xConnectClient.Get(identifiedReference, expandOptions);
@@ -175,16 +175,44 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
       return toReturn;
     }
 
+    private List<EventRecordProxy> GetEvents(EventCollection events)
+    {
+      List<EventRecordProxy> toReturn = new List<EventRecordProxy>();
+
+      if (events != null)
+      {
+        foreach (var item in events)
+        {
+          toReturn.Add(new EventRecordProxy()
+          {
+            TypeName = item.GetType().Name,
+            CustomValues = item.CustomValues
+          });
+        }
+      }
+
+      return toReturn;
+    }
+
     private List<InteractionProxy> GetKnownInteractions(Contact xconnectContact, XConnectClient xConnectClient)
     {
       var toReturn = new List<InteractionProxy>();
-
 
       //xConnectClient.Get<Interaction>(interactionRef,
       //    new Sitecore.XConnect.InteractionExpandOptions(AllFacetKeys));
 
       if (xconnectContact?.Interactions != null && xconnectContact.Interactions.Any())
       {
+        var ContractResolver = new XdbJsonContractResolver(xConnectClient.Model, true, true);
+
+        var serializerSettings = new JsonSerializerSettings
+        {
+          ContractResolver = ContractResolver,
+          DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+          DefaultValueHandling = DefaultValueHandling.Ignore,
+          Formatting = Formatting.Indented
+        };
+
         foreach (var interaction in xconnectContact.Interactions)
         {
           toReturn.Add(new InteractionProxy()
@@ -193,6 +221,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
 
             RawInteraction = interaction,
             Events = interaction.Events,
+            EventsB = GetEvents(interaction.Events),
             DeviceProfile = interaction.DeviceProfile,
             StartDateTime = interaction.StartDateTime,
             EndDateTime = interaction.EndDateTime,
@@ -200,6 +229,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
             Id = interaction.Id,
             Duration = interaction.Duration,
             CampaignId = interaction.CampaignId,
+            SerializedAsJson = JsonConvert.SerializeObject(interaction, serializerSettings)
           });
         }
       }

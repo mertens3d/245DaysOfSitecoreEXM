@@ -255,6 +255,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\WhatWeKnowAboutYou\code\app.config.disabled">
+      <Link>app.config.disabled</Link>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

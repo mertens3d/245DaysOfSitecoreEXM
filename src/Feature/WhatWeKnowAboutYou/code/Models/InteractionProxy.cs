@@ -1,11 +1,13 @@
 ﻿using Sitecore.XConnect;
 using System;
+using System.Collections.Generic;
 
 namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
 {
   public class InteractionProxy
   {
     public Guid ChannelId { get; internal set; }
+    public string SerializedAsJson { get;  set; }
     public string ChannelName { get; internal set; }
     public Interaction RawInteraction { get; internal set; }
     public EventCollection Events { get; internal set; }
@@ -16,5 +18,6 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
     public Guid? Id { get; internal set; }
     public TimeSpan Duration { get; internal set; }
     public Guid? CampaignId { get; internal set; }
+    public List<EventRecordProxy> EventsB { get; internal set; }
   }
 }

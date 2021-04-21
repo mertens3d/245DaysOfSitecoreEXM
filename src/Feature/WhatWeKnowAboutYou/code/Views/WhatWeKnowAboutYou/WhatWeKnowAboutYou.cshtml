@@ -1,4 +1,4 @@
-﻿@using LearnEXM.Project.SitecoreCinema.Model;
+﻿@using LearnEXM.Feature.WhatWeKnowAboutYou.Models
 @model  LearnEXM.Project.SitecoreCinema.Model.WhatWeKnowAboutYouViewModel
 
 <aside>
@@ -33,8 +33,8 @@
       }
     </ul>
 
-    @Html.Partial(WebConst.Views.WhatWeKnowAboutYou.facets, Model)
-    @Html.Partial(WebConst.Views.WhatWeKnowAboutYou.Interactions, Model)
+    @Html.Partial(WWKConstants.Views.WhatWeKnowAboutYou.facets, Model)
+    @Html.Partial(WWKConstants.Views.WhatWeKnowAboutYou.Interactions, Model)
 
   }
   else

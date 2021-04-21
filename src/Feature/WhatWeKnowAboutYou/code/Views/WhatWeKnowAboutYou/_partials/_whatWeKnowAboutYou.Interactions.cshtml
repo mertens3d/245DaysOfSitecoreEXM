@@ -1,0 +1,46 @@
+﻿@using LearnEXM.Project.SitecoreCinema.Model
+@using LearnEXM.Feature.WhatWeKnowAboutYou.Models
+@model  LearnEXM.Project.SitecoreCinema.Model.WhatWeKnowAboutYouViewModel
+
+@if (Model != null)
+{
+
+  <strong>Interactions:</strong>
+  if (Model.KnownDataXConnect.KnownInteractions != null && Model.KnownDataXConnect.KnownInteractions.Any())
+  {
+    <ul>
+      @foreach (InteractionProxy interactionProxy in Model.KnownDataXConnect.KnownInteractions)
+      {
+        <li>
+
+          <ul>
+            <li>ChannelId - @interactionProxy.ChannelName  @interactionProxy.ChannelId.ToString()</li>
+
+            <li>Events</li>
+            @if(interactionProxy.EventsB != null && interactionProxy.EventsB.Any())
+            {
+
+              <ul>
+              @foreach (var oneEvent in interactionProxy.EventsB)
+              {
+                <li>@oneEvent.TypeName</li>
+              }
+
+
+              </ul>
+            }
+
+            <pre>@interactionProxy.SerializedAsJson</pre>
+          </ul>
+        </li>
+
+      }
+    </ul>
+
+  }
+  else
+  {
+    <span>{No interactions}</span>
+  }
+
+}

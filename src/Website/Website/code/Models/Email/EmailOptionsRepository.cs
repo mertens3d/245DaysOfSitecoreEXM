@@ -7,7 +7,7 @@ using Sitecore.EmailCampaign.SampleNewsletter.Services;
 using System;
 using System.Linq;
 
-namespace LearnEXMProject.Models.Email
+namespace LearnEXM.Project.Website.Models.Email
 {
   public class EmailOptionsRepository
   {
@@ -32,11 +32,11 @@ namespace LearnEXMProject.Models.Email
 
       if (obj == null)
       {
-        throw new ArgumentException($"Cannot find EmailOptionsRepository below '{newsletterRoot.Paths.FullPath}'");
+        throw new ArgumentException($"B Cannot find EmailOptionsRepository below '{newsletterRoot.Paths.FullPath}'");
       }
 
 
-      if(! int.TryParse(obj[Templates.NewsletterOptions.Fields.MaxWidth], out var result))
+      if (!int.TryParse(obj[Templates.NewsletterOptions.Fields.MaxWidth], out var result))
       {
         result = DefaultMaxWidth;
       }

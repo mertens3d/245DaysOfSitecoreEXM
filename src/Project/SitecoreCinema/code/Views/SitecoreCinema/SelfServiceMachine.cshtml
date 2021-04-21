@@ -4,4 +4,22 @@
 <h2>Self Service Machine</h2>
 <br />
 
+@if (Model != null)
+{
+
+  if (Model.ShowTimes != null && Model.ShowTimes.Any())
+  {
+    <ul>
+
+      @foreach (var showTime in Model.ShowTimes)
+      {
+        <li>
+          @showTime.MovieName - @showTime.MovieTime
+        </li>
+      }
+    </ul>
+  }
+
+}
+
 <a href="@Model.TicketLink() ">Buy Ticket</a>

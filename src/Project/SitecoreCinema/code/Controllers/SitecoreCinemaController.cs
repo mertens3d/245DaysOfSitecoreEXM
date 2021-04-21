@@ -1,11 +1,9 @@
 ﻿using LearnEXM.Feature.MockContactGenerator;
-using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
-using LearnEXM.Feature.WhatWeKnowAboutYou.Models;
 using LearnEXM.Foundation.CollectionModel.Builder.Interactions;
+using LearnEXM.Project.SitecoreCinema.Controllers.Helpers;
 using LearnEXM.Project.SitecoreCinema.Model;
 using Sitecore.Analytics;
 using Sitecore.Analytics.Model.Entities;
-using Sitecore.Analytics.Tracking;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -22,7 +20,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     {
       var buyConcessionsInteraction = new BuyCandyInteraction(Tracker.Current.Contact);
       buyConcessionsInteraction.ExecuteInteraction();
-      return Redirect(WebConst.Links.SitecoreCinema.Lobby);
+      return Redirect(WebConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
 
     private ContactIdentifier GetSitecoreCinemaContactIdentifier()
@@ -38,7 +36,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     {
       var buyTicketInteraction = new SelfServiceMachineInteraction(Tracker.Current.Contact);
       buyTicketInteraction.ExecuteInteraction();
-      return Redirect(WebConst.Links.SitecoreCinema.Lobby);
+      return Redirect(WebConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
 
     [IdentifiedXConnectContact]
@@ -80,7 +78,8 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     public ActionResult SelfServiceMachine()
     {
       var viewModel = new SelfServiceMachineViewModel(Tracker.Current.Contact);
-
+      var movieTicketHelper = new MovieTicketHelper();
+      viewModel.ShowTimes = movieTicketHelper.AvailableMovies();
       return View(viewModel);
     }
 
@@ -101,42 +100,12 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     {
       var watchMovieInteraction = new WatchMovieInteraction(Tracker.Current.Contact);
       watchMovieInteraction.ExecuteInteraction();
-      return Redirect(WebConst.Links.SitecoreCinema.Lobby);
-    }
 
-    public ActionResult WhatWeKnowAboutYou()
-    {
-      Contact trackingContact = Tracker.Current.Contact;
 
-      var knownDataHelper = new KnownDataHelper();
+      var viewModel = new WatchMovieViewModel(Tracker.Current.Contact);
 
-      KnownData knownDataXConnect = null;
-
-      //Task.Run(async () =>
-      //{
-      //  knownDataXConnect = await knownDataHelper.GetKnownDataByIdentifierViaXConnect(QueryStringHelper.UserId);
-      //}
-      //).Wait();
-
-      //KnownData knownDataViaTracker = null;// knownDataHelper.GetKnownDataViaTracker(trackingContact);
-      KnownData knownDataViaTracker = knownDataHelper.GetKnownDataViaTracker(trackingContact);
-
-      //Tracker.Current.Contact // <--- Use this
-      // use other Contact outside of a web page.
-
-      //knownDataTracker.IsNew = trackingContact.IsNew;
-
-      if (knownDataXConnect != null)
-      {
-        knownDataHelper.AppendCurrentContextData(knownDataXConnect, Sitecore.Context.Database);
-      }
-
-      var viewModel = new WhatWeKnowAboutYouViewModel
-      {
-        KnownDataXConnect = knownDataViaTracker,
-        KnownDataTracker = null
-      };
       return View(viewModel);
+      //return Redirect(WebConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
   }
 }
