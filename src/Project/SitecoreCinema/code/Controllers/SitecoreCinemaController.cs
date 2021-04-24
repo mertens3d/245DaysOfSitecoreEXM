@@ -1,9 +1,11 @@
 ﻿using LearnEXM.Feature.MockContactGenerator;
 using LearnEXM.Foundation.CollectionModel.Builder.Interactions;
+using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using LearnEXM.Project.SitecoreCinema.Controllers.Helpers;
 using LearnEXM.Project.SitecoreCinema.Model;
 using Sitecore.Analytics;
 using Sitecore.Analytics.Model.Entities;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -32,9 +34,20 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     }
 
     [IdentifiedXConnectContact]
-    public ActionResult BuyTicket()
+    public ActionResult BuyTicket(Guid movieid)
     {
-      var buyTicketInteraction = new SelfServiceMachineInteraction(Tracker.Current.Contact);
+
+      Guid cinemaId = Guid.Parse("{A83BEBA7-0752-4A11-8F3A-95F84B53A0D4}"); //todo build in cinemas
+      var movieDataProxy = new MovieItemProxy(movieid);
+
+      var movieTicket = new MovieTicket()
+      {
+        CinimaId = cinemaId,
+        MovieId = movieDataProxy.MovieItem.ID.Guid,
+        MovieName = movieDataProxy.MovieName
+      };
+
+      var buyTicketInteraction = new SelfServiceMachineInteraction(Tracker.Current.Contact, movieTicket);
       buyTicketInteraction.ExecuteInteraction();
       return Redirect(WebConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }

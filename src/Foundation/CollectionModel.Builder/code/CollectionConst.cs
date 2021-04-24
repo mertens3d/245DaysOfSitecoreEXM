@@ -19,7 +19,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
 
     public struct Logger
     {
-      public const string CinemaPrefix = "[Sitecore Cinema] ";
+      public const string Prefix = "[Sitecore Cinema] ";
     }
 
     public struct OutcomeId

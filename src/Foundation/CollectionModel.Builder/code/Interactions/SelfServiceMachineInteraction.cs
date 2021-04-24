@@ -1,5 +1,6 @@
 ﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Events;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using LearnEXM.Foundation.xConnectHelper.Helpers;
 using Sitecore.Analytics;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect;
@@ -9,35 +10,36 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 {
   public class SelfServiceMachineInteraction : _interactionBase
   {
-    public SelfServiceMachineInteraction(string identifier) : base(identifier)
+       public SelfServiceMachineInteraction(Sitecore.Analytics.Tracking.Contact trackingContact, MovieTicket movieTicket) : base(trackingContact)
     {
+      MovieTicket = movieTicket;
     }
 
-    public SelfServiceMachineInteraction(Sitecore.Analytics.Model.Entities.ContactIdentifier identifierSourcePair) : base(identifierSourcePair.Identifier)
-    {
-    }
-
-    public SelfServiceMachineInteraction(Sitecore.Analytics.Tracking.Contact trackingContact) : base(trackingContact)
-    {
-    }
+    private MovieTicket MovieTicket { get; }
 
     public override void InteractionBody()
     {
 
+      var interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Contact, CollectionConst.XConnect.Channels.BoughtTicket, string.Empty);
 
-      XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
+      //var contact = Client.Get<Contact>(IdentifiedContactReference, new Sitecore.XConnect.ExpandOptions(PersonalInformation.DefaultFacetKey));
 
+      var xConnectHelper = new FacetHelper(XConnectFacets);
 
-
-
-        var interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Contact, CollectionConst.XConnect.Channels.BoughtTicket, string.Empty);
-
-        //var contact = Client.Get<Contact>(IdentifiedContactReference, new Sitecore.XConnect.ExpandOptions(PersonalInformation.DefaultFacetKey));
-
-
-        var cinemaInfoFacet = new CinemaInfo() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 };
-
+      var cinemaInfoFacet = xConnectHelper.SafeGetCreateFacet<CinemaInfo>(CollectionConst.FacetKeys.CinemaInfo);
+      
+      if (cinemaInfoFacet != null)
+      {
+        new CinemaInfo() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 };
         Client.SetFacet(IdentifiedContactReference, CinemaInfo.DefaultFacetKey, cinemaInfoFacet);
+      }
+
+      var visitorInfoFacet = xConnectHelper.SafeGetCreateFacet<CinemaVisitorInfo>(CollectionConst.FacetKeys.CinemaVisitorInfo);
+      if (visitorInfoFacet != null)
+      {
+        visitorInfoFacet.MovieTickets.Add(MovieTicket);
+        Client.SetFacet(IdentifiedContactReference, CollectionConst.FacetKeys.CinemaVisitorInfo, visitorInfoFacet);
+      }
 
       interaction.Events.Add(new UseSelfServiceEvent(DateTime.UtcNow));
 

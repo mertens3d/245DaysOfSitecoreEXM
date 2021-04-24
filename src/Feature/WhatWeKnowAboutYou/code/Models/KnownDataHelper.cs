@@ -1,6 +1,6 @@
-﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
-using LearnEXM.Foundation.CollectionModel.Builder;
+﻿using LearnEXM.Foundation.CollectionModel.Builder;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using LearnEXM.Foundation.xConnectHelper.Helpers;
 using Newtonsoft.Json;
 using Sitecore.Analytics;
 using Sitecore.Analytics.XConnect.Facets;
@@ -17,7 +17,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
 {
   public class KnownDataHelper
   {
-    public string[] AllFacetKeys { get; set; } = new[] {
+    private string[] AllFacetKeys { get; set; } = new[] {
               CinemaInfo.DefaultFacetKey,
               CinemaVisitorInfo.DefaultFacetKey,
               EmailAddressList.DefaultFacetKey,
@@ -52,6 +52,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
 
       return toReturn;
     }
+
     public KnownData GetKnownDataViaTracker(Sitecore.Analytics.Tracking.Contact trackingContact)
     {
       KnownData toReturn = null;
@@ -62,7 +63,11 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
         {
           toReturn = new KnownData();
 
-          Contact XConnectContact = IdentifyContact(trackingContact, xConnectClient);
+          var xConnectHelper = new XConnectHelper(AllFacetKeys);
+
+          IdentifiedContactReference IdentifiedContactReference = xConnectHelper.GetIdentifierFromTrackingContact(trackingContact);
+
+          Contact XConnectContact = xConnectHelper.IdentifyKnownContact(IdentifiedContactReference);
 
           XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
 
@@ -74,7 +79,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
         }
         catch (XdbExecutionException ex)
         {
-          Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + ex.Message, this);
+          Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.Prefix + ex.Message, this);
         }
       }
 
@@ -124,7 +129,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
       }
       catch (Exception ex)
       {
-        Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + ex.Message, this);
+        Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.Prefix + ex.Message, this);
       }
 
       return toReturn;
@@ -174,7 +179,7 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
     //      Sitecore.Diagnostics.Log.Error(Const.Logger.CinemaPrefix + ex.Message, this);
     //    }
     //  }
-    
+
     //public async Task<KnownDataXConnect> GetKnownDataByIdentifierViaXConnect(string Identifier)
     //{
     //  KnownDataXConnect toReturn = null;
@@ -218,34 +223,6 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Models
           });
         }
       }
-
-      return toReturn;
-    }
-
-    private Contact IdentifyContact(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient)
-    {
-      Contact toReturn = null;
-
-      if (trackingContact != null && trackingContact.IdentificationLevel == Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
-      {
-        var AnyIdentifier = Tracker.Current.Contact.Identifiers.FirstOrDefault();
-        var identifiedReference = new IdentifiedContactReference(AnyIdentifier.Source, AnyIdentifier.Identifier);
-        var expandOptions = new ContactExpandOptions(AllFacetKeys)
-        {
-          Interactions = new RelatedInteractionsExpandOptions()
-          {
-            StartDateTime = DateTime.MinValue,
-            Limit = int.MaxValue
-          }
-        };
-      
-        toReturn = xConnectClient.Get(identifiedReference, expandOptions);
-      }
-      else
-      {
-        Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "Contact was null", this);
-      }
-
 
       return toReturn;
     }

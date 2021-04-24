@@ -9,9 +9,6 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
   {
     private Sitecore.Analytics.Tracking.Contact contact;
 
-    public WatchMovieInteraction(string identifier) : base(identifier)
-    {
-    }
 
     public WatchMovieInteraction(Sitecore.Analytics.Tracking.Contact trackerContact) : base(trackerContact)
     {

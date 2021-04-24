@@ -402,6 +402,7 @@
     <Compile Include="Models\Facets\CinemaDetails.cs" />
     <Compile Include="Models\Facets\CinemaVisitorInfo.cs" />
     <Compile Include="Models\CollectionModels\CinemaDetailsCollectionModel.cs" />
+    <Compile Include="Models\Facets\MovieTicket.cs" />
     <Compile Include="Models\Outcomes\BuyConcessionOutcome.cs" />
     <Compile Include="Models\Facets\CinemaInfo.cs" />
     <Compile Include="Models\CollectionModels\SitecoreCinemaCollectionModel.cs" />
@@ -429,6 +430,10 @@
     <ProjectReference Include="..\..\Marketing\code\LearnEXM.Foundation.Marketing.csproj">
       <Project>{e050fb26-1994-4f4f-b471-0ae360589a1f}</Project>
       <Name>LearnEXM.Foundation.Marketing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\xConnectHelper\LearnEXM.Foundation.xConnectHelper\LearnEXM.Foundation.xConnectHelper.csproj">
+      <Project>{b3d715b9-fa7d-47b4-9263-a2f13705057b}</Project>
+      <Name>LearnEXM.Foundation.xConnectHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

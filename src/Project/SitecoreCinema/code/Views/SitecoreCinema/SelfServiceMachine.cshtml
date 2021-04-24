@@ -17,11 +17,15 @@
           @if (!string.IsNullOrEmpty(showTime.MoviePoster))
           {
             <img src="@showTime.MoviePoster" alt="@showTime.MovieName" width="160" />
-            <br/>
+            <br />
           }
           @showTime.MovieName - @showTime.MovieTime
+          @{
+            var ticketLink = @Model.TicketLink() + "?movieid=" + @showTime.Id;
+          }
+          <a href="@ticketLink">Buy Ticket</a>
         </li>
-      }
+            }
     </ul>
   }
 

@@ -7,13 +7,6 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 {
   public class BuyCandyInteraction : _interactionBase
   {
-    public BuyCandyInteraction(Contact contact) : base(contact)
-    {
-    }
-
-    public BuyCandyInteraction(string identifier) : base(identifier)
-    {
-    }
 
     public BuyCandyInteraction(Sitecore.Analytics.Tracking.Contact trackingContact) : base(trackingContact)
     {

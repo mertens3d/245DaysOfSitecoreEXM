@@ -1,5 +1,4 @@
-﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
-using LearnEXM.Feature.WhatWeKnowAboutYou.Models;
+﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Models;
 using LearnEXM.Project.SitecoreCinema.Model;
 using Sitecore.Analytics;
 using Sitecore.Analytics.Tracking;

@@ -1,17 +1,16 @@
-﻿using LearnEXM.Foundation.CollectionModel.Builder;
-using Sitecore.Analytics.Model.Framework;
-using Sitecore.Analytics.XConnect.Facets;
+﻿using Sitecore.Analytics.XConnect.Facets;
 using System;
 
-namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
+namespace LearnEXM.Foundation.xConnectHelper.Helpers
 {
+
   public class FacetHelper//<T> where T : Facet
   {
     private readonly IXConnectFacets XConnectFacets;
 
     public FacetHelper(IXConnectFacets xConnectFacets)
     {
-      this.XConnectFacets = xConnectFacets;
+      XConnectFacets = xConnectFacets;
     }
 
     public T SafeGetCreateFacet<T>(string facetKey) where T : Sitecore.XConnect.Facet
@@ -24,8 +23,8 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
       }
       else
       {
-        Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "facet key not present: " + facetKey, this);
-        toReturn = default(T);
+        Sitecore.Diagnostics.Log.Error(Constants.Logger.LoggingPrefix + "facet key not present: " + facetKey, this);
+        toReturn = default;
       }
 
       return toReturn;

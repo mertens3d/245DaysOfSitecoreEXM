@@ -940,6 +940,7 @@
   <ItemGroup>
     <Content Include="App_Config\Include\Project\SitecoreCinema\Site.SitecoreCinema.config" />
     <None Include="App_Start\RazorGeneratorMvcStart.cs.disabled" />
+    <Compile Include="Controllers\Helpers\MovieItemProxy.cs" />
     <Compile Include="Model\CinemaConstants.cs" />
     <Compile Include="Controllers\Helpers\MovieTicketHelper.cs" />
     <Compile Include="Controllers\IdentifiedXConnectContact.cs" />

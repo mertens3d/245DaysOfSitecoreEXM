@@ -20,10 +20,30 @@
         "FavoriteMovie": {
           "Type": "String"
         },
+        "MovieTickets": {
+          "Type": [
+            "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.MovieTicket"
+          ]
+        },
         "OwnedMovieTickets": {
           "Type": [
             "Guid"
           ]
+        }
+      }
+    },
+    "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.MovieTicket": {
+      "Type": "Complex",
+      "ClrType": "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.MovieTicket, LearnEXM.Foundation.CollectionModel.Builder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "MovieId": {
+          "Type": "Guid"
+        },
+        "MovieName": {
+          "Type": "String"
+        },
+        "CinimaId": {
+          "Type": "Guid"
         }
       }
     },

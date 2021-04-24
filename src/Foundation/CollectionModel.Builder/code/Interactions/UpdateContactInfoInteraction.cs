@@ -1,7 +1,5 @@
-﻿using LearnEXM.Feature.WhatWeKnowAboutYou.Helpers;
-using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
-using Sitecore.Analytics;
-using Sitecore.Analytics.XConnect.Facets;
+﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using LearnEXM.Foundation.xConnectHelper.Helpers;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 using System;
@@ -24,23 +22,25 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     private string FavoriteMovie { get; }
     public string EmailAddress { get; }
     public string SitecoreCinemaIdentifier { get; set; }
-    private FacetHelper FacetHelper { get;  set; }
+    private FacetHelper FacetHelper { get; set; }
 
     public override void InteractionBody()
     {
+      FacetHelper = new FacetHelper(XConnectFacets);
+
       if (XConnectContact != null)
       {
-        //IContactEmailAddresses addressesFacet = Tracker.Current.Contact.GetFacet<IContactEmailAddresses>("Emails");
-        XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
-
         SetPersonalInformationFacet();
         SetCinemaVisitorInfoFacet();
         SetEmailFacet();
         SetCinemaInfoFacet();
       }
+      else
+      {
+        Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.Prefix + "null xConnectContact", this);
+      }
 
-      FacetHelper = new FacetHelper(XConnectFacets);
-      
+
       Interaction interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Brand, CollectionConst.XConnect.Channels.RegisterInteractionCode, string.Empty);
 
       interaction.Events.Add(new Goal(CollectionConst.XConnect.Goals.RegistrationGoal, DateTime.UtcNow));
@@ -50,6 +50,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
     private void SetCinemaInfoFacet()
     {
+      
       CinemaInfo cinemaInfo = FacetHelper.SafeGetCreateFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
 
       if (cinemaInfo != null)
@@ -62,9 +63,8 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         {
           CinimaId = 22
         };
-        
       }
-        Client.SetFacet<CinemaInfo>(IdentifiedContactReference, CinemaInfo.DefaultFacetKey, cinemaInfo);
+      Client.SetFacet<CinemaInfo>(IdentifiedContactReference, CinemaInfo.DefaultFacetKey, cinemaInfo);
     }
 
     private void SetPersonalInformationFacet()
