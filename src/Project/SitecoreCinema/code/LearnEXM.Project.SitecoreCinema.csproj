@@ -938,6 +938,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Config\Include\Project\SitecoreCinema\Site.SitecoreCinema.config" />
     <None Include="App_Start\RazorGeneratorMvcStart.cs.disabled" />
     <Compile Include="Model\CinemaConstants.cs" />
     <Compile Include="Controllers\Helpers\MovieTicketHelper.cs" />

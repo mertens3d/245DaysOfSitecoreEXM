@@ -1,0 +1,24 @@
+﻿---
+ID: "6f6fb62c-e4f1-4781-b5d4-21d21aae9f46"
+Parent: "eb49c4eb-08be-4173-8b40-3a0b92b0462c"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/Movie/Movie/Poster
+DB: master
+SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{B5D3976A-BC68-471A-9F58-9C69D5CF2418}"
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Image
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210423T235140Z

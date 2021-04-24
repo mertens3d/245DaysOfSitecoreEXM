@@ -18,15 +18,10 @@ namespace LearnEXM.Feature.WhatWeKnowAboutYou.Helpers
     {
       T toReturn;
 
-      if (XConnectFacets.Facets.ContainsKey(facetKey))
+      if (XConnectFacets?.Facets != null && XConnectFacets.Facets.ContainsKey(facetKey))
       {
         toReturn = (T)Convert.ChangeType(XConnectFacets.Facets[facetKey], typeof(T));
       }
-      //else
-      //{
-      //  toReturn = new T();
-      //}
-
       else
       {
         Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.CinemaPrefix + "facet key not present: " + facetKey, this);

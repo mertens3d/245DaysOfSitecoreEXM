@@ -76,6 +76,14 @@ function CopyFiles ($SourceArray, $destinationFolder) {
 
 # --------------- Tasks
 
+
+
+Stop-Service -Name $serviceAutomationEngine
+Stop-Service -Name $serviceProcessingEngine
+Stop-Service -Name $serviceIndexer
+iisreset /stop
+
+
 CopyFiles $jsonModelsAr $xConnectAppDataModels
 CopyFiles $jsonModelsAr $xConnectAppDataIndexeWorkerModels
 CopyFiles $ModeDllsAr $xConnectApp_dataAutomationEngine

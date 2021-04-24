@@ -14,19 +14,22 @@
         <li>
 
           <ul>
-            <li>ChannelId - @interactionProxy.ChannelName  @interactionProxy.ChannelId.ToString()</li>
+            <li>@interactionProxy.ChannelName  (@interactionProxy.ChannelId.ToString())</li>
 
             <li>Events</li>
-            @if(interactionProxy.EventsB != null && interactionProxy.EventsB.Any())
+            @if (interactionProxy.EventsB != null && interactionProxy.EventsB.Any())
             {
 
               <ul>
-              @foreach (var oneEvent in interactionProxy.EventsB)
-              {
-                <li>@oneEvent.TypeName</li>
-              }
-
-
+                @foreach (var oneEvent in interactionProxy.EventsB)
+                {
+                  @oneEvent.TypeName
+                  <ul>
+                    <li>@oneEvent.ItemDisplayName (@oneEvent.ItemId.ToString())</li>
+                    <li>@oneEvent.TimeStamp</li>
+                    <li>duration: @oneEvent.Duration</li>
+                  </ul>
+                }
               </ul>
             }
 

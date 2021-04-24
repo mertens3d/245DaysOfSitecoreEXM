@@ -65,13 +65,17 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
           );
 
         registerInteraction.ExecuteInteraction();
+
       }
       catch (System.Exception ex)
       {
         Sitecore.Diagnostics.Log.Error(ex.Message, this);
       }
 
-      return Redirect(WebConst.Links.SitecoreCinema.SelfServiceMachine);
+
+        return Redirect(WebConst.Links.SitecoreCinema.SelfServiceMachine);
+      
+
     }
 
     [IdentifiedXConnectContact]

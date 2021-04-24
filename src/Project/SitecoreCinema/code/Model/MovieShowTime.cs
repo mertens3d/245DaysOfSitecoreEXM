@@ -7,5 +7,6 @@ namespace LearnEXM.Project.SitecoreCinema.Model
   {
     public string MovieName { get; internal set; }
     public DateTime MovieTime { get; internal set; }
+    public string MoviePoster { get; internal set; }
   }
 }

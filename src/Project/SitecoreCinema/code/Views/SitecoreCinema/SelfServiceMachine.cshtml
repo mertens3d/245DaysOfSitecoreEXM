@@ -14,6 +14,11 @@
       @foreach (var showTime in Model.ShowTimes)
       {
         <li>
+          @if (!string.IsNullOrEmpty(showTime.MoviePoster))
+          {
+            <img src="@showTime.MoviePoster" alt="@showTime.MovieName" width="160" />
+            <br/>
+          }
           @showTime.MovieName - @showTime.MovieTime
         </li>
       }

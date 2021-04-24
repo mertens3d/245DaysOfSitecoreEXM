@@ -34,9 +34,20 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers.Helpers
 
               DateTime movieTime = Sitecore.DateUtil.IsoDateToDateTime(movieShowTime.Fields[WebConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.MovieTimeField].Value);
 
+              ImageField imageField = movieDataItem.Fields[WebConst.Items.Templates.Feature.SitecoreCinema.MovieData.Poster];
+              var posterSrc = string.Empty;
+              if (imageField != null && imageField.MediaItem != null)
+              {
+                MediaItem image = new MediaItem(imageField.MediaItem);
+                posterSrc = Sitecore.StringUtil.EnsurePrefix('/',
+               Sitecore.Resources.Media.MediaManager.GetMediaUrl(image));
+              }
+
               var showTime = new MovieShowTime()
               {
                 MovieName = movieDataItem[WebConst.Items.Templates.Feature.SitecoreCinema.MovieData.MovieName],
+                MoviePoster = posterSrc,
+
                 MovieTime = movieTime,
               };
               toReturn.Add(showTime);

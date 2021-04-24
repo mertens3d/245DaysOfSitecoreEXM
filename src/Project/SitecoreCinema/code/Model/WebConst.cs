@@ -19,6 +19,7 @@ namespace LearnEXM.Project.SitecoreCinema.Model
           {
             public struct MovieData
             {
+              public static ID Poster = new ID("{6F6FB62C-E4F1-4781-B5D4-21D21AAE9F46}");
               public static ID MovieName = new ID("{3B14E82B-9D2A-479B-8FBC-87576BE25BFA}");
               public static ID YouTubeLink = new ID("{A71245C9-7A55-4275-AA20-3E711BE47499}");
             }
@@ -38,7 +39,7 @@ namespace LearnEXM.Project.SitecoreCinema.Model
     {
       public struct SitecoreCinema
       {
-        public static string _root = "/Sitecorecinema";
+        public static string _root = "";
 
         public static string BuyTicket = _root + "/buy-ticket";
 
