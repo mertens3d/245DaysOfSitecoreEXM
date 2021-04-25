@@ -22,7 +22,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     {
       var buyConcessionsInteraction = new BuyCandyInteraction(Tracker.Current.Contact);
       buyConcessionsInteraction.ExecuteInteraction();
-      return Redirect(WebConst.Links.SitecoreCinema.Lobby.LobbyLanding);
+      return Redirect(ProjConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
 
     private ContactIdentifier GetSitecoreCinemaContactIdentifier()
@@ -49,7 +49,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
 
       var buyTicketInteraction = new SelfServiceMachineInteraction(Tracker.Current.Contact, movieTicket);
       buyTicketInteraction.ExecuteInteraction();
-      return Redirect(WebConst.Links.SitecoreCinema.Lobby.LobbyLanding);
+      return Redirect(ProjConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
 
     [IdentifiedXConnectContact]
@@ -86,7 +86,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
       }
 
 
-        return Redirect(WebConst.Links.SitecoreCinema.SelfServiceMachine);
+        return Redirect(ProjConst.Links.SitecoreCinema.SelfServiceMachine);
       
 
     }
@@ -104,7 +104,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     {
       if (Tracker.Current.Session.Contact.IdentificationLevel == Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
       {
-        return Redirect(WebConst.Links.SitecoreCinema.SelfServiceMachine);
+        return Redirect(ProjConst.Links.SitecoreCinema.SelfServiceMachine);
       }
       else
       {

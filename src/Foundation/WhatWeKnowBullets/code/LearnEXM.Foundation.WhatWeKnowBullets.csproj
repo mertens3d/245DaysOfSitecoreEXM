@@ -107,14 +107,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuiltInBulletFactories\EmailAddressListBulletFactory.cs" />
+    <Compile Include="BuiltInBulletFactories\EmailAddressListTreeNodeFactory.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="Concretions\Bullet.cs" />
-    <Compile Include="BuiltInBulletFactories\PersonalInformationBulletFactory.cs" />
+    <Compile Include="Concretions\FancyTreeNode.cs" />
+    <Compile Include="Concretions\FancyTreeWriter.cs" />
+    <Compile Include="Concretions\TreeNode.cs" />
+    <Compile Include="BuiltInBulletFactories\PersonalInformationTreeNodeFactory.cs" />
     <Compile Include="Concretions\KnownData.cs" />
+    <Compile Include="Concretions\WhatWeKnowTree.cs" />
+    <Compile Include="Helpers\FacetTreeHelper.cs" />
     <Compile Include="Helpers\KnownDataHelper.cs" />
-    <Compile Include="Interfaces\IBullet.cs" />
-    <Compile Include="Interfaces\IFacetBulletFactory.cs" />
+    <Compile Include="Interfaces\ITreeNode.cs" />
+    <Compile Include="Interfaces\IFacetTreeNodeFactory.cs" />
+    <Compile Include="Interfaces\IWhatWeKnowTree.cs" />
+    <Compile Include="Interfaces\IWhatWeKnowTreeWriter.cs" />
     <Compile Include="Models\EventRecordProxy.cs" />
     <Compile Include="Models\InteractionProxy.cs" />
     <Compile Include="Models\KnownDataFacets.cs" />

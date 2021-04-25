@@ -6,20 +6,20 @@ using System.Linq;
 
 namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
 {
-  internal class CinemaVisitorInfoBulletFactory : IFacetBulletFactory
+  internal class CinemaVisitorInfoBulletFactory : IFacetTreeNodeFactory
   {
     public string AssociatedDefaultFacetKey { get; set; } = CinemaVisitorInfo.DefaultFacetKey;
 
-    public IBullet GetBullet(Facet facet)
+    public ITreeNode BuildTreeNode(Facet facet)
     {
-      var toReturn = new Bullet("Cinema Visitor Info");
+      var toReturn = new TreeNode("Cinema Visitor Info");
       CinemaVisitorInfo cinemaVisitorInfoFacet = facet as CinemaVisitorInfo;
 
       if (cinemaVisitorInfoFacet != null)
       {
-        toReturn.ChildBullets.Add(new Bullet("Favorite Movie", cinemaVisitorInfoFacet.FavoriteMovie));
+        toReturn.Leaves.Add(new TreeNode("Favorite Movie", cinemaVisitorInfoFacet.FavoriteMovie));
 
-        var ticketsBullet = new Bullet("Movie Tickets");
+        var ticketsBullet = new TreeNode("Movie Tickets");
 
         if (cinemaVisitorInfoFacet.MovieTickets != null && cinemaVisitorInfoFacet.MovieTickets.Any())
         {
@@ -27,7 +27,7 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
 
           foreach (var movieTicket in cinemaVisitorInfoFacet.MovieTickets)
           {
-            ticketsBullet.ChildBullets.Add(new Bullet("Movie Name", movieTicket.MovieName));
+            ticketsBullet.Leaves.Add(new TreeNode("Movie Name", movieTicket.MovieName));
           }
         }
       }

@@ -5,7 +5,7 @@ namespace LearnEXM.Feature.WhatWeKnow.Interfaces
 {
   public class FacetReportData
   {
-    public List<IBullet> ChildBullets { get; set; } = new List<IBullet>();
+    public List<ITreeNode> ChildBullets { get; set; } = new List<ITreeNode>();
     public string Title { get; set; }
   }
 }

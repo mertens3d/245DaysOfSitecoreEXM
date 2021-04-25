@@ -1,4 +1,6 @@
-﻿@using LearnEXM.Project.SitecoreCinema.Model
+﻿@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
+@using LearnEXM.Project.SitecoreCinema.Model
+
 @{
   Layout = null;
 }
@@ -10,21 +12,32 @@
   <meta name="viewport" content="width=device-width" />
   <title>SitecoreCinemaLayout</title>
   <link href="~/Assets/Styles/SitecoreCinema.css" rel="stylesheet" />
-  @if(IsSectionDefined("addToHead"))
-      {
-        @RenderSection("addToHead", required: false);
-      }
+
+  @{
+
+    Html.Assets().Scripts.Add(LearnEXM.Foundation.LearnEXMRoot.RootConst.Assets.Vendors.jqueryv360);
+
+    Html.Assets().Styles.Add(LearnEXM.Foundation.LearnEXMRoot.RootConst.Assets.Vendors.FancyTreeCss);
+    Html.Assets().Scripts.Add(LearnEXM.Foundation.LearnEXMRoot.RootConst.Assets.Vendors.FancyTreeJs);
+
+    Html.Assets().Styles.Add(LearnEXM.Feature.WhatWeKnow.SitecoreCinema.ProjectConst.Assets.WhatWeKnowCss);
+    Html.Assets().Scripts.Add(LearnEXM.Feature.WhatWeKnow.SitecoreCinema.ProjectConst.Assets.WhatWeKnowJs);
+  }
+
+  @Html.Assets().Styles.Render();
 </head>
 <body>
   <div>
     <h1>Sitecore Cinema</h1>
     <br />
     <div class="main">
-      @Html.Sitecore().Placeholder(WebConst.PlaceHolders.Main)
+      @Html.Sitecore().Placeholder(ProjConst.PlaceHolders.Main)
     </div>
     <div class="right-aside">
-      @Html.Sitecore().Placeholder(WebConst.PlaceHolders.RightAside)
+      @Html.Sitecore().Placeholder(ProjConst.PlaceHolders.RightAside)
     </div>
   </div>
+
+  @Html.Assets().Scripts.Render()
 </body>
 </html>

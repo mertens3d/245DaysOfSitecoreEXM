@@ -19,8 +19,8 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers.Helpers
        MovieItem = Sitecore.Context.Database.GetItem(new ID(movieId));
     }
 
-    public string MovieName { get { return MovieItem[WebConst.Items.Templates.Feature.SitecoreCinema.MovieData.MovieName]; } }
+    public string MovieName { get { return MovieItem[ProjConst.Items.Templates.Feature.SitecoreCinema.MovieData.MovieName]; } }
 
-    public ImageField PosteImageField { get { return MovieItem.Fields[WebConst.Items.Templates.Feature.SitecoreCinema.MovieData.Poster]; } }
+    public ImageField PosteImageField { get { return MovieItem.Fields[ProjConst.Items.Templates.Feature.SitecoreCinema.MovieData.Poster]; } }
   }
 }

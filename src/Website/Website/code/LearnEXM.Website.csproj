@@ -952,6 +952,159 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Styles\SitecoreCinema.css" />
+    <Content Include="Assets\Vendors\jquery-v3.6.0\jquery.js" />
+    <Content Include="Assets\Vendors\jquery-v3.6.0\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery-v3.6.0\jquery.slim.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery-v3.6.0\jquery.slim.min.js">
+      <DependentUpon>jquery.slim.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\jquery.fancytree-all-deps.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\jquery.fancytree-all-deps.min.js">
+      <DependentUpon>jquery.fancytree-all-deps.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\jquery.fancytree-all.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\jquery.fancytree-all.min.js">
+      <DependentUpon>jquery.fancytree-all.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\jquery.fancytree.min.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\LICENSE.txt" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.ariagrid.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.childcounter.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.clones.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.columnview.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.dnd.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.dnd5.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.edit.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.filter.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.fixed.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.glyph.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.grid.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.gridnav.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.js" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.logger.js">
+      <DependentUpon>jquery.fancytree.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.menu.js">
+      <DependentUpon>jquery.fancytree.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.multi.js">
+      <DependentUpon>jquery.fancytree.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.persist.js">
+      <DependentUpon>jquery.fancytree.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.table.js">
+      <DependentUpon>jquery.fancytree.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.themeroller.js">
+      <DependentUpon>jquery.fancytree.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.ui-deps.js">
+      <DependentUpon>jquery.fancytree.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\modules\jquery.fancytree.wide.js">
+      <DependentUpon>jquery.fancytree.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-awesome\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-awesome\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-awesome\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-awesome\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap-n\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap-n\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap-n\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap-n\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-lion\icons-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-lion\icons.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-lion\loading.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-lion\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-lion\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-lion\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-lion\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-material\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-material\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-material\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-material\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-themeroller\icons-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-themeroller\icons.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-themeroller\loading.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-themeroller\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-themeroller\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-themeroller\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-themeroller\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-vista\icons-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-vista\icons.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-vista\loading.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-vista\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-vista\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-vista\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-vista\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win7\icons-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win7\icons.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win7\loading.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win7\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win7\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win7\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win7\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-n\icons-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-n\icons.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-n\loading.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-n\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-n\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-n\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-n\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\icons-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\icons.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\loading.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\icons-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\icons.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\loading.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\vline.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\icons-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\icons.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\loading.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\ui.fancytree.css" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\ui.fancytree.min.css">
+      <DependentUpon>ui.fancytree.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\vline-rtl.gif" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\vline.gif" />
     <Content Include="Views\Email\_EmailBaseLayout.cshtml" />
     <Content Include="Views\Email\EmailMainLayout.cshtml" />
     <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.CinemaInfoCollectionModel.config" />
@@ -981,6 +1134,29 @@
     <Content Include="..\..\..\Project\SitecoreCinema\code\App_Start\RazorGeneratorMvcStart.cs.disabled">
       <Link>App_Start\RazorGeneratorMvcStart.cs.disabled</Link>
     </Content>
+    <Content Include="Assets\Vendors\jquery-v3.6.0\jquery.min.map">
+      <DependentUpon>jquery.min.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery-v3.6.0\jquery.slim.min.map">
+      <DependentUpon>jquery.slim.min.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\jquery.fancytree-all-deps.min.js.map">
+      <DependentUpon>jquery.fancytree-all-deps.min.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-awesome\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap-n\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-bootstrap\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-common.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-custom-1\README.md" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-lion\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-material\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-themeroller\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-vista\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win7\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-n\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\ui.fancytree.less" />
+    <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\ui.fancytree.less" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

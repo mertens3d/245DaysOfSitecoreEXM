@@ -17,11 +17,12 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 {
   public class KnownDataHelper
   {
-    public KnownDataHelper(List<string> targetedFacetKeys, List<IFacetBulletFactory> customFacetKeyBulletFactories)
+    public KnownDataHelper(List<string> targetedFacetKeys, List<IFacetTreeNodeFactory> customFacetKeyBulletFactories)
     {
       //TargetedFacetTypes = targetedFacetKeys;
-      CustomFacetKeyBulletFactories = customFacetKeyBulletFactories;
+
       TargetedFacetKeys = targetedFacetKeys;
+      CustomFacetKeyBulletFactories = customFacetKeyBulletFactories;
       //foreach (var type in targetedFacetKeys)
       //{
       //  PropertyInfo prop = type.GetProperty("DefaultFacetKey", BindingFlags.Static);
@@ -46,10 +47,9 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
     }
 
     //private List<Type> TargetedFacetTypes { get; }
-    private List<IFacetBulletFactory> CustomFacetKeyBulletFactories { get; }
 
     private List<string> TargetedFacetKeys { get; set; } = new List<string>();
-
+    private List<IFacetTreeNodeFactory> CustomFacetKeyBulletFactories { get; }
     private IXConnectFacets XConnectFacets { get; set; }
 
     public void AppendCurrentContextData(KnownData knownDataXConnect, Database database)
@@ -119,52 +119,12 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
       {
         var facetHelper = new FacetHelper(XConnectFacets);
 
+        var facetTreeHelper = new FacetTreeHelper(CustomFacetKeyBulletFactories);
+
         foreach (var targetFacetKey in TargetedFacetKeys)
         {
-          toReturn.BulletReports.Add(GetBulletReport(targetFacetKey, facetHelper));
+          toReturn.WhatWeKnowTree.Root.Leaves.Add(facetTreeHelper.GetFacetTreeNode(targetFacetKey, facetHelper));
         }
-      }
-
-      return toReturn;
-    }
-
-    private IBullet GetBulletReport(string targetFacetKey, FacetHelper facetHelper)
-    {
-      IBullet toReturn = null;
-
-      var matchingFactory = GetMatchingFactory(targetFacetKey);
-      if (matchingFactory != null)
-      {
-        var facet = facetHelper.GetFacetByKey(targetFacetKey);
-        if (facet != null)
-        {
-          toReturn = matchingFactory.GetBullet(facet);
-        }
-      }
-
-      return toReturn;
-    }
-
-    private List<IFacetBulletFactory> AllBuiltInBulletFactories
-    {
-      get
-      {
-        return new List<IFacetBulletFactory>
-        {
-          new EmailAddressListBulletFactory(),
-          new PersonalInformationBulletFactory()
-        };
-      }
-    }
-
-    private IFacetBulletFactory GetMatchingFactory(string facetKey)
-    {
-      IFacetBulletFactory toReturn = null;
-
-      toReturn = AllBuiltInBulletFactories.FirstOrDefault(x => x.AssociatedDefaultFacetKey.Equals(facetKey));
-      if (toReturn == null && CustomFacetKeyBulletFactories != null)
-      {
-        toReturn = CustomFacetKeyBulletFactories.FirstOrDefault(x => x.AssociatedDefaultFacetKey.Equals(facetKey));
       }
 
       return toReturn;

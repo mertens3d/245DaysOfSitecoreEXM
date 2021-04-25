@@ -25,7 +25,7 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Controllers
        CinemaDetails.DefaultFacetKey
       };
 
-      var customFacetKeyBulletFactories = new List<IFacetBulletFactory>()
+      var customFacetKeyBulletFactories = new List<IFacetTreeNodeFactory>()
       {
          new CinemaInfoBulletFactory(),
          new CinemaVisitorInfoBulletFactory(),
@@ -48,7 +48,7 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Controllers
         KnownDataXConnect = knownDataViaTracker,
         KnownDataTracker = null
       };
-      return View(WhatWeKnowConstants.Views.WhatWeKnow.Main, viewModel);
+      return View(ProjectConst.Views.WhatWeKnow.Main, viewModel);
     }
   }
 }

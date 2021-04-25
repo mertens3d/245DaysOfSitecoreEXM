@@ -14,6 +14,6 @@ namespace LearnEXM.Project.SitecoreCinema.Model
 
     public List<MovieShowTime> ShowTimes { get; set; }
 
-    public string TicketLink() => WebConst.Links.SitecoreCinema.BuyTicket;// + UserIdQueryString();
+    public string TicketLink() => ProjConst.Links.SitecoreCinema.BuyTicket;// + UserIdQueryString();
   }
 }

@@ -5,13 +5,13 @@ using Sitecore.XConnect;
 
 namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
 {
-  internal class CinemaDetailsBulletFactory : IFacetBulletFactory
+  internal class CinemaDetailsBulletFactory : IFacetTreeNodeFactory
   {
     public string AssociatedDefaultFacetKey { get; set; } = CinemaDetails.DefaultFacetKey;
 
-    public IBullet GetBullet(Facet facet)
+    public ITreeNode BuildTreeNode(Facet facet)
     {
-      var toReturn = new Bullet("Cinema Details");
+      var toReturn = new TreeNode("Cinema Details");
 
       var cinemaDetails = facet as CinemaDetails;
 

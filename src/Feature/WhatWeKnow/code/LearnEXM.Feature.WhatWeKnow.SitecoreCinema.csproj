@@ -210,7 +210,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\WhatWeKnow.SitecoreCinema\TEst.js" />
+    <Content Include="Assets\Scripts\WhatWeKnow.SitecoreCinema\WhatWeKnow.js" />
+    <Content Include="styles\WhatWeKnow.SitecoreCinema\WhatWeKnow.css" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Bullet.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Facets.cshtml" />
@@ -225,7 +226,7 @@
     <Compile Include="Interfaces\FacetReportData.cs" />
     <Compile Include="Models\KnownDataTracker.cs" />
     <Compile Include="Models\WhatWeKnowViewModel.cs" />
-    <Compile Include="Models\WhatWeKnowConstants.cs" />
+    <Compile Include="ProjectConst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -240,11 +241,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Vendors\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\LearnEXM.Foundation.CollectionModel.Builder.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
       <Name>LearnEXM.Foundation.CollectionModel.Builder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\Extensions\LearnEXM.Foundation.Extensions\code\LearnEXM.Foundation.Extensions.csproj">
+      <Project>{aef1f3c7-245a-4882-86d1-0f0e76a77824}</Project>
+      <Name>LearnEXM.Foundation.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\LearnEXMRoot\LearnEXM.Foundation.LearnEXMRoot\LearnEXM.Foundation.LearnEXMRoot.csproj">
+      <Project>{b366bdc0-c89c-42ef-af69-69ef880f78b8}</Project>
+      <Name>LearnEXM.Foundation.LearnEXMRoot</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\WhatWeKnowBullets\code\LearnEXM.Foundation.WhatWeKnowBullets.csproj">
       <Project>{33af1e5d-dc13-4153-864f-785b55d2cd95}</Project>

@@ -951,7 +951,7 @@
     <Compile Include="Model\ViewModels\RegisterViewModel.cs" />
     <Compile Include="Model\ViewModels\SelfServiceMachineViewModel.cs" />
     <Compile Include="Model\ViewModels\WatchMovieViewModel.cs" />
-    <Compile Include="Model\WebConst.cs" />
+    <Compile Include="Model\ProjConst.cs" />
     <Compile Include="Model\ViewModels\_baseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1003,9 +1003,21 @@
       <Project>{d2a31477-28f1-4ef6-b73d-7f015a7c920a}</Project>
       <Name>LearnEXM.Feature.MockContactGenerator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Feature\WhatWeKnow\code\LearnEXM.Feature.WhatWeKnow.SitecoreCinema.csproj">
+      <Project>{f68a6cbe-55ed-4dae-b139-61c3f54a0b7b}</Project>
+      <Name>LearnEXM.Feature.WhatWeKnow.SitecoreCinema</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\LearnEXM.Foundation.CollectionModel.Builder.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
       <Name>LearnEXM.Foundation.CollectionModel.Builder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\Extensions\LearnEXM.Foundation.Extensions\code\LearnEXM.Foundation.Extensions.csproj">
+      <Project>{aef1f3c7-245a-4882-86d1-0f0e76a77824}</Project>
+      <Name>LearnEXM.Foundation.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\LearnEXMRoot\LearnEXM.Foundation.LearnEXMRoot\LearnEXM.Foundation.LearnEXMRoot.csproj">
+      <Project>{b366bdc0-c89c-42ef-af69-69ef880f78b8}</Project>
+      <Name>LearnEXM.Foundation.LearnEXMRoot</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,11 +1,9 @@
-﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models
+﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema
+@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
 @model LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.WhatWeKnowViewModel
 
-@section AddToHead{
-  <link href="@Url.Content("~/Content/Upload.css")" rel="stylesheet" type="text/css" />
-}
-
 <aside>
+  <div id="tree"></div>
   <h3>What we know about you</h3>
   <h2>Tracker</h2>
   @if (Model?.KnownDataTracker != null)
@@ -37,8 +35,12 @@
       }
     </ul>
 
-    @Html.Partial(WhatWeKnowConstants.Views.WhatWeKnow.facets, Model)
-    @Html.Partial(WhatWeKnowConstants.Views.WhatWeKnow.Interactions, Model)
+    <div id="what-we-know-data-island" style="display:none">
+      @Html.Raw(Model.KnownDataXConnect.FacetData.WhatWeKnowTree.TreeWriter.DrawDataForTree())
+    </div>
+
+    @*@Html.Partial(ProjectConst.Views.WhatWeKnow.facets, Model)
+      @Html.Partial(ProjectConst.Views.WhatWeKnow.Interactions, Model)*@
 
   }
   else

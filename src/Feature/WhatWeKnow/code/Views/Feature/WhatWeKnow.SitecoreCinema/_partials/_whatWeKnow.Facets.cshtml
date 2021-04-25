@@ -1,11 +1,11 @@
-﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models
+﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema
 @model  LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.WhatWeKnowViewModel
 
 <h3>
   Facet Data (
-  @if (Model.KnownDataXConnect?.FacetData?.BulletReports != null)
+  @if (Model.KnownDataXConnect?.FacetData?.FacetTree != null)
   {
-    @Html.Raw(Model.KnownDataXConnect.FacetData.BulletReports.Count);
+    @Html.Raw(Model.KnownDataXConnect.FacetData.FacetTree.Count);
   }
   )
 </h3>
@@ -13,23 +13,27 @@
 @if (Model != null)
 {
 
-  if (Model.KnownDataXConnect?.FacetData?.BulletReports != null && Model.KnownDataXConnect.FacetData.BulletReports.Any())
+  if (Model.KnownDataXConnect?.FacetData?.FacetTree != null && Model.KnownDataXConnect.FacetData.FacetTree.Any())
   {
-    foreach (var facetReport in Model.KnownDataXConnect.FacetData.BulletReports)
+    foreach (var facetReport in Model.KnownDataXConnect.FacetData.FacetTree)
     {
-      <h4>@facetReport.Title</h4>
+      if (facetReport != null)
+      {
 
-      <ul>
+        <h4>@facetReport.Title</h4>
 
-        @if (facetReport.ChildBullets != null && facetReport.ChildBullets.Any())
-        {
-          foreach (var bullet in facetReport.ChildBullets)
+        <ul>
+
+          @if (facetReport.Leaves != null && facetReport.Leaves.Any())
           {
-            @Html.Partial(WhatWeKnowConstants.Views.WhatWeKnow.Bullet, bullet)
+            foreach (var bullet in facetReport.Leaves)
+            {
+              @Html.Partial(ProjectConst.Views.WhatWeKnow.Bullet, bullet)
 
+            }
           }
-        }
-      </ul>
+        </ul>
+      }
 
     }
   }

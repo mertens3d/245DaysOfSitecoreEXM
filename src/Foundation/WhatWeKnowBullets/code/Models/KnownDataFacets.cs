@@ -1,10 +1,12 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
+using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
 using System.Collections.Generic;
 
 namespace LearnEXM.Foundation.WhatWeKnowBullets.Models
 {
   public class KnownDataFacets
   {
-    public List<IBullet> BulletReports { get; set; } = new List<IBullet>();
+    
+    public IWhatWeKnowTree WhatWeKnowTree { get; set; } = new WhatWeKnowTree();
   }
 }

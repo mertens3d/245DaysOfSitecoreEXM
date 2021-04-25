@@ -24,7 +24,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers.Helpers
 
     private DateTime GetMovieTime(Item movieShowTime)
     {
-      DateTime toReturn = Sitecore.DateUtil.IsoDateToDateTime(movieShowTime.Fields[WebConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.MovieTimeField].Value);
+      DateTime toReturn = Sitecore.DateUtil.IsoDateToDateTime(movieShowTime.Fields[ProjConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.MovieTimeField].Value);
 
       return toReturn;
     }
@@ -34,7 +34,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers.Helpers
       MovieItemProxy toReturn = null;
       if (movieShowTime != null)
       {
-        var movieDataRef = (ReferenceField)movieShowTime.Fields[WebConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.MovieNameField];
+        var movieDataRef = (ReferenceField)movieShowTime.Fields[ProjConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.MovieNameField];
 
         if (movieDataRef != null && movieDataRef.TargetItem != null)
         {
@@ -69,13 +69,13 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers.Helpers
     public List<MovieShowTime> AvailableMovies()
     {
       var toReturn = new List<MovieShowTime>();
-      var showTimesItem = Sitecore.Context.Database.GetItem(WebConst.Items.Content.MovieShowTimesFolderItem);
+      var showTimesItem = Sitecore.Context.Database.GetItem(ProjConst.Items.Content.MovieShowTimesFolderItem);
       if (showTimesItem != null)
 
       {
         var foundChildren = showTimesItem
           .GetChildren()
-          .Where(x => x.TemplateID == WebConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.Root);
+          .Where(x => x.TemplateID == ProjConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.Root);
 
         if (foundChildren != null && foundChildren.Any())
         {
