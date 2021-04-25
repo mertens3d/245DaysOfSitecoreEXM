@@ -1,5 +1,4 @@
-﻿using LearnEXM.Project.SitecoreCinema.Model;
-using Sitecore.Analytics;
+﻿using Sitecore.Analytics;
 using System.Web.Mvc;
 
 namespace LearnEXM.Project.SitecoreCinema.Controllers

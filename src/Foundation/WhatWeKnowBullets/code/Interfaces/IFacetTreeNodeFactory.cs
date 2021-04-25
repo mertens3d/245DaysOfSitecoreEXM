@@ -8,5 +8,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Interfaces
     string  AssociatedDefaultFacetKey { get; set; }
 
     ITreeNode BuildTreeNode(Facet facet);
+
+    ITreeNode SerializeAsRaw(Facet facet);
   }
 }

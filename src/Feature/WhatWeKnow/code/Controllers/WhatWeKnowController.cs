@@ -6,7 +6,6 @@ using LearnEXM.Foundation.WhatWeKnowBullets.Helpers;
 using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
 using Sitecore.Analytics;
 using Sitecore.XConnect.Collection.Model;
-using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -19,7 +18,7 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Controllers
       var targetFacetsTypes = new List<string>
       {
        CinemaInfo.DefaultFacetKey,
-        CinemaVisitorInfo.DefaultFacetKey,
+       CinemaVisitorInfo.DefaultFacetKey,
        EmailAddressList.DefaultFacetKey,
        PersonalInformation.DefaultFacetKey,
        CinemaDetails.DefaultFacetKey

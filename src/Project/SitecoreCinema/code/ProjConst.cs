@@ -1,6 +1,6 @@
 ﻿using Sitecore.Data;
 
-namespace LearnEXM.Project.SitecoreCinema.Model
+namespace LearnEXM.Project.SitecoreCinema
 {
   public struct ProjConst
   {

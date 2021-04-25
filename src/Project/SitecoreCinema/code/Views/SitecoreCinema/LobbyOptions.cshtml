@@ -1,4 +1,5 @@
 ﻿@using LearnEXM.Project.SitecoreCinema.Model;
+@using LearnEXM.Project.SitecoreCinema;
 @model LearnEXM.Project.SitecoreCinema.Model.LobbyOptionsViewModel
 <h2>Lobby Options</h2>
 
@@ -6,8 +7,8 @@
 @if (Model != null)
 {
 
-  <a href="@(WebConst.Links.SitecoreCinema.Lobby.BuyConcessions )">Buy Concessions</a>
+  <a href="@(ProjConst.Links.SitecoreCinema.Lobby.BuyConcessions )">Buy Concessions</a>
   <br />
-  <a href="@(WebConst.Links.SitecoreCinema.Lobby.WatchMovie)">Watch Movie</a>
+  <a href="@(ProjConst.Links.SitecoreCinema.Lobby.WatchMovie)">Watch Movie</a>
 }
 <br />

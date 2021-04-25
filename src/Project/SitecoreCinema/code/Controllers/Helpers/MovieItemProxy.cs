@@ -1,5 +1,4 @@
-﻿using LearnEXM.Project.SitecoreCinema.Model;
-using Sitecore.Data;
+﻿using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using System;

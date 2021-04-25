@@ -107,12 +107,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuiltInBulletFactories\EmailAddressListTreeNodeFactory.cs" />
+    <Compile Include="TreeNodeFactories\EmailAddressListTreeNodeFactory.cs" />
+    <Compile Include="TreeNodeFactories\_baseFacetTreeNode.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Concretions\FancyTreeNode.cs" />
     <Compile Include="Concretions\FancyTreeWriter.cs" />
     <Compile Include="Concretions\TreeNode.cs" />
-    <Compile Include="BuiltInBulletFactories\PersonalInformationTreeNodeFactory.cs" />
+    <Compile Include="TreeNodeFactories\PersonalInformationTreeNodeFactory.cs" />
     <Compile Include="Concretions\KnownData.cs" />
     <Compile Include="Concretions\WhatWeKnowTree.cs" />
     <Compile Include="Helpers\FacetTreeHelper.cs" />

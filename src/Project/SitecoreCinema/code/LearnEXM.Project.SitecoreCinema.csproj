@@ -951,7 +951,7 @@
     <Compile Include="Model\ViewModels\RegisterViewModel.cs" />
     <Compile Include="Model\ViewModels\SelfServiceMachineViewModel.cs" />
     <Compile Include="Model\ViewModels\WatchMovieViewModel.cs" />
-    <Compile Include="Model\ProjConst.cs" />
+    <Compile Include="ProjConst.cs" />
     <Compile Include="Model\ViewModels\_baseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

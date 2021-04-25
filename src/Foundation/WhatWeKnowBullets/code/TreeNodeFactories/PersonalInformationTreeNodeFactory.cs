@@ -1,11 +1,12 @@
 ﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
 using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+using LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 
 namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 {
-  public class PersonalInformationTreeNodeFactory : IFacetTreeNodeFactory
+  public class PersonalInformationTreeNodeFactory : _baseFacetTreeNode, IFacetTreeNodeFactory
   {
     public string AssociatedDefaultFacetKey { get; set; } = PersonalInformation.DefaultFacetKey;
 
@@ -18,6 +19,10 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
         toReturn.Leaves.Add(new TreeNode("Name", personalInformationDetails.FirstName + " " + personalInformationDetails.LastName));
         toReturn.Leaves.Add(new TreeNode("Birthdate", personalInformationDetails.Birthdate.ToString()));
         toReturn.Leaves.Add(new TreeNode("Gender", personalInformationDetails.Gender));
+
+
+        toReturn.Leaves.Add(SerializeAsRaw(facet));
+
       }
       return toReturn;
     }

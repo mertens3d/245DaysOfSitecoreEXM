@@ -1,22 +1,20 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+﻿using LearnEXM.Foundation.WhatWeKnowBullets.BuiltInBulletFactories;
+using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
 using LearnEXM.Foundation.xConnectHelper.Helpers;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 {
- public class FacetTreeHelper
+  public class FacetTreeHelper
   {
-
     public FacetTreeHelper(List<IFacetTreeNodeFactory> customFacetKeyBulletFactories)
     {
       CustomFacetKeyBulletFactories = customFacetKeyBulletFactories;
     }
 
     private List<IFacetTreeNodeFactory> CustomFacetKeyBulletFactories { get; }
+
     public ITreeNode GetFacetTreeNode(string targetFacetKey, FacetHelper facetHelper)
     {
       ITreeNode toReturn = null;
@@ -33,6 +31,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 
       return toReturn;
     }
+
     private List<IFacetTreeNodeFactory> BuiltInFacetTreeNodeFactories
     {
       get
@@ -44,6 +43,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
         };
       }
     }
+
     public IFacetTreeNodeFactory GetMatchingFactory(string facetKey)
     {
       IFacetTreeNodeFactory toReturn = null;
@@ -56,6 +56,5 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 
       return toReturn;
     }
-
   }
 }

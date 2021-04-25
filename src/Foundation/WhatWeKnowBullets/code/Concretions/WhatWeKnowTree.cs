@@ -9,6 +9,6 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
 
         return new FancyTreeWriter(Root);
       } } 
-    public ITreeNode Root { get; set; } = new TreeNode("root");
+    public ITreeNode Root { get; set; } = new TreeNode("What We Know");
   }
 }
