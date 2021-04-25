@@ -1,5 +1,4 @@
 ﻿using LearnEXM.Project.SitecoreCinema.Model;
-using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using System;
@@ -10,7 +9,6 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers.Helpers
 {
   public class MovieTicketHelper
   {
-    
     private string GetPosterSrc(MovieItemProxy movieDataItem)
     {
       var toReturn = string.Empty;

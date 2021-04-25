@@ -1003,10 +1003,6 @@
       <Project>{d2a31477-28f1-4ef6-b73d-7f015a7c920a}</Project>
       <Name>LearnEXM.Feature.MockContactGenerator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Feature\WhatWeKnowAboutYou\code\LearnEXM.Feature.WhatWeKnowAboutYou.csproj">
-      <Project>{c87503bc-f5f8-430c-b228-b444fbd37208}</Project>
-      <Name>LearnEXM.Feature.WhatWeKnowAboutYou</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\LearnEXM.Foundation.CollectionModel.Builder.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
       <Name>LearnEXM.Foundation.CollectionModel.Builder</Name>
