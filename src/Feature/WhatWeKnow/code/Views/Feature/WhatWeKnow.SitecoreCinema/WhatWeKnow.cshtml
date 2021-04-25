@@ -1,5 +1,9 @@
-﻿@using LearnEXM.Feature.WhatWeKnow.Models
-@model LearnEXM.Feature.WhatWeKnow.Models.WhatWeKnowViewModel
+﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models
+@model LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.WhatWeKnowViewModel
+
+@section AddToHead{
+  <link href="@Url.Content("~/Content/Upload.css")" rel="stylesheet" type="text/css" />
+}
 
 <aside>
   <h3>What we know about you</h3>

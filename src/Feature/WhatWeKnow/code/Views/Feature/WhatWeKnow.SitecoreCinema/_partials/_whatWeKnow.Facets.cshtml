@@ -1,0 +1,37 @@
+﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models
+@model  LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.WhatWeKnowViewModel
+
+<h3>
+  Facet Data (
+  @if (Model.KnownDataXConnect?.FacetData?.BulletReports != null)
+  {
+    @Html.Raw(Model.KnownDataXConnect.FacetData.BulletReports.Count);
+  }
+  )
+</h3>
+
+@if (Model != null)
+{
+
+  if (Model.KnownDataXConnect?.FacetData?.BulletReports != null && Model.KnownDataXConnect.FacetData.BulletReports.Any())
+  {
+    foreach (var facetReport in Model.KnownDataXConnect.FacetData.BulletReports)
+    {
+      <h4>@facetReport.Title</h4>
+
+      <ul>
+
+        @if (facetReport.ChildBullets != null && facetReport.ChildBullets.Any())
+        {
+          foreach (var bullet in facetReport.ChildBullets)
+          {
+            @Html.Partial(WhatWeKnowConstants.Views.WhatWeKnow.Bullet, bullet)
+
+          }
+        }
+      </ul>
+
+    }
+  }
+
+}

@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LearnEXM.Feature.WhatWeKnow</RootNamespace>
-    <AssemblyName>LearnEXM.Feature.WhatWeKnow</AssemblyName>
+    <RootNamespace>LearnEXM.Feature.WhatWeKnow.SitecoreCinema</RootNamespace>
+    <AssemblyName>LearnEXM.Feature.WhatWeKnow.SitecoreCinema</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -210,26 +210,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
-    <Content Include="Views\WhatWeKnow\WhatWeKnow.cshtml" />
-    <Content Include="Views\WhatWeKnow\_partials\_whatWeKnow.Bullets.cshtml" />
-    <Content Include="Views\WhatWeKnow\_partials\_whatWeKnow.Facets.cshtml" />
-    <Content Include="Views\WhatWeKnow\_partials\_whatWeKnow.Interactions.cshtml" />
+    <Content Include="Scripts\WhatWeKnow.SitecoreCinema\TEst.js" />
+    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.cshtml" />
+    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Bullet.cshtml" />
+    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Facets.cshtml" />
+    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Interactions.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Models\BulletFactories\CinemaDetailsBulletFactory.cs" />
+    <Compile Include="Models\BulletFactories\CinemaInfoBulletFactory.cs" />
+    <Compile Include="Models\BulletFactories\CinemaVisitorInfoBulletFactory.cs" />
     <Compile Include="Controllers\WhatWeKnowController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces\Bullets.cs" />
     <Compile Include="Interfaces\FacetReportData.cs" />
-    <Compile Include="Models\EventRecordProxy.cs" />
-    <Compile Include="Models\InteractionProxy.cs" />
-    <Compile Include="Models\KnownData.cs" />
-    <Compile Include="Models\KnownDataFacets.cs" />
-    <Compile Include="Models\KnownDataHelper.cs" />
     <Compile Include="Models\KnownDataTracker.cs" />
     <Compile Include="Models\WhatWeKnowViewModel.cs" />
     <Compile Include="Models\WhatWeKnowConstants.cs" />
@@ -252,6 +245,10 @@
     <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\LearnEXM.Foundation.CollectionModel.Builder.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
       <Name>LearnEXM.Foundation.CollectionModel.Builder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\WhatWeKnowBullets\code\LearnEXM.Foundation.WhatWeKnowBullets.csproj">
+      <Project>{33af1e5d-dc13-4153-864f-785b55d2cd95}</Project>
+      <Name>LearnEXM.Foundation.WhatWeKnowBullets</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\xConnectHelper\LearnEXM.Foundation.xConnectHelper\LearnEXM.Foundation.xConnectHelper.csproj">
       <Project>{b3d715b9-fa7d-47b4-9263-a2f13705057b}</Project>

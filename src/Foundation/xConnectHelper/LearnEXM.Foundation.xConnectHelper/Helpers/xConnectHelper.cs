@@ -2,17 +2,18 @@
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LearnEXM.Foundation.xConnectHelper.Helpers
 {
   public class XConnectHelper
   {
-    public XConnectHelper(string[] allFacetKeys)
+    public XConnectHelper(List<string> allFacetKeys)
     {
       if (allFacetKeys != null)
       {
-        this.AllFacetKeys = allFacetKeys;
+        this.AllFacetKeys = allFacetKeys.ToArray();
       }
     }
 
@@ -70,10 +71,5 @@ namespace LearnEXM.Foundation.xConnectHelper.Helpers
       return toReturn;
     }
 
-    //public Contact IdentifyKnownContact(Sitecore.Analytics.Tracking.Contact trackingContact)
-    //{
-    //  var identifiedContactRef = GetIdentifierFromTrackingContact(trackingContact);
-    //  return IdentifyKnownContact(identifiedContactRef);
-    //}
   }
 }

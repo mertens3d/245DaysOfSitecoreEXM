@@ -13,7 +13,17 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
 
     public void OnActionExecuting(ActionExecutingContext filterContext)
     {
-      if (Tracker.Current.Contact.IdentificationLevel != Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
+      var passes = false;
+
+      if (Tracker.Current?.Contact != null)
+      {
+        if (Tracker.Current.Contact.IdentificationLevel == Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
+        {
+          passes = true;
+        }
+      }
+
+      if (!passes)
       {
         filterContext.Controller.ControllerContext.HttpContext.Response.Redirect(WebConst.Links.SitecoreCinema.Landing);
       }

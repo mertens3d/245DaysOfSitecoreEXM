@@ -24,11 +24,6 @@
           "Type": [
             "LearnEXM.Foundation.CollectionModel.Builder.Models.Facets.MovieTicket"
           ]
-        },
-        "OwnedMovieTickets": {
-          "Type": [
-            "Guid"
-          ]
         }
       }
     },

@@ -1,33 +1,42 @@
-﻿using LearnEXM.Feature.WhatWeKnow.Models;
+﻿using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models;
+using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories;
+using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
+using LearnEXM.Foundation.WhatWeKnowBullets.Helpers;
+using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
 using Sitecore.Analytics;
-using Sitecore.Analytics.Tracking;
+using Sitecore.XConnect.Collection.Model;
+using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace LearnEXM.Feature.WhatWeKnow.Controllers
+namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Controllers
 {
   public class WhatWeKnowController : Controller
   {
     public ActionResult WhatWeKnow()
     {
-      Contact trackingContact = Tracker.Current.Contact;
+      var targetFacetsTypes = new List<string>
+      {
+       CinemaInfo.DefaultFacetKey,
+        CinemaVisitorInfo.DefaultFacetKey,
+       EmailAddressList.DefaultFacetKey,
+       PersonalInformation.DefaultFacetKey,
+       CinemaDetails.DefaultFacetKey
+      };
 
-      var knownDataHelper = new KnownDataHelper();
+      var customFacetKeyBulletFactories = new List<IFacetBulletFactory>()
+      {
+         new CinemaInfoBulletFactory(),
+         new CinemaVisitorInfoBulletFactory(),
+         new CinemaDetailsBulletFactory()
+      };
+
+      var knownDataHelper = new KnownDataHelper(targetFacetsTypes, customFacetKeyBulletFactories);
 
       KnownData knownDataXConnect = null;
 
-      //Task.Run(async () =>
-      //{
-      //  knownDataXConnect = await knownDataHelper.GetKnownDataByIdentifierViaXConnect(QueryStringHelper.UserId);
-      //}
-      //).Wait();
-
-      //KnownData knownDataViaTracker = null;// knownDataHelper.GetKnownDataViaTracker(trackingContact);
-      KnownData knownDataViaTracker = knownDataHelper.GetKnownDataViaTracker(trackingContact);
-
-      //Tracker.Current.Contact // <--- Use this
-      // use other Contact outside of a web page.
-
-      //knownDataTracker.IsNew = trackingContact.IsNew;
+      KnownData knownDataViaTracker = knownDataHelper.GetKnownDataViaTracker(Tracker.Current.Contact);
 
       if (knownDataXConnect != null)
       {
@@ -39,7 +48,7 @@ namespace LearnEXM.Feature.WhatWeKnow.Controllers
         KnownDataXConnect = knownDataViaTracker,
         KnownDataTracker = null
       };
-      return View(viewModel);
+      return View(WhatWeKnowConstants.Views.WhatWeKnow.Main, viewModel);
     }
   }
 }

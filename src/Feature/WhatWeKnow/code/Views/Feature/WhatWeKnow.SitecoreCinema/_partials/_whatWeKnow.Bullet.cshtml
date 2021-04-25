@@ -1,0 +1,27 @@
+﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models
+@model   LearnEXM.Foundation.WhatWeKnowBullets.Interfaces.IBullet
+
+@if (Model != null)
+{
+
+  <li>
+    @Model.Title
+
+    @if (!string.IsNullOrEmpty(Model.Value))
+    {
+      <span> : </span>@Model.Value
+    }
+  </li>
+
+  <ul>
+
+    @if (Model.ChildBullets != null && Model.ChildBullets.Any())
+    {
+
+      foreach (var bullet in Model.ChildBullets)
+      {
+        @Html.Partial(WhatWeKnowConstants.Views.WhatWeKnow.Bullet, bullet)
+      }
+    }
+  </ul>
+}

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LearnEXM.Feature.WhatWeKnow.Models
+namespace LearnEXM.Foundation.WhatWeKnowBullets.Models
 {
   public class InteractionProxy
   {

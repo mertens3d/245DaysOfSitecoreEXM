@@ -28,7 +28,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     public Contact XConnectContact { get; set; } = null;
     protected XConnectClient Client { get; set; }
     protected IXConnectFacets XConnectFacets { get; private set; }
-    private string[] AllFacetKeys { get; set; } = new[] {
+    private  List<string> AllFacetKeys { get; set; } = new List<string> {
               CinemaInfo.DefaultFacetKey,
               CinemaVisitorInfo.DefaultFacetKey,
               EmailAddressList.DefaultFacetKey,

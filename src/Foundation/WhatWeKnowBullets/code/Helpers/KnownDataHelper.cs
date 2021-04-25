@@ -1,5 +1,6 @@
-﻿using LearnEXM.Foundation.CollectionModel.Builder;
-using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
+using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+using LearnEXM.Foundation.WhatWeKnowBullets.Models;
 using LearnEXM.Foundation.xConnectHelper.Helpers;
 using Newtonsoft.Json;
 using Sitecore.Analytics;
@@ -8,22 +9,46 @@ using Sitecore.Data;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Serialization;
-using Sitecore.XConnect.Collection.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LearnEXM.Feature.WhatWeKnow.Models
+namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 {
   public class KnownDataHelper
   {
-    private string[] AllFacetKeys { get; set; } = new[] {
-              CinemaInfo.DefaultFacetKey,
-              CinemaVisitorInfo.DefaultFacetKey,
-              EmailAddressList.DefaultFacetKey,
-              PersonalInformation.DefaultFacetKey,
-              CinemaDetails.DefaultFacetKey,
-    };
+    public KnownDataHelper(List<string> targetedFacetKeys, List<IFacetBulletFactory> customFacetKeyBulletFactories)
+    {
+      //TargetedFacetTypes = targetedFacetKeys;
+      CustomFacetKeyBulletFactories = customFacetKeyBulletFactories;
+      TargetedFacetKeys = targetedFacetKeys;
+      //foreach (var type in targetedFacetKeys)
+      //{
+      //  PropertyInfo prop = type.GetProperty("DefaultFacetKey", BindingFlags.Static);
+
+      //  if (prop != null)
+      //  {
+      //    string propValue = prop.GetValue(null) as string;
+      //    if (!string.IsNullOrEmpty(propValue))
+      //    {
+      //      TargetedFacetKeys.Add(propValue);
+      //    }
+      //    else
+      //    {
+      //      Sitecore.Diagnostics.Log.Error(WhatWeKnowBulletsConstants.Logger.Prefix + type.Name + " did not have valid string value", this);
+      //    }
+      //  }
+      //  else
+      //  {
+      //    Sitecore.Diagnostics.Log.Error(WhatWeKnowBulletsConstants.Logger.Prefix + type.Name + " does not have a 'DefaultFacetKey'", this);
+      //  }
+      //}
+    }
+
+    //private List<Type> TargetedFacetTypes { get; }
+    private List<IFacetBulletFactory> CustomFacetKeyBulletFactories { get; }
+
+    private List<string> TargetedFacetKeys { get; set; } = new List<string>();
 
     private IXConnectFacets XConnectFacets { get; set; }
 
@@ -63,7 +88,7 @@ namespace LearnEXM.Feature.WhatWeKnow.Models
         {
           toReturn = new KnownData();
 
-          var xConnectHelper = new XConnectHelper(AllFacetKeys);
+          var xConnectHelper = new XConnectHelper(TargetedFacetKeys);
 
           IdentifiedContactReference IdentifiedContactReference = xConnectHelper.GetIdentifierFromTrackingContact(trackingContact);
 
@@ -79,7 +104,7 @@ namespace LearnEXM.Feature.WhatWeKnow.Models
         }
         catch (XdbExecutionException ex)
         {
-          Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.Prefix + ex.Message, this);
+          Sitecore.Diagnostics.Log.Error(WhatWeKnowBulletsConstants.Logger.Prefix + ex.Message, this);
         }
       }
 
@@ -94,18 +119,52 @@ namespace LearnEXM.Feature.WhatWeKnow.Models
       {
         var facetHelper = new FacetHelper(XConnectFacets);
 
-        toReturn.CinemaDetails = facetHelper.SafeGetCreateFacet<CinemaDetails>(CinemaDetails.DefaultFacetKey);
-        toReturn.CinemaInfo = facetHelper.SafeGetCreateFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
-
-        if (toReturn.CinemaInfo == null)
+        foreach (var targetFacetKey in TargetedFacetKeys)
         {
-          toReturn.CinemaInfo = new CinemaInfo();
+          toReturn.BulletReports.Add(GetBulletReport(targetFacetKey, facetHelper));
         }
+      }
 
-        toReturn.CinemaVisitorInfo = facetHelper.SafeGetCreateFacet<CinemaVisitorInfo>(CinemaVisitorInfo.DefaultFacetKey);
-        toReturn.EmailAddressList = facetHelper.SafeGetCreateFacet<EmailAddressList>(EmailAddressList.DefaultFacetKey);
+      return toReturn;
+    }
 
-        toReturn.PersonalInformationDetails = facetHelper.SafeGetCreateFacet<PersonalInformation>(PersonalInformation.DefaultFacetKey);
+    private IBullet GetBulletReport(string targetFacetKey, FacetHelper facetHelper)
+    {
+      IBullet toReturn = null;
+
+      var matchingFactory = GetMatchingFactory(targetFacetKey);
+      if (matchingFactory != null)
+      {
+        var facet = facetHelper.GetFacetByKey(targetFacetKey);
+        if (facet != null)
+        {
+          toReturn = matchingFactory.GetBullet(facet);
+        }
+      }
+
+      return toReturn;
+    }
+
+    private List<IFacetBulletFactory> AllBuiltInBulletFactories
+    {
+      get
+      {
+        return new List<IFacetBulletFactory>
+        {
+          new EmailAddressListBulletFactory(),
+          new PersonalInformationBulletFactory()
+        };
+      }
+    }
+
+    private IFacetBulletFactory GetMatchingFactory(string facetKey)
+    {
+      IFacetBulletFactory toReturn = null;
+
+      toReturn = AllBuiltInBulletFactories.FirstOrDefault(x => x.AssociatedDefaultFacetKey.Equals(facetKey));
+      if (toReturn == null && CustomFacetKeyBulletFactories != null)
+      {
+        toReturn = CustomFacetKeyBulletFactories.FirstOrDefault(x => x.AssociatedDefaultFacetKey.Equals(facetKey));
       }
 
       return toReturn;
@@ -129,7 +188,7 @@ namespace LearnEXM.Feature.WhatWeKnow.Models
       }
       catch (Exception ex)
       {
-        Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.Prefix + ex.Message, this);
+        Sitecore.Diagnostics.Log.Error(WhatWeKnowBulletsConstants.Logger.Prefix + ex.Message, this);
       }
 
       return toReturn;

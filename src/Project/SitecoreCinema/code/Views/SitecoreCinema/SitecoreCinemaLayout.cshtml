@@ -10,6 +10,10 @@
   <meta name="viewport" content="width=device-width" />
   <title>SitecoreCinemaLayout</title>
   <link href="~/Assets/Styles/SitecoreCinema.css" rel="stylesheet" />
+  @if(IsSectionDefined("addToHead"))
+      {
+        @RenderSection("addToHead", required: false);
+      }
 </head>
 <body>
   <div>

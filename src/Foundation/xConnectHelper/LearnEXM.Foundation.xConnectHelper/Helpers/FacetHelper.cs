@@ -1,4 +1,5 @@
 ﻿using Sitecore.Analytics.XConnect.Facets;
+using Sitecore.XConnect;
 using System;
 
 namespace LearnEXM.Foundation.xConnectHelper.Helpers
@@ -13,11 +14,25 @@ namespace LearnEXM.Foundation.xConnectHelper.Helpers
       XConnectFacets = xConnectFacets;
     }
 
-    public T SafeGetCreateFacet<T>(string facetKey) where T : Sitecore.XConnect.Facet
+
+    public Facet GetFacetByKey(string facetKey)
+    {
+      Facet toReturn = null;
+
+      if(!string.IsNullOrEmpty(facetKey) && XConnectFacets?.Facets != null && XConnectFacets.Facets.ContainsKey(facetKey))
+      {
+        toReturn = XConnectFacets.Facets[facetKey];
+      }
+      return toReturn;
+    }
+    public T SafeGetCreateFacet<T>(string facetKey) where T :  Sitecore.XConnect.Facet
     {
       T toReturn;
 
-      if (XConnectFacets?.Facets != null && XConnectFacets.Facets.ContainsKey(facetKey))
+
+      var facet = GetFacetByKey(facetKey);
+
+      if (facet != null)
       {
         toReturn = (T)Convert.ChangeType(XConnectFacets.Facets[facetKey], typeof(T));
       }

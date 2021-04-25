@@ -12,7 +12,6 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Models.Facets
     public string FavoriteMovie { get; set; } // Plain text; e.g. "some movie name"
 
     public List<MovieTicket> MovieTickets { get; set; } = new List<MovieTicket>();
-    public List<Guid> OwnedMovieTickets { get; set; } = new List<Guid>();
 
     public CinemaVisitorInfo()
     {

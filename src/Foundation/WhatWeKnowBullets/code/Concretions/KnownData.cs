@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using LearnEXM.Foundation.WhatWeKnowBullets.Models;
 using Sitecore.Analytics.Model.Entities;
 
-namespace LearnEXM.Feature.WhatWeKnow.Models
+namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
 {
   public class KnownData
   {
