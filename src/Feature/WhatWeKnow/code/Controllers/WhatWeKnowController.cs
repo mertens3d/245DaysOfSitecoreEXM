@@ -1,4 +1,5 @@
-﻿using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models;
+﻿using LearnEXM.Feature.SitecoreCinema;
+using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models;
 using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
@@ -24,11 +25,11 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Controllers
        CinemaDetails.DefaultFacetKey
       };
 
-      var customFacetKeyBulletFactories = new List<IFacetTreeNodeFactory>()
+      var customFacetKeyBulletFactories = new List<IFacetNodeFactory>()
       {
-         new CinemaInfoBulletFactory(),
-         new CinemaVisitorInfoBulletFactory(),
-         new CinemaDetailsBulletFactory()
+         new CinemaInfoTreeNodeFactory(),
+         new CinemaVisitorInfoFacetTreeNodeFactory(),
+         new CinemaDetailsFacetTreeNodeFactory()
       };
 
       var knownDataHelper = new KnownDataHelper(targetFacetsTypes, customFacetKeyBulletFactories);
@@ -37,16 +38,16 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Controllers
 
       KnownData knownDataViaTracker = knownDataHelper.GetKnownDataViaTracker(Tracker.Current.Contact);
 
-      if (knownDataXConnect != null)
-      {
-        knownDataHelper.AppendCurrentContextData(knownDataXConnect, Sitecore.Context.Database);
-      }
+      //if (knownDataXConnect != null)
+      //{
+      //  knownDataHelper.AppendCurrentContextData(knownDataXConnect, Sitecore.Context.Database);
+      //}
 
       var viewModel = new WhatWeKnowViewModel
       {
-        KnownDataXConnect = knownDataViaTracker,
-        KnownDataTracker = null
+        KnownData = knownDataViaTracker,
       };
+
       return View(ProjectConst.Views.WhatWeKnow.Main, viewModel);
     }
   }

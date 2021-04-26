@@ -1,7 +1,11 @@
 ﻿using LearnEXM.Feature.MockContactGenerator;
+using LearnEXM.Feature.SitecoreCinema.Helpers;
+using LearnEXM.Feature.SitecoreCinema.Models;
+using LearnEXM.Feature.SitecoreCinema.Models.Proxies;
+using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models;
+using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.ViewModels;
 using LearnEXM.Foundation.CollectionModel.Builder.Interactions;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
-using LearnEXM.Project.SitecoreCinema.Controllers.Helpers;
 using LearnEXM.Project.SitecoreCinema.Model;
 using Sitecore.Analytics;
 using Sitecore.Analytics.Model.Entities;
@@ -21,8 +25,10 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     public ActionResult BuyConcessions()
     {
       var buyConcessionsInteraction = new BuyCandyInteraction(Tracker.Current.Contact);
+
+
       buyConcessionsInteraction.ExecuteInteraction();
-      return Redirect(ProjConst.Links.SitecoreCinema.Lobby.LobbyLanding);
+      return Redirect(Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
 
     private ContactIdentifier GetSitecoreCinemaContactIdentifier()
@@ -34,28 +40,34 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     }
 
     [IdentifiedXConnectContact]
-    public ActionResult BuyTicket(Guid movieid)
+    public ActionResult BuyTicket(Guid movieShowingGuid)
     {
-
       Guid cinemaId = Guid.Parse("{A83BEBA7-0752-4A11-8F3A-95F84B53A0D4}"); //todo build in cinemas
-      var movieDataProxy = new MovieItemProxy(movieid);
+      var movieItemProxy = new MovieShowTimeProxy(movieShowingGuid);
 
       var movieTicket = new MovieTicket()
       {
         CinimaId = cinemaId,
-        MovieId = movieDataProxy.MovieItem.ID.Guid,
-        MovieName = movieDataProxy.MovieName
+        MovieId = movieItemProxy.MovieShowTimeId.Guid,
+        MovieName = movieItemProxy.MovieName
       };
 
       var buyTicketInteraction = new SelfServiceMachineInteraction(Tracker.Current.Contact, movieTicket);
       buyTicketInteraction.ExecuteInteraction();
-      return Redirect(ProjConst.Links.SitecoreCinema.Lobby.LobbyLanding);
+      return Redirect(Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
 
     [IdentifiedXConnectContact]
     public ActionResult LobbyOptions()
     {
       var viewModel = new LobbyOptionsViewModel();
+
+      var concessionHelper = new ConcessionHelper();
+      viewModel.Concessions = concessionHelper.GetConcessions();
+
+
+
+
       return View(viewModel);
     }
 
@@ -78,23 +90,19 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
           );
 
         registerInteraction.ExecuteInteraction();
-
       }
       catch (System.Exception ex)
       {
         Sitecore.Diagnostics.Log.Error(ex.Message, this);
       }
 
-
-        return Redirect(ProjConst.Links.SitecoreCinema.SelfServiceMachine);
-      
-
+      return Redirect(Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.SelfServiceMachine);
     }
 
     [IdentifiedXConnectContact]
     public ActionResult SelfServiceMachine()
     {
-      var viewModel = new SelfServiceMachineViewModel(Tracker.Current.Contact);
+      var viewModel = new SelfServiceMachineViewModel();
       var movieTicketHelper = new MovieTicketHelper();
       viewModel.ShowTimes = movieTicketHelper.AvailableMovies();
       return View(viewModel);
@@ -104,7 +112,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     {
       if (Tracker.Current.Session.Contact.IdentificationLevel == Sitecore.Analytics.Model.ContactIdentificationLevel.Known)
       {
-        return Redirect(ProjConst.Links.SitecoreCinema.SelfServiceMachine);
+        return Redirect(Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.SelfServiceMachine);
       }
       else
       {
@@ -117,7 +125,6 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     {
       var watchMovieInteraction = new WatchMovieInteraction(Tracker.Current.Contact);
       watchMovieInteraction.ExecuteInteraction();
-
 
       var viewModel = new WatchMovieViewModel(Tracker.Current.Contact);
 

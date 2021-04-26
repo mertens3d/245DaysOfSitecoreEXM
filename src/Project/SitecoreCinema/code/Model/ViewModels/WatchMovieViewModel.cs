@@ -10,7 +10,5 @@ namespace LearnEXM.Project.SitecoreCinema.Model
     {
       TrackingContact = trackingContact;
     }
-
-
   }
 }

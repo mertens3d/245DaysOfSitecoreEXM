@@ -1,17 +1,21 @@
-﻿using System;
+﻿using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+using LearnEXM.Foundation.xConnectHelper.Proxies;
+using System;
 using System.Collections.Generic;
-using LearnEXM.Foundation.WhatWeKnowBullets.Models;
-using Sitecore.Analytics.Model.Entities;
 
 namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
 {
   public class KnownData
   {
+    public KnownData(string rootTitle)
+    {
+      this.WhatWeKnowTree = new WhatWeKnowTree(rootTitle);
+    }
+
     public Guid? ContactId { get; set; }
-    public List<ContactIdentifier> Identifiers { get; set; }
     public List<InteractionProxy> KnownInteractions { get; set; }
     public bool IsKnown { get; set; }
-    public KnownDataFacets FacetData { get; set; } = new KnownDataFacets();
+    public IWhatWeKnowTree WhatWeKnowTree { get; set; }
     public string UserId { get; set; }
 
     public string ContactIdAsString()

@@ -2,34 +2,54 @@
 using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
 using Newtonsoft.Json;
 using Sitecore.XConnect;
+using Sitecore.XConnect.Client;
+using Sitecore.XConnect.Client.Serialization;
 
 namespace LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories
 {
   public abstract class _baseFacetTreeNode
   {
+    private XConnectClient XConnectClient { get; set; }
+
+    public void SetClient(XConnectClient xConnectClient)
+    {
+      XConnectClient = xConnectClient;
+    }
+
+    public ITreeNode LastModified(Facet facet)
+    {
+      return new TreeNode("Last Modified", facet.LastModified.ToString());
+    }
+
     public ITreeNode SerializeAsRaw(Facet facet)
     {
       var toReturn = new TreeNode("Raw");
 
-      var serializerSettings = new JsonSerializerSettings
+      if (XConnectClient != null)
       {
-        DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-        DefaultValueHandling = DefaultValueHandling.Ignore,
-        Formatting = Formatting.Indented,
-        MaxDepth = 1
-      };
+        var ContractResolver = new XdbJsonContractResolver(XConnectClient.Model, true, true);
 
-      var serialized = string.Empty;
+        var serializerSettings = new JsonSerializerSettings
+        {
+          ContractResolver = ContractResolver,
+          DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+          DefaultValueHandling = DefaultValueHandling.Ignore,
+          Formatting = Formatting.Indented,
+        };
 
-      try
-      {
-        serialized = JsonConvert.SerializeObject(facet, serializerSettings);
+        var serialized = string.Empty;
+
+        try
+        {
+          serialized = JsonConvert.SerializeObject(facet, serializerSettings);
+          toReturn.Value = serialized;
+          toReturn.ValueIsJson = true;
+        }
+        catch (System.Exception ex)
+        {
+          toReturn.Value = "{couldn't serialize}";
+        }
       }
-      catch (System.Exception ex)
-      {
-        serialized = "{couldn't serialize}";
-      }
-      toReturn.Leaves.Add(new TreeNode(serialized));
 
       return toReturn;
     }

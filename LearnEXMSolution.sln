@@ -91,9 +91,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LearnEXMRoot", "LearnEXMRoo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Foundation.LearnEXMRoot", "src\Foundation\LearnEXMRoot\LearnEXM.Foundation.LearnEXMRoot\LearnEXM.Foundation.LearnEXMRoot.csproj", "{B366BDC0-C89C-42EF-AF69-69EF880F78B8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WhatWeKnow.SitecoreCinema", "WhatWeKnow.SitecoreCinema", "{38EFE5AA-7445-4CFA-8889-6E5405D1F3D7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SitecoreCinema", "SitecoreCinema", "{38EFE5AA-7445-4CFA-8889-6E5405D1F3D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.WhatWeKnow.SitecoreCinema", "src\Feature\WhatWeKnow\code\LearnEXM.Feature.WhatWeKnow.SitecoreCinema.csproj", "{F68A6CBE-55ED-4DAE-B139-61C3F54A0B7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.SitecoreCinema", "src\Feature\WhatWeKnow\code\LearnEXM.Feature.SitecoreCinema.csproj", "{F68A6CBE-55ED-4DAE-B139-61C3F54A0B7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WhatWeKnowBullets", "WhatWeKnowBullets", "{21E3E415-FE75-497F-BB7F-062CE3FD498D}"
 EndProject
@@ -235,7 +235,7 @@ Global
 		{AEF1F3C7-245A-4882-86D1-0F0E76A77824} = {B00966C5-632F-4C6D-9D4C-5D10CD93CA11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
+		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 	EndGlobalSection
 EndGlobal

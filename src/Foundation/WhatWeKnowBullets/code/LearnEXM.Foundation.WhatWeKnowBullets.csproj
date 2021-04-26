@@ -119,11 +119,9 @@
     <Compile Include="Helpers\FacetTreeHelper.cs" />
     <Compile Include="Helpers\KnownDataHelper.cs" />
     <Compile Include="Interfaces\ITreeNode.cs" />
-    <Compile Include="Interfaces\IFacetTreeNodeFactory.cs" />
+    <Compile Include="Interfaces\IFacetNodeFactory.cs" />
     <Compile Include="Interfaces\IWhatWeKnowTree.cs" />
     <Compile Include="Interfaces\IWhatWeKnowTreeWriter.cs" />
-    <Compile Include="Models\EventRecordProxy.cs" />
-    <Compile Include="Models\InteractionProxy.cs" />
     <Compile Include="Models\KnownDataFacets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhatWeKnowBulletsConstants.cs" />

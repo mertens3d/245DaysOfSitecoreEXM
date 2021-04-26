@@ -6,7 +6,7 @@ using Sitecore.XConnect.Collection.Model;
 
 namespace LearnEXM.Foundation.WhatWeKnowBullets.BuiltInBulletFactories
 {
-  public class EmailAddressListTreeNodeFactory : _baseFacetTreeNode, IFacetTreeNodeFactory
+  public class EmailAddressListTreeNodeFactory : _baseFacetTreeNode, IFacetNodeFactory
   {
     public string AssociatedDefaultFacetKey { get; set; } = EmailAddressList.DefaultFacetKey;
 
@@ -24,6 +24,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.BuiltInBulletFactories
           toReturn.Leaves.Add(new TreeNode("Preferred Email", preferredEmail.SmtpAddress));
         }
 
+        toReturn.Leaves.Add(LastModified(facet));
         toReturn.Leaves.Add(SerializeAsRaw(facet));
       }
       return toReturn;

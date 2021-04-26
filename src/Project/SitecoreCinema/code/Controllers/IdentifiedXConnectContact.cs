@@ -24,7 +24,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
 
       if (!passes)
       {
-        filterContext.Controller.ControllerContext.HttpContext.Response.Redirect(ProjConst.Links.SitecoreCinema.Landing);
+        filterContext.Controller.ControllerContext.HttpContext.Response.Redirect(Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.Landing);
       }
     }
   }

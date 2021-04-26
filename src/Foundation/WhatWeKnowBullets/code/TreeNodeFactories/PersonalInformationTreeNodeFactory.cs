@@ -6,7 +6,7 @@ using Sitecore.XConnect.Collection.Model;
 
 namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 {
-  public class PersonalInformationTreeNodeFactory : _baseFacetTreeNode, IFacetTreeNodeFactory
+  public class PersonalInformationTreeNodeFactory : _baseFacetTreeNode, IFacetNodeFactory
   {
     public string AssociatedDefaultFacetKey { get; set; } = PersonalInformation.DefaultFacetKey;
 
@@ -20,7 +20,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
         toReturn.Leaves.Add(new TreeNode("Birthdate", personalInformationDetails.Birthdate.ToString()));
         toReturn.Leaves.Add(new TreeNode("Gender", personalInformationDetails.Gender));
 
-
+        toReturn.Leaves.Add(LastModified(facet));
         toReturn.Leaves.Add(SerializeAsRaw(facet));
 
       }

@@ -4,8 +4,7 @@ using System;
 
 namespace LearnEXM.Foundation.xConnectHelper.Helpers
 {
-
-  public class FacetHelper//<T> where T : Facet
+  public class FacetHelper
   {
     private readonly IXConnectFacets XConnectFacets;
 

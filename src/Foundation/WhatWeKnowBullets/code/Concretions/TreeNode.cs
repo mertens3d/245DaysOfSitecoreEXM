@@ -28,6 +28,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
     public List<ITreeNode> Leaves { get; set; } = new List<ITreeNode>();
     public string Title { get; set; } = string.Empty;
     public string Value { get; set; } = string.Empty;
+    public bool ValueIsJson { get; set; } = false;
 
     public string TitleValue()
     {
@@ -38,5 +39,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
       }
       return toReturn;
     }
+
+
   }
 }

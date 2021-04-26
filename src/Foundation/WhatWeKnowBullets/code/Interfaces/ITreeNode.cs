@@ -8,6 +8,8 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Interfaces
     List<ITreeNode> Leaves { get; set; }
     string Title { get; set; }
     string Value { get; set; }
+    bool ValueIsJson { get; set; }
+
     string TitleValue();
   }
 }

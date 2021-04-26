@@ -11,6 +11,10 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
       {
         this.title = node.TitleValue();
         this.folder = node.HasLeaves;
+        if (node.ValueIsJson)
+        {
+         this. extraClasses="json-data";
+        }
 
         if (node.HasLeaves)
         {
@@ -25,6 +29,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
 #pragma warning disable IDE1006 // Naming Styles
     public List<FancyTreeNode> children { get; set; } = new List<FancyTreeNode>();
     public bool folder { get; set; } = false;
+    public string extraClasses { get; set; } = string.Empty;
     public string title { get; set; } = string.Empty;
 #pragma warning restore IDE1006 // Naming Styles
   }

@@ -940,16 +940,11 @@
   <ItemGroup>
     <Content Include="App_Config\Include\Project\SitecoreCinema\Site.SitecoreCinema.config" />
     <None Include="App_Start\RazorGeneratorMvcStart.cs.disabled" />
-    <Compile Include="Controllers\Helpers\MovieItemProxy.cs" />
     <Compile Include="Model\CinemaConstants.cs" />
-    <Compile Include="Controllers\Helpers\MovieTicketHelper.cs" />
     <Compile Include="Controllers\IdentifiedXConnectContact.cs" />
     <Compile Include="Controllers\SitecoreCinemaController.cs" />
-    <Compile Include="Model\ViewModels\BuyConcessionsViewModel.cs" />
     <Compile Include="Model\ViewModels\LobbyOptionsViewModel.cs" />
-    <Compile Include="Model\MovieShowTime.cs" />
     <Compile Include="Model\ViewModels\RegisterViewModel.cs" />
-    <Compile Include="Model\ViewModels\SelfServiceMachineViewModel.cs" />
     <Compile Include="Model\ViewModels\WatchMovieViewModel.cs" />
     <Compile Include="ProjConst.cs" />
     <Compile Include="Model\ViewModels\_baseViewModel.cs" />
@@ -1003,9 +998,9 @@
       <Project>{d2a31477-28f1-4ef6-b73d-7f015a7c920a}</Project>
       <Name>LearnEXM.Feature.MockContactGenerator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Feature\WhatWeKnow\code\LearnEXM.Feature.WhatWeKnow.SitecoreCinema.csproj">
+    <ProjectReference Include="..\..\..\Feature\WhatWeKnow\code\LearnEXM.Feature.SitecoreCinema.csproj">
       <Project>{f68a6cbe-55ed-4dae-b139-61c3f54a0b7b}</Project>
-      <Name>LearnEXM.Feature.WhatWeKnow.SitecoreCinema</Name>
+      <Name>LearnEXM.Feature.SitecoreCinema</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\CollectionModel.Builder\code\LearnEXM.Foundation.CollectionModel.Builder.csproj">
       <Project>{44d6b78d-7d28-4ed7-a32c-78aa53040c7d}</Project>
@@ -1019,6 +1014,10 @@
       <Project>{b366bdc0-c89c-42ef-af69-69ef880f78b8}</Project>
       <Name>LearnEXM.Foundation.LearnEXMRoot</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\Helpers\" />
+    <Folder Include="Proxies\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

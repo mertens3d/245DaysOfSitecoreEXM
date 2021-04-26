@@ -1,15 +1,10 @@
 ﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
 using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
-using LearnEXM.Foundation.WhatWeKnowBullets.Models;
 using LearnEXM.Foundation.xConnectHelper.Helpers;
-using Newtonsoft.Json;
 using Sitecore.Analytics;
 using Sitecore.Analytics.XConnect.Facets;
-using Sitecore.Data;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
-using Sitecore.XConnect.Client.Serialization;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,66 +12,20 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 {
   public class KnownDataHelper
   {
-    public KnownDataHelper(List<string> targetedFacetKeys, List<IFacetTreeNodeFactory> customFacetKeyBulletFactories)
+    public KnownDataHelper(List<string> targetedFacetKeys, List<IFacetNodeFactory> customFacetKeyBulletFactories)
     {
-      //TargetedFacetTypes = targetedFacetKeys;
-
       TargetedFacetKeys = targetedFacetKeys;
       CustomFacetKeyBulletFactories = customFacetKeyBulletFactories;
-      //foreach (var type in targetedFacetKeys)
-      //{
-      //  PropertyInfo prop = type.GetProperty("DefaultFacetKey", BindingFlags.Static);
-
-      //  if (prop != null)
-      //  {
-      //    string propValue = prop.GetValue(null) as string;
-      //    if (!string.IsNullOrEmpty(propValue))
-      //    {
-      //      TargetedFacetKeys.Add(propValue);
-      //    }
-      //    else
-      //    {
-      //      Sitecore.Diagnostics.Log.Error(WhatWeKnowBulletsConstants.Logger.Prefix + type.Name + " did not have valid string value", this);
-      //    }
-      //  }
-      //  else
-      //  {
-      //    Sitecore.Diagnostics.Log.Error(WhatWeKnowBulletsConstants.Logger.Prefix + type.Name + " does not have a 'DefaultFacetKey'", this);
-      //  }
-      //}
+      xConnectHelper = new XConnectHelper(TargetedFacetKeys);
     }
-
-    //private List<Type> TargetedFacetTypes { get; }
 
     private List<string> TargetedFacetKeys { get; set; } = new List<string>();
-    private List<IFacetTreeNodeFactory> CustomFacetKeyBulletFactories { get; }
+    private List<IFacetNodeFactory> CustomFacetKeyBulletFactories { get; }
+    private XConnectHelper xConnectHelper { get; }
     private IXConnectFacets XConnectFacets { get; set; }
-
-    public void AppendCurrentContextData(KnownData knownDataXConnect, Database database)
-    {
-      if (knownDataXConnect != null && database != null)
-      {
-        foreach (var interaction in knownDataXConnect.KnownInteractions)
-        {
-          if (interaction.ChannelId != Guid.Empty)
-          {
-            interaction.ChannelName = GetDisplayName(interaction.ChannelId);
-            interaction.Events = interaction.Events;
-          }
-          else
-          {
-            Sitecore.Diagnostics.Log.Error($"Interaction guid was empty", this);
-          }
-        }
-      }
-    }
-
-    public KnownData GetKnownDataFromTrackingContact()
-    {
-      var toReturn = new KnownData();
-
-      return toReturn;
-    }
+    public FacetHelper FacetHelper { get; private set; }
+    public FacetTreeHelper FacetTreeHelper { get; private set; }
+    private InteractionHelper InteractionHelper { get; set; }
 
     public KnownData GetKnownDataViaTracker(Sitecore.Analytics.Tracking.Contact trackingContact)
     {
@@ -86,21 +35,20 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
       {
         try
         {
-          toReturn = new KnownData();
-
-          var xConnectHelper = new XConnectHelper(TargetedFacetKeys);
+          toReturn = new KnownData("What We Know");
 
           IdentifiedContactReference IdentifiedContactReference = xConnectHelper.GetIdentifierFromTrackingContact(trackingContact);
-
           Contact XConnectContact = xConnectHelper.IdentifyKnownContact(IdentifiedContactReference);
 
           XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
 
-          toReturn.FacetData = GatherFacetData(XConnectFacets);
+          FacetHelper = new FacetHelper(XConnectFacets);
+          FacetTreeHelper = new FacetTreeHelper(CustomFacetKeyBulletFactories, xConnectClient);
+          InteractionHelper = new InteractionHelper();
 
-          toReturn.KnownInteractions = GetKnownInteractions(XConnectContact, xConnectClient);
-
-          toReturn.Identifiers = Tracker.Current.Contact.Identifiers.ToList();
+          toReturn.WhatWeKnowTree.Root.Leaves.Add(IdentifiersNode(Tracker.Current.Contact.Identifiers.ToList()));
+          toReturn.WhatWeKnowTree.Root.Leaves.Add(FacetsNode());
+          toReturn.WhatWeKnowTree.Root.Leaves.Add(InteractionsNode(XConnectContact, xConnectClient));
         }
         catch (XdbExecutionException ex)
         {
@@ -111,135 +59,76 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
       return toReturn;
     }
 
-    private KnownDataFacets GatherFacetData(IXConnectFacets xConnectFacets)
+    private ITreeNode EventsNode(List<xConnectHelper.Proxies.EventRecordProxy> events)
     {
-      var toReturn = new KnownDataFacets();
+      var eventsNode = new TreeNode("Events");
+      if (events != null && events.Any())
+      {
+        foreach (var eventProxy in events)
+        {
+          var eventNode = new TreeNode(eventProxy.ItemDisplayName);
+          eventNode.Leaves.Add(new TreeNode(eventProxy.TimeStamp.ToString()));
+          eventNode.Leaves.Add(new TreeNode("Duration", eventProxy.Duration.ToString()));
+        }
+      }
+
+      return eventsNode;
+    }
+
+    private ITreeNode InteractionsNode(Contact xConnectContact, XConnectClient xConnectClient)
+    {
+      var toReturn = new TreeNode("Interactions");
+
+      var knownInteractions = InteractionHelper.GetKnownInteractions(xConnectContact, xConnectClient);
+
+      if (knownInteractions != null && knownInteractions.Any())
+      {
+        foreach (var knownInteraction in knownInteractions)
+        {
+          var treeNode = new TreeNode(knownInteraction.ChannelName);
+          //treeNode.Leaves.Add(new TreeNode("Device Profile",knownInteraction.DeviceProfile))
+          treeNode.Leaves.Add(EventsNode(knownInteraction.EventsB));
+          
+            
+          var rawNode = new TreeNode("raw");
+          rawNode.Leaves.Add(new TreeNode(knownInteraction.SerializedAsJson)
+          {
+            ValueIsJson = true
+          });
+          treeNode.Leaves.Add(rawNode);
+
+
+          toReturn.Leaves.Add(treeNode);
+        }
+      }
+
+      return toReturn;
+    }
+
+    private ITreeNode IdentifiersNode(List<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers)
+    {
+      var toReturn = new TreeNode("Identifiers");
+
+      if (contactIdentifiers != null && contactIdentifiers.Any())
+      {
+        foreach (var contactIdentifier in contactIdentifiers)
+        {
+          toReturn.Leaves.Add(new TreeNode(contactIdentifier.Source, contactIdentifier.Identifier));
+        }
+      }
+
+      return toReturn;
+    }
+
+    private ITreeNode FacetsNode()
+    {
+      var toReturn = new TreeNode("Facets");
 
       if (XConnectFacets != null)
       {
-        var facetHelper = new FacetHelper(XConnectFacets);
-
-        var facetTreeHelper = new FacetTreeHelper(CustomFacetKeyBulletFactories);
-
         foreach (var targetFacetKey in TargetedFacetKeys)
         {
-          toReturn.WhatWeKnowTree.Root.Leaves.Add(facetTreeHelper.GetFacetTreeNode(targetFacetKey, facetHelper));
-        }
-      }
-
-      return toReturn;
-    }
-
-    private string GetDisplayName(Guid itemId)
-    {
-      var toReturn = string.Empty;
-
-      try
-      {
-        var sitecoreItem = Sitecore.Context.Database.GetItem(new ID(itemId));
-        if (sitecoreItem != null)
-        {
-          toReturn = sitecoreItem.DisplayName;
-        }
-        else
-        {
-          toReturn = "{not found}";
-        }
-      }
-      catch (Exception ex)
-      {
-        Sitecore.Diagnostics.Log.Error(WhatWeKnowBulletsConstants.Logger.Prefix + ex.Message, this);
-      }
-
-      return toReturn;
-    }
-
-    private List<EventRecordProxy> GetEvents(EventCollection events)
-    {
-      List<EventRecordProxy> toReturn = new List<EventRecordProxy>();
-
-      if (events != null)
-      {
-        foreach (var item in events)
-        {
-          toReturn.Add(new EventRecordProxy()
-          {
-            TypeName = item.GetType().Name,
-            CustomValues = item.CustomValues,
-            TimeStamp = item.Timestamp,
-            ItemId = item.ItemId,
-            ItemDisplayName = GetDisplayName(item.ItemId),
-            Duration = item.Duration
-          }); ;
-        }
-      }
-
-      toReturn.Sort((x, y) => x.TimeStamp.CompareTo(y.TimeStamp));
-      toReturn.Reverse();
-
-      return toReturn;
-    }
-
-    //  XConnectConfigHelper configHelper = new XConnectConfigHelper();
-    //  XConnectClientConfiguration cfg = await configHelper.ConfigureClient();
-    //  using (var Client = new XConnectClient(cfg))
-    //  {
-    //    try
-    //    {
-    //      var xConnectClientHelper = new XConnectClientHelper(Client);
-    //      var xConnectContact = await xConnectClientHelper.GetXConnectContactByIdentifierAsync(Const.XConnect.ContactIdentifiers.Sources.SitecoreCinema, Identifier);
-    //      if (xConnectContact != null)
-    //      {
-    //        toReturn = GetKnownDataFromXConnectContact(xConnectContact);
-    //      }
-    //    }
-    //    catch (XdbExecutionException ex)
-    //    {
-    //      Sitecore.Diagnostics.Log.Error(Const.Logger.CinemaPrefix + ex.Message, this);
-    //    }
-    //  }
-
-    //public async Task<KnownDataXConnect> GetKnownDataByIdentifierViaXConnect(string Identifier)
-    //{
-    //  KnownDataXConnect toReturn = null;
-    private List<InteractionProxy> GetKnownInteractions(Contact xconnectContact, XConnectClient xConnectClient)
-    {
-      var toReturn = new List<InteractionProxy>();
-
-      //xConnectClient.Get<Interaction>(interactionRef,
-      //    new Sitecore.XConnect.InteractionExpandOptions(AllFacetKeys));
-
-      if (xconnectContact?.Interactions != null && xconnectContact.Interactions.Any())
-      {
-        var ContractResolver = new XdbJsonContractResolver(xConnectClient.Model, true, true);
-
-        var serializerSettings = new JsonSerializerSettings
-        {
-          ContractResolver = ContractResolver,
-          DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-          DefaultValueHandling = DefaultValueHandling.Ignore,
-          Formatting = Formatting.Indented
-        };
-
-        foreach (var interaction in xconnectContact.Interactions)
-        {
-          toReturn.Add(new InteractionProxy()
-          {
-            ChannelId = interaction.ChannelId,
-            ChannelName = GetDisplayName(interaction.ChannelId),
-
-            RawInteraction = interaction,
-            Events = interaction.Events,
-            EventsB = GetEvents(interaction.Events),
-            DeviceProfile = interaction.DeviceProfile,
-            StartDateTime = interaction.StartDateTime,
-            EndDateTime = interaction.EndDateTime,
-            InitiatorStr = interaction.Initiator.ToString(),
-            Id = interaction.Id,
-            Duration = interaction.Duration,
-            CampaignId = interaction.CampaignId,
-            SerializedAsJson = JsonConvert.SerializeObject(interaction, serializerSettings)
-          });
+          toReturn.Leaves.Add(FacetTreeHelper.GetFacetTreeNode(targetFacetKey, FacetHelper));
         }
       }
 
