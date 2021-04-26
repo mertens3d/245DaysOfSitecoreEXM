@@ -10,7 +10,7 @@ using Sitecore.XConnect.Collection.Model;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Controllers
+namespace LearnEXM.Feature.SitecoreCinema.Controllers
 {
   public class WhatWeKnowController : Controller
   {

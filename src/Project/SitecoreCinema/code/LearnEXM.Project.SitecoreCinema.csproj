@@ -952,14 +952,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Content Include="Views\SitecoreCinema\BuyConcessions.cshtml" />
-    <Content Include="Views\SitecoreCinema\LobbyOptions.cshtml" />
-    <Content Include="Views\SitecoreCinema\Register.cshtml" />
-    <Content Include="Views\SitecoreCinema\RegisterThankYou.cshtml" />
-    <Content Include="Views\SitecoreCinema\SelfServiceMachine.cshtml" />
-    <Content Include="Views\SitecoreCinema\StartJourney.cshtml" />
-    <Content Include="Views\SitecoreCinema\WatchMovie.cshtml" />
-    <Content Include="Views\SitecoreCinema\SitecoreCinemaLayout.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\BuyConcessions.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\LobbyOptions.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\Register.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\RegisterThankYou.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\SelfServiceMachine.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\StartJourney.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\WatchMovie.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\SitecoreCinemaLayout.cshtml" />
     <Content Include="App_Config\Include\Project\SitecoreCinema\Unicorn.Configs.SitecoreCinema.config" />
     <Content Include="App_Config\Include\Project\SitecoreCinema\Unicorn.UI.IdentityServer.SitecoreCinema.config" />
     <Content Include="App_Config\Include\Project\SitecoreCinema\zDeveloper.config" />
@@ -982,8 +982,8 @@
     <None Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config.disabled" />
     <None Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
     <None Include="packages.config" />
-    <Content Include="Views\SitecoreCinema\not used.cshtml" />
-    <None Include="Views\SitecoreCinema\web.config.disabled" />
+    <Content Include="Views\Project\SitecoreCinema\not used.cshtml" />
+    <None Include="Views\Project\SitecoreCinema\web.config.disabled" />
     <None Include="Views\web.config" />
     <None Include="Web.config" />
     <None Include="Web.Debug.config">

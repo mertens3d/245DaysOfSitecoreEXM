@@ -1,9 +1,7 @@
 ﻿using LearnEXM.Feature.MockContactGenerator;
 using LearnEXM.Feature.SitecoreCinema.Helpers;
 using LearnEXM.Feature.SitecoreCinema.Models;
-using LearnEXM.Feature.SitecoreCinema.Models.Proxies;
-using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models;
-using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.ViewModels;
+using LearnEXM.Feature.SitecoreCinema.Models.ViewModels;
 using LearnEXM.Foundation.CollectionModel.Builder.Interactions;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using LearnEXM.Project.SitecoreCinema.Model;
@@ -26,7 +24,6 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     {
       var buyConcessionsInteraction = new BuyCandyInteraction(Tracker.Current.Contact);
 
-
       buyConcessionsInteraction.ExecuteInteraction();
       return Redirect(Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
@@ -40,10 +37,10 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     }
 
     [IdentifiedXConnectContact]
-    public ActionResult BuyTicket(Guid movieShowingGuid)
+    public ActionResult BuyTicket(Guid movieid)
     {
       Guid cinemaId = Guid.Parse("{A83BEBA7-0752-4A11-8F3A-95F84B53A0D4}"); //todo build in cinemas
-      var movieItemProxy = new MovieShowTimeProxy(movieShowingGuid);
+      var movieItemProxy = new MovieShowTimeProxy(movieid);
 
       var movieTicket = new MovieTicket()
       {
@@ -65,10 +62,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
       var concessionHelper = new ConcessionHelper();
       viewModel.Concessions = concessionHelper.GetConcessions();
 
-
-
-
-      return View(viewModel);
+      return View(ProjectConst.ControllerViews.LobbyOptions, viewModel);
     }
 
     public ActionResult RegisterViaAutoRandom()
@@ -105,7 +99,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
       var viewModel = new SelfServiceMachineViewModel();
       var movieTicketHelper = new MovieTicketHelper();
       viewModel.ShowTimes = movieTicketHelper.AvailableMovies();
-      return View(viewModel);
+      return View(ProjectConst.ControllerViews.SelfServiceMachine, viewModel);
     }
 
     public ActionResult StartJourney()
@@ -116,7 +110,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
       }
       else
       {
-        return View();
+        return View(ProjectConst.ControllerViews.StartJourney);
       }
     }
 
@@ -128,8 +122,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
 
       var viewModel = new WatchMovieViewModel(Tracker.Current.Contact);
 
-      return View(viewModel);
-      //return Redirect(WebConst.Links.SitecoreCinema.Lobby.LobbyLanding);
+      return View(ProjectConst.ControllerViews.WatchMovie, viewModel);
     }
   }
 }

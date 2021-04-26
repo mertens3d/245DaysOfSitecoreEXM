@@ -1,8 +1,6 @@
-﻿using LearnEXM.Feature.SitecoreCinema;
-using LearnEXM.Feature.SitecoreCinema.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.ViewModels
+namespace LearnEXM.Feature.SitecoreCinema.Models.ViewModels
 {
   public class SelfServiceMachineViewModel
   {

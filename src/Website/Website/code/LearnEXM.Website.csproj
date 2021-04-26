@@ -1126,9 +1126,6 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config">
       <DependentUpon>Unicorn.config</DependentUpon>
     </Content>
-    <Content Include="..\..\..\Project\SitecoreCinema\code\Views\SitecoreCinema\web.config.disabled">
-      <Link>web.config.disabled</Link>
-    </Content>
     <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.SitecoreCinemaCollectionModel.config" />
     <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.MarketingCollectionModel.config" />
     <Content Include="..\..\..\Project\SitecoreCinema\code\App_Start\RazorGeneratorMvcStart.cs.disabled">

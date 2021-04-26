@@ -12,8 +12,14 @@ namespace LearnEXM.Project.SitecoreCinema
       public static string RightAside = "right-aside";
     }
 
-    public struct Views
+    public struct ControllerViews
     {
+
+      public static string _viewRoot = "/views/project/SitecoreCinema";
+      public static string LobbyOptions = _viewRoot + "/LobbyOptions.cshtml";
+      public static string SelfServiceMachine = _viewRoot + "/SelfServiceMachine.cshtml";
+      public static string StartJourney = _viewRoot + "/StartJourney.cshtml";
+      public static string WatchMovie = WatchMovie + "/StartJourney.cshtml";
     }
   }
 }

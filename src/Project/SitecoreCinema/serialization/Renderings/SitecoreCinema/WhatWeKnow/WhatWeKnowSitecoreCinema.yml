@@ -10,7 +10,7 @@ SharedFields:
   Value: WhatWeKnow
 - ID: "e64ad073-dfcc-4d20-8c0b-fe5aa6226cd7"
   Hint: Controller
-  Value: LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Controllers.WhatWeKnowController,LearnEXM.Feature.WhatWeKnow.SitecoreCinema
+  Value: LearnEXM.Feature.SitecoreCinema.Controllers.WhatWeKnowController,LearnEXM.Feature.SitecoreCinema
 Languages:
 - Language: en
   Versions:
