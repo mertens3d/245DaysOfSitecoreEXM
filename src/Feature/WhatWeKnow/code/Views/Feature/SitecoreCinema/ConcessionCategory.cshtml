@@ -1,0 +1,31 @@
+﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema
+@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
+@model LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.WhatWeKnowViewModel
+
+<aside>
+  <div id="tree"></div>
+  <h3>What we know about you</h3>
+  <h2>Tracker</h2>
+
+  <h2>XConnect</h2>
+
+  @if (Model?.KnownData != null)
+  {
+    <p><strong>Contact Id:</strong> @Model.KnownData.ContactIdAsString()</p>
+    <p><strong>User Id</strong>: @Model.KnownData.UserId</p>
+    <p><strong>Is Known</strong>: @Model.KnownData.IsKnown</p>
+   
+
+    <div id="what-we-know-data-island" style="display:none">
+      @Html.Raw(Model.KnownData.WhatWeKnowTree.TreeWriter.DrawDataForTree())
+    </div>
+
+    @*@Html.Partial(ProjectConst.Views.WhatWeKnow.facets, Model)
+      @Html.Partial(ProjectConst.Views.WhatWeKnow.Interactions, Model)*@
+
+  }
+  else
+  {
+    <h3>Null Model</h3>
+  }
+</aside>

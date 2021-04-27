@@ -1,6 +1,8 @@
 ﻿using Sitecore.Data;
 using Sitecore.Data.Items;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LearnEXM.Foundation.LearnEXMRoot
 {
@@ -8,17 +10,46 @@ namespace LearnEXM.Foundation.LearnEXMRoot
   {
     private Item _item;
 
-    private ID CTORItemId { get; set; }
-    public ID ItemId { get {
-        return Item != null ? Item.ID : null;
-      } }
+    public _baseItemProxy()
+    {
+      // for generics instantiation only
+    }
+    public _baseItemProxy(ID itemId)
+    {
+      this.CTORItemId = itemId;
+      CommonCTOR();
+    }
+
+    protected _baseItemProxy(Item item)
+    {
+      this.Item = item;
+      this.CTORItemId = item.ID;
+
+      CommonCTOR();
+    }
+
+    protected virtual void CommonCTOR() { }
+
+    protected _baseItemProxy(Guid itemItem)
+    {
+      this.CTORItemId = new ID(itemItem);
+      CommonCTOR();
+    }
+
     public Guid Id { get { return ItemId.Guid; } }
+
+    public ID ItemId
+    {
+      get
+      {
+        return Item != null ? Item.ID : null;
+      }
+    }
 
     protected Item Item
     {
       get
       {
-
         return _item ?? (_item = Sitecore.Context.Database.GetItem(CTORItemId));
       }
       set
@@ -27,21 +58,52 @@ namespace LearnEXM.Foundation.LearnEXMRoot
       }
     }
 
-    public _baseItemProxy(ID itemId)
-    {
+    private ID CTORItemId { get; set; }
 
-      this.CTORItemId = itemId;
+    public List<T> ChildrenOfTemplateType<T>(ID templateNeedleID) where T : _baseItemProxy, new()
+    {
+      var toReturn = new List<T>();
+
+      if (Item != null)
+      {
+        toReturn = Item.GetChildren()
+               .Where(x => x.TemplateID == templateNeedleID)
+               .Select(x =>
+               {
+                 var newObj = new T();
+                 newObj.InstantiateWith(x);
+                 return newObj;
+               })
+               .ToList();
+      }
+
+      return toReturn;
     }
 
-    protected _baseItemProxy(Item item)
+    private void InstantiateWith(Item item)
     {
       this.Item = item;
       this.CTORItemId = item.ID;
     }
 
-    protected _baseItemProxy(Guid itemItem)
+    public List<GenericItemProxy> GenericChildrenOfTemplateType(ID templateNeedleID)
     {
-      this.CTORItemId = new ID( itemItem);
+      var toReturn = new List<GenericItemProxy>();
+
+      if (Item != null)
+      {
+        toReturn = Item.GetChildren()
+               .Where(x => x.TemplateID == templateNeedleID)
+               .Select(x => new GenericItemProxy(x))
+               .ToList();
+      }
+
+      return toReturn;
+    }
+
+    public Item GetItem()
+    {
+      return Item;
     }
   }
 }

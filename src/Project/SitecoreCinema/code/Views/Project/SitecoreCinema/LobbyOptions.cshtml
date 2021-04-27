@@ -1,7 +1,7 @@
 ﻿@using LearnEXM.Project.SitecoreCinema.Model;
 @using LearnEXM.Project.SitecoreCinema;
-@model LearnEXM.Project.SitecoreCinema.Model.LobbyOptionsViewModel
-<h2>Lobby Options</h2>
+@model LearnEXM.Project.SitecoreCinema.Model.ViewModels.LobbyOptionsViewModel
+<h2>Lobby</h2>
 
 <br />
 @if (Model != null)
@@ -12,5 +12,16 @@
   <a href="@(LearnEXM.Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.Lobby.WatchMovie)">Watch Movie</a>
   <br />
   <a href="@(LearnEXM.Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.Landing)">Leave Theater</a>
+
+  if(Model.ConcessionCategories != null && Model.ConcessionCategories.Any())
+  {
+
+    @Html.Partial(LearnEXM.Feature.SitecoreCinema.ProjectConst.Views.ConcessionCategory)
+
+
+        }
+
+
+
 }
 <br />

@@ -35,7 +35,7 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
         
         toReturn.Leaves.Add(ticketsBullet);
         toReturn.Leaves.Add(LastModified(facet));
-        toReturn.Leaves.Add(SerializeAsRaw(facet));
+        toReturn.AddRawLeaf(SerializeFacet(facet));
       }
       return toReturn;
     }

@@ -216,20 +216,24 @@
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Bullet.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Facets.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Interactions.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\ConcessionCategory.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConcessionHelper.cs" />
+    <Compile Include="Models\Proxies\ConcessionGroupProxy.cs" />
     <Compile Include="Models\Proxies\ConcessionItemProxy.cs" />
+    <Compile Include="Models\Proxies\ConcessionItemsProxy.cs" />
     <Compile Include="Models\Proxies\MovieDataRefFieldProxy.cs" />
     <Compile Include="Models\Proxies\MovieItemProxy.cs" />
     <Compile Include="Helpers\MovieTicketHelper.cs" />
-    <Compile Include="Models\MovieShowTimeProxy.cs" />
+    <Compile Include="Models\Proxies\MovieShowTimeProxy.cs" />
     <Compile Include="Models\TreeNodeFactories\CinemaDetailsFacetTreeNodeFactory.cs" />
     <Compile Include="Models\TreeNodeFactories\CinemaInfoTreeNodeFactory.cs" />
     <Compile Include="Models\TreeNodeFactories\CinemaVisitorInfoFacetTreeNodeFactory.cs" />
     <Compile Include="Controllers\WhatWeKnowController.cs" />
     <Compile Include="Models\ViewModels\BuyConcessionsViewModel.cs" />
+    <Compile Include="Models\ViewModels\ConcessionCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\SelfServiceMachineViewModel.cs" />
     <Compile Include="Models\WhatWeKnowViewModel.cs" />
     <Compile Include="ProjectConst.cs" />

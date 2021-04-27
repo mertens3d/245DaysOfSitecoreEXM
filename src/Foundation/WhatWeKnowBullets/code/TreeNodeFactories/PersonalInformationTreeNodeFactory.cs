@@ -21,7 +21,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
         toReturn.Leaves.Add(new TreeNode("Gender", personalInformationDetails.Gender));
 
         toReturn.Leaves.Add(LastModified(facet));
-        toReturn.Leaves.Add(SerializeAsRaw(facet));
+        toReturn.AddRawLeaf(SerializeFacet(facet));
 
       }
       return toReturn;

@@ -1,0 +1,24 @@
+﻿---
+ID: "18f9f904-baeb-4c33-8cbc-efc72332cf14"
+Parent: "8f47acf2-8bd8-4c28-ad54-c34684b82565"
+Template: "d20a7653-e33c-4a1f-a67d-e7958cc25ee7"
+Path: "/sitecore/content/sitecorecinema/Global/Movie Times/The Breakfast Club - 1500"
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210223T191518Z
+    - ID: "27ca3167-bddf-42e3-948b-d017c6532198"
+      Hint: Time
+      Value: 20210303T210600Z
+    - ID: "5d3e6704-362b-4aa4-92d6-0d6354ccd915"
+      Hint: Movie Name
+      Value: "{13E1D629-BE82-42A8-AE1E-0636F685FF62}"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

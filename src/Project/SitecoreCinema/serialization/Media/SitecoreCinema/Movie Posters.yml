@@ -1,0 +1,18 @@
+﻿---
+ID: "b5d3976a-bc68-471a-9f58-9c69d5cf2418"
+Parent: "e4bfcad2-8d40-4656-a9e4-ce53be6889b2"
+Template: "fe5dd826-48c6-436d-b87a-7c4210c7413b"
+Path: /sitecore/media library/Images/SitecoreCinema/Movie Posters
+DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210423T235219Z

@@ -1,10 +1,12 @@
 ﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
 using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
 using LearnEXM.Foundation.xConnectHelper.Helpers;
+using Newtonsoft.Json;
 using Sitecore.Analytics;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
+using Sitecore.XConnect.Client.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -46,6 +48,8 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
           FacetTreeHelper = new FacetTreeHelper(CustomFacetKeyBulletFactories, xConnectClient);
           InteractionHelper = new InteractionHelper();
 
+          toReturn.WhatWeKnowTree.Root.Leaves.Add(TrackingContactNode(trackingContact, xConnectClient));
+
           toReturn.WhatWeKnowTree.Root.Leaves.Add(IdentifiersNode(Tracker.Current.Contact.Identifiers.ToList()));
           toReturn.WhatWeKnowTree.Root.Leaves.Add(FacetsNode());
           toReturn.WhatWeKnowTree.Root.Leaves.Add(InteractionsNode(XConnectContact, xConnectClient));
@@ -54,6 +58,36 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
         {
           Sitecore.Diagnostics.Log.Error(WhatWeKnowBulletsConstants.Logger.Prefix + ex.Message, this);
         }
+      }
+
+      return toReturn;
+    }
+
+    private ITreeNode TrackingContactNode(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient)
+    {
+      var toReturn = new TreeNode("Tracking Contact");
+      if(trackingContact != null)
+      {
+        toReturn.AddLeaf(new TreeNode("Is New", trackingContact.IsNew.ToString()));
+        toReturn.AddLeaf(new TreeNode("Contact Id", trackingContact.ContactId.ToString()));
+        toReturn.AddLeaf(new TreeNode("Identification Level", trackingContact.IdentificationLevel.ToString()));
+
+
+        var ContractResolver = new XdbJsonContractResolver(xConnectClient.Model, true, true);
+
+        var serializerSettings = new JsonSerializerSettings
+        {
+          ContractResolver = ContractResolver,
+          DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+          DefaultValueHandling = DefaultValueHandling.Ignore,
+          Formatting = Formatting.Indented
+        };
+
+        var serialized = JsonConvert.SerializeObject(trackingContact, serializerSettings);
+
+        toReturn.AddRawLeaf(serialized);
+        
+
       }
 
       return toReturn;
@@ -88,14 +122,8 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
           var treeNode = new TreeNode(knownInteraction.ChannelName);
           //treeNode.Leaves.Add(new TreeNode("Device Profile",knownInteraction.DeviceProfile))
           treeNode.Leaves.Add(EventsNode(knownInteraction.EventsB));
-          
-            
-          var rawNode = new TreeNode("raw");
-          rawNode.Leaves.Add(new TreeNode(knownInteraction.SerializedAsJson)
-          {
-            ValueIsJson = true
-          });
-          treeNode.Leaves.Add(rawNode);
+
+          treeNode.AddRawLeaf(knownInteraction.SerializedAsJson);
 
 
           toReturn.Leaves.Add(treeNode);

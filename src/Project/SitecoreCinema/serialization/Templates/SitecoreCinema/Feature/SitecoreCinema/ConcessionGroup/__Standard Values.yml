@@ -1,0 +1,25 @@
+﻿---
+ID: "901ce66d-cb7c-41dc-b691-6ae75fca0273"
+Parent: "230a207e-1548-472c-a701-ac28ec5850b7"
+Template: "230a207e-1548-472c-a701-ac28ec5850b7"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/ConcessionGroup/__Standard Values
+DB: master
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: |
+    {8AADEC50-24C0-4516-85B2-041B82F83CB2}
+    {02E5D189-D5D6-406C-B150-CD9A3662708B}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T161647Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

@@ -10,6 +10,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Interfaces
     string Value { get; set; }
     bool ValueIsJson { get; set; }
 
+    void AddRawLeaf(string serialized);
     string TitleValue();
   }
 }

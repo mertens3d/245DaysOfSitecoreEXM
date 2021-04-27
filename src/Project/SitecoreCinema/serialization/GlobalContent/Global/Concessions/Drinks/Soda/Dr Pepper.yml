@@ -1,0 +1,41 @@
+﻿---
+ID: "20acb2a4-3bfd-44b5-97dd-889ac062b319"
+Parent: "2ed535ae-6a4e-4cbc-b699-7e0d5345df00"
+Template: "02e5d189-d5d6-406c-b150-cd9a3662708b"
+Path: /sitecore/content/sitecorecinema/Global/Concessions/Drinks/Soda/Dr Pepper
+DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T024718Z
+    - ID: "593e2a89-486f-46d0-a94c-3dcfeca708ba"
+      Hint: CostDollarsLarge
+      Value: 4.32
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "719a4ed6-ee9e-4504-8c1f-e4cc3b528284"
+      Hint: Product Group
+      Value: 
+    - ID: "b4bffc73-6df0-4856-bdfc-1acf96f2c72d"
+      Hint: Product Logo
+      Value: |
+        <image mediaid="{DDEC6636-0562-49E3-90C1-959961EACBFE}" />
+    - ID: "c43d0c46-fea5-403c-8e62-6875d34563d3"
+      Hint: CostDollarsSmall
+      Value: 1.92
+    - ID: "c43e0b86-8bb7-4fde-b3fa-6a7fe927a02e"
+      Hint: Product Name
+      Value: Dr. Pepper
+    - ID: "ee10ce18-19f1-4f0b-8aaa-dcb18e624c65"
+      Hint: CostDollarsMedium
+      Value: 3.37

@@ -1,0 +1,24 @@
+﻿---
+ID: "c85fb217-bc6b-4f9b-b87f-5dc43ad375d4"
+Parent: "8f47acf2-8bd8-4c28-ad54-c34684b82565"
+Template: "d20a7653-e33c-4a1f-a67d-e7958cc25ee7"
+Path: "/sitecore/content/sitecorecinema/Global/Movie Times/Babe - 1700"
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210223T191518Z
+    - ID: "27ca3167-bddf-42e3-948b-d017c6532198"
+      Hint: Time
+      Value: 20210303T110000Z
+    - ID: "5d3e6704-362b-4aa4-92d6-0d6354ccd915"
+      Hint: Movie Name
+      Value: "{F3486A1D-40BD-4BE3-B4DD-0BE28A07F24C}"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

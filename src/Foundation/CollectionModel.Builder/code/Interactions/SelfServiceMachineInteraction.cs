@@ -24,9 +24,11 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
       //var contact = Client.Get<Contact>(IdentifiedContactReference, new Sitecore.XConnect.ExpandOptions(PersonalInformation.DefaultFacetKey));
 
-      var xConnectHelper = new FacetHelper(XConnectFacets);
 
-      var cinemaInfoFacet = xConnectHelper.SafeGetCreateFacet<CinemaInfo>(CollectionConst.FacetKeys.CinemaInfo);
+      XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
+      var facetHelper = new FacetHelper(XConnectFacets);
+
+      var cinemaInfoFacet = facetHelper.SafeGetCreateFacet<CinemaInfo>(CollectionConst.FacetKeys.CinemaInfo);
       
       if (cinemaInfoFacet != null)
       {
@@ -34,7 +36,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         Client.SetFacet(IdentifiedContactReference, CinemaInfo.DefaultFacetKey, cinemaInfoFacet);
       }
 
-      var visitorInfoFacet = xConnectHelper.SafeGetCreateFacet<CinemaVisitorInfo>(CollectionConst.FacetKeys.CinemaVisitorInfo);
+      var visitorInfoFacet = facetHelper.SafeGetCreateFacet<CinemaVisitorInfo>(CollectionConst.FacetKeys.CinemaVisitorInfo);
       if (visitorInfoFacet != null)
       {
         visitorInfoFacet.MovieTickets.Add(MovieTicket);

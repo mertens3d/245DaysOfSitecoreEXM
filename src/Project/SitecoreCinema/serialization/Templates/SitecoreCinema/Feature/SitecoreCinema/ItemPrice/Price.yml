@@ -1,0 +1,14 @@
+﻿---
+ID: "a10c0fe6-f7bd-4edb-bf51-dd4e3c05d96d"
+Parent: "8aadec50-24c0-4516-85b2-041b82f83cb2"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/ItemPrice/Price
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T024532Z

@@ -10,7 +10,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Interfaces
 
     ITreeNode BuildTreeNode(Facet facet);
 
-    ITreeNode SerializeAsRaw(Facet facet);
+    string SerializeFacet(Facet facet);
     void SetClient(XConnectClient xConnectClient);
   }
 }

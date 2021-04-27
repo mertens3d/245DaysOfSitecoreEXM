@@ -34,14 +34,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
 
       var knownDataHelper = new KnownDataHelper(targetFacetsTypes, customFacetKeyBulletFactories);
 
-      KnownData knownDataXConnect = null;
-
       KnownData knownDataViaTracker = knownDataHelper.GetKnownDataViaTracker(Tracker.Current.Contact);
-
-      //if (knownDataXConnect != null)
-      //{
-      //  knownDataHelper.AppendCurrentContextData(knownDataXConnect, Sitecore.Context.Database);
-      //}
 
       var viewModel = new WhatWeKnowViewModel
       {

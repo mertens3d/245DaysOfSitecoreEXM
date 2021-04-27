@@ -1,0 +1,29 @@
+﻿---
+ID: "13e1d629-be82-42a8-ae1e-0636f685ff62"
+Parent: "f25b0fe8-819b-4989-ba01-8f90abacb6d6"
+Template: "2f909bc4-eda4-43c9-8a6d-3ac7f9c64c9c"
+Path: /sitecore/content/sitecorecinema/Global/Movies/The Breakfast Club
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210304T025749Z
+    - ID: "3b14e82b-9d2a-479b-8fbc-87576be25bfa"
+      Hint: Movie Name
+      Value: The Breakfast Club
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "6f6fb62c-e4f1-4781-b5d4-21d21aae9f46"
+      Hint: Poster
+      Value: |
+        <image mediaid="{39FC4448-1CB5-4811-AF43-FB36BCD75FA8}" />
+    - ID: "a71245c9-7a55-4275-aa20-3e711be47499"
+      Hint: YouTubeLink
+      Value: |
+        <link linktype="external" url="https://www.youtube.com/watch?v=BSXBvor47Zs" />

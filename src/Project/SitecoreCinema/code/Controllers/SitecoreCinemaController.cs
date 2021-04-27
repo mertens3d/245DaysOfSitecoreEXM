@@ -5,6 +5,7 @@ using LearnEXM.Feature.SitecoreCinema.Models.ViewModels;
 using LearnEXM.Foundation.CollectionModel.Builder.Interactions;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using LearnEXM.Project.SitecoreCinema.Model;
+using LearnEXM.Project.SitecoreCinema.Model.ViewModels;
 using Sitecore.Analytics;
 using Sitecore.Analytics.Model.Entities;
 using System;
@@ -60,7 +61,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
       var viewModel = new LobbyOptionsViewModel();
 
       var concessionHelper = new ConcessionHelper();
-      viewModel.Concessions = concessionHelper.GetConcessions();
+      viewModel.ConcessionCategories = concessionHelper.GetConcessions();
 
       return View(ProjectConst.ControllerViews.LobbyOptions, viewModel);
     }

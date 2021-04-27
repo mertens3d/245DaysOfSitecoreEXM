@@ -11,15 +11,13 @@ namespace LearnEXM.Feature.SitecoreCinema.Models
   {
     public MovieShowTimeProxy(GenericItemProxy childItemProxy) : base(childItemProxy.GetItem())
     {
-      CommonCTOR();
     }
 
     public MovieShowTimeProxy(Guid itemItem) : base(itemItem)
     {
-      CommonCTOR();
     }
 
-    private void CommonCTOR()
+    protected override void CommonCTOR()
     {
       MovieDataRefFieldProxy = new MovieDataRefFieldProxy(Item, ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.MovieNameField);
       MovieDateTimeFieldProxy = new DateTimeFieldProxy(Item, ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.MovieTimeField);

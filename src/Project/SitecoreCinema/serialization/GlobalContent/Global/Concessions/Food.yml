@@ -1,0 +1,17 @@
+﻿---
+ID: "231057e6-9e11-4185-bafa-bb3f0e411f92"
+Parent: "269f7cd5-2c13-47df-b348-3dd214b77d1a"
+Template: "230a207e-1548-472c-a701-ac28ec5850b7"
+Path: /sitecore/content/sitecorecinema/Global/Concessions/Food
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T030822Z
+    - ID: "c2bc8013-04d4-4014-8aee-cb1c5b63afa8"
+      Hint: GroupName
+      Value: Food

@@ -1,0 +1,24 @@
+﻿---
+ID: "0ba9e310-a196-4bfc-a44b-4d55eaf5083d"
+Parent: "0084563f-0ba1-4be9-a543-12278be9edf6"
+Template: "8aadec50-24c0-4516-85b2-041b82f83cb2"
+Path: /sitecore/content/sitecorecinema/Global/Concessions/Food/Pop Corn/Large
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T161334Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "7162db53-9483-4c89-8ff7-17055a6191c1"
+      Hint: CostDollars
+      Value: 2.5
+    - ID: "a9a972f8-4c88-4b28-b383-eec332bb1bfd"
+      Hint: Description
+      Value: Large

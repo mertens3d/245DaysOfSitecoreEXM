@@ -25,7 +25,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.BuiltInBulletFactories
         }
 
         toReturn.Leaves.Add(LastModified(facet));
-        toReturn.Leaves.Add(SerializeAsRaw(facet));
+        toReturn.AddRawLeaf(SerializeFacet(facet));
       }
       return toReturn;
     }

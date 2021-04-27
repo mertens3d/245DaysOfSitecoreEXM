@@ -16,7 +16,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Helpers
 
       {
         List<GenericItemProxy> foundChildrenItemProxies =
-          showTimesItemProxy.ChildrenOfTemplateType(ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.Root);
+          showTimesItemProxy.GenericChildrenOfTemplateType(ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.Root);
 
         if (foundChildrenItemProxies != null && foundChildrenItemProxies.Any())
         {

@@ -30,6 +30,13 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
     public string Value { get; set; } = string.Empty;
     public bool ValueIsJson { get; set; } = false;
 
+    public void AddLeaf(ITreeNode treeNode)
+    {
+      if(treeNode != null)
+      {
+        Leaves.Add(treeNode);
+      }
+    }
     public string TitleValue()
     {
       var toReturn = Title;
@@ -40,6 +47,11 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
       return toReturn;
     }
 
-
+    public void AddRawLeaf(string serialized)
+    {
+      var rawTitleLeaf = (new TreeNode("Raw"));
+      rawTitleLeaf.Leaves.Add(new TreeNode(serialized) { ValueIsJson = true });
+      Leaves.Add(rawTitleLeaf);
+    }
   }
 }

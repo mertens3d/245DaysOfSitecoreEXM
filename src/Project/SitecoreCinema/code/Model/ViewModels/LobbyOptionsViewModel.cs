@@ -1,10 +1,11 @@
-﻿using LearnEXM.Feature.SitecoreCinema.Models.Proxies;
+﻿using LearnEXM.Feature.SitecoreCinema.Models.ViewModels;
 using System.Collections.Generic;
 
-namespace LearnEXM.Project.SitecoreCinema.Model
+namespace LearnEXM.Project.SitecoreCinema.Model.ViewModels
 {
+
   public class LobbyOptionsViewModel : _baseViewModel
   {
-    public List<ConcessionItemProxy> Concessions { get; internal set; }
+    public List<ConcessionCategoryViewModel> ConcessionCategories { get; internal set; }
   }
 }

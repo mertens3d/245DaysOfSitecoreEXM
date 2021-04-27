@@ -192,6 +192,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CheckBoxFieldProxy.cs" />
     <Compile Include="Models\DateTimeFieldProxy.cs" />
     <Compile Include="Models\ImageFieldProxy.cs" />
     <Compile Include="Models\ReferenceFieldProxy.cs" />

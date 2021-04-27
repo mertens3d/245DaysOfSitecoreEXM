@@ -1,0 +1,14 @@
+﻿---
+ID: "5f95132e-b147-4fd6-9446-cc23cf21593b"
+Parent: "4c2e2875-8622-45c5-a80e-e89839200d49"
+Template: "daf085e8-602e-43a6-8299-038ff171349f"
+Path: /sitecore/media library/Images/SitecoreCinema/Concessions/Adult/fat tire
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: "20210426T162805:637550512856210658Z"

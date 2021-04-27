@@ -18,7 +18,7 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
       if (cinemaInfo != null)
       {
         toReturn.Leaves.Add(LastModified(facet));
-        toReturn.Leaves.Add(SerializeAsRaw(facet));
+        toReturn.AddRawLeaf(SerializeFacet(facet));
 
       }
       return toReturn;

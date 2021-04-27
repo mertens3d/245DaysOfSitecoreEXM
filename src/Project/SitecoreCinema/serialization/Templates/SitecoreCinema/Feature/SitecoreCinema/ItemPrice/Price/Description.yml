@@ -1,16 +1,16 @@
 ﻿---
-ID: "593e2a89-486f-46d0-a94c-3dcfeca708ba"
-Parent: "06d62338-e11c-42ac-83f6-42f7a14b2b87"
+ID: "a9a972f8-4c88-4b28-b383-eec332bb1bfd"
+Parent: "a10c0fe6-f7bd-4edb-bf51-dd4e3c05d96d"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/Concession/Concession/CostDollarsLarge
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/ItemPrice/Price/Description
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Number
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 600
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -18,4 +18,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20210426T031056Z
+      Value: 20210426T024532Z

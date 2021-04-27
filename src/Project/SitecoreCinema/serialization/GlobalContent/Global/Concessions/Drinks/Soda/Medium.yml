@@ -1,0 +1,28 @@
+﻿---
+ID: "b6678371-c58f-4fd3-8695-c69c54506bad"
+Parent: "2ed535ae-6a4e-4cbc-b699-7e0d5345df00"
+Template: "8aadec50-24c0-4516-85b2-041b82f83cb2"
+Path: /sitecore/content/sitecorecinema/Global/Concessions/Drinks/Soda/Medium
+DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T161334Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "7162db53-9483-4c89-8ff7-17055a6191c1"
+      Hint: CostDollars
+      Value: 2.2
+    - ID: "a9a972f8-4c88-4b28-b383-eec332bb1bfd"
+      Hint: Description
+      Value: Medium

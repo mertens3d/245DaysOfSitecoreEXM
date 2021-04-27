@@ -27,7 +27,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     //public Sitecore.Analytics.Tracking.Contact TrackingContact { get; private set; }
     public Contact XConnectContact { get; set; } = null;
     protected XConnectClient Client { get; set; }
-    protected IXConnectFacets XConnectFacets { get; private set; }
+    protected IXConnectFacets XConnectFacets { get;  set; }
     private  List<string> AllFacetKeys { get; set; } = new List<string> {
               CinemaInfo.DefaultFacetKey,
               CinemaVisitorInfo.DefaultFacetKey,

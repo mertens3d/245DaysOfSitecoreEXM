@@ -21,9 +21,9 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories
       return new TreeNode("Last Modified", facet.LastModified.ToString());
     }
 
-    public ITreeNode SerializeAsRaw(Facet facet)
+    public string SerializeFacet(Facet facet)
     {
-      var toReturn = new TreeNode("Raw");
+      var toReturn = string.Empty;
 
       if (XConnectClient != null)
       {
@@ -42,12 +42,11 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories
         try
         {
           serialized = JsonConvert.SerializeObject(facet, serializerSettings);
-          toReturn.Value = serialized;
-          toReturn.ValueIsJson = true;
+          toReturn = serialized;
         }
         catch (System.Exception ex)
         {
-          toReturn.Value = "{couldn't serialize}";
+          toReturn = "{couldn't serialize}";
         }
       }
 

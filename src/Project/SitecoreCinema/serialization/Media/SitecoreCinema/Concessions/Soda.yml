@@ -1,0 +1,14 @@
+﻿---
+ID: "dc26d524-abda-4933-8837-d02fec2a8221"
+Parent: "3d8b11fe-8aa3-41a7-97d0-17d1368c157f"
+Template: "fe5dd826-48c6-436d-b87a-7c4210c7413b"
+Path: /sitecore/media library/Images/SitecoreCinema/Concessions/Soda
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T170245Z

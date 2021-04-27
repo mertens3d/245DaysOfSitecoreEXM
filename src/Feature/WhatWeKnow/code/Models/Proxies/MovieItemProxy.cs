@@ -8,15 +8,13 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.Proxies
   {
     public MovieItemProxy(Item movieItem) : base(movieItem)
     {
-      commonCTOR();
     }
 
     public MovieItemProxy(Guid movieId) : base(movieId)
     {
-      commonCTOR();
     }
 
-    private void commonCTOR()
+    protected override void CommonCTOR()
     {
       MovieNameProxy = new SingleLineFieldProxy(Item, ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieData.MovieName);
       PosterImageFieldProxy = new ImageFieldProxy(Item, ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieData.Poster);
