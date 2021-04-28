@@ -1,0 +1,16 @@
+﻿<Settings>
+  <Sitecore>
+    <XConnect>
+      <!-- SearchIndexer role requires Collection and CollectionSearch role services -->
+      <SearchIndexer>
+        <Services>
+          <IndexerSettings>
+            <Options>
+              <IndexPIISensitiveData>true</IndexPIISensitiveData>
+            </Options>
+          </IndexerSettings>
+        </Services>
+      </SearchIndexer>
+    </XConnect>
+  </Sitecore>
+</Settings>

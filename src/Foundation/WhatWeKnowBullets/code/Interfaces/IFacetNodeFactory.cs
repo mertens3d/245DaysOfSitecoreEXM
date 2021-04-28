@@ -1,6 +1,5 @@
-﻿using Sitecore.XConnect;
-using Sitecore.XConnect.Client;
-using Sitecore.XConnect.Collection.Model;
+﻿using Sitecore.XConnect.Client;
+using Facet = Sitecore.XConnect.Facet;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
 {
@@ -8,9 +7,10 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
   {
     string AssociatedDefaultFacetKey { get; set; }
 
-    ITreeNode BuildTreeNode(Facet facet);
+    IWhatWeKnowTreeNode BuildTreeNode(Facet facet);
 
     string SerializeFacet(Facet facet);
+
     void SetClient(XConnectClient xConnectClient);
   }
 }

@@ -52,7 +52,7 @@ namespace LearnEXM.Feature.MockContactGenerator
     {
       var cfgGenerator = new CFGGenerator();
 
-      var cfg = cfgGenerator.GetCFG(SitecoreCinemaCollectionModel.Model);
+      var cfg = cfgGenerator.GetCFG(CinemaVisitorCollectionModel.Model);
 
       try
       {

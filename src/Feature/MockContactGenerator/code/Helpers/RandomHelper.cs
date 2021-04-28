@@ -50,7 +50,7 @@ namespace LearnEXM.Feature.MockContactGenerator.Helpers
 
     internal string FakeEmailAddress(CandidateMockContactInfo mockData)
     {
-     return mockData.FirstName + "." + mockData.LastName + "." + mockData.SimpleId + "@mock." + mockData.CompanyName.Replace(" ", string.Empty) + ".com";
+     return mockData.FirstName + "." + mockData.LastName + "." + mockData.SimpleId + "@mock." + mockData.CompanyName.Replace(" ", string.Empty).Replace(".", string.Empty) + ".com";
     }
   }
 }

@@ -1,4 +1,6 @@
-﻿namespace LearnEXM.Foundation.LearnEXMRoot.Interfaces
+﻿using System;
+
+namespace LearnEXM.Foundation.LearnEXMRoot.Interfaces
 {
   public interface ICandidateMockContactInfo
   {
@@ -20,5 +22,7 @@
     string PostalCode { get; set; }
     int SimpleId { get; set; }
     string SitecoreCinemaIdentifier { get; set; }
+    string AddressListPreferredKey { get; set; }
+    DateTime? Birthdate { get; set; }
   }
 }

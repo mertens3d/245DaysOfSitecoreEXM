@@ -10,10 +10,10 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
   {
     public string AssociatedDefaultFacetKey { get; set; } = CinemaInfo.DefaultFacetKey;
 
-    public ITreeNode BuildTreeNode(Facet facet)
+    public IWhatWeKnowTreeNode BuildTreeNode(Facet facet)
     {
       CinemaInfo cinemaInfo = facet as CinemaInfo;
-      var toReturn = new TreeNode("Cinema Info");
+      var toReturn = new WhatWeKnowTreeNode("Cinema Info");
 
       if (cinemaInfo != null)
       {

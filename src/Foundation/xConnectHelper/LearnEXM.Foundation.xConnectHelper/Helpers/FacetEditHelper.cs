@@ -4,30 +4,29 @@ using System;
 
 namespace LearnEXM.Foundation.xConnectHelper.Helpers
 {
-  public class FacetHelper
+  public class FacetEditHelper
   {
     private readonly IXConnectFacets XConnectFacets;
 
-    public FacetHelper(IXConnectFacets xConnectFacets)
+    public FacetEditHelper(IXConnectFacets xConnectFacets)
     {
       XConnectFacets = xConnectFacets;
     }
-
 
     public Facet GetFacetByKey(string facetKey)
     {
       Facet toReturn = null;
 
-      if(!string.IsNullOrEmpty(facetKey) && XConnectFacets?.Facets != null && XConnectFacets.Facets.ContainsKey(facetKey))
+      if (!string.IsNullOrEmpty(facetKey) && XConnectFacets?.Facets != null && XConnectFacets.Facets.ContainsKey(facetKey))
       {
         toReturn = XConnectFacets.Facets[facetKey];
       }
       return toReturn;
     }
-    public T SafeGetCreateFacet<T>(string facetKey) where T :  Sitecore.XConnect.Facet
+
+    public T SafeGetFacet<T>(string facetKey) where T : Sitecore.XConnect.Facet
     {
       T toReturn;
-
 
       var facet = GetFacetByKey(facetKey);
 
@@ -37,7 +36,7 @@ namespace LearnEXM.Foundation.xConnectHelper.Helpers
       }
       else
       {
-        Sitecore.Diagnostics.Log.Error(Constants.Logger.LoggingPrefix + "facet key not present: " + facetKey, this);
+        Sitecore.Diagnostics.Log.Debug(Constants.Logger.LoggingPrefix + "facet key not present: " + facetKey, this);
         toReturn = default;
       }
 

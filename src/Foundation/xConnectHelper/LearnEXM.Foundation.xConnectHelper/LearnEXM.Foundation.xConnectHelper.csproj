@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Constants.cs" />
-    <Compile Include="Helpers\FacetHelper.cs" />
+    <Compile Include="Helpers\FacetEditHelper.cs" />
     <Compile Include="Helpers\InteractionHelper.cs" />
     <Compile Include="Helpers\xConnectHelper.cs" />
     <Compile Include="ProjConstants.cs" />

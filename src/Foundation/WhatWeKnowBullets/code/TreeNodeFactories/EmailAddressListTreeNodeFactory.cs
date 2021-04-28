@@ -9,9 +9,9 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
   {
     public string AssociatedDefaultFacetKey { get; set; } = EmailAddressList.DefaultFacetKey;
 
-    public ITreeNode BuildTreeNode(Facet facet)
+    public IWhatWeKnowTreeNode BuildTreeNode(Facet facet)
     {
-      var toReturn = new TreeNode("Email Address List");
+      var toReturn = new WhatWeKnowTreeNode("Email Address List");
 
       var emailAddressList = facet as EmailAddressList;
 
@@ -20,7 +20,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
         var preferredEmail = emailAddressList.PreferredEmail;
         if (preferredEmail != null)
         {
-          toReturn.AddNode(new TreeNode("Preferred Email", preferredEmail.SmtpAddress));
+          toReturn.AddNode(new WhatWeKnowTreeNode("Preferred Email", preferredEmail.SmtpAddress));
         }
 
         toReturn.AddNode(LastModified(facet));

@@ -52,7 +52,7 @@ namespace LearnEXM.Foundation.xConnectHelper.Helpers
       }
       else
       {
-        Sitecore.Diagnostics.Log.Error(Constants.Logger.LoggingPrefix + "Identified Reference was null", this);
+        Sitecore.Diagnostics.Log.Warn(Constants.Logger.LoggingPrefix + "Identified Reference was null", this);
       }
 
       return toReturn;

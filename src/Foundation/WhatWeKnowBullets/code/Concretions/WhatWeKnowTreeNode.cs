@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
-  public class TreeNode : ITreeNode
+  public class WhatWeKnowTreeNode : IWhatWeKnowTreeNode
   {
-    public TreeNode(string title)
+    public WhatWeKnowTreeNode(string title)
     {
       Title = title;
     }
 
-    public TreeNode(string title, string value)
+    public WhatWeKnowTreeNode(string title, string value)
     {
       Title = title;
       Value = value;
@@ -25,12 +25,12 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
       }
     }
 
-    private List<ITreeNode> Leaves { get; set; } = new List<ITreeNode>();
+    private List<IWhatWeKnowTreeNode> Leaves { get; set; } = new List<IWhatWeKnowTreeNode>();
     public string Title { get; set; } = string.Empty;
     public string Value { get; set; } = string.Empty;
     public bool ValueIsJson { get; set; } = false;
 
-    public void AddNode(ITreeNode treeNode)
+    public void AddNode(IWhatWeKnowTreeNode treeNode)
     {
       if (treeNode != null)
       {
@@ -39,8 +39,8 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
     }
     public void AddRawNode(string serialized)
     {
-      var rawTitleLeaf = new TreeNode("Raw");
-      rawTitleLeaf.AddNode(new TreeNode(serialized) { ValueIsJson = true });
+      var rawTitleLeaf = new WhatWeKnowTreeNode("Raw");
+      rawTitleLeaf.AddNode(new WhatWeKnowTreeNode(serialized) { ValueIsJson = true });
       AddNode(rawTitleLeaf);
     }
 
@@ -54,12 +54,12 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
       return toReturn;
     }
 
-    public List<ITreeNode> GetLeaves()
+    public List<IWhatWeKnowTreeNode> GetLeaves()
     {
-      return Leaves.Cast<ITreeNode>().ToList();
+      return Leaves.Cast<IWhatWeKnowTreeNode>().ToList();
     }
 
-    public void AddNodes(IEnumerable<ITreeNode> treeNodes)
+    public void AddNodes(IEnumerable<IWhatWeKnowTreeNode> treeNodes)
     {
       Leaves.AddRange(treeNodes);
     }

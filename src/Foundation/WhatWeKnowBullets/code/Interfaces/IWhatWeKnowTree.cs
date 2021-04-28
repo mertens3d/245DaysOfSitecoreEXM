@@ -4,7 +4,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
 {
   public interface IWhatWeKnowTree
   {
-    ITreeNode Root { get; set; }
+    IWhatWeKnowTreeNode Root { get; set; }
     IWhatWeKnowTreeWriter TreeWriter { get; }
   }
 }

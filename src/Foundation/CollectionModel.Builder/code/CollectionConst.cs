@@ -49,7 +49,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
         public const string CinemaDetailsCollectionModel = "CinemaDetailsCollectionModel";
         public const string CinemaInfoCollectionModel = "CinemaInfoCollectionModel";
         public const string CinemaBusinessMarketingCollectionModel = "LearnEXM.CinemaBusinessMarketingCollectionModel";
-        public const string SitecoreCinemaCollectionModel = "SitecoreCinemaCollectionModel";
+        public const string CinemaVisitorCollectionModel = "LearnEXM.CinemaVisitorCollectionModel";
       }
       public struct ConcessionPrices
       {

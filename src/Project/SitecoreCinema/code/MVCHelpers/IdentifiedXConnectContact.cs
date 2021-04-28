@@ -1,7 +1,7 @@
 ﻿using Sitecore.Analytics;
 using System.Web.Mvc;
 
-namespace LearnEXM.Project.SitecoreCinema.Controllers
+namespace LearnEXM.Project.SitecoreCinema.MVCHelpers
 {
   public class IdentifiedXConnectContact : FilterAttribute, IActionFilter
   {

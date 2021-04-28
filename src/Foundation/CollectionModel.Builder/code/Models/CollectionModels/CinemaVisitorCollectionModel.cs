@@ -6,13 +6,13 @@ using Sitecore.XConnect.Schema;
 
 namespace LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels
 {
-  public class SitecoreCinemaCollectionModel
+  public class CinemaVisitorCollectionModel
   {
     public static XdbModel Model { get; set; } = BuildModel();
 
     private static XdbModel BuildModel()
     {
-      XdbModelBuilder modelBuilder = new XdbModelBuilder(CollectionConst.SitecoreCinema.CollectionModelNames.SitecoreCinemaCollectionModel, new XdbModelVersion(1, 1));
+      XdbModelBuilder modelBuilder = new XdbModelBuilder(CollectionConst.SitecoreCinema.CollectionModelNames.CinemaVisitorCollectionModel, new XdbModelVersion(1, 1));
 
       modelBuilder.ReferenceModel(Sitecore.XConnect.Collection.Model.CollectionModel.Model);
       modelBuilder.DefineFacet<Contact, CinemaVisitorInfo>(CollectionConst.FacetKeys.CinemaVisitorInfo);

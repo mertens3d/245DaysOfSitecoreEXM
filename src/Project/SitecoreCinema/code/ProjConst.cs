@@ -6,6 +6,16 @@ namespace LearnEXM.Project.SitecoreCinema
   {
   
 
+    public struct Logging
+    {
+      public static string Prefix = "[LearnEXM.Project.SitecoreCinema] : ";
+
+    }
+    public struct Pages
+    {
+      public static string ErrorPage = "/error";
+
+    }
     public struct PlaceHolders
     {
       public static string Main = "main";

@@ -4,7 +4,7 @@
   {
     public struct Logger
     {
-      public const string LoggingPrefix = "[xConnectHelpers] ";
+      public const string LoggingPrefix = "[LearnEXM.Foundation.xConnectHelpers] ";
     }
   }
 }

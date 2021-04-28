@@ -16,6 +16,10 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     {
       IdentifiedContactReference = XConnectHelper.GetIdentifierFromTrackingContact(trackingContact);
       XConnectContact = XConnectHelper.IdentifyKnownContact(IdentifiedContactReference);
+      if(XConnectContact != null)
+      {
+        XConnectFacets = trackingContact.GetFacet<IXConnectFacets>("XConnectFacets");
+      }
     }
 
     public List<string> Errors { get; set; } = new List<string>();

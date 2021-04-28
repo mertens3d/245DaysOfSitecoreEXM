@@ -6,6 +6,7 @@ using LearnEXM.Foundation.CollectionModel.Builder.Interactions;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using LearnEXM.Project.SitecoreCinema.Model;
 using LearnEXM.Project.SitecoreCinema.Model.ViewModels;
+using LearnEXM.Project.SitecoreCinema.MVCHelpers;
 using Sitecore.Analytics;
 using Sitecore.Analytics.Model.Entities;
 using System;
@@ -91,10 +92,22 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     [IdentifiedXConnectContact]
     public ActionResult SelfServiceMachine()
     {
-      var viewModel = new SelfServiceMachineViewModel();
-      var movieTicketHelper = new MovieTicketHelper();
-      viewModel.ShowTimes = movieTicketHelper.AvailableMovies();
-      return View(ProjectConst.ControllerViews.SelfServiceMachine, viewModel);
+      ActionResult actionResult;
+
+      try
+      {
+        var viewModel = new SelfServiceMachineViewModel();
+        var movieTicketHelper = new MovieTicketHelper();
+        viewModel.ShowTimes = movieTicketHelper.AvailableMovies();
+       actionResult = View(ProjectConst.ControllerViews.SelfServiceMachine, viewModel);
+      }
+      catch (Exception ex)
+      {
+        Sitecore.Diagnostics.Log.Error(ProjectConst.Logging.Prefix + "SelfServiceMachine ", ex, this);
+        actionResult =new  RedirectResult(ProjectConst.Pages.ErrorPage);
+      }
+
+      return actionResult;
     }
 
     public ActionResult StartJourney()

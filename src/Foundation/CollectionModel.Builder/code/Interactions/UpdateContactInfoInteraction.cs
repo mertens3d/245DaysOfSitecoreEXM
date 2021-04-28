@@ -14,12 +14,12 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       CandidateContactInfo = candidateContactInfo;
     }
 
-    private FacetHelper FacetHelper { get; set; }
+    private FacetEditHelper FacetEditHelper { get; set; }
     public ICandidateMockContactInfo CandidateContactInfo { get; }
 
     public override void InteractionBody()
     {
-      FacetHelper = new FacetHelper(XConnectFacets);
+      FacetEditHelper = new FacetEditHelper(XConnectFacets);
 
       if (XConnectContact != null)
       {
@@ -34,7 +34,6 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         Sitecore.Diagnostics.Log.Error(CollectionConst.Logger.Prefix + "null xConnectContact", this);
       }
 
-
       Interaction interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Brand, CollectionConst.XConnect.Channels.RegisterInteractionCode, string.Empty);
 
       interaction.Events.Add(new Goal(CollectionConst.XConnect.Goals.RegistrationGoal, DateTime.UtcNow));
@@ -42,26 +41,73 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       Client.AddInteraction(interaction);
     }
 
+    private void SetEmailFacet()
+    {
+      var preferredKey = "Work";
+      var preferredEmail = new EmailAddress(CandidateContactInfo.EmailAddress, true);
+
+      var emailFacet = new EmailAddressList(preferredEmail, preferredKey)
+      {
+        Others = new System.Collections.Generic.Dictionary<string, EmailAddress>()
+        {
+          { "Spam", new EmailAddress("spam@me.com", false) }
+        },
+      };
+
+      Client.SetFacet(new FacetReference(IdentifiedContactReference, EmailAddressList.DefaultFacetKey), emailFacet);
+    }
+
     private void SetAddressListFacet()
     {
+      AddressList addressList = FacetEditHelper.SafeGetFacet<AddressList>(AddressList.DefaultFacetKey);
 
-      AddressList addressList = FacetHelper.SafeGetCreateFacet<AddressList>(AddressList.DefaultFacetKey);
-      var address = new Address();
-      address.City = CandidateContactInfo.AddressCity;
-      address.AddressLine1 = CandidateContactInfo.AddressStreet;
-      address.CountryCode = CandidateContactInfo.PostalCode;
-      address.StateOrProvince = CandidateContactInfo.AddressStateOrProvince;
+      if (addressList == null)
+      {
+        var address = new Address
+        {
+          City = "default",
+          AddressLine1 = "default",
+          CountryCode = "default",
+          StateOrProvince = "default",
+          AddressLine2 = "42",
+          AddressLine3 = "Douglas Road",
+          AddressLine4 = "Adams Common",
+          GeoCoordinate = new GeoCoordinate(51.507351f, -0.127758f),
+          PostalCode = "AB1 2CD",
+        };
+        addressList = new AddressList(address, "default");
+      }
 
+      if (addressList != null)
+      {
+        var address = new Address
+        {
+          City = CandidateContactInfo.AddressCity,
+          AddressLine1 = CandidateContactInfo.AddressStreet,
+          CountryCode = CandidateContactInfo.PostalCode,
+          StateOrProvince = CandidateContactInfo.AddressStateOrProvince,
+          AddressLine2 = "42",
+          AddressLine3 = "Douglas Road",
+          AddressLine4 = "Adams Common",
+          GeoCoordinate = new GeoCoordinate(51.507351f, -0.127758f),
+          PostalCode = "AB1 2CD",
 
-      addressList.PreferredAddress = address;
+        };
 
-      Client.SetFacet<AddressList>(IdentifiedContactReference, AddressList.DefaultFacetKey, addressList);
+        addressList.PreferredAddress = address;
+        addressList.PreferredKey = CandidateContactInfo.AddressListPreferredKey;
 
+        Client.SetAddresses(IdentifiedContactReference, addressList);
+      }
+      else
+      {
+        Sitecore.Diagnostics.Log.Debug("Address List Facet was null");
+      }
     }
+
     private void SetCinemaInfoFacet()
     {
-      
-      CinemaInfo cinemaInfo = FacetHelper.SafeGetCreateFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
+      CinemaInfo cinemaInfo = FacetEditHelper.SafeGetFacet<CinemaInfo>(CinemaInfo.DefaultFacetKey);
 
       if (cinemaInfo != null)
       {
@@ -91,9 +137,14 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       }
 
       personalInformation.FirstName = CandidateContactInfo.FirstName;
-      personalInformation.LastName = CandidateContactInfo. LastName;
+      personalInformation.LastName = CandidateContactInfo.LastName;
+      if (CandidateContactInfo.Birthdate != null)
+      {
+        personalInformation.Birthdate = CandidateContactInfo.Birthdate;
+      }
+      personalInformation.Gender = CandidateContactInfo.Gender;
 
-      Client.SetFacet(IdentifiedContactReference, PersonalInformation.DefaultFacetKey, personalInformation);
+      Client.SetFacet<PersonalInformation>(new FacetReference(IdentifiedContactReference, PersonalInformation.DefaultFacetKey), personalInformation);
     }
 
     private void SetCinemaVisitorInfoFacet()
@@ -104,22 +155,6 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       };
 
       Client.SetFacet(IdentifiedContactReference, CinemaVisitorInfo.DefaultFacetKey, visitorInfo);
-    }
-
-    private void SetEmailFacet()
-    {
-      var preferredKey = "Work";
-      var preferredEmail = new EmailAddress(CandidateContactInfo.EmailAddress, true);
-
-      var emailFacet = new EmailAddressList(preferredEmail, preferredKey)
-      {
-        Others = new System.Collections.Generic.Dictionary<string, EmailAddress>()
-        {
-          { "Spam", new EmailAddress("spam@me.com", false) }
-        },
-      };
-
-      Client.SetFacet(new FacetReference(IdentifiedContactReference, EmailAddressList.DefaultFacetKey), emailFacet);
     }
   }
 }

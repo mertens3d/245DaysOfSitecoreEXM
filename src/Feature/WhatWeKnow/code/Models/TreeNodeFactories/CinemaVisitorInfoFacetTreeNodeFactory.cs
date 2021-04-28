@@ -11,16 +11,16 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.TreeNodeFactories
   {
     public string AssociatedDefaultFacetKey { get; set; } = CinemaVisitorInfo.DefaultFacetKey;
 
-    public ITreeNode BuildTreeNode(Facet facet)
+    public IWhatWeKnowTreeNode BuildTreeNode(Facet facet)
     {
-      var toReturn = new TreeNode("Cinema Visitor Info");
+      var toReturn = new WhatWeKnowTreeNode("Cinema Visitor Info");
       CinemaVisitorInfo cinemaVisitorInfoFacet = facet as CinemaVisitorInfo;
 
       if (cinemaVisitorInfoFacet != null)
       {
-        toReturn.AddNode(new TreeNode("Favorite Movie", cinemaVisitorInfoFacet.FavoriteMovie));
+        toReturn.AddNode(new WhatWeKnowTreeNode("Favorite Movie", cinemaVisitorInfoFacet.FavoriteMovie));
 
-        var ticketsNode = new TreeNode("Movie Tickets");
+        var ticketsNode = new WhatWeKnowTreeNode("Movie Tickets");
 
         if (cinemaVisitorInfoFacet.MovieTickets != null && cinemaVisitorInfoFacet.MovieTickets.Any())
         {
@@ -28,7 +28,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.TreeNodeFactories
 
           foreach (var movieTicket in cinemaVisitorInfoFacet.MovieTickets)
           {
-            ticketsNode.AddNode(new TreeNode("Movie Name", movieTicket.MovieName));
+            ticketsNode.AddNode(new WhatWeKnowTreeNode("Movie Name", movieTicket.MovieName));
           }
         }
 

@@ -22,9 +22,9 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
       var interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Contact, CollectionConst.XConnect.Channels.BoughtTicket, string.Empty);
 
-      var facetHelper = new FacetHelper(null);//todo (XConnectContact);
+      var facetHelper = new FacetEditHelper(XConnectFacets);//todo (XConnectContact);
 
-      var cinemaInfoFacet = facetHelper.SafeGetCreateFacet<CinemaInfo>(CollectionConst.FacetKeys.CinemaInfo);
+      var cinemaInfoFacet = facetHelper.SafeGetFacet<CinemaInfo>(CollectionConst.FacetKeys.CinemaInfo);
       
       if (cinemaInfoFacet != null)
       {
@@ -32,7 +32,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         Client.SetFacet(IdentifiedContactReference, CinemaInfo.DefaultFacetKey, cinemaInfoFacet);
       }
 
-      var visitorInfoFacet = facetHelper.SafeGetCreateFacet<CinemaVisitorInfo>(CollectionConst.FacetKeys.CinemaVisitorInfo);
+      var visitorInfoFacet = facetHelper.SafeGetFacet<CinemaVisitorInfo>(CollectionConst.FacetKeys.CinemaVisitorInfo);
       if (visitorInfoFacet != null)
       {
         visitorInfoFacet.MovieTickets.Add(MovieTicket);

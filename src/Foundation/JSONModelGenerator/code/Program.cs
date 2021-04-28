@@ -11,7 +11,7 @@ namespace LearnEXM.Foundation.JSONModelGenerator
   {
     private static void Main(string[] args)
     {
-      GenericGenerator(SitecoreCinemaCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.SitecoreCinemaCollectionModel);
+      GenericGenerator(CinemaVisitorCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.CinemaVisitorCollectionModel);
       GenericGenerator(CinemaDetailsCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.CinemaDetailsCollectionModel);
       GenericGenerator(CinemaBusinessMarketingCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.CinemaBusinessMarketingCollectionModel);
       GenericGenerator(CinemaInfoCollectionModel.Model, CollectionConst.SitecoreCinema.CollectionModelNames.CinemaInfoCollectionModel);

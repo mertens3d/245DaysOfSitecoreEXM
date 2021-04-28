@@ -1126,8 +1126,8 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config">
       <DependentUpon>Unicorn.config</DependentUpon>
     </Content>
-    <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.SitecoreCinemaCollectionModel.config" />
-    <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\Sitecore.XConnect.Client.MarketingCollectionModel.config" />
+    <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\LearnEXM.XConnect.Client.CinemaVisitorCollectionModel.config" />
+    <Content Include="App_Config\Include\Foundation\XConnect.Client.Configuration\LearnEXM.XConnect.Client.CinemaBusinessMarketingCollectionModel.config" />
     <Content Include="..\..\..\Project\SitecoreCinema\code\App_Start\RazorGeneratorMvcStart.cs.disabled">
       <Link>App_Start\RazorGeneratorMvcStart.cs.disabled</Link>
     </Content>
@@ -1154,6 +1154,7 @@
     <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8-xxl\ui.fancytree.less" />
     <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-win8\ui.fancytree.less" />
     <Content Include="Assets\Vendors\jquery.fancytree-v2.38.0\skin-xp\ui.fancytree.less" />
+    <Content Include="App_Config\Include\Marketing.Tracking\LearnEXM.Analytics.Tracking.config" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

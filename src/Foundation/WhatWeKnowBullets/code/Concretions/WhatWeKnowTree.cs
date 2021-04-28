@@ -7,7 +7,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 
     public WhatWeKnowTree(string rootTitle)
     {
-      Root = new TreeNode(rootTitle);
+      Root = new WhatWeKnowTreeNode(rootTitle);
     }
 
     public IWhatWeKnowTreeWriter TreeWriter
@@ -18,6 +18,6 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
         return new FancyTreeWriter(Root);
       }
     }
-    public ITreeNode Root { get; set; }
+    public IWhatWeKnowTreeNode Root { get; set; }
   }
 }

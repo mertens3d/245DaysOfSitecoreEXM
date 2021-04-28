@@ -23,59 +23,60 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
     public List<string> TargetedFacetKeys { get; }
     private List<IFacetNodeFactory> CustomFacetKeyBulletFactories { get; }
     private IXConnectFacets XConnectFacets { get; set; }
-    public ITreeNode EventsNode(List<xConnectHelper.Proxies.EventRecordProxy> events)
+    public IWhatWeKnowTreeNode EventsNode(List<xConnectHelper.Proxies.EventRecordProxy> events)
     {
-      var eventsNode = new TreeNode("Events");
+      var eventsNode = new WhatWeKnowTreeNode("Events");
       if (events != null && events.Any())
       {
         foreach (var eventProxy in events)
         {
-          var eventNode = new TreeNode(eventProxy.ItemDisplayName);
-          eventNode.AddNode(new TreeNode(eventProxy.TimeStamp.ToString()));
-          eventNode.AddNode(new TreeNode("Duration", eventProxy.Duration.ToString()));
+          var eventNode = new WhatWeKnowTreeNode(eventProxy.ItemDisplayName);
+          eventNode.AddNode(new WhatWeKnowTreeNode(eventProxy.TimeStamp.ToString()));
+          eventNode.AddNode(new WhatWeKnowTreeNode("Duration", eventProxy.Duration.ToString()));
         }
       }
 
       return eventsNode;
     }
 
-    public ITreeNode FacetsNode(List<IFacetNodeFactory> customFacetKeyBulletFactories, XConnectClient xConnectClient)
+    public IWhatWeKnowTreeNode FacetsNode(List<IFacetNodeFactory> customFacetKeyBulletFactories, XConnectClient xConnectClient)
     {
-      var toReturn = new TreeNode("Facets");
-      var FacetHelper = new FacetHelper(XConnectFacets);
+      var toReturn = new WhatWeKnowTreeNode("Facets");
 
-      var FacetTreeHelper = new FacetBranchHelper(customFacetKeyBulletFactories, xConnectClient);
+      var FacetTreeHelper = new FacetBranchHelper(customFacetKeyBulletFactories, xConnectClient, XConnectFacets);
 
 
       if (XConnectFacets != null)
       {
         foreach (var targetFacetKey in TargetedFacetKeys)
         {
-          toReturn.AddNode(FacetTreeHelper.GetFacetTreeNode(targetFacetKey, FacetHelper));
+          toReturn.AddNode(FacetTreeHelper.GetFacetTreeNode(targetFacetKey));
         }
       }
+
+      toReturn.AddNode(FacetTreeHelper.FoundFacetKeys());
 
       return toReturn;
     }
 
-    public ITreeNode IdentifiersNode(List<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers)
+    public IWhatWeKnowTreeNode IdentifiersNode(List<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers)
     {
-      var toReturn = new TreeNode("Identifiers");
+      var toReturn = new WhatWeKnowTreeNode("Identifiers");
 
       if (contactIdentifiers != null && contactIdentifiers.Any())
       {
         foreach (var contactIdentifier in contactIdentifiers)
         {
-          toReturn.AddNode(new TreeNode(contactIdentifier.Source, contactIdentifier.Identifier));
+          toReturn.AddNode(new WhatWeKnowTreeNode(contactIdentifier.Source, contactIdentifier.Identifier));
         }
       }
 
       return toReturn;
     }
 
-    public ITreeNode InteractionsNode(Contact xConnectContact, XConnectClient xConnectClient)
+    public IWhatWeKnowTreeNode InteractionsNode(Contact xConnectContact, XConnectClient xConnectClient)
     {
-      var toReturn = new TreeNode("Interactions");
+      var toReturn = new WhatWeKnowTreeNode("Interactions");
 
       var interactionHelper = new InteractionHelper();
 
@@ -85,7 +86,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       {
         foreach (var knownInteraction in knownInteractions)
         {
-          var treeNode = new TreeNode(knownInteraction.ChannelName);
+          var treeNode = new WhatWeKnowTreeNode(knownInteraction.ChannelName);
           //treeNode.AddNode(new TreeNode("Device Profile",knownInteraction.DeviceProfile))
           treeNode.AddNode(EventsNode(knownInteraction.EventsB));
 
@@ -98,9 +99,9 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return toReturn;
     }
 
-    public List<ITreeNode> Tier1NodeBuilder(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient, Contact xConnectContact)
+    public List<IWhatWeKnowTreeNode> Tier1NodeBuilder(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient, Contact xConnectContact)
     {
-      var toReturn = new List<ITreeNode>();
+      var toReturn = new List<IWhatWeKnowTreeNode>();
 
 
       toReturn.Add(TrackingContactNode(trackingContact, xConnectClient));
@@ -110,14 +111,14 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 
       return toReturn;
     }
-    public ITreeNode TrackingContactNode(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient)
+    public IWhatWeKnowTreeNode TrackingContactNode(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient)
     {
-      var toReturn = new TreeNode("Tracking Contact");
+      var toReturn = new WhatWeKnowTreeNode("Tracking Contact");
       if (trackingContact != null)
       {
-        toReturn.AddNode(new TreeNode("Is New", trackingContact.IsNew.ToString()));
-        toReturn.AddNode(new TreeNode("Contact Id", trackingContact.ContactId.ToString()));
-        toReturn.AddNode(new TreeNode("Identification Level", trackingContact.IdentificationLevel.ToString()));
+        toReturn.AddNode(new WhatWeKnowTreeNode("Is New", trackingContact.IsNew.ToString()));
+        toReturn.AddNode(new WhatWeKnowTreeNode("Contact Id", trackingContact.ContactId.ToString()));
+        toReturn.AddNode(new WhatWeKnowTreeNode("Identification Level", trackingContact.IdentificationLevel.ToString()));
 
         var ContractResolver = new XdbJsonContractResolver(xConnectClient.Model, true, true);
 

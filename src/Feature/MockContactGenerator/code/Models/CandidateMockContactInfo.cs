@@ -1,4 +1,5 @@
 ﻿using LearnEXM.Foundation.LearnEXMRoot.Interfaces;
+using System;
 
 namespace LearnEXM.Feature.MockContactGenerator
 {
@@ -22,5 +23,8 @@ namespace LearnEXM.Feature.MockContactGenerator
     public string PostalCode { get; set; }
     public int SimpleId { get; set; }
     public string SitecoreCinemaIdentifier { get; set; }
+
+    public string AddressListPreferredKey { get; set; }
+    public DateTime? Birthdate { get; set; }
   }
 }

@@ -6,7 +6,7 @@
           <Options>
             <Models>
               <SitecoreCinemaCollectionModel>
-                <TypeName>LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels.SitecoreCinemaCollectionModel, LearnEXM.Foundation.CollectionModel.Builder</TypeName>
+                <TypeName>LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels.CinemaVisitorCollectionModel, LearnEXM.Foundation.CollectionModel.Builder</TypeName>
               </SitecoreCinemaCollectionModel>
             </Models>
           </Options>
