@@ -14,14 +14,14 @@ namespace LearnEXM.Feature.Marketing.Conditions
 
     public Expression<Func<Contact, bool>> CreateContactSearchQuery(IContactSearchQueryContext context)
     {
-      return contact => Comparison.Evaluate(contact.GetFacet<Foundation.CollectionModel.Builder.Models.Facets.Marketing>(Foundation.CollectionModel.Builder.Models.Facets.Marketing.DefaultFacetKey).CompanyName, TargetCompanyName);
+      return contact => Comparison.Evaluate(contact.GetFacet<CinemaBusinessMarketing>(CinemaBusinessMarketing.DefaultFacetKey).CompanyName, TargetCompanyName);
     }
 
     public bool Evaluate(IRuleExecutionContext context)
     {
       var contact = context.Fact<Contact>();
 
-      return Comparison.Evaluate(contact.GetFacet<Foundation.CollectionModel.Builder.Models.Facets.Marketing>(Foundation.CollectionModel.Builder.Models.Facets.Marketing.DefaultFacetKey)?.CompanyName, TargetCompanyName);
+      return Comparison.Evaluate(contact.GetFacet<CinemaBusinessMarketing>(CinemaBusinessMarketing.DefaultFacetKey)?.CompanyName, TargetCompanyName);
     }
   }
 

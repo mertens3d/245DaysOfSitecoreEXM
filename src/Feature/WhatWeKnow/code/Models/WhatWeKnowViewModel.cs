@@ -1,9 +1,9 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 
-namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models
+namespace LearnEXM.Feature.SitecoreCinema.Models
 {
   public class WhatWeKnowViewModel
   {
-    public KnownData KnownData { get; set; }
+    public IWhatWeKnowTree WhatWeKnowTree { get; set; }
   }
 }

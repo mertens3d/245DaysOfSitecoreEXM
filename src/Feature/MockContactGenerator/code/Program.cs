@@ -13,7 +13,7 @@ namespace LearnEXM.Feature.MockContactGenerator
 
       while (keepGoing)
       {
-        CandidateContactInfo CandidateContactInfo = candidateInfoGenerator.GetRandomContactInfo();
+        CandidateMockContactInfo CandidateContactInfo = candidateInfoGenerator.GetRandomContactInfo();
         Task.Run(async () => { await contactCreator.CreateKnownContact(CandidateContactInfo); }).Wait();
 
         Console.WriteLine("Press 'Y' to generate another contact");

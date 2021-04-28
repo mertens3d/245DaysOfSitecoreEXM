@@ -10,7 +10,7 @@ namespace LearnEXM.Feature.MockContactGenerator
 {
   public class ContactCreator
   {
-    private async System.Threading.Tasks.Task CreateOneContactAsync(XConnectClient client, CandidateContactInfo candidateContactInfo)
+    private async System.Threading.Tasks.Task CreateOneContactAsync(XConnectClient client, CandidateMockContactInfo candidateContactInfo)
     {
       try
       {
@@ -31,7 +31,7 @@ namespace LearnEXM.Feature.MockContactGenerator
         client.SetFacet(contact, PersonalInformation.DefaultFacetKey, personalInfo);
 
 
-        var emailAddress = new EmailAddress(candidateContactInfo.Email, true);
+        var emailAddress = new EmailAddress(candidateContactInfo.EmailAddress, true);
         var address = new EmailAddressList(emailAddress, CollectionConst.XConnect.EmailPreferredKey);
         client.SetFacet(contact, EmailAddressList.DefaultFacetKey, address);
 
@@ -48,7 +48,7 @@ namespace LearnEXM.Feature.MockContactGenerator
       }
     }
 
-    public async System.Threading.Tasks.Task CreateKnownContact(CandidateContactInfo candidateContactInfo)
+    public async System.Threading.Tasks.Task CreateKnownContact(CandidateMockContactInfo candidateContactInfo)
     {
       var cfgGenerator = new CFGGenerator();
 

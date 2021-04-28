@@ -1,10 +1,9 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
-using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
-using LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Concretions;
+using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.BuiltInBulletFactories
+namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 {
   public class EmailAddressListTreeNodeFactory : _baseFacetTreeNode, IFacetNodeFactory
   {
@@ -21,11 +20,11 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.BuiltInBulletFactories
         var preferredEmail = emailAddressList.PreferredEmail;
         if (preferredEmail != null)
         {
-          toReturn.Leaves.Add(new TreeNode("Preferred Email", preferredEmail.SmtpAddress));
+          toReturn.AddNode(new TreeNode("Preferred Email", preferredEmail.SmtpAddress));
         }
 
-        toReturn.Leaves.Add(LastModified(facet));
-        toReturn.AddRawLeaf(SerializeFacet(facet));
+        toReturn.AddNode(LastModified(facet));
+        toReturn.AddRawNode(SerializeFacet(facet));
       }
       return toReturn;
     }

@@ -1,0 +1,6 @@
+﻿<appSettings>
+    <!--This value is the same as found in your connection strings "xconnect.collection.certificate"-->
+    <!--Ensure it is set to "Copy ALways"-->
+    <!--Ensure it appears in the bin folder"-->
+    <add key="CertificateThumbprint" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+</appSettings>

@@ -22,11 +22,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
       var interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Contact, CollectionConst.XConnect.Channels.BoughtTicket, string.Empty);
 
-      //var contact = Client.Get<Contact>(IdentifiedContactReference, new Sitecore.XConnect.ExpandOptions(PersonalInformation.DefaultFacetKey));
-
-
-      XConnectFacets = Tracker.Current.Contact.GetFacet<IXConnectFacets>("XConnectFacets");
-      var facetHelper = new FacetHelper(XConnectFacets);
+      var facetHelper = new FacetHelper(null);//todo (XConnectContact);
 
       var cinemaInfoFacet = facetHelper.SafeGetCreateFacet<CinemaInfo>(CollectionConst.FacetKeys.CinemaInfo);
       

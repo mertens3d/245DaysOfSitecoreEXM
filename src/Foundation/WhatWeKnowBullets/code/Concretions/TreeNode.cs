@@ -1,8 +1,8 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
+namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
   public class TreeNode : ITreeNode
   {
@@ -25,18 +25,25 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
       }
     }
 
-    public List<ITreeNode> Leaves { get; set; } = new List<ITreeNode>();
+    private List<ITreeNode> Leaves { get; set; } = new List<ITreeNode>();
     public string Title { get; set; } = string.Empty;
     public string Value { get; set; } = string.Empty;
     public bool ValueIsJson { get; set; } = false;
 
-    public void AddLeaf(ITreeNode treeNode)
+    public void AddNode(ITreeNode treeNode)
     {
-      if(treeNode != null)
+      if (treeNode != null)
       {
         Leaves.Add(treeNode);
       }
     }
+    public void AddRawNode(string serialized)
+    {
+      var rawTitleLeaf = new TreeNode("Raw");
+      rawTitleLeaf.AddNode(new TreeNode(serialized) { ValueIsJson = true });
+      AddNode(rawTitleLeaf);
+    }
+
     public string TitleValue()
     {
       var toReturn = Title;
@@ -47,11 +54,14 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
       return toReturn;
     }
 
-    public void AddRawLeaf(string serialized)
+    public List<ITreeNode> GetLeaves()
     {
-      var rawTitleLeaf = (new TreeNode("Raw"));
-      rawTitleLeaf.Leaves.Add(new TreeNode(serialized) { ValueIsJson = true });
-      Leaves.Add(rawTitleLeaf);
+      return Leaves.Cast<ITreeNode>().ToList();
+    }
+
+    public void AddNodes(IEnumerable<ITreeNode> treeNodes)
+    {
+      Leaves.AddRange(treeNodes);
     }
   }
 }

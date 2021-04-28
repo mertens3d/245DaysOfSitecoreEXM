@@ -1,7 +1,7 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using System.Collections.Generic;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
+namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
   public class FancyTreeNode
   {
@@ -9,16 +9,16 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
     {
       if (node != null)
       {
-        this.title = node.TitleValue();
-        this.folder = node.HasLeaves;
+        title = node.TitleValue();
+        folder = node.HasLeaves;
         if (node.ValueIsJson)
         {
-         this. extraClasses="json-data";
+          extraClasses = "json-data";
         }
 
         if (node.HasLeaves)
         {
-          foreach (var child in node.Leaves)
+          foreach (var child in node.GetLeaves())
           {
             children.Add(new FancyTreeNode(child));
           }

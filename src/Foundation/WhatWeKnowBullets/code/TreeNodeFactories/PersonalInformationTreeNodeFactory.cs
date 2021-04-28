@@ -1,10 +1,9 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
-using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
-using LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Concretions;
+using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
+namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 {
   public class PersonalInformationTreeNodeFactory : _baseFacetTreeNode, IFacetNodeFactory
   {
@@ -12,17 +11,18 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Helpers
 
     public ITreeNode BuildTreeNode(Facet facet)
     {
-      var toReturn = new TreeNode("Personal Information Details");
-      var personalInformationDetails = facet as PersonalInformation;
-      if (personalInformationDetails != null)
+      var toReturn = new TreeNode("Address List");
+      var addressList = facet as AddressList;
+      if (addressList != null)
       {
-        toReturn.Leaves.Add(new TreeNode("Name", personalInformationDetails.FirstName + " " + personalInformationDetails.LastName));
-        toReturn.Leaves.Add(new TreeNode("Birthdate", personalInformationDetails.Birthdate.ToString()));
-        toReturn.Leaves.Add(new TreeNode("Gender", personalInformationDetails.Gender));
-
-        toReturn.Leaves.Add(LastModified(facet));
-        toReturn.AddRawLeaf(SerializeFacet(facet));
-
+        if (addressList.PreferredAddress != null)
+        {
+          var preferredNode = new TreeNode("Preferred Address");
+          preferredNode.AddNode(new TreeNode("Address Line 1", addressList.PreferredAddress.AddressLine1));
+          toReturn.AddNode(preferredNode);
+        }
+        toReturn.AddNode(LastModified(facet));
+        toReturn.AddRawNode(SerializeFacet(facet));
       }
       return toReturn;
     }

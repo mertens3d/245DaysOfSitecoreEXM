@@ -1,6 +1,6 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
+namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
   public class WhatWeKnowTree : IWhatWeKnowTree
   {
@@ -10,10 +10,14 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
       Root = new TreeNode(rootTitle);
     }
 
-    public IWhatWeKnowTreeWriter TreeWriter { get {
+    public IWhatWeKnowTreeWriter TreeWriter
+    {
+      get
+      {
 
         return new FancyTreeWriter(Root);
-      } } 
+      }
+    }
     public ITreeNode Root { get; set; }
   }
 }

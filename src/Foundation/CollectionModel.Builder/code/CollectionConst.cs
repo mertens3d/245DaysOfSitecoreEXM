@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using Sitecore.XConnect;
+using Sitecore.XConnect.Collection.Model;
+using System;
 
 namespace LearnEXM.Foundation.CollectionModel.Builder
 {
@@ -17,6 +20,16 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
       public const string CinemaVisitorInfo = "CinemaVisitorInfo";
     }
 
+    public struct ContactExandOptions
+    {
+      public static Sitecore.XConnect.ContactExpandOptions AllContactExpandOptions = new Sitecore.XConnect.ContactExpandOptions(
+              PersonalInformation.DefaultFacetKey,
+              CinemaVisitorInfo.DefaultFacetKey,
+              EmailAddressList.DefaultFacetKey,
+              CinemaBusinessMarketing.DefaultFacetKey,
+              AddressList.DefaultFacetKey
+              );
+    }
     public struct Logger
     {
       public const string Prefix = "[Sitecore Cinema] ";
@@ -35,7 +48,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
       {
         public const string CinemaDetailsCollectionModel = "CinemaDetailsCollectionModel";
         public const string CinemaInfoCollectionModel = "CinemaInfoCollectionModel";
-        public const string MarketingCollectionModel = "MarketingCollectionModel";
+        public const string CinemaBusinessMarketingCollectionModel = "LearnEXM.CinemaBusinessMarketingCollectionModel";
         public const string SitecoreCinemaCollectionModel = "SitecoreCinemaCollectionModel";
       }
       public struct ConcessionPrices
@@ -58,6 +71,11 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
 
     public struct XConnect
     {
+      public struct AddressListKeys
+      {
+      
+          public const string PreferredAddressKey = "SitecoreBusinessMarketing";
+      }
           public const string EmailPreferredKey = "Work";
       public struct Certificate
       {

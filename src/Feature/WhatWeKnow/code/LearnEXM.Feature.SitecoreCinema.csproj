@@ -266,9 +266,9 @@
       <Project>{b366bdc0-c89c-42ef-af69-69ef880f78b8}</Project>
       <Name>LearnEXM.Foundation.LearnEXMRoot</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Foundation\WhatWeKnowBullets\code\LearnEXM.Foundation.WhatWeKnowBullets.csproj">
+    <ProjectReference Include="..\..\..\Foundation\WhatWeKnowBullets\code\LearnEXM.Foundation.WhatWeKnowTree.csproj">
       <Project>{33af1e5d-dc13-4153-864f-785b55d2cd95}</Project>
-      <Name>LearnEXM.Foundation.WhatWeKnowBullets</Name>
+      <Name>LearnEXM.Foundation.WhatWeKnowTree</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\xConnectHelper\LearnEXM.Foundation.xConnectHelper\LearnEXM.Foundation.xConnectHelper.csproj">
       <Project>{b3d715b9-fa7d-47b4-9263-a2f13705057b}</Project>

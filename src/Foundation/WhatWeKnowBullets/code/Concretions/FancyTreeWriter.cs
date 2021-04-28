@@ -1,8 +1,8 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
+namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
   public class FancyTreeWriter : IWhatWeKnowTreeWriter
   {
@@ -10,7 +10,7 @@ namespace LearnEXM.Foundation.WhatWeKnowBullets.Concretions
 
     public FancyTreeWriter(ITreeNode root)
     {
-      this.Root = root;
+      Root = root;
     }
 
     public string DrawDataForTree()

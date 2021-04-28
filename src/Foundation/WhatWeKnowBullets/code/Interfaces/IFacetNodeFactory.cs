@@ -2,11 +2,11 @@
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.Interfaces
+namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
 {
-  public interface IFacetNodeFactory 
+  public interface IFacetNodeFactory
   {
-    string  AssociatedDefaultFacetKey { get; set; }
+    string AssociatedDefaultFacetKey { get; set; }
 
     ITreeNode BuildTreeNode(Facet facet);
 

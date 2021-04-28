@@ -60,6 +60,8 @@ namespace LearnEXM.Foundation.xConnectHelper.Helpers
 
     public IdentifiedContactReference GetIdentifierFromTrackingContact(Sitecore.Analytics.Tracking.Contact trackingContact)
     {
+      // moved
+
       IdentifiedContactReference toReturn = null;
 
       if (trackingContact != null && trackingContact.IdentificationLevel == Sitecore.Analytics.Model.ContactIdentificationLevel.Known)

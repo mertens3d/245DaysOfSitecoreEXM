@@ -1,9 +1,8 @@
 ﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
-using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
-using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
-using LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories;
+using LearnEXM.Foundation.WhatWeKnowTree.Concretions;
+using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
+using LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories;
 using Sitecore.XConnect;
-using System;
 
 namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
 {
@@ -19,13 +18,11 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
 
       if (cinemaDetails != null)
       {
-        toReturn.AddRawLeaf(SerializeFacet(facet));
-        toReturn.Leaves.Add(LastModified(facet));
+        toReturn.AddRawNode(SerializeFacet(facet));
+        toReturn.AddNode(LastModified(facet));
       }
 
       return toReturn;
     }
-
-    
   }
 }

@@ -1,4 +1,4 @@
-﻿using LearnEXM.Feature.MockContactGenerator;
+﻿using LearnEXM.Feature.MockContactGenerator.Helpers;
 using LearnEXM.Feature.SitecoreCinema.Helpers;
 using LearnEXM.Feature.SitecoreCinema.Models;
 using LearnEXM.Feature.SitecoreCinema.Models.ViewModels;
@@ -68,21 +68,15 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
 
     public ActionResult RegisterViaAutoRandom()
     {
-      var candidateInfoGenerator = new MockContactGenerator();
-      var CandidateContactInfo = candidateInfoGenerator.GetRandomContactInfo();
+      var candidateInfoGenerator = new MockContactGeneratorHelper();// MockContactGenerator();
+
+      var CandidateContactInfo = candidateInfoGenerator.GenerateContact();
 
       try
       {
-        Tracker.Current.Session.IdentifyAs(Foundation.CollectionModel.Builder.CollectionConst.XConnect.ContactIdentifiers.Sources.SitecoreCinema, CandidateContactInfo.Email);
+        Tracker.Current.Session.IdentifyAs(Foundation.CollectionModel.Builder.CollectionConst.XConnect.ContactIdentifiers.Sources.SitecoreCinema, CandidateContactInfo.EmailAddress);
 
-        var registerInteraction = new UpdateContactInfoInteraction(
-          CandidateContactInfo.FirstName,
-          CandidateContactInfo.LastName,
-          CandidateContactInfo.FavoriteMovie,
-          CandidateContactInfo.Email,
-          CandidateContactInfo.Email,
-          Tracker.Current.Contact
-          );
+        var registerInteraction = new UpdateContactInfoInteraction(CandidateContactInfo, Tracker.Current.Contact);
 
         registerInteraction.ExecuteInteraction();
       }

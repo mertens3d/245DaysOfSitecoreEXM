@@ -397,8 +397,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CollectionModels\CinemaInfoCollectionModel.cs" />
-    <Compile Include="Models\Facets\Marketing.cs" />
-    <Compile Include="Models\CollectionModels\MarketingCollectionModel.cs" />
+    <Compile Include="Models\Facets\CinemaBusinessMarketing.cs" />
+    <Compile Include="Models\CollectionModels\CinemaBusinessMarketingCollectionModel.cs" />
     <Compile Include="Models\Facets\CinemaDetails.cs" />
     <Compile Include="Models\Facets\CinemaVisitorInfo.cs" />
     <Compile Include="Models\CollectionModels\CinemaDetailsCollectionModel.cs" />
@@ -427,9 +427,13 @@
     <Folder Include="{wwwroot}\{Sitecore Instance}\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Marketing\code\LearnEXM.Foundation.Marketing.csproj">
+    <ProjectReference Include="..\..\LearnEXMRoot\LearnEXM.Foundation.LearnEXMRoot\LearnEXM.Foundation.LearnEXMRoot.csproj">
+      <Project>{b366bdc0-c89c-42ef-af69-69ef880f78b8}</Project>
+      <Name>LearnEXM.Foundation.LearnEXMRoot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Marketing\code\LearnEXM.Foundation.CinemaMarketing.csproj">
       <Project>{e050fb26-1994-4f4f-b471-0ae360589a1f}</Project>
-      <Name>LearnEXM.Foundation.Marketing</Name>
+      <Name>LearnEXM.Foundation.CinemaMarketing</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\xConnectHelper\LearnEXM.Foundation.xConnectHelper\LearnEXM.Foundation.xConnectHelper.csproj">
       <Project>{b3d715b9-fa7d-47b4-9263-a2f13705057b}</Project>

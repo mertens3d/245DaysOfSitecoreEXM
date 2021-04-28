@@ -1,0 +1,17 @@
+﻿<Settings>
+  <Sitecore>
+    <XConnect>
+      <Services>
+        <XConnect.Client.Configuration>
+          <Options>
+            <Models>
+              <LearnEXM.CinemaBusinessMarketingCollectionModel>
+                <TypeName>LearnEXM.Foundation.CollectionModel.Builder.Models.CollectionModels.CinemaBusinessMarketingCollectionModel, LearnEXM.Foundation.CollectionModel.Builder</TypeName>
+              </LearnEXM.CinemaBusinessMarketingCollectionModel>
+            </Models>
+          </Options>
+        </XConnect.Client.Configuration>
+      </Services>
+    </XConnect>
+  </Sitecore>
+</Settings>

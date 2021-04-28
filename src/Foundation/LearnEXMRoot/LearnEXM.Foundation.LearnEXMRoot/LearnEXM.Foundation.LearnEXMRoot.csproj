@@ -192,6 +192,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICandidateMockContactInfo.cs" />
     <Compile Include="Models\CheckBoxFieldProxy.cs" />
     <Compile Include="Models\DateTimeFieldProxy.cs" />
     <Compile Include="Models\ImageFieldProxy.cs" />

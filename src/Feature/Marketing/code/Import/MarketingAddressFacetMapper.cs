@@ -57,13 +57,13 @@ namespace LearnEXM.Feature.Marketing.Import
       if (!string.IsNullOrWhiteSpace(postalCode)) { marketingAddress.PostalCode = postalCode; }
       if (!string.IsNullOrWhiteSpace(stateProvince)) { marketingAddress.StateOrProvince = stateProvince; }
 
-      if (partiallyMappedFacet.Others.ContainsKey(MarketingConst.FacetKeys.Marketing))
+      if (partiallyMappedFacet.Others.ContainsKey(MarketingConst.FacetKeys.CinemaBusinessMarketing))
       {
-        partiallyMappedFacet.Others[MarketingConst.FacetKeys.Marketing] = marketingAddress;
+        partiallyMappedFacet.Others[MarketingConst.FacetKeys.CinemaBusinessMarketing] = marketingAddress;
       }
       else
       {
-        partiallyMappedFacet.Others.Add(MarketingConst.FacetKeys.Marketing, marketingAddress);
+        partiallyMappedFacet.Others.Add(MarketingConst.FacetKeys.CinemaBusinessMarketing, marketingAddress);
       }
 
       return result;

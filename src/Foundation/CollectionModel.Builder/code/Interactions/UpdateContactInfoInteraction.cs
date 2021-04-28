@@ -1,4 +1,5 @@
 ﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using LearnEXM.Foundation.LearnEXMRoot.Interfaces;
 using LearnEXM.Foundation.xConnectHelper.Helpers;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
@@ -8,21 +9,13 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 {
   public class UpdateContactInfoInteraction : _interactionBase
   {
-    public UpdateContactInfoInteraction(string firstName, string lastName, string favoriteMovie, string emailAddress, string sitecoreCinemaIdentifier, Sitecore.Analytics.Tracking.Contact trackingContact) : base(trackingContact)
+    public UpdateContactInfoInteraction(ICandidateMockContactInfo candidateContactInfo, Sitecore.Analytics.Tracking.Contact trackingContact) : base(trackingContact)
     {
-      FirstName = firstName;
-      LastName = lastName;
-      FavoriteMovie = favoriteMovie;
-      EmailAddress = emailAddress;
-      SitecoreCinemaIdentifier = sitecoreCinemaIdentifier;
+      CandidateContactInfo = candidateContactInfo;
     }
 
-    private string FirstName { get; }
-    private string LastName { get; }
-    private string FavoriteMovie { get; }
-    public string EmailAddress { get; }
-    public string SitecoreCinemaIdentifier { get; set; }
     private FacetHelper FacetHelper { get; set; }
+    public ICandidateMockContactInfo CandidateContactInfo { get; }
 
     public override void InteractionBody()
     {
@@ -34,6 +27,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         SetCinemaVisitorInfoFacet();
         SetEmailFacet();
         SetCinemaInfoFacet();
+        SetAddressListFacet();
       }
       else
       {
@@ -48,6 +42,22 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       Client.AddInteraction(interaction);
     }
 
+    private void SetAddressListFacet()
+    {
+
+      AddressList addressList = FacetHelper.SafeGetCreateFacet<AddressList>(AddressList.DefaultFacetKey);
+      var address = new Address();
+      address.City = CandidateContactInfo.AddressCity;
+      address.AddressLine1 = CandidateContactInfo.AddressStreet;
+      address.CountryCode = CandidateContactInfo.PostalCode;
+      address.StateOrProvince = CandidateContactInfo.AddressStateOrProvince;
+
+
+      addressList.PreferredAddress = address;
+
+      Client.SetFacet<AddressList>(IdentifiedContactReference, AddressList.DefaultFacetKey, addressList);
+
+    }
     private void SetCinemaInfoFacet()
     {
       
@@ -80,8 +90,8 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
         personalInformation = new PersonalInformation();
       }
 
-      personalInformation.FirstName = FirstName;
-      personalInformation.LastName = LastName;
+      personalInformation.FirstName = CandidateContactInfo.FirstName;
+      personalInformation.LastName = CandidateContactInfo. LastName;
 
       Client.SetFacet(IdentifiedContactReference, PersonalInformation.DefaultFacetKey, personalInformation);
     }
@@ -90,7 +100,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     {
       CinemaVisitorInfo visitorInfo = new CinemaVisitorInfo()
       {
-        FavoriteMovie = FavoriteMovie
+        FavoriteMovie = CandidateContactInfo.FavoriteMovie
       };
 
       Client.SetFacet(IdentifiedContactReference, CinemaVisitorInfo.DefaultFacetKey, visitorInfo);
@@ -99,7 +109,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
     private void SetEmailFacet()
     {
       var preferredKey = "Work";
-      var preferredEmail = new EmailAddress(EmailAddress, true);
+      var preferredEmail = new EmailAddress(CandidateContactInfo.EmailAddress, true);
 
       var emailFacet = new EmailAddressList(preferredEmail, preferredKey)
       {

@@ -21,7 +21,7 @@ namespace LearnEXM.Foundation.Marketing
 
     public struct FacetKeys
     {
-      public const string Marketing = "Marketing";
+      public const string CinemaBusinessMarketing = "CinemaBusinessMarketing";
     }
 
     public struct Models

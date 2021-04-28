@@ -1,11 +1,11 @@
-﻿using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
-using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Concretions;
+using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using Newtonsoft.Json;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Serialization;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories
+namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 {
   public abstract class _baseFacetTreeNode
   {

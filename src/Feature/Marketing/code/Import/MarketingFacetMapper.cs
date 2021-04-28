@@ -11,7 +11,7 @@ namespace LearnEXM.Feature.Marketing.Import
   {
     private const string FacetMapperPrefix = "Marketing_";
 
-    public MarketingFacetMapper() : this(MarketingConst.FacetKeys.Marketing)
+    public MarketingFacetMapper() : this(MarketingConst.FacetKeys.CinemaBusinessMarketing)
     {
     }
 

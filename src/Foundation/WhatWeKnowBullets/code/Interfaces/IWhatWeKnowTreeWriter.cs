@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.Interfaces
+namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
 {
   public interface IWhatWeKnowTreeWriter
   {

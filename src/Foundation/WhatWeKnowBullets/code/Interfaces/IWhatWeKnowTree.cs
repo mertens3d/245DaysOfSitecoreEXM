@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LearnEXM.Foundation.WhatWeKnowBullets.Interfaces
+namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
 {
   public interface IWhatWeKnowTree
   {

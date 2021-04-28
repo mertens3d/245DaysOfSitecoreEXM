@@ -1,12 +1,11 @@
 ﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
-using LearnEXM.Foundation.WhatWeKnowBullets.Concretions;
-using LearnEXM.Foundation.WhatWeKnowBullets.Interfaces;
-using LearnEXM.Foundation.WhatWeKnowBullets.TreeNodeFactories;
+using LearnEXM.Foundation.WhatWeKnowTree.Concretions;
+using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
+using LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories;
 using Sitecore.XConnect;
-using Sitecore.XConnect.Client;
 using System.Linq;
 
-namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
+namespace LearnEXM.Feature.SitecoreCinema.Models.TreeNodeFactories
 {
   internal class CinemaVisitorInfoFacetTreeNodeFactory : _baseFacetTreeNode, IFacetNodeFactory
   {
@@ -19,27 +18,25 @@ namespace LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories
 
       if (cinemaVisitorInfoFacet != null)
       {
-        toReturn.Leaves.Add(new TreeNode("Favorite Movie", cinemaVisitorInfoFacet.FavoriteMovie));
+        toReturn.AddNode(new TreeNode("Favorite Movie", cinemaVisitorInfoFacet.FavoriteMovie));
 
-        var ticketsBullet = new TreeNode("Movie Tickets");
+        var ticketsNode = new TreeNode("Movie Tickets");
 
         if (cinemaVisitorInfoFacet.MovieTickets != null && cinemaVisitorInfoFacet.MovieTickets.Any())
         {
-          ticketsBullet.Title = "Movie Tickets (" + cinemaVisitorInfoFacet.MovieTickets.Count + ")";
+          ticketsNode.Title = "Movie Tickets (" + cinemaVisitorInfoFacet.MovieTickets.Count + ")";
 
           foreach (var movieTicket in cinemaVisitorInfoFacet.MovieTickets)
           {
-            ticketsBullet.Leaves.Add(new TreeNode("Movie Name", movieTicket.MovieName));
+            ticketsNode.AddNode(new TreeNode("Movie Name", movieTicket.MovieName));
           }
         }
-        
-        toReturn.Leaves.Add(ticketsBullet);
-        toReturn.Leaves.Add(LastModified(facet));
-        toReturn.AddRawLeaf(SerializeFacet(facet));
+
+        toReturn.AddNode(ticketsNode);
+        toReturn.AddNode(LastModified(facet));
+        toReturn.AddRawNode(SerializeFacet(facet));
       }
       return toReturn;
     }
-
-   
   }
 }

@@ -1,4 +1,5 @@
-﻿using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+﻿using LearnEXM.Foundation.CollectionModel.Builder;
+using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
@@ -59,14 +60,9 @@ namespace LearnEXM.Foundation.ConsoleTools.Helpers
               EndDateTime = DateTime.MaxValue
             };
 
-            var expandOptions = new ContactExpandOptions(
-              PersonalInformation.DefaultFacetKey,
-              CinemaVisitorInfo.DefaultFacetKey,
-              EmailAddressList.DefaultFacetKey
-              )
-            {
-              Interactions = interactions
-            };
+            var expandOptions = CollectionConst.ContactExandOptions.AllContactExpandOptions;
+            expandOptions.Interactions = interactions;
+
             toReturn = await Client.GetAsync(IdentifiedContactReference, expandOptions);
           }
           catch (Exception ex)
