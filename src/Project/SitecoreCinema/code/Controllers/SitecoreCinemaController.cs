@@ -22,7 +22,7 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     }
 
     [IdentifiedXConnectContact]
-    public ActionResult BuyConcessions()
+    public ActionResult BuyConcessions(Guid priceitem, Guid productitem)
     {
       var buyConcessionsInteraction = new BuyCandyInteraction(Tracker.Current.Contact);
 

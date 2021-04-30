@@ -26,7 +26,7 @@ namespace LearnEXM.Feature.SitecoreCinema
             public struct MovieShowTime
             {
               //MovieShowTimeProxy
-              public static ID Template = new ID("{C85FB217-BC6B-4F9B-B87F-5DC43AD375D4}");
+              public static ID Template = new ID("{D20A7653-E33C-4A1F-A67D-E7958CC25EE7}");
             }
             public struct MovieData
             {
@@ -105,6 +105,7 @@ namespace LearnEXM.Feature.SitecoreCinema
       public static string _scriptsBase = "assets/scripts/WhatWeKnow.SitecoreCinema";
       public static string _styleBase = "assets/styles/WhatWeKnow.SitecoreCinema";
       public static string WhatWeKnowCss = _styleBase + "/WhatWeKnow.css";
+      public static string ConcessionStand = _styleBase + "/ConcessionStand.css";
       public static string WhatWeKnowJs = _scriptsBase + "/WhatWeKnow.js";
     }
 
@@ -115,6 +116,8 @@ namespace LearnEXM.Feature.SitecoreCinema
 
       public struct Concessions
       {
+        public static string ConcessionStand = _base + "/_concessionStand.cshtml";
+        public static string ConcessionItems = _base + "/_concessionItems.cshtml";
         public static string ConcessionCategory = _base + "/concessionCategory.cshtml";
         public static string Prices = _base + "/prices.cshtml";
       }

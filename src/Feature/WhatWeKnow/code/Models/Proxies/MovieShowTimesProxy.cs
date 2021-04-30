@@ -10,7 +10,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Models
     {
     }
 
-    protected override ID AssociatedTemplateId { get; }
+    protected override ID AssociatedTemplateID { get; }
 
     public List<MovieShowTimeProxy> ShowTimes { get; set; }
 

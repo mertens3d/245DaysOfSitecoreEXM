@@ -1,0 +1,22 @@
+﻿@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
+@using LearnEXM.Feature.SitecoreCinema
+@model List<LearnEXM.Feature.SitecoreCinema.Models.Proxies.ConcessionStand.ConcessionItemProxy>
+
+@if (Model != null && Model.Any())
+{
+  <ul>
+    @foreach (var concessionItemProxy in Model)
+    {
+      <li>
+        <img src="@concessionItemProxy.ProductLogo.ImageURL" width="50" />
+        @concessionItemProxy.ProductNameField.Value
+
+        @if (concessionItemProxy.ConcessionPrices != null && concessionItemProxy.ConcessionPrices.Any())
+        {
+          @Html.Partial(ProjectConst.Views.Concessions.Prices, concessionItemProxy.ConcessionPrices)
+        }
+      </li>
+      <br />
+    }
+  </ul>
+}

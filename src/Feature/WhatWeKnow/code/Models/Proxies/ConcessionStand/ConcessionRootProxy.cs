@@ -2,7 +2,7 @@
 using Sitecore.Data;
 using System.Collections.Generic;
 
-namespace LearnEXM.Feature.SitecoreCinema.Models.Proxies
+namespace LearnEXM.Feature.SitecoreCinema.Models.Proxies.ConcessionStand
 {
   public class ConcessionRootProxy : _baseItemProxy
   {
@@ -16,12 +16,12 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.Proxies
     }
 
     public List<ConcessionCategoryProxy> ConcessionCategories { get; private set; }
-    protected override ID AssociatedTemplateId { get; } = ProjectConst.Items.Content.ConcesssionsFolderItemID;
+    protected override ID AssociatedTemplateID { get; } = ProjectConst.Items.Content.ConcesssionsFolderItemID;
 
     protected override void CommonCTOR()
     {
-      ConcessionCategories = this.ChildrenOfTemplateType<ConcessionCategoryProxy>();
-      
+      ConcessionCategories = ChildrenOfTemplateType<ConcessionCategoryProxy>();
+
     }
   }
 }

@@ -211,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Scripts\WhatWeKnow.SitecoreCinema\WhatWeKnow.js" />
+    <Content Include="Assets\Styles\WhatWeKnow.SitecoreCinema\ConcessionStand.css" />
     <Content Include="Assets\Styles\WhatWeKnow.SitecoreCinema\WhatWeKnow.css" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Bullet.cshtml" />
@@ -218,15 +219,18 @@
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Interactions.cshtml" />
     <Content Include="Views\Feature\SitecoreCinema\ConcessionCategory.cshtml" />
     <Content Include="Views\Feature\SitecoreCinema\prices.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\_concessionItems.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\_concessionStand.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConcessionHelper.cs" />
-    <Compile Include="Models\Proxies\ConcessionCategoryProxy.cs" />
-    <Compile Include="Models\Proxies\ConcessionItemProxy.cs" />
-    <Compile Include="Models\Proxies\ConcessionRootProxy.cs" />
-    <Compile Include="Models\Proxies\ConcessionPriceItemProxy.cs" />
-    <Compile Include="Models\Proxies\ConcessionSubCategoryProxy.cs" />
+    <Compile Include="Models\Proxies\ConcessionStand\ConcessionCategoryProxy.cs" />
+    <Compile Include="Models\Proxies\ConcessionStand\ConcessionItemProxy.cs" />
+    <Compile Include="Models\Proxies\ConcessionStand\ConcessionPurchaseOrder.cs" />
+    <Compile Include="Models\Proxies\ConcessionStand\ConcessionRootProxy.cs" />
+    <Compile Include="Models\Proxies\ConcessionStand\ConcessionPriceItemProxy.cs" />
+    <Compile Include="Models\Proxies\ConcessionStand\ConcessionSubCategoryProxy.cs" />
     <Compile Include="Models\Proxies\MovieDataRefFieldProxy.cs" />
     <Compile Include="Models\Proxies\MovieItemProxy.cs" />
     <Compile Include="Helpers\MovieTicketHelper.cs" />

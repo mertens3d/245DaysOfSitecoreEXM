@@ -18,6 +18,6 @@ namespace LearnEXM.Foundation.LearnEXMRoot
     {
     }
 
-    protected override ID AssociatedTemplateId { get; }
+    protected override ID AssociatedTemplateID { get; }
   }
 }

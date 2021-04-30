@@ -44,7 +44,7 @@ namespace LearnEXM.Foundation.LearnEXMRoot
       }
     }
 
-    protected abstract ID AssociatedTemplateId { get; }
+    protected abstract ID AssociatedTemplateID { get; }
     protected Item Item
     {
       get
@@ -63,10 +63,11 @@ namespace LearnEXM.Foundation.LearnEXMRoot
     {
       var toReturn = new List<T>();
 
+      var targetTemplateID = new T().AssociatedTemplateID;
       if (Item != null)
       {
         toReturn = Item.GetChildren()
-               .Where(x => x.TemplateID == AssociatedTemplateId)
+               .Where(x => x.TemplateID == targetTemplateID)
                .Select(x =>
                {
                  var newObj = new T();

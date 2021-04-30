@@ -32,7 +32,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Models
     public string MoviePoster { get; set; }
     public ID MovieShowTimeId { get; private set; }
     public DateTime? MovieTime { get; set; }
-    protected override ID AssociatedTemplateId { get; } = ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieShowTime.Template;
+    protected override ID AssociatedTemplateID { get; } = ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieShowTime.Template;
 
     private MovieItemProxy GetMovieDataItem(Item movieShowTime)
     {

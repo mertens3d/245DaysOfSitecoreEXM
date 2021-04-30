@@ -13,13 +13,8 @@
   <br />
   <a href="@(LearnEXM.Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.Landing)">Leave Theater</a>
 
-  if (Model.ConcessionCategories != null && Model.ConcessionCategories.Any())
-  {
-    foreach (var ConcessionCategory in Model.ConcessionCategories)
-    {
-      @Html.Partial(LearnEXM.Feature.SitecoreCinema.ProjectConst.Views.Concessions.ConcessionCategory, ConcessionCategory)
-    }
-  }
+  @Html.Partial(LearnEXM.Feature.SitecoreCinema.ProjectConst.Views.Concessions.ConcessionStand, Model.ConcessionCategories)
+  
 
 }
 <br />

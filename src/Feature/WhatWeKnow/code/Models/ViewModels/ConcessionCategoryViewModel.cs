@@ -1,4 +1,4 @@
-﻿using LearnEXM.Feature.SitecoreCinema.Models.Proxies;
+﻿using LearnEXM.Feature.SitecoreCinema.Models.Proxies.ConcessionStand;
 using System.Collections.Generic;
 
 namespace LearnEXM.Feature.SitecoreCinema.Models.ViewModels

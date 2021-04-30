@@ -1,0 +1,17 @@
+﻿@using LearnEXM.Project.SitecoreCinema.Model;
+@using LearnEXM.Project.SitecoreCinema;
+@model List<LearnEXM.Feature.SitecoreCinema.Models.ViewModels.ConcessionCategoryViewModel>
+
+<div id="concession-stand">
+
+  @if (Model != null && Model.Any())
+  {
+    <ul>
+
+      @foreach (var ConcessionCategory in Model)
+      {
+        @Html.Partial(LearnEXM.Feature.SitecoreCinema.ProjectConst.Views.Concessions.ConcessionCategory, ConcessionCategory)
+      }
+    </ul>
+  }
+</div>

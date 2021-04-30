@@ -29,6 +29,6 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.Proxies
     public SingleLineFieldProxy MovieNameProxy { get; set; }
 
     public ImageFieldProxy PosterImageFieldProxy { get; set; }
-    protected override ID AssociatedTemplateId { get; } = ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieData.Template;
+    protected override ID AssociatedTemplateID { get; } = ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieData.Template;
   }
 }

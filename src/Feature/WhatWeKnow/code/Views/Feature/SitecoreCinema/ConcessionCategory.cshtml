@@ -6,30 +6,38 @@
 
 @if (Model != null)
 {
-  <h3>@Model.CategoryName</h3>
+  <li>
 
-  if (Model.SubCategoryItems != null && Model.SubCategoryItems.Any())
-  {
+    <h3>@Model.CategoryName</h3>
 
-    foreach (var subCategory in Model.SubCategoryItems)
+    @if (Model.SubCategoryItems != null && Model.SubCategoryItems.Any())
     {
-      <h4>@subCategory.NameFieldProxy.Value</h4>
-      @Html.Partial(ProjectConst.Views.Concessions.Prices, subCategory.ConcessionPrices);
-    }
+      <ul>
 
-  }
-  if (Model.ConcessionItems != null && Model.ConcessionItems.Any())
-  {
-
-    foreach (var concessionItem in Model.ConcessionItems)
-    {
-      <h4>@concessionItem.ProductName.Value</h4>
-      <img src="@concessionItem.ProductLogo.ImageURL" width="30"></img>
-      if (concessionItem.ConcessionPrices != null && concessionItem.ConcessionPrices.Any())
-      {
-        @Html.Partial(ProjectConst.Views.Concessions.Prices, concessionItem.ConcessionPrices);
+        @foreach (var subCategory in Model.SubCategoryItems)
+        {
+        <li>
+          @subCategory.NameFieldProxy.Value
+          @Html.Partial(ProjectConst.Views.Concessions.ConcessionItems, subCategory.ChildConcessionItems)
+          
+      </li>
       }
-    }
+    </ul>
   }
+    @if (Model.ConcessionItems != null && Model.ConcessionItems.Any())
+    {
 
+      @Html.Partial(ProjectConst.Views.Concessions.ConcessionItems,Model.ConcessionItems)
+
+      @*foreach (var concessionItem in Model.ConcessionItems)
+      {
+        <h4>@concessionItem.ProductName.Value</h4>
+        <img src="@concessionItem.ProductLogo.ImageURL" width="30"></img>
+        if (concessionItem.ConcessionPrices != null && concessionItem.ConcessionPrices.Any())
+        {
+          @Html.Partial(ProjectConst.Views.Concessions.Prices, concessionItem.ConcessionPrices);
+        }
+      }*@
+    }
+  </li>
 }
