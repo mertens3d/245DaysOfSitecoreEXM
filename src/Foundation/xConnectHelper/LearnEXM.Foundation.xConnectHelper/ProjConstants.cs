@@ -10,7 +10,7 @@ namespace LearnEXM.Foundation.xConnectHelper
   {
     public struct Logger
     {
-      public static string Prefix = "[xConnectHelper] ";
+      public static string Prefix = "[LearnEXM.Foundation.xConnectHelper] ";
     }
   }
 }

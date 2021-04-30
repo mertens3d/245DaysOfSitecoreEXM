@@ -21,7 +21,7 @@ namespace LearnEXM.Feature.MockContactGenerator.Helpers
 
       // address
       toReturn.AddressStateOrProvince = RandomHelper.RandomListItem(SourceLists.AddressState);
-      toReturn.AddressStreet = RandomHelper.RandomInt(9999) + " " + RandomHelper.RandomListItem(SourceLists.AddressStreet);
+      toReturn.AddressStreet1 = RandomHelper.RandomInt(9999) + " " + RandomHelper.RandomListItem(SourceLists.AddressStreet);
       toReturn.PostalCode = RandomHelper.RandomInt(11111, 99999).ToString();
       toReturn.AddressListPreferredKey = LearnEXM.Foundation.CollectionModel.Builder.CollectionConst.XConnect.AddressListKeys.PreferredAddressKey;
 

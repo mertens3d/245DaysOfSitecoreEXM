@@ -19,7 +19,7 @@ namespace LearnEXM.Feature.MockContactGenerator.Helpers
     {
       var address = new Address();
       address.City = candidate.AddressCity;
-      address.AddressLine1 = candidate.AddressStreet;
+      address.AddressLine1 = candidate.AddressStreet1;
       address.CountryCode = MarketingConst.XConnect.PostalCodes.US;
       address.PostalCode = candidate.PostalCode;
       address.StateOrProvince = candidate.AddressStateOrProvince;

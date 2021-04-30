@@ -1,7 +1,4 @@
 ﻿using LearnEXM.Feature.SitecoreCinema.Models;
-using LearnEXM.Feature.SitecoreCinema.Models.TreeNodeFactories;
-using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models;
-using LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.BulletFactories;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using LearnEXM.Foundation.WhatWeKnowTree.Helpers;
 using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
@@ -16,6 +13,8 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
   {
     public ActionResult WhatWeKnow()
     {
+      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "s) WhatWeKnow action");
+
       var targetFacetsTypes = new List<string>
       {
        CinemaInfo.DefaultFacetKey,
@@ -26,16 +25,8 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
        AddressList.DefaultFacetKey,
       };
 
-      var customFacetKeyBulletFactories = new List<IFacetNodeFactory>()
-      {
-         new CinemaInfoTreeNodeFactory(),
-         new CinemaVisitorInfoFacetTreeNodeFactory(),
-         new CinemaDetailsFacetTreeNodeFactory()
-      };
 
-      var trackingHelper = new TrackingHelper(targetFacetsTypes, customFacetKeyBulletFactories);
-
-      var whatWeKnowTreeBuilder = new WhatWeKnowTreeBuilder(targetFacetsTypes, customFacetKeyBulletFactories);
+      var whatWeKnowTreeBuilder = new WhatWeKnowTreeBuilder(targetFacetsTypes);
 
       var whatWeKnowTree = whatWeKnowTreeBuilder.GetWhatWeKnowTree(Tracker.Current.Contact);
 
@@ -44,6 +35,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
         WhatWeKnowTree = whatWeKnowTree,
       };
 
+      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "e) WhatWeKnow action");
       return View(ProjectConst.Views.WhatWeKnow.Main, viewModel);
     }
   }

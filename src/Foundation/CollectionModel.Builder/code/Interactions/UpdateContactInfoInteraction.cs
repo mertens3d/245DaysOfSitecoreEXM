@@ -63,18 +63,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
       if (addressList == null)
       {
-        var address = new Address
-        {
-          City = "default",
-          AddressLine1 = "default",
-          CountryCode = "default",
-          StateOrProvince = "default",
-          AddressLine2 = "42",
-          AddressLine3 = "Douglas Road",
-          AddressLine4 = "Adams Common",
-          GeoCoordinate = new GeoCoordinate(51.507351f, -0.127758f),
-          PostalCode = "AB1 2CD",
-        };
+        var address = new Address();
         addressList = new AddressList(address, "default");
       }
 
@@ -82,15 +71,15 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
       {
         var address = new Address
         {
+          AddressLine1 = CandidateContactInfo.AddressStreet1,
+          AddressLine2 = CandidateContactInfo.AddressStreet2,
+          AddressLine3 = CandidateContactInfo.AddressStreet3,
+          AddressLine4 = CandidateContactInfo.AddressStreet4,
           City = CandidateContactInfo.AddressCity,
-          AddressLine1 = CandidateContactInfo.AddressStreet,
-          CountryCode = CandidateContactInfo.PostalCode,
+          CountryCode = CandidateContactInfo.CountryCode,
+          GeoCoordinate =  new GeoCoordinate( CandidateContactInfo.GeoCoordinateLatitude, CandidateContactInfo.GeoCoordinateLongitude),//new GeoCoordinate(51.507351f, -0.127758f),
+          PostalCode = CandidateContactInfo.PostalCode,
           StateOrProvince = CandidateContactInfo.AddressStateOrProvince,
-          AddressLine2 = "42",
-          AddressLine3 = "Douglas Road",
-          AddressLine4 = "Adams Common",
-          GeoCoordinate = new GeoCoordinate(51.507351f, -0.127758f),
-          PostalCode = "AB1 2CD",
 
         };
 

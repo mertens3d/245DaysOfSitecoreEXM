@@ -7,7 +7,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 
     public WhatWeKnowTree(string rootTitle)
     {
-      Root = new WhatWeKnowTreeNode(rootTitle);
+      Root = new WeKnowTreeNode(rootTitle);
     }
 
     public IWhatWeKnowTreeWriter TreeWriter

@@ -11,13 +11,11 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 {
   public class TrackingHelper
   {
-    private List<IFacetNodeFactory> customFacetKeyBulletFactories;
     private List<string> targetFacetsTypes;
 
-    public TrackingHelper(List<string> targetFacetsTypes, List<IFacetNodeFactory> customFacetKeyBulletFactories)
+    public TrackingHelper(List<string> targetFacetsTypes)
     {
       this.targetFacetsTypes = targetFacetsTypes;
-      this.customFacetKeyBulletFactories = customFacetKeyBulletFactories;
     }
 
     public IdentifiedContactReference GetIdentifierFromSourceIdentifier(string source, string identifier)

@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
-  public class WhatWeKnowTreeNode : IWhatWeKnowTreeNode
+  public class WeKnowTreeNode : IWhatWeKnowTreeNode
   {
-    public WhatWeKnowTreeNode(string title)
+    public WeKnowTreeNode(string title)
     {
       Title = title;
     }
 
-    public WhatWeKnowTreeNode(string title, string value)
+    public WeKnowTreeNode(string title, string value)
     {
       Title = title;
       Value = value;
@@ -39,8 +39,8 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
     }
     public void AddRawNode(string serialized)
     {
-      var rawTitleLeaf = new WhatWeKnowTreeNode("Raw");
-      rawTitleLeaf.AddNode(new WhatWeKnowTreeNode(serialized) { ValueIsJson = true });
+      var rawTitleLeaf = new WeKnowTreeNode("Raw");
+      rawTitleLeaf.AddNode(new WeKnowTreeNode(serialized) { ValueIsJson = true });
       AddNode(rawTitleLeaf);
     }
 

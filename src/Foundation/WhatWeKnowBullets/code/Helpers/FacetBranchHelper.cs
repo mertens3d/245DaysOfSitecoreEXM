@@ -4,21 +4,18 @@ using LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect.Client;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 {
   public class FacetBranchHelper
   {
-    public FacetBranchHelper(List<IFacetNodeFactory> customFacetKeyBulletFactories, XConnectClient xConnectClient, IXConnectFacets xConnectFacets)
+    public FacetBranchHelper( XConnectClient xConnectClient, IXConnectFacets xConnectFacets)
     {
-      CustomFacetKeyBulletFactories = customFacetKeyBulletFactories;
       XConnectClient = xConnectClient;
       XConnectFacets = xConnectFacets;
     }
 
     public IXConnectFacets XConnectFacets { get; set; }
-    private List<IFacetNodeFactory> CustomFacetKeyBulletFactories { get; }
     private XConnectClient XConnectClient { get; }
 
     public Sitecore.XConnect.Facet GetFacetByKey(string facetKey)
@@ -34,9 +31,10 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 
     public IWhatWeKnowTreeNode GetFacetTreeNode(string targetFacetKey)
     {
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) GetFacetTreeNode: " + typeof(FacetBranchHelper).Name);
       IWhatWeKnowTreeNode toReturn = null;
 
-      var treeFactory = GetFacetTreeFactoryByKey(targetFacetKey);
+      IFacetNodeFactory treeFactory = null; // GetFacetTreeFactoryByKey(targetFacetKey);
       if (treeFactory != null)
       {
         Sitecore.XConnect.Facet facet = GetFacetByKey(targetFacetKey);
@@ -46,45 +44,33 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
           toReturn = treeFactory.BuildTreeNode(facet);
         }
       }
-
-      return toReturn;
-    }
-
-    private List<IFacetNodeFactory> BuiltInFacetTreeNodeFactories
-    {
-      get
+      else
       {
-        return new List<IFacetNodeFactory>
+        Sitecore.XConnect.Facet facet = GetFacetByKey(targetFacetKey);
+        treeFactory = new GenericTreeFactory(targetFacetKey);
+
+        if (facet != null)
         {
-          new EmailAddressListTreeNodeFactory(),
-          new AddressListNodeFactory(),
-          new PersonalInformationTreeNodeFactory(),
-        };
-      }
-    }
+          treeFactory.SetClient(XConnectClient);
+          toReturn = treeFactory.BuildTreeNode(facet);
+        }
 
-    public IFacetNodeFactory GetFacetTreeFactoryByKey(string facetKey)
-    {
-      IFacetNodeFactory toReturn = null;
-
-      toReturn = CustomFacetKeyBulletFactories.FirstOrDefault(x => x.AssociatedDefaultFacetKey.Equals(facetKey));
-      if (toReturn == null && CustomFacetKeyBulletFactories != null)
-      {
-        toReturn = BuiltInFacetTreeNodeFactories.FirstOrDefault(x => x.AssociatedDefaultFacetKey.Equals(facetKey));
+        Sitecore.Diagnostics.Log.Error(ProjConstants.Logger.Prefix + "treeFactory is null", this);
       }
 
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "e) GetFacetTreeNode: " + typeof(FacetBranchHelper).Name);
       return toReturn;
     }
 
     public IWhatWeKnowTreeNode FoundFacetKeys()
     {
-      var toReturn = new WhatWeKnowTreeNode("Found Facet Keys");
+      var toReturn = new WeKnowTreeNode("Found Facet Keys");
 
       if (XConnectFacets?.Facets != null)
       {
         foreach (KeyValuePair<string, Sitecore.XConnect.Facet> facetPair in XConnectFacets.Facets)
         {
-          toReturn.AddNode(new WhatWeKnowTreeNode(facetPair.Key));
+          toReturn.AddNode(new WeKnowTreeNode(facetPair.Key));
         }
       }
 

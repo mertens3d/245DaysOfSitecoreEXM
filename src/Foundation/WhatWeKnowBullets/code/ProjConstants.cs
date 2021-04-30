@@ -11,7 +11,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree
 
     public struct Logger
     {
-      public static string Prefix = "[WhatWeKnowTree] ";
+      public static string Prefix = "[LearnEXM.Foundation.WhatWeKnowTree] ";
     }
   }
 }

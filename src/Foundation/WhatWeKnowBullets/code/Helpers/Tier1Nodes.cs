@@ -13,37 +13,36 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 {
   public class Tier1Nodes
   {
-    public Tier1Nodes(Sitecore.Analytics.Tracking.Contact trackingContact, List<string> targetedFacetKeys, List<IFacetNodeFactory> customFacetKeyBulletFactories)
+    public Tier1Nodes(Sitecore.Analytics.Tracking.Contact trackingContact, List<string> targetedFacetKeys)
     {
       this.XConnectFacets = trackingContact.GetFacet<IXConnectFacets>("XConnectFacets"); ;
       TargetedFacetKeys = targetedFacetKeys;
-      CustomFacetKeyBulletFactories = customFacetKeyBulletFactories;
     }
 
     public List<string> TargetedFacetKeys { get; }
-    private List<IFacetNodeFactory> CustomFacetKeyBulletFactories { get; }
     private IXConnectFacets XConnectFacets { get; set; }
     public IWhatWeKnowTreeNode EventsNode(List<xConnectHelper.Proxies.EventRecordProxy> events)
     {
-      var eventsNode = new WhatWeKnowTreeNode("Events");
+      var eventsNode = new WeKnowTreeNode("Events");
       if (events != null && events.Any())
       {
         foreach (var eventProxy in events)
         {
-          var eventNode = new WhatWeKnowTreeNode(eventProxy.ItemDisplayName);
-          eventNode.AddNode(new WhatWeKnowTreeNode(eventProxy.TimeStamp.ToString()));
-          eventNode.AddNode(new WhatWeKnowTreeNode("Duration", eventProxy.Duration.ToString()));
+          var eventNode = new WeKnowTreeNode(eventProxy.ItemDisplayName);
+          eventNode.AddNode(new WeKnowTreeNode(eventProxy.TimeStamp.ToString()));
+          eventNode.AddNode(new WeKnowTreeNode("Duration", eventProxy.Duration.ToString()));
         }
       }
 
       return eventsNode;
     }
 
-    public IWhatWeKnowTreeNode FacetsNode(List<IFacetNodeFactory> customFacetKeyBulletFactories, XConnectClient xConnectClient)
+    public IWhatWeKnowTreeNode FacetsNode( XConnectClient xConnectClient)
     {
-      var toReturn = new WhatWeKnowTreeNode("Facets");
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) FacetsNode");
+      var toReturn = new WeKnowTreeNode("Facets");
 
-      var FacetTreeHelper = new FacetBranchHelper(customFacetKeyBulletFactories, xConnectClient, XConnectFacets);
+      var FacetTreeHelper = new FacetBranchHelper( xConnectClient, XConnectFacets);
 
 
       if (XConnectFacets != null)
@@ -56,18 +55,19 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 
       toReturn.AddNode(FacetTreeHelper.FoundFacetKeys());
 
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "e) FacetsNode");
       return toReturn;
     }
 
     public IWhatWeKnowTreeNode IdentifiersNode(List<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers)
     {
-      var toReturn = new WhatWeKnowTreeNode("Identifiers");
+      var toReturn = new WeKnowTreeNode("Identifiers");
 
       if (contactIdentifiers != null && contactIdentifiers.Any())
       {
         foreach (var contactIdentifier in contactIdentifiers)
         {
-          toReturn.AddNode(new WhatWeKnowTreeNode(contactIdentifier.Source, contactIdentifier.Identifier));
+          toReturn.AddNode(new WeKnowTreeNode(contactIdentifier.Source, contactIdentifier.Identifier));
         }
       }
 
@@ -76,7 +76,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 
     public IWhatWeKnowTreeNode InteractionsNode(Contact xConnectContact, XConnectClient xConnectClient)
     {
-      var toReturn = new WhatWeKnowTreeNode("Interactions");
+      var toReturn = new WeKnowTreeNode("Interactions");
 
       var interactionHelper = new InteractionHelper();
 
@@ -86,7 +86,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       {
         foreach (var knownInteraction in knownInteractions)
         {
-          var treeNode = new WhatWeKnowTreeNode(knownInteraction.ChannelName);
+          var treeNode = new WeKnowTreeNode(knownInteraction.ChannelName);
           //treeNode.AddNode(new TreeNode("Device Profile",knownInteraction.DeviceProfile))
           treeNode.AddNode(EventsNode(knownInteraction.EventsB));
 
@@ -101,24 +101,27 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 
     public List<IWhatWeKnowTreeNode> Tier1NodeBuilder(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient, Contact xConnectContact)
     {
+
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) Tier1NodeBuilder");
       var toReturn = new List<IWhatWeKnowTreeNode>();
 
 
       toReturn.Add(TrackingContactNode(trackingContact, xConnectClient));
       toReturn.Add(IdentifiersNode(trackingContact.Identifiers.ToList()));
-      toReturn.Add(FacetsNode(CustomFacetKeyBulletFactories, xConnectClient));
+      toReturn.Add(FacetsNode(xConnectClient));
       toReturn.Add(InteractionsNode(xConnectContact, xConnectClient));
 
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) Tier1NodeBuilder");
       return toReturn;
     }
     public IWhatWeKnowTreeNode TrackingContactNode(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient)
     {
-      var toReturn = new WhatWeKnowTreeNode("Tracking Contact");
+      var toReturn = new WeKnowTreeNode("Tracking Contact");
       if (trackingContact != null)
       {
-        toReturn.AddNode(new WhatWeKnowTreeNode("Is New", trackingContact.IsNew.ToString()));
-        toReturn.AddNode(new WhatWeKnowTreeNode("Contact Id", trackingContact.ContactId.ToString()));
-        toReturn.AddNode(new WhatWeKnowTreeNode("Identification Level", trackingContact.IdentificationLevel.ToString()));
+        toReturn.AddNode(new WeKnowTreeNode("Is New", trackingContact.IsNew.ToString()));
+        toReturn.AddNode(new WeKnowTreeNode("Contact Id", trackingContact.ContactId.ToString()));
+        toReturn.AddNode(new WeKnowTreeNode("Identification Level", trackingContact.IdentificationLevel.ToString()));
 
         var ContractResolver = new XdbJsonContractResolver(xConnectClient.Model, true, true);
 

@@ -1,17 +1,10 @@
-﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema
-@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
+﻿@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
 @model LearnEXM.Feature.SitecoreCinema.Models.WhatWeKnowViewModel
 
 <aside>
   <div id="tree"></div>
-  <h3>What we know about you</h3>
-  <h2>Tracker</h2>
-
-  <h2>XConnect</h2>
-
   @if (Model?.WhatWeKnowTree != null)
   {
-
     <div id="what-we-know-data-island" style="display:none">
       @Html.Raw(Model.WhatWeKnowTree.TreeWriter.DrawDataForTree())
     </div>

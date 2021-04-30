@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Serialization;
+using Facet = Sitecore.XConnect.Facet;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 {
@@ -18,7 +19,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 
     public IWhatWeKnowTreeNode LastModified(Facet facet)
     {
-      return new WhatWeKnowTreeNode("Last Modified", facet.LastModified.ToString());
+      return new WeKnowTreeNode("Last Modified", facet.LastModified.ToString());
     }
 
     public string SerializeFacet(Facet facet)

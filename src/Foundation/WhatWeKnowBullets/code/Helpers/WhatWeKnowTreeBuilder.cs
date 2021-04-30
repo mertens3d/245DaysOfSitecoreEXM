@@ -8,19 +8,18 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 {
   public class WhatWeKnowTreeBuilder
   {
-    public WhatWeKnowTreeBuilder(List<string> targetedFacetKeys, List<IFacetNodeFactory> customFacetKeyBulletFactories)
+    public WhatWeKnowTreeBuilder(List<string> targetedFacetKeys)
     {
       TargetedFacetKeys = targetedFacetKeys;
-      CustomFacetKeyBulletFactories = customFacetKeyBulletFactories;
       xConnectHelper = new XConnectHelper(TargetedFacetKeys);
     }
 
-    private List<IFacetNodeFactory> CustomFacetKeyBulletFactories { get; }
     private List<string> TargetedFacetKeys { get; set; } = new List<string>();
     private XConnectHelper xConnectHelper { get; }
 
     public IWhatWeKnowTree GetWhatWeKnowTree(Sitecore.Analytics.Tracking.Contact trackingContact)
     {
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) GetWhatWeKnowTree");
       IWhatWeKnowTree toReturn = new Concretions.WhatWeKnowTree("What We Know");
 
       using (XConnectClient xConnectClient = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
@@ -30,7 +29,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
           IdentifiedContactReference IdentifiedContactReference = xConnectHelper.GetIdentifierFromTrackingContact(trackingContact);
           Contact XConnectContact = xConnectHelper.IdentifyKnownContact(IdentifiedContactReference);
 
-          var tier1Nodes = new Tier1Nodes(trackingContact, TargetedFacetKeys, CustomFacetKeyBulletFactories);
+          var tier1Nodes = new Tier1Nodes(trackingContact, TargetedFacetKeys);
           toReturn.Root.AddNodes(tier1Nodes.Tier1NodeBuilder(trackingContact, xConnectClient, XConnectContact));
         }
         catch (XdbExecutionException ex)
@@ -39,6 +38,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
         }
       }
 
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "e) GetWhatWeKnowTree");
       return toReturn;
     }
   }

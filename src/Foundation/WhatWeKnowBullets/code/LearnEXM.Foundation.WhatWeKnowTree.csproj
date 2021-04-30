@@ -110,13 +110,12 @@
     <Compile Include="Helpers\Tier1Nodes.cs" />
     <Compile Include="Helpers\Tier2Nodes.cs" />
     <Compile Include="Helpers\TrackingHelper.cs" />
-    <Compile Include="TreeNodeFactories\PersonalInformationTreeNodeFactory.cs" />
-    <Compile Include="TreeNodeFactories\EmailAddressListTreeNodeFactory.cs" />
+    <Compile Include="TreeNodeFactories\GenericTreeFactory.cs" />
+    <Compile Include="TreeNodeFactories\ObjectToTreeNode.cs" />
     <Compile Include="TreeNodeFactories\_baseFacetTreeNode.cs" />
     <Compile Include="Concretions\FancyTreeNode.cs" />
     <Compile Include="Concretions\FancyTreeWriter.cs" />
-    <Compile Include="Concretions\WhatWeKnowTreeNode.cs" />
-    <Compile Include="TreeNodeFactories\AddressListNodeFactory.cs" />
+    <Compile Include="Concretions\WeKnowTreeNode.cs" />
     <Compile Include="Concretions\KnownData.cs" />
     <Compile Include="Concretions\WhatWeKnowTree.cs" />
     <Compile Include="Helpers\FacetBranchHelper.cs" />

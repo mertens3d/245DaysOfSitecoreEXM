@@ -228,9 +228,6 @@
     <Compile Include="Models\Proxies\MovieItemProxy.cs" />
     <Compile Include="Helpers\MovieTicketHelper.cs" />
     <Compile Include="Models\Proxies\MovieShowTimeProxy.cs" />
-    <Compile Include="Models\TreeNodeFactories\CinemaDetailsFacetTreeNodeFactory.cs" />
-    <Compile Include="Models\TreeNodeFactories\CinemaInfoTreeNodeFactory.cs" />
-    <Compile Include="Models\TreeNodeFactories\CinemaVisitorInfoFacetTreeNodeFactory.cs" />
     <Compile Include="Controllers\WhatWeKnowController.cs" />
     <Compile Include="Models\ViewModels\BuyConcessionsViewModel.cs" />
     <Compile Include="Models\ViewModels\ConcessionCategoryViewModel.cs" />
