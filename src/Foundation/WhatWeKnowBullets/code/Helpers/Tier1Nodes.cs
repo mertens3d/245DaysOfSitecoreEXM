@@ -21,7 +21,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 
     public List<string> TargetedFacetKeys { get; }
     private IXConnectFacets XConnectFacets { get; set; }
-    public IWhatWeKnowTreeNode EventsNode(List<xConnectHelper.Proxies.EventRecordProxy> events)
+    public IWeKnowTreeNode EventsNode(List<xConnectHelper.Proxies.EventRecordProxy> events)
     {
       var eventsNode = new WeKnowTreeNode("Events");
       if (events != null && events.Any())
@@ -37,7 +37,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return eventsNode;
     }
 
-    public IWhatWeKnowTreeNode FacetsNode( XConnectClient xConnectClient)
+    public IWeKnowTreeNode FacetsNode( XConnectClient xConnectClient)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) FacetsNode");
       var toReturn = new WeKnowTreeNode("Facets");
@@ -59,7 +59,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return toReturn;
     }
 
-    public IWhatWeKnowTreeNode IdentifiersNode(List<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers)
+    public IWeKnowTreeNode IdentifiersNode(List<Sitecore.Analytics.Model.Entities.ContactIdentifier> contactIdentifiers)
     {
       var toReturn = new WeKnowTreeNode("Identifiers");
 
@@ -74,7 +74,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return toReturn;
     }
 
-    public IWhatWeKnowTreeNode InteractionsNode(Contact xConnectContact, XConnectClient xConnectClient)
+    public IWeKnowTreeNode InteractionsNode(Contact xConnectContact, XConnectClient xConnectClient)
     {
       var toReturn = new WeKnowTreeNode("Interactions");
 
@@ -99,11 +99,11 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return toReturn;
     }
 
-    public List<IWhatWeKnowTreeNode> Tier1NodeBuilder(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient, Contact xConnectContact)
+    public List<IWeKnowTreeNode> Tier1NodeBuilder(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient, Contact xConnectContact)
     {
 
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) Tier1NodeBuilder");
-      var toReturn = new List<IWhatWeKnowTreeNode>();
+      var toReturn = new List<IWeKnowTreeNode>();
 
 
       toReturn.Add(TrackingContactNode(trackingContact, xConnectClient));
@@ -114,7 +114,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) Tier1NodeBuilder");
       return toReturn;
     }
-    public IWhatWeKnowTreeNode TrackingContactNode(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient)
+    public IWeKnowTreeNode TrackingContactNode(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient)
     {
       var toReturn = new WeKnowTreeNode("Tracking Contact");
       if (trackingContact != null)

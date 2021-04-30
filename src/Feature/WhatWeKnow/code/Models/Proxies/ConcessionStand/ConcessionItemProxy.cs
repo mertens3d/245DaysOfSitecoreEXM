@@ -22,6 +22,10 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.Proxies.ConcessionStand
     {
     }
 
+    public ConcessionItemProxy(Guid itemGuid) : base(itemGuid)
+    {
+    }
+
     public string BuyConcessionLink { get; set; }
 
     protected override void CommonCTOR()

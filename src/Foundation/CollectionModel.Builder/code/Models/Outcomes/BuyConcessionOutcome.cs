@@ -11,7 +11,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Models.Outcomes
       Text = "this is the Event text";
     }
 
-    public static Guid EventDefintionId { get; } = CollectionConst.OutcomeId.BuyConcession;
+    public static Guid EventDefintionId { get; } = CollectionConst.OutcomeId.ConcessionPurchase;
     public bool BoughtAlchoholicDrink { get; set; }
   }
 }

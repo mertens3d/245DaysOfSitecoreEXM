@@ -17,7 +17,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
       XConnectClient = xConnectClient;
     }
 
-    public IWhatWeKnowTreeNode LastModified(Facet facet)
+    public IWeKnowTreeNode LastModified(Facet facet)
     {
       return new WeKnowTreeNode("Last Modified", facet.LastModified.ToString());
     }

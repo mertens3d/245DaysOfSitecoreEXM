@@ -29,10 +29,10 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return toReturn;
     }
 
-    public IWhatWeKnowTreeNode GetFacetTreeNode(string targetFacetKey)
+    public IWeKnowTreeNode GetFacetTreeNode(string targetFacetKey)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) GetFacetTreeNode: " + typeof(FacetBranchHelper).Name);
-      IWhatWeKnowTreeNode toReturn = null;
+      IWeKnowTreeNode toReturn = null;
 
       IFacetNodeFactory treeFactory = null; // GetFacetTreeFactoryByKey(targetFacetKey);
       if (treeFactory != null)
@@ -62,7 +62,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return toReturn;
     }
 
-    public IWhatWeKnowTreeNode FoundFacetKeys()
+    public IWeKnowTreeNode FoundFacetKeys()
     {
       var toReturn = new WeKnowTreeNode("Found Facet Keys");
 

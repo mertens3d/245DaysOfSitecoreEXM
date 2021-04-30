@@ -18,6 +18,6 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
         return new FancyTreeWriter(Root);
       }
     }
-    public IWhatWeKnowTreeNode Root { get; set; }
+    public IWeKnowTreeNode Root { get; set; }
   }
 }

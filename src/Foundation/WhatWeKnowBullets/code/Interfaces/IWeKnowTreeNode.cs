@@ -2,7 +2,7 @@
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
 {
-  public interface IWhatWeKnowTreeNode
+  public interface IWeKnowTreeNode
   {
     bool HasLeaves { get; }
     
@@ -12,8 +12,8 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
 
     void AddRawNode(string serialized);
     string TitleValue();
-    void AddNode(IWhatWeKnowTreeNode treeNode);
-    List<IWhatWeKnowTreeNode> GetLeaves();
-    void AddNodes(IEnumerable<IWhatWeKnowTreeNode> treeNodes);
+    void AddNode(IWeKnowTreeNode treeNode);
+    List<IWeKnowTreeNode> GetLeaves();
+    void AddNodes(IEnumerable<IWeKnowTreeNode> treeNodes);
   }
 }

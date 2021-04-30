@@ -13,7 +13,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 
     public string AssociatedDefaultFacetKey { get; set; }
 
-    public IWhatWeKnowTreeNode BuildTreeNode(Facet facet)
+    public IWeKnowTreeNode BuildTreeNode(Facet facet)
     {
       var toReturn = new WeKnowTreeNode(AssociatedDefaultFacetKey);
 

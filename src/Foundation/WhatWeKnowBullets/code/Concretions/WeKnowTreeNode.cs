@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
-  public class WeKnowTreeNode : IWhatWeKnowTreeNode
+  public class WeKnowTreeNode : IWeKnowTreeNode
   {
     public WeKnowTreeNode(string title)
     {
@@ -25,12 +25,12 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
       }
     }
 
-    private List<IWhatWeKnowTreeNode> Leaves { get; set; } = new List<IWhatWeKnowTreeNode>();
+    private List<IWeKnowTreeNode> Leaves { get; set; } = new List<IWeKnowTreeNode>();
     public string Title { get; set; } = string.Empty;
     public string Value { get; set; } = string.Empty;
     public bool ValueIsJson { get; set; } = false;
 
-    public void AddNode(IWhatWeKnowTreeNode treeNode)
+    public void AddNode(IWeKnowTreeNode treeNode)
     {
       if (treeNode != null)
       {
@@ -54,12 +54,12 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
       return toReturn;
     }
 
-    public List<IWhatWeKnowTreeNode> GetLeaves()
+    public List<IWeKnowTreeNode> GetLeaves()
     {
-      return Leaves.Cast<IWhatWeKnowTreeNode>().ToList();
+      return Leaves.Cast<IWeKnowTreeNode>().ToList();
     }
 
-    public void AddNodes(IEnumerable<IWhatWeKnowTreeNode> treeNodes)
+    public void AddNodes(IEnumerable<IWeKnowTreeNode> treeNodes)
     {
       Leaves.AddRange(treeNodes);
     }

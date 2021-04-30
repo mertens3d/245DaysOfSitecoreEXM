@@ -5,7 +5,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
   public class FancyTreeNode
   {
-    public FancyTreeNode(IWhatWeKnowTreeNode node)
+    public FancyTreeNode(IWeKnowTreeNode node)
     {
       if (node != null)
       {

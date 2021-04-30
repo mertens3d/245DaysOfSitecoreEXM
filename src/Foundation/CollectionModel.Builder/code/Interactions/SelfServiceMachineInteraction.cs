@@ -22,13 +22,13 @@ namespace LearnEXM.Foundation.CollectionModel.Builder.Interactions
 
       var interaction = new Interaction(IdentifiedContactReference, InteractionInitiator.Contact, CollectionConst.XConnect.Channels.BoughtTicket, string.Empty);
 
-      var facetHelper = new FacetEditHelper(XConnectFacets);//todo (XConnectContact);
+      var facetHelper = new FacetEditHelper(XConnectFacets);
 
       var cinemaInfoFacet = facetHelper.SafeGetFacet<CinemaInfo>(CollectionConst.FacetKeys.CinemaInfo);
       
       if (cinemaInfoFacet != null)
       {
-        new CinemaInfo() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 };
+        //new CinemaInfo() { CinimaId = CollectionConst.XConnect.CinemaId.Theater22 };
         Client.SetFacet(IdentifiedContactReference, CinemaInfo.DefaultFacetKey, cinemaInfoFacet);
       }
 

@@ -7,7 +7,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
   {
     string AssociatedDefaultFacetKey { get; set; }
 
-    IWhatWeKnowTreeNode BuildTreeNode(Facet facet);
+    IWeKnowTreeNode BuildTreeNode(Facet facet);
 
     string SerializeFacet(Facet facet);
 

@@ -37,7 +37,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
 
     public struct OutcomeId
     {
-      public static Guid BuyConcession = new Guid("{B90D20F5-9641-467E-B8E3-68DD4B1FA315}");
+      public static Guid ConcessionPurchase = new Guid("{B90D20F5-9641-467E-B8E3-68DD4B1FA315}");
     }
 
     public struct SitecoreCinema
@@ -85,7 +85,7 @@ namespace LearnEXM.Foundation.CollectionModel.Builder
 
       public struct Channels
       {
-        public static Guid BoughtCandy = new Guid("{D425A958-B1BE-4EA6-BE6C-405DBEE08496}");
+        public static Guid ConcessionStand = new Guid("{D425A958-B1BE-4EA6-BE6C-405DBEE08496}");
         public static Guid BoughtTicket = new Guid("{FD61A37C-14D6-49C8-843A-DCE74AE9147E}");
         public static Guid RegisterInteractionCode = new Guid("{557F7C69-C323-45B6-92B3-721B09DA07CF}");
         public static Guid WatchedMovie = new Guid("{37FD2F38-2324-48D0-A699-B6147EB38AFB}");

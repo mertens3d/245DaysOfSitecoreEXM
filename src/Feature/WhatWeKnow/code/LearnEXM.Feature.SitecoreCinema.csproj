@@ -225,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConcessionHelper.cs" />
+    <Compile Include="Interactions\ConcessionStandInteraction.cs" />
     <Compile Include="Models\Proxies\ConcessionStand\ConcessionCategoryProxy.cs" />
     <Compile Include="Models\Proxies\ConcessionStand\ConcessionItemProxy.cs" />
     <Compile Include="Models\Proxies\ConcessionStand\ConcessionPurchaseOrder.cs" />

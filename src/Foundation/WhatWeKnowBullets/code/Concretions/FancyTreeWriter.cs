@@ -6,9 +6,9 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
   public class FancyTreeWriter : IWhatWeKnowTreeWriter
   {
-    private IWhatWeKnowTreeNode Root;
+    private IWeKnowTreeNode Root;
 
-    public FancyTreeWriter(IWhatWeKnowTreeNode root)
+    public FancyTreeWriter(IWeKnowTreeNode root)
     {
       Root = root;
     }

@@ -26,19 +26,20 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
     {
       typeof(Sitecore.XConnect.XObject)
     };
+
     private List<string> PropertyNamesToIgnore { get; } = new List<string>
     {
       "ClrTypePresent",
       "ConcurrencyToken",
     };
 
-    internal IWhatWeKnowTreeNode MakeTreeNodeFromFacet(object facet, string nodeTitle)
+    internal IWeKnowTreeNode MakeTreeNodeFromFacet(object facet, string nodeTitle)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "MakeTreeNodeFromFacet: " + typeof(ObjectToTreeNode).Name);
       return MakeTreeNodeFromObject(facet, nodeTitle, 0);
     }
 
-    private IWhatWeKnowTreeNode MakeTreeNodeFromObject(object targetObject, string nodeTitle, int depth)
+    private IWeKnowTreeNode MakeTreeNodeFromObject(object targetObject, string nodeTitle, int depth)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) MakeTreeNodeFromObject: " + nodeTitle);
 
@@ -135,9 +136,9 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
     //  return toReturn;
     //}
 
-    private IEnumerable<IWhatWeKnowTreeNode> HandlePropertyValueOfTypeBranch(Type valueType, object propValue, int depth)
+    private IEnumerable<IWeKnowTreeNode> HandlePropertyValueOfTypeBranch(Type valueType, object propValue, int depth)
     {
-      List<IWhatWeKnowTreeNode> toReturn = new List<IWhatWeKnowTreeNode>();
+      List<IWeKnowTreeNode> toReturn = new List<IWeKnowTreeNode>();
 
       if (IsList(propValue))
       {
@@ -224,10 +225,10 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
       return toReturn;
     }
 
-    private IWhatWeKnowTreeNode PropertyToTreeNode(PropertyInfo property, object ownerObject, int depth)
+    private IWeKnowTreeNode PropertyToTreeNode(PropertyInfo property, object ownerObject, int depth)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) PropertyToTreeNode: " + property.Name + " depth: " + depth);
-      IWhatWeKnowTreeNode toReturn = null;
+      IWeKnowTreeNode toReturn = null;
       if (depth < MaxDepth)
       {
         object propValue = property.GetValue(ownerObject, null);
@@ -243,7 +244,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
         {
           var valueType = propValue.GetType();
 
-          if (!TypesToIgnore.Contains(valueType) && ! PropertyNamesToIgnore.Contains(property.Name))
+          if (!TypesToIgnore.Contains(valueType) && !PropertyNamesToIgnore.Contains(property.Name))
           {
             Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "value type: " + valueType.Name);
 
@@ -257,7 +258,27 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
             else
 
             {
-              toReturn = MakeTreeNodeFromObject(propValue, property.Name, depth + 1);//  HandlePropertyValueOfTypeBranch(valueType, propValue, depth)) ;
+              if (IsList(propValue))
+              {
+                toReturn = new WeKnowTreeNode(property.Name);
+                foreach (var listItem in propValue as IEnumerable)
+                {
+                  var listItemType = listItem.GetType();
+                  if (SingleValueTypes.Contains(listItemType))
+                  {
+                    var nodeValue = HandlePropertyValueOfTypeLeaf(listItemType, listItem);
+                    toReturn.AddNode(new WeKnowTreeNode(nodeValue));
+                  }
+                  else
+                  {
+                    toReturn.AddNode( MakeTreeNodeFromObject(listItem, listItemType.Name, depth + 1));
+                  }
+                }
+              }
+              else
+              {
+                toReturn = MakeTreeNodeFromObject(propValue, property.Name, depth + 1);//  HandlePropertyValueOfTypeBranch(valueType, propValue, depth)) ;
+              }
             }
           }
         }

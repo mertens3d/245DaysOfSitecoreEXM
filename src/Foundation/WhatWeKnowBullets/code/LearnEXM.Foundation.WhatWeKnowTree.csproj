@@ -120,7 +120,7 @@
     <Compile Include="Concretions\WhatWeKnowTree.cs" />
     <Compile Include="Helpers\FacetBranchHelper.cs" />
     <Compile Include="Helpers\WhatWeKnowTreeBuilder.cs" />
-    <Compile Include="Interfaces\IWhatWeKnowTreeNode.cs" />
+    <Compile Include="Interfaces\IWeKnowTreeNode.cs" />
     <Compile Include="Interfaces\IFacetNodeFactory.cs" />
     <Compile Include="Interfaces\IWhatWeKnowTree.cs" />
     <Compile Include="Interfaces\IWhatWeKnowTreeWriter.cs" />

@@ -24,9 +24,9 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     [IdentifiedXConnectContact]
     public ActionResult BuyConcessions(Guid priceitem, Guid productitem)
     {
-      var buyConcessionsInteraction = new BuyCandyInteraction(Tracker.Current.Contact);
+      var purchaseConcessionsInteraction = new ConcessionStandInteraction(Tracker.Current.Contact, priceitem, productitem);
 
-      buyConcessionsInteraction.ExecuteInteraction();
+      purchaseConcessionsInteraction.ExecuteInteraction();
       return Redirect(Feature.SitecoreCinema.ProjectConst.Links.SitecoreCinema.Lobby.LobbyLanding);
     }
 
