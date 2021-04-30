@@ -2,7 +2,7 @@
 ID: "1295c943-75fd-4a36-b0e8-84c5613620a3"
 Parent: "230a207e-1548-472c-a701-ac28ec5850b7"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/ConcessionGroup/Concession Group
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/ConcessionCategory/Concession Group
 DB: master
 Languages:
 - Language: en

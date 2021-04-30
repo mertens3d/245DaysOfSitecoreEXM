@@ -15,7 +15,7 @@ namespace LearnEXM.Foundation.LearnEXMRoot
       get
       {
         var toReturn = string.Empty;
-        if (ImageField != null)
+        if (ImageField?.MediaItem != null)
         {
           MediaItem image = new MediaItem(ImageField.MediaItem);
           toReturn = Sitecore.StringUtil.EnsurePrefix('/', Sitecore.Resources.Media.MediaManager.GetMediaUrl(image));

@@ -23,31 +23,44 @@ namespace LearnEXM.Feature.SitecoreCinema
         {
           public struct SitecoreCinema
           {
+            public struct MovieShowTime
+            {
+              //MovieShowTimeProxy
+              public static ID Template = new ID("{C85FB217-BC6B-4F9B-B87F-5DC43AD375D4}");
+            }
             public struct MovieData
             {
+              public static ID Template = new ID("{2F909BC4-EDA4-43C9-8A6D-3AC7F9C64C9C}");
               public static ID Poster = new ID("{6F6FB62C-E4F1-4781-B5D4-21D21AAE9F46}");
               public static ID MovieName = new ID("{3B14E82B-9D2A-479B-8FBC-87576BE25BFA}");
               public static ID YouTubeLink = new ID("{A71245C9-7A55-4275-AA20-3E711BE47499}");
             }
 
-            public struct ConcessionGroup
+            public struct ConcessionSubCategory
             {
-              public static ID Template = new ID("{02E5D189-D5D6-406C-B150-CD9A3662708B}");
+              public static ID Template = new ID("{44A602D7-3D90-4EC7-93BD-1A26467A69B1}");
+              public static ID NameField = new ID("{FCB07E76-6B7F-4DB7-A9A3-9E57E578AD92}");
+
+            }
+            public struct ConcessionCategory
+            {
+              public static ID Template = new ID("{230A207E-1548-472C-A701-AC28EC5850B7}");
               public static ID IsAdultField = new ID("{C953551F-3B2E-4C92-BB0A-A75ED8FCC2F5}");
               public static ID GroupName = new ID("{C2BC8013-04D4-4014-8AEE-CB1C5B63AFA8}");
             }
 
-            public struct Concession
+            public struct ConcessionPrice
+            {
+              public static ID Template = new ID("{8AADEC50-24C0-4516-85B2-041B82F83CB2}");
+              public static ID DescriptionField = new ID("{A9A972F8-4C88-4B28-B383-EEC332BB1BFD}");
+              public static ID Price = new ID("{7162DB53-9483-4C89-8FF7-17055A6191C1}");
+
+            }
+            public struct ConcessionProduct
             {
               public static ID Template = new ID("{02E5D189-D5D6-406C-B150-CD9A3662708B}");
               public static ID ProductName = new ID("{C43E0B86-8BB7-4FDE-B3FA-6A7FE927A02E}");
               public static ID ProductLogo = new ID("{B4BFFC73-6DF0-4856-BDFC-1ACF96F2C72D}");
-              public static ID ProductGroup = new ID("{719A4ED6-EE9E-4504-8C1F-E4CC3B528284}");
-              public static ID AdultBeverage = new ID("{9C388C9C-10A7-4949-91DB-4EC77C31440E}");
-              public static ID CostDollars = new ID("{E7400497-9C11-48D1-9324-1E985EE55444}");
-              public static ID CostDollarsLarge = new ID("{593E2A89-486F-46D0-A94C-3DCFECA708BA}");
-              public static ID CostDollarsMedium = new ID("{EE10CE18-19F1-4F0B-8AAA-DCB18E624C65}");
-              public static ID CostDollarsSmall = new ID("{C43D0C46-FEA5-403C-8E62-6875D34563D3}");
             }
 
             public struct MovieTicket
@@ -97,9 +110,14 @@ namespace LearnEXM.Feature.SitecoreCinema
 
     public struct Views
     {
-      public static string _base = "/views/feature/SitecoreCinema";
-      public static string ConcessionCategory = _base + "/concessionCategory.cshtml";
+        public static string _base = "/views/feature/SitecoreCinema";
+      
 
+      public struct Concessions
+      {
+        public static string ConcessionCategory = _base + "/concessionCategory.cshtml";
+        public static string Prices = _base + "/prices.cshtml";
+      }
       public struct WhatWeKnow
       {
         public static string _base = "/views/Feature/WhatWeKnow.SitecoreCinema";

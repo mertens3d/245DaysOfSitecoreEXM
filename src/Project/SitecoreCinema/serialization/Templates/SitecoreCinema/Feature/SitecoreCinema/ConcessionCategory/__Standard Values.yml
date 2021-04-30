@@ -2,7 +2,7 @@
 ID: "901ce66d-cb7c-41dc-b691-6ae75fca0273"
 Parent: "230a207e-1548-472c-a701-ac28ec5850b7"
 Template: "230a207e-1548-472c-a701-ac28ec5850b7"
-Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/ConcessionGroup/__Standard Values
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/ConcessionCategory/__Standard Values
 DB: master
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"

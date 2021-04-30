@@ -8,7 +8,9 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.ViewModels
     {
     }
 
-    public List<MovieShowTimeProxy> ShowTimes { get; set; }
+    public MovieShowTimesProxy MovieShowTimesProxy { get; set; }
+
+    //public List<MovieShowTimeProxy> ShowTimes { get; set; }
 
     public string TicketLink() => ProjectConst.Links.SitecoreCinema.BuyTicket;
   }

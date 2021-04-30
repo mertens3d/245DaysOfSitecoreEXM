@@ -4,10 +4,24 @@ using Sitecore.Data.Items;
 
 namespace LearnEXM.Foundation.LearnEXMRoot.Models
 {
-  public class ReferenceFieldProxy : _baseFieldProxy
+  public class ReferenceFieldProxy<T> : _baseFieldProxy where T : _baseItemProxy, new()
   {
-    public GenericItemProxy TargetItem { get { return ReferenceField != null ? new GenericItemProxy(ReferenceField.TargetItem) : null; } }
+    public T TargetItem
+    {
+      get
+      {
+        if (_targetItem == null && ReferenceField != null)
+        {
+          _targetItem = new T();
+          _targetItem.InstantiateWith(ReferenceField.TargetItem);
+        }
+
+        return _targetItem;
+      }
+    }
     private ReferenceField _referenceField;
+    private T _targetItem;
+
     public ReferenceField ReferenceField
     {
       get
@@ -18,6 +32,7 @@ namespace LearnEXM.Foundation.LearnEXMRoot.Models
               );
       }
     }
+
     public ReferenceFieldProxy(Item item, ID fieldID) : base(item, fieldID)
     {
     }

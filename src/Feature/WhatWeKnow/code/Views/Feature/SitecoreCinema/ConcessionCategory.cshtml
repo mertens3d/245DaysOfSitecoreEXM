@@ -1,27 +1,35 @@
-﻿@using LearnEXM.Feature.WhatWeKnow.SitecoreCinema
-@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
-@model LearnEXM.Feature.WhatWeKnow.SitecoreCinema.Models.WhatWeKnowViewModel
+﻿@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
+@using System.Linq
+@using System.Collections.Generic
+@using LearnEXM.Feature.SitecoreCinema
+@model LearnEXM.Feature.SitecoreCinema.Models.ViewModels.ConcessionCategoryViewModel
 
-<aside>
-  <div id="tree"></div>
+@if (Model != null)
+{
+  <h3>@Model.CategoryName</h3>
 
-  @if (Model?.KnownData != null)
+  if (Model.SubCategoryItems != null && Model.SubCategoryItems.Any())
   {
-    <p><strong>Contact Id:</strong> @Model.KnownData.ContactIdAsString()</p>
-    <p><strong>User Id</strong>: @Model.KnownData.UserId</p>
-    <p><strong>Is Known</strong>: @Model.KnownData.IsKnown</p>
-   
 
-    <div id="what-we-know-data-island" style="display:none">
-      @Html.Raw(Model.KnownData.WhatWeKnowTree.TreeWriter.DrawDataForTree())
-    </div>
-
-    @*@Html.Partial(ProjectConst.Views.WhatWeKnow.facets, Model)
-      @Html.Partial(ProjectConst.Views.WhatWeKnow.Interactions, Model)*@
+    foreach (var subCategory in Model.SubCategoryItems)
+    {
+      <h4>@subCategory.NameFieldProxy.Value</h4>
+      @Html.Partial(ProjectConst.Views.Concessions.Prices, subCategory.ConcessionPrices);
+    }
 
   }
-  else
+  if (Model.ConcessionItems != null && Model.ConcessionItems.Any())
   {
-    <h3>Null Model</h3>
+
+    foreach (var concessionItem in Model.ConcessionItems)
+    {
+      <h4>@concessionItem.ProductName.Value</h4>
+      <img src="@concessionItem.ProductLogo.ImageURL" width="30"></img>
+      if (concessionItem.ConcessionPrices != null && concessionItem.ConcessionPrices.Any())
+      {
+        @Html.Partial(ProjectConst.Views.Concessions.Prices, concessionItem.ConcessionPrices);
+      }
+    }
   }
-</aside>
+
+}

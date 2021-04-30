@@ -1,0 +1,14 @@
+﻿@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
+@using LearnEXM.Feature.SitecoreCinema
+@model List< LearnEXM.Feature.SitecoreCinema.Models.Proxies.ConcessionPriceItemProxy>
+
+@if (Model != null && Model.Any())
+{
+  <h3>Price(s)</h3>
+
+  foreach (var price in Model)
+  {
+    <h5>@price.DescriptionField - $@price.CostField</h5>
+  }
+
+}

@@ -3,6 +3,7 @@ using LearnEXM.Feature.SitecoreCinema.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace LearnEXM.Feature.SitecoreCinema.Helpers
 {
   public class ConcessionHelper
@@ -11,12 +12,20 @@ namespace LearnEXM.Feature.SitecoreCinema.Helpers
     {
       var toReturn = new List<ConcessionCategoryViewModel>();
 
-      var concessionsItemProxy = new ConcessionItemsProxy(ProjectConst.Items.Content.ConcesssionsFolderItemID);
-      if (concessionsItemProxy != null && concessionsItemProxy.ConcessionGroups.Any())
+      var concessionsItemProxy = new ConcessionRootProxy(ProjectConst.Items.Content.ConcesssionsFolderItemID);
+      if (concessionsItemProxy != null && concessionsItemProxy.ConcessionCategories.Any())
       {
 
-        foreach (var conessionItem in concessionsItemProxy.ConcessionGroups)
+        foreach (ConcessionCategoryProxy concessionGroup in concessionsItemProxy.ConcessionCategories)
         {
+          var candidateGroup = new ConcessionCategoryViewModel()
+          {
+            CategoryName = concessionGroup.GroupNameFieldProxy.Value,
+            ConcessionItems = concessionGroup.ChildConcessionItems,
+            SubCategoryItems = concessionGroup.ChildSubCategoryItems,
+          };
+
+          toReturn.Add(candidateGroup);
         //  var concessionCategory = conessionItem.
         //= concessionsItemProxy.ConcessionGroups;
         }

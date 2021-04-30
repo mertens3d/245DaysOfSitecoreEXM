@@ -1,4 +1,5 @@
 ﻿using LearnEXM.Foundation.LearnEXMRoot;
+using Sitecore.Data;
 using Sitecore.Data.Items;
 using System;
 
@@ -6,6 +7,11 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.Proxies
 {
   public class MovieItemProxy : _baseItemProxy
   {
+    public MovieItemProxy() : base()
+    {
+      //for generics
+    }
+
     public MovieItemProxy(Item movieItem) : base(movieItem)
     {
     }
@@ -23,5 +29,6 @@ namespace LearnEXM.Feature.SitecoreCinema.Models.Proxies
     public SingleLineFieldProxy MovieNameProxy { get; set; }
 
     public ImageFieldProxy PosterImageFieldProxy { get; set; }
+    protected override ID AssociatedTemplateId { get; } = ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieData.Template;
   }
 }

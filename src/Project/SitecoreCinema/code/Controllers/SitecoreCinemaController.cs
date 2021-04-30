@@ -57,14 +57,14 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
     }
 
     [IdentifiedXConnectContact]
-    public ActionResult LobbyOptions()
+    public ActionResult Lobby()
     {
-      var viewModel = new LobbyOptionsViewModel();
+      var viewModel = new LobbyViewModel();
 
       var concessionHelper = new ConcessionHelper();
       viewModel.ConcessionCategories = concessionHelper.GetConcessions();
 
-      return View(ProjectConst.ControllerViews.LobbyOptions, viewModel);
+      return View(ProjectConst.ControllerViews.Lobby, viewModel);
     }
 
     public ActionResult RegisterViaAutoRandom()
@@ -97,8 +97,9 @@ namespace LearnEXM.Project.SitecoreCinema.Controllers
       try
       {
         var viewModel = new SelfServiceMachineViewModel();
-        var movieTicketHelper = new MovieTicketHelper();
-        viewModel.ShowTimes = movieTicketHelper.AvailableMovies();
+        //var movieTicketHelper = new MovieTicketHelper();
+        //viewModel.ShowTimes = movieTicketHelper.AvailableMovies();
+        viewModel.MovieShowTimesProxy = new MovieShowTimesProxy(LearnEXM.Feature.SitecoreCinema.ProjectConst.Items.Content.MovieShowTimesFolderItemID);
        actionResult = View(ProjectConst.ControllerViews.SelfServiceMachine, viewModel);
       }
       catch (Exception ex)

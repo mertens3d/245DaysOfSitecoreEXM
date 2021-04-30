@@ -14,6 +14,7 @@ namespace LearnEXM.Foundation.LearnEXMRoot
     {
       // for generics instantiation only
     }
+
     public _baseItemProxy(ID itemId)
     {
       this.CTORItemId = itemId;
@@ -28,8 +29,6 @@ namespace LearnEXM.Foundation.LearnEXMRoot
       CommonCTOR();
     }
 
-    protected virtual void CommonCTOR() { }
-
     protected _baseItemProxy(Guid itemItem)
     {
       this.CTORItemId = new ID(itemItem);
@@ -37,7 +36,6 @@ namespace LearnEXM.Foundation.LearnEXMRoot
     }
 
     public Guid Id { get { return ItemId.Guid; } }
-
     public ID ItemId
     {
       get
@@ -46,6 +44,7 @@ namespace LearnEXM.Foundation.LearnEXMRoot
       }
     }
 
+    protected abstract ID AssociatedTemplateId { get; }
     protected Item Item
     {
       get
@@ -60,14 +59,14 @@ namespace LearnEXM.Foundation.LearnEXMRoot
 
     private ID CTORItemId { get; set; }
 
-    public List<T> ChildrenOfTemplateType<T>(ID templateNeedleID) where T : _baseItemProxy, new()
+    public List<T> ChildrenOfTemplateType<T>() where T : _baseItemProxy, new()
     {
       var toReturn = new List<T>();
 
       if (Item != null)
       {
         toReturn = Item.GetChildren()
-               .Where(x => x.TemplateID == templateNeedleID)
+               .Where(x => x.TemplateID == AssociatedTemplateId)
                .Select(x =>
                {
                  var newObj = new T();
@@ -80,30 +79,32 @@ namespace LearnEXM.Foundation.LearnEXMRoot
       return toReturn;
     }
 
-    private void InstantiateWith(Item item)
-    {
-      this.Item = item;
-      this.CTORItemId = item.ID;
-    }
+    //public List<GenericItemProxy> GenericChildrenOfTemplateType(ID templateNeedleID)
+    //{
+    //  var toReturn = new List<GenericItemProxy>();
 
-    public List<GenericItemProxy> GenericChildrenOfTemplateType(ID templateNeedleID)
-    {
-      var toReturn = new List<GenericItemProxy>();
+    //  if (Item != null)
+    //  {
+    //    toReturn = Item.GetChildren()
+    //           .Where(x => x.TemplateID == templateNeedleID)
+    //           .Select(x => new GenericItemProxy(x))
+    //           .ToList();
+    //  }
 
-      if (Item != null)
-      {
-        toReturn = Item.GetChildren()
-               .Where(x => x.TemplateID == templateNeedleID)
-               .Select(x => new GenericItemProxy(x))
-               .ToList();
-      }
-
-      return toReturn;
-    }
+    //  return toReturn;
+    //}
 
     public Item GetItem()
     {
       return Item;
+    }
+
+    protected virtual void CommonCTOR() { }
+    public void InstantiateWith(Item item)
+    {
+      this.Item = item;
+      this.CTORItemId = item.ID;
+      CommonCTOR();
     }
   }
 }

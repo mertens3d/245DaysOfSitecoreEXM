@@ -1,41 +1,41 @@
-﻿using LearnEXM.Feature.SitecoreCinema.Models;
-using LearnEXM.Foundation.LearnEXMRoot;
-using System.Collections.Generic;
-using System.Linq;
+﻿//using LearnEXM.Feature.SitecoreCinema.Models;
+//using LearnEXM.Foundation.LearnEXMRoot;
+//using System.Collections.Generic;
+//using System.Linq;
 
-namespace LearnEXM.Feature.SitecoreCinema.Helpers
-{
-  public class MovieTicketHelper
-  {
-    public List<MovieShowTimeProxy> AvailableMovies()
-    {
-      var toReturn = new List<MovieShowTimeProxy>();
-      var showTimesItemProxy = new GenericItemProxy(ProjectConst.Items.Content.MovieShowTimesFolderItemID);
+//namespace LearnEXM.Feature.SitecoreCinema.Helpers
+//{
+//  public class MovieTicketHelper
+//  {
+//    public List<MovieShowTimeProxy> AvailableMovies()
+//    {
+//      var toReturn = new List<MovieShowTimeProxy>();
+//      var showTimesItemProxy = new GenericItemProxy(ProjectConst.Items.Content.MovieShowTimesFolderItemID);
 
-      if (showTimesItemProxy != null)
+//      if (showTimesItemProxy != null)
 
-      {
-        List<GenericItemProxy> foundChildrenItemProxies =
-          showTimesItemProxy.GenericChildrenOfTemplateType(ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieTicket.Root);
+//      {
+//        List<GenericItemProxy> foundChildrenItemProxies =
+//          showTimesItemProxy.GenericChildrenOfTemplateType();
 
-        if (foundChildrenItemProxies != null && foundChildrenItemProxies.Any())
-        {
-          foreach (var childItemProxy in foundChildrenItemProxies)
-          {
-            var candidate = new MovieShowTimeProxy(childItemProxy);
-            if (candidate != null)
-            {
-              toReturn.Add(candidate);
-            }
-          };
-        }
-      }
-      else
-      {
-        Sitecore.Diagnostics.Log.Error("movie root item not found", this);
-      }
+//        if (foundChildrenItemProxies != null && foundChildrenItemProxies.Any())
+//        {
+//          foreach (var childItemProxy in foundChildrenItemProxies)
+//          {
+//            var candidate = new MovieShowTimeProxy(childItemProxy);
+//            if (candidate != null)
+//            {
+//              toReturn.Add(candidate);
+//            }
+//          };
+//        }
+//      }
+//      else
+//      {
+//        Sitecore.Diagnostics.Log.Error("movie root item not found", this);
+//      }
 
-      return toReturn;
-    }
-  }
-}
+//      return toReturn;
+//    }
+//  }
+//}

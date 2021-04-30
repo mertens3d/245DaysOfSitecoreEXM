@@ -943,7 +943,7 @@
     <Compile Include="Model\CinemaConstants.cs" />
     <Compile Include="MVCHelpers\IdentifiedXConnectContact.cs" />
     <Compile Include="Controllers\SitecoreCinemaController.cs" />
-    <Compile Include="Model\ViewModels\LobbyOptionsViewModel.cs" />
+    <Compile Include="Model\ViewModels\LobbyViewModel.cs" />
     <Compile Include="Model\ViewModels\RegisterViewModel.cs" />
     <Compile Include="Model\ViewModels\WatchMovieViewModel.cs" />
     <Compile Include="ProjConst.cs" />
@@ -953,7 +953,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <Content Include="Views\Project\SitecoreCinema\BuyConcessions.cshtml" />
-    <Content Include="Views\Project\SitecoreCinema\LobbyOptions.cshtml" />
+    <Content Include="Views\Project\SitecoreCinema\Lobby.cshtml" />
     <Content Include="Views\Project\SitecoreCinema\Register.cshtml" />
     <Content Include="Views\Project\SitecoreCinema\RegisterThankYou.cshtml" />
     <Content Include="Views\Project\SitecoreCinema\SelfServiceMachine.cshtml" />

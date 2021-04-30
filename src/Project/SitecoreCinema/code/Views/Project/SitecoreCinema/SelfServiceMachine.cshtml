@@ -7,11 +7,11 @@
 @if (Model != null)
 {
 
-  if (Model.ShowTimes != null && Model.ShowTimes.Any())
+  if (Model.MovieShowTimesProxy.ShowTimes != null && Model.MovieShowTimesProxy.ShowTimes.Any())
   {
     <ul>
 
-      @foreach (var showTime in Model.ShowTimes)
+      @foreach (var showTime in Model.MovieShowTimesProxy.ShowTimes)
       {
         <li>
           @if (!string.IsNullOrEmpty(showTime.MoviePoster))

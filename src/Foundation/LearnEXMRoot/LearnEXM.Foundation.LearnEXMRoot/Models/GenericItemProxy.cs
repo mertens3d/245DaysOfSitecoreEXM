@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace LearnEXM.Foundation.LearnEXMRoot
 {
+
   public class GenericItemProxy : _baseItemProxy
   {
 
@@ -17,8 +18,6 @@ namespace LearnEXM.Foundation.LearnEXMRoot
     {
     }
 
-    
-
-    
+    protected override ID AssociatedTemplateId { get; }
   }
 }

@@ -1,0 +1,14 @@
+﻿---
+ID: "a1047d2a-90b3-4288-91b5-9e73ba816291"
+Parent: "44a602d7-3d90-4ec7-93bd-1a26467a69b1"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/ConcessionSubCategory/ConcessionSubCategory
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T024532Z

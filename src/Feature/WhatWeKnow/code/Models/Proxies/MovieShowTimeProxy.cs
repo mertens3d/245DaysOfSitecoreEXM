@@ -9,8 +9,9 @@ namespace LearnEXM.Feature.SitecoreCinema.Models
 {
   public class MovieShowTimeProxy : _baseItemProxy
   {
-    public MovieShowTimeProxy(GenericItemProxy childItemProxy) : base(childItemProxy.GetItem())
+    public MovieShowTimeProxy() : base()
     {
+      // for generics
     }
 
     public MovieShowTimeProxy(Guid itemItem) : base(itemItem)
@@ -31,6 +32,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Models
     public string MoviePoster { get; set; }
     public ID MovieShowTimeId { get; private set; }
     public DateTime? MovieTime { get; set; }
+    protected override ID AssociatedTemplateId { get; } = ProjectConst.Items.Templates.Feature.SitecoreCinema.MovieShowTime.Template;
 
     private MovieItemProxy GetMovieDataItem(Item movieShowTime)
     {
