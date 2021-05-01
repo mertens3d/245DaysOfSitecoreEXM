@@ -1,0 +1,62 @@
+﻿---
+ID: "3b5522c5-82fc-4903-802b-690b4daedfbf"
+Parent: "fdb3abe4-1b96-404e-82e2-ed8fe745c876"
+Template: "76036f5e-cbce-46d1-af0a-4143f9b557aa"
+Path: "/sitecore/content/sitecorecinema/Home/Self-Service-Machine"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: 
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        s:l="{A7DAD79B-01AC-4FF7-94C4-56946B499A91}">
+        <r
+          uid="{43222D12-08C9-453B-AE96-D406EBB95126}">
+          <p:d />
+        </r>
+        <r
+          uid="{CF044AD9-0332-407A-ABDE-587214A2C808}">
+          <p:d />
+        </r>
+        <r
+          uid="{64AF7C12-6DD3-4B53-B2D1-D81863CB3B10}"
+          p:before="*"
+          s:ds=""
+          s:id="{15DE8BE2-46C9-472A-93B8-06D90AC936F1}"
+          s:par=""
+          s:ph="main" />
+        <r
+          uid="{07079BD0-E7FB-4453-89FE-769139A1E44B}"
+          p:after="*[1=2]"
+          s:id="{AB18D40F-597C-4105-A003-F26AA8ADB39D}"
+          s:ph="right-aside" />
+        <r
+          uid="{B343725A-3A93-446E-A9C8-3A2CBD3DB489}">
+          <p:d />
+        </r>
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210215T191716Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCA998C5-0CC3-4F91-94D8-0A4E6CAECE88}"
+    - ID: "75577384-3c97-45da-a847-81b00500e250"
+      Hint: Title
+      Value: New Sample Item

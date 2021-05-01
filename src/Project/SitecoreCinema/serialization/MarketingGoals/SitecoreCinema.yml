@@ -1,8 +1,8 @@
 ﻿---
-ID: "a83d6973-88c3-40fd-8a30-36193187c313"
-Parent: "3c1715fe-6a13-4fcf-845f-de308ba9741d"
-Template: "0437fee2-44c9-46a6-abe9-28858d9fee8c"
-Path: /sitecore/templates/SitecoreCinema
+ID: "5730c1cd-dd5d-4e69-8485-2e4157fba1cc"
+Parent: "0cb97a9f-cafb-42a0-8be1-89ab9ae32bd9"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Marketing Control Panel/Goals/SitecoreCinema
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
@@ -15,4 +15,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20210330T043801Z
+      Value: 20210304T035931Z
