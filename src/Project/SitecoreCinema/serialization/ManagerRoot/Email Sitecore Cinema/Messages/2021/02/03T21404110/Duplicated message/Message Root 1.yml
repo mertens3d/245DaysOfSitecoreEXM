@@ -1,0 +1,77 @@
+﻿---
+ID: "05df0922-09cd-4aa2-a8a8-ee59db41f730"
+Parent: "a0ca74e7-e55a-4dcf-9762-4cd8b7a7fca3"
+Template: "3f12d78c-b7b7-4157-98fc-da3322ee1a5b"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021/02/03T21404110/Duplicated message/Message Root 1
+DB: master
+BranchID: "8c18055a-eb1e-4358-bc12-26b4e2568910"
+SharedFields:
+- ID: "eb0b7cdf-d971-4539-916d-c5cf11e3fd4f"
+  Hint: VariantCreated
+  Value: "20210203T214652:637479856124233774Z"
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{9BE56802-4ADD-46F6-BEDC-B89EA88D5C83}">
+        <r
+          ds=""
+          id="{69EB7A6D-ACEF-4D06-A923-804918AA245E}"
+          par=""
+          ph="msg-html-title"
+          uid="{526AFB07-CE11-43CC-A8A1-4B906BC54FE6}" />
+        <r
+          ds="{14434573-0B58-4C8D-B54A-D468B93E0A64}"
+          id="{5A67BD04-F5C3-4114-98CE-B4DB50DC980B}"
+          par=""
+          ph="preview-area"
+          uid="{757549A5-5B45-4AF8-A37F-D5D4B7B9D1C4}" />
+        <r
+          ds="{ED6CA3EA-99FB-4A15-B2B7-234DB35D5A3D}"
+          id="{E89D305C-CF92-4445-ABC1-9EAB38F72ED7}"
+          par=""
+          ph="header-area"
+          uid="{FC745491-FBE9-4361-BEC6-9E10580ABFA2}" />
+        <r
+          ds="{E03AEAE6-552A-4283-9674-8F37FB9BBE1D}"
+          id="{EF1E93F3-9F52-4D3E-9A98-E7718D59557D}"
+          par=""
+          ph="header-area"
+          uid="{B5637155-4BE0-4A3A-B7A2-3BFB3D95497B}" />
+        <r
+          ds="{B3C571BC-8390-48FD-B1F4-9F3686B6F16B}"
+          id="{BFAF85F4-0256-4846-BDE3-D44C74FE6A42}"
+          par=""
+          ph="body-area"
+          uid="{F5732F2A-0913-45B2-B68F-C4E07AECA369}" />
+        <r
+          ds="{15D5DC56-3349-460F-AED3-E612066B0B23}"
+          id="{340A8528-3E66-4DF6-82E0-4228CC8C684F}"
+          par=""
+          ph="body-area"
+          uid="{BB09D4AC-2CB1-49FD-9F45-00AE88BDE543}" />
+        <r
+          ds="{AD2478D1-FCA4-4FF4-A2C7-0E10CAD588A6}"
+          id="{BF323449-F257-4EFB-9FF5-8248CA227393}"
+          par=""
+          ph="footer-area"
+          uid="{D655EFD4-23A4-40EC-A4DD-FC06413C8C52}" />
+      </d>
+    </r>
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{FA2394B1-5E36-4CE6-961C-1C4C8241D89D}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T214652Z
+    - ID: "c0bfd467-0b74-4efe-b7c9-1ecf7f0e5370"
+      Hint: Subject
+      Value: "variant b -> $firstname$"

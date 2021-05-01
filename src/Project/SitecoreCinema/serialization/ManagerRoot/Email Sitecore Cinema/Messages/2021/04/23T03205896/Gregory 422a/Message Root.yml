@@ -1,0 +1,36 @@
+﻿---
+ID: "f4ee8d2c-1a11-45e4-8696-6d1f077147c8"
+Parent: "7ecb3b5a-7585-43ff-a37d-ddabfd5433a1"
+Template: "3f12d78c-b7b7-4157-98fc-da3322ee1a5b"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021/04/23T03205896/Gregory 422a/Message Root
+DB: master
+SharedFields:
+- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
+  Hint: __Read Only
+  Type: Checkbox
+  Value: 1
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{AF9AC03E-A6D8-4D05-980F-815C36B3DE6C}">
+        <r
+          id="{69EB7A6D-ACEF-4D06-A923-804918AA245E}"
+          ph="msg-html-title"
+          uid="{EF6FF663-67D7-493F-8EEA-E580A6067A93}" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T220850Z
+    - ID: "c0bfd467-0b74-4efe-b7c9-1ecf7f0e5370"
+      Hint: Subject
+      Value: Test Subject

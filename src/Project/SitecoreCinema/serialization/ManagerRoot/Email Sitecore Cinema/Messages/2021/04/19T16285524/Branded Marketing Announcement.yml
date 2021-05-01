@@ -1,0 +1,69 @@
+﻿---
+ID: "b48a4365-163d-498f-bf2e-7d646b199204"
+Parent: "4aeaad83-8ee2-4d02-8bd8-384521b2dc50"
+Template: "078d8a76-f971-4891-b422-76c0bcf9fa03"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021/04/19T16285524/Branded Marketing Announcement by Gregory
+DB: master
+BranchID: "9b01c681-1fe7-4dd1-be6d-95dba03ac969"
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Network/32x32/mail.png
+- ID: "0934bec4-325a-427b-95bb-46f78cea9591"
+  Hint: Message Type
+  Value: "{C2786C9C-B267-4DD8-B8FB-4452A23F9969}"
+- ID: "09ad7c00-a8de-46f7-bc54-e7572e38c136"
+  Hint: Body
+  Value: "{313F8675-5847-47A1-A896-934D8F18646D}"
+- ID: "2bbf5276-ed11-4cd0-946f-66678b524457"
+  Hint: Campaign Position
+  Value: "{C1B8669B-C41A-4ED3-BF0D-E859CF880D42}"
+- ID: "af0fe26a-a78b-491d-885c-03d95bc17342"
+  Hint: State
+  Value: Draft
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{FD315707-CC93-4D81-AA5B-79F6307341A3}">
+        <p
+          uid="{5A49EA9B-9A7C-4E95-AAF9-B2D24C3D7314}"
+          key="primary-content"
+          md="{66C804F3-8265-4A2E-AFD9-4F2631844AAF}" />
+        <r
+          id="{493B3A83-0FA7-4484-8FC9-4680991CF743}"
+          ph="primary-content"
+          uid="{03CBA677-C3F1-4E33-BD94-0D78F2408BA3}" />
+      </d>
+    </r>
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{31CE4B97-E746-491D-9645-96301309B95F}"
+- ID: "f8d592cc-f3e5-4a8e-a600-8aebe8cc36e4"
+  Hint: Included Recipient Lists
+  Type: TreelistEx
+  Value: |
+    {7B2E2DBD-3080-49CB-BDAA-56ED6F7A8404}
+    {E8142405-EC01-48BF-E10F-C2B85FE089B3}
+    {3E98F5E0-4CAD-4464-AA2F-DD6201B918BA}
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Branded Marketing Announcement by Gregory
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0d844c9c-bd6c-49b8-9475-947da791f268"
+      Hint: From Address
+      Value: gregory.mertens@perficient.com
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210419T162855Z
+    - ID: "8436a90c-85c0-4f16-8373-393c4c0a82c6"
+      Hint: From Name
+      Value: FromGregory

@@ -1,0 +1,23 @@
+﻿---
+ID: "5720704a-ee0f-4406-a36b-a79a3f06e401"
+Parent: "5ec4723c-c852-42af-a574-65eac70df052"
+Template: "fa257176-aa15-4999-91c5-c03f3bda5027"
+Path: /sitecore/content/Email Sitecore Cinema/Message Types/Regular
+DB: master
+BranchID: "f8fae92a-4f10-470c-ad5c-7ed9e6b636af"
+SharedFields:
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{A6FD0423-F0DA-4980-9441-9ECB8F8F5C77}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Regular Message
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T185952Z

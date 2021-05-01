@@ -1,0 +1,14 @@
+﻿---
+ID: "ea7e1ec9-e5c5-469a-8699-1054c3bef7d3"
+Parent: "0d7cdd1e-6271-45a8-ab96-829e2ceb5bec"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190008Z

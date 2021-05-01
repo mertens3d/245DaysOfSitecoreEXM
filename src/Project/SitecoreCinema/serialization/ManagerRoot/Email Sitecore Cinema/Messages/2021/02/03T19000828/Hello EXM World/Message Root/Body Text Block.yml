@@ -1,0 +1,31 @@
+﻿---
+ID: "95a25e34-01ed-4f90-bba3-fb78776fb685"
+Parent: "75607313-9723-4e4f-9c13-acc235e9ecb5"
+Template: "08bbb511-2e9e-4617-a7fd-cfd11bd33677"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021/02/03T19000828/Hello EXM World/Message Root/Body Text Block
+DB: master
+BranchID: "8c18055a-eb1e-4358-bc12-26b4e2568910"
+SharedFields:
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{05EDDE07-EDAE-42E6-AC61-B5114EA1004D}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190008Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "7e82826e-99ed-4f39-8d2b-21974e262b41"
+      Hint: Body title
+      Value: Body Text
+    - ID: "88a22483-dc0b-49de-86b3-73eff0fcd6c6"
+      Hint: Body text
+      Value: |
+        This is your body text area. Use this section to describe the message<br class="em_hide" />
+         you are looking to covey to&nbsp;your&nbsp;recipient.

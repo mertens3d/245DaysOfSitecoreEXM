@@ -1,0 +1,110 @@
+﻿---
+ID: "a0ca74e7-e55a-4dcf-9762-4cd8b7a7fca3"
+Parent: "3fdba2c7-2fd0-4921-b7d6-4066ee3331ca"
+Template: "078d8a76-f971-4891-b422-76c0bcf9fa03"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021/02/03T21404110/Duplicated message
+DB: master
+BranchID: "8c18055a-eb1e-4358-bc12-26b4e2568910"
+SharedFields:
+- ID: "0934bec4-325a-427b-95bb-46f78cea9591"
+  Hint: Message Type
+  Value: "{C2786C9C-B267-4DD8-B8FB-4452A23F9969}"
+- ID: "09ad7c00-a8de-46f7-bc54-e7572e38c136"
+  Hint: Body
+  Value: "{C4B84CF8-D88B-4B07-BE61-BC45E6C9DF31}"
+- ID: "21f2a1e0-ac16-443b-b7a9-83504159f2bb"
+  Hint: Device
+  Value: "{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+- ID: "2bbf5276-ed11-4cd0-946f-66678b524457"
+  Hint: Campaign Position
+  Value: "{C1B8669B-C41A-4ED3-BF0D-E859CF880D42}"
+- ID: "6ec7a9e6-9fd5-4892-bbf6-11e76e0e5db8"
+  Hint: Start Time
+  Value: 
+- ID: "78f0b1f8-fdf4-4c1c-bec6-1ac68a210a52"
+  Hint: Campaign
+  Value: 
+- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
+  Hint: __Read Only
+  Type: Checkbox
+  Value: 0
+- ID: "ac436b75-b307-4409-8479-e299ace64859"
+  Hint: End Time
+  Value: 
+- ID: "af0fe26a-a78b-491d-885c-03d95bc17342"
+  Hint: State
+  Value: Draft
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{9BE56802-4ADD-46F6-BEDC-B89EA88D5C83}">
+        <r
+          ds=""
+          id="{69EB7A6D-ACEF-4D06-A923-804918AA245E}"
+          par=""
+          ph="msg-html-title"
+          uid="{526AFB07-CE11-43CC-A8A1-4B906BC54FE6}" />
+        <r
+          ds="{599E1D40-7393-4D0E-8206-A92A3955EA1C}"
+          id="{5A67BD04-F5C3-4114-98CE-B4DB50DC980B}"
+          par=""
+          ph="preview-area"
+          uid="{757549A5-5B45-4AF8-A37F-D5D4B7B9D1C4}" />
+        <r
+          ds="{2AFBE0FF-E3A2-4D37-BE52-A2BA037A6C2E}"
+          id="{E89D305C-CF92-4445-ABC1-9EAB38F72ED7}"
+          par=""
+          ph="header-area"
+          uid="{FC745491-FBE9-4361-BEC6-9E10580ABFA2}" />
+        <r
+          ds="{BCE5A5B1-0633-4704-90AB-C958770489E7}"
+          id="{EF1E93F3-9F52-4D3E-9A98-E7718D59557D}"
+          par=""
+          ph="header-area"
+          uid="{B5637155-4BE0-4A3A-B7A2-3BFB3D95497B}" />
+        <r
+          ds="{1CE0E6E4-4944-410B-90DC-DE556E016ED1}"
+          id="{BFAF85F4-0256-4846-BDE3-D44C74FE6A42}"
+          par=""
+          ph="body-area"
+          uid="{F5732F2A-0913-45B2-B68F-C4E07AECA369}" />
+        <r
+          ds="{573C8A9D-D48C-488E-9EE8-75BAF77067A1}"
+          id="{340A8528-3E66-4DF6-82E0-4228CC8C684F}"
+          par=""
+          ph="body-area"
+          uid="{BB09D4AC-2CB1-49FD-9F45-00AE88BDE543}" />
+        <r
+          ds="{D2189E9C-D19F-44CE-86E1-CCBAFCC33BC6}"
+          id="{BF323449-F257-4EFB-9FF5-8248CA227393}"
+          par=""
+          ph="footer-area"
+          uid="{D655EFD4-23A4-40EC-A4DD-FC06413C8C52}" />
+      </d>
+    </r>
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{BD9DB6A7-D129-4B8B-BCF9-568A03F4BE31}"
+- ID: "f8d592cc-f3e5-4a8e-a600-8aebe8cc36e4"
+  Hint: Included Recipient Lists
+  Type: TreelistEx
+  Value: "{E0069908-198E-4781-83FF-24B2BD9B2573}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Duplicated message
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0d844c9c-bd6c-49b8-9475-947da791f268"
+      Hint: From Address
+      Value: gregory@perficient.com
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T214041Z

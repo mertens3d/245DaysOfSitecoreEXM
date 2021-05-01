@@ -1,0 +1,27 @@
+﻿---
+ID: "a1858fab-f13c-4701-be7e-e4790039712f"
+Parent: "4cf8a144-d64d-43d0-88ad-02686184f86e"
+Template: "014de185-83e7-4316-baba-376bc5efc6c5"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021/04/30T19514185/smtp test/Message Root/Header Image Block
+DB: master
+BranchID: "8c18055a-eb1e-4358-bc12-26b4e2568910"
+SharedFields:
+- ID: "6a576c00-9ad3-4e6e-9274-4173314ea1dc"
+  Hint: Image
+  Value: |
+    <image mediaid="{FE8E774D-1136-4D55-8DF2-2ABEC0DDDFF3}" alt="zxcvxzcvzxvxzcvxz" height="1872" width="1914" hspace="" vspace="" />
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{FE124F22-80C9-416E-B75C-82C34C18FC4F}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190008Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

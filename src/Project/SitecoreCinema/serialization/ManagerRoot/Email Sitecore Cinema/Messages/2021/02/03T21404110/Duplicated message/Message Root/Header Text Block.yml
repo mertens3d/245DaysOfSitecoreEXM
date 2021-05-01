@@ -1,0 +1,30 @@
+﻿---
+ID: "bce5a5b1-0633-4704-90ab-c958770489e7"
+Parent: "c4b84cf8-d88b-4b07-be61-bc45e6c9df31"
+Template: "f7eb69bc-1ded-4e38-96aa-2eecefd78325"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021/02/03T21404110/Duplicated message/Message Root/Header Text Block
+DB: master
+BranchID: "8c18055a-eb1e-4358-bc12-26b4e2568910"
+SharedFields:
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{B270B2E0-340E-4AF3-9795-4D1F37CDBE44}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190008Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "cebd4834-076f-4b67-babf-6595394f871c"
+      Hint: Header title
+      Value: Gregory Header Text
+    - ID: "f21c2561-35d5-437d-b28f-45473a546272"
+      Hint: Header text
+      Value: |
+        This is your header text area. Add the key information about<br class="em_hide" /> the content within this email to&nbsp;this&nbsp;section.

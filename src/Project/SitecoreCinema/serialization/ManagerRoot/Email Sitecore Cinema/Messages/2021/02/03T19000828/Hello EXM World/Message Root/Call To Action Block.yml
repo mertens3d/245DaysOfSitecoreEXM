@@ -1,0 +1,32 @@
+﻿---
+ID: "737501ea-881e-46b4-a3b7-b3c40967ca57"
+Parent: "75607313-9723-4e4f-9c13-acc235e9ecb5"
+Template: "6fa0bcf2-3153-4932-8763-410a0244acbb"
+Path: /sitecore/content/Email Sitecore Cinema/Messages/2021/02/03T19000828/Hello EXM World/Message Root/Call To Action Block
+DB: master
+BranchID: "8c18055a-eb1e-4358-bc12-26b4e2568910"
+SharedFields:
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{E02757DC-FBB6-4673-B2BF-4DFB626588D3}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190008Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "81967970-db7a-4a51-9972-a6364f6718de"
+      Hint: Call to action link
+      Value: |
+        <link text="Click here" linktype="external" url="" anchor="" class="call-to-action-link" target="" />
+    - ID: "b0c903b1-f597-4268-9c44-faec6a95fa01"
+      Hint: Call to action text
+      Value: |
+        Use this area to explain what your call to action is asking<br class="em_hide" />
+         your recipient&nbsp;to&nbsp;do
