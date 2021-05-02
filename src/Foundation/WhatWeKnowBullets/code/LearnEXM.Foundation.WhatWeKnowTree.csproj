@@ -110,6 +110,7 @@
     <Compile Include="Helpers\Tier1Nodes.cs" />
     <Compile Include="Helpers\Tier2Nodes.cs" />
     <Compile Include="Helpers\TrackingHelper.cs" />
+    <Compile Include="Helpers\WeKnowTreeOptions.cs" />
     <Compile Include="TreeNodeFactories\GenericTreeFactory.cs" />
     <Compile Include="TreeNodeFactories\ObjectToTreeNode.cs" />
     <Compile Include="TreeNodeFactories\_baseFacetTreeNode.cs" />

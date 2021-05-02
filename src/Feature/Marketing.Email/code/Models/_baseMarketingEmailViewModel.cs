@@ -22,12 +22,12 @@ namespace LearnEXM.Feature.Marketing.Email.Models
         }
         else
         {
-          Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix + "null or empty datasource", this);
+          Sitecore.Diagnostics.Log.Error(ProjConstants.Diagnostics.Prefix + "null or empty datasource", this);
         }
       }
       catch (Exception ex)
       {
-        Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix + GetType().Name, ex, this);
+        Sitecore.Diagnostics.Log.Error(ProjConstants.Diagnostics.Prefix + GetType().Name, ex, this);
       }
     }
 

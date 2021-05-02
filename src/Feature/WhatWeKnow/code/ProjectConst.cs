@@ -125,7 +125,8 @@ namespace LearnEXM.Feature.SitecoreCinema
       {
         public static string _base = "/views/Feature/WhatWeKnow.SitecoreCinema";
         public static string _partials = _base + "/_partials";
-        public static string Main = _base + "/whatWeKnow.cshtml";
+        public static string AsFancyTree = _base + "/WhatWeKnow.FancyTree.cshtml";
+        public static string AsUnorderedList = _base + "/WhatWeKnow.AsUnorderedList.cshtml";
         public static string Bullet = _partials + "/_whatWeKnow.Bullet.cshtml";
         public static string facets = _partials + "/_whatWeKnow.Facets.cshtml";
         public static string Interactions = _partials + "/_whatWeKnow.Interactions.cshtml";

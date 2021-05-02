@@ -1,13 +1,15 @@
-﻿using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
+﻿using LearnEXM.Foundation.WhatWeKnowTree.Helpers;
+using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
+using System.Diagnostics;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
   public class WhatWeKnowTree : IWhatWeKnowTree
-  {
+{
 
-    public WhatWeKnowTree(string rootTitle)
+    public WhatWeKnowTree(string rootTitle, WeKnowTreeOptions TreeOptions)
     {
-      Root = new WeKnowTreeNode(rootTitle);
+      Root = new WeKnowTreeNode(rootTitle, TreeOptions);
     }
 
     public IWhatWeKnowTreeWriter TreeWriter

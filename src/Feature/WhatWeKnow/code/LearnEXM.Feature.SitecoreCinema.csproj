@@ -213,7 +213,7 @@
     <Content Include="Assets\Scripts\WhatWeKnow.SitecoreCinema\WhatWeKnow.js" />
     <Content Include="Assets\Styles\WhatWeKnow.SitecoreCinema\ConcessionStand.css" />
     <Content Include="Assets\Styles\WhatWeKnow.SitecoreCinema\WhatWeKnow.css" />
-    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.cshtml" />
+    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.FancyTree.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Bullet.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Facets.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Interactions.cshtml" />
@@ -221,6 +221,7 @@
     <Content Include="Views\Feature\SitecoreCinema\prices.cshtml" />
     <Content Include="Views\Feature\SitecoreCinema\_concessionItems.cshtml" />
     <Content Include="Views\Feature\SitecoreCinema\_concessionStand.cshtml" />
+    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.AsUnorderedList.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

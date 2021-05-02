@@ -1,13 +1,24 @@
 ﻿using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using Newtonsoft.Json;
+using Sitecore.Data.Query;
 using System.Text;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
+  public class ULWriterForWeKnowTree {
+
+    public ULWriterForWeKnowTree(IWeKnowTreeNode root)
+    {
+      Root = root;
+    }
+
+    public IWeKnowTreeNode Root { get; }
+  }
   public class FancyTreeWriter : IWhatWeKnowTreeWriter
   {
     private IWeKnowTreeNode Root;
 
+  
     public FancyTreeWriter(IWeKnowTreeNode root)
     {
       Root = root;

@@ -1,7 +1,6 @@
 ﻿using LearnEXM.Feature.SitecoreCinema.Models;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using LearnEXM.Foundation.WhatWeKnowTree.Helpers;
-using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using Sitecore.Analytics;
 using Sitecore.XConnect.Collection.Model;
 using System.Collections.Generic;
@@ -11,9 +10,9 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
 {
   public class WhatWeKnowController : Controller
   {
-    public ActionResult WhatWeKnow()
+    private WhatWeKnowViewModel CommonDataHarvest(WeKnowTreeOptions options)
     {
-      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "s) WhatWeKnow action");
+      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "s) CommonDataHarvest");
 
       var targetFacetsTypes = new List<string>
       {
@@ -25,18 +24,42 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
        AddressList.DefaultFacetKey,
       };
 
-
-      var whatWeKnowTreeBuilder = new WhatWeKnowTreeBuilder(targetFacetsTypes);
-
+      var whatWeKnowTreeBuilder = new WhatWeKnowTreeBuilder(targetFacetsTypes, options);
       var whatWeKnowTree = whatWeKnowTreeBuilder.GetWhatWeKnowTree(Tracker.Current.Contact);
-
       var viewModel = new WhatWeKnowViewModel
       {
         WhatWeKnowTree = whatWeKnowTree,
       };
 
-      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "e) WhatWeKnow action");
-      return View(ProjectConst.Views.WhatWeKnow.Main, viewModel);
+      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "e) CommonDataHarvest");
+
+      return viewModel;
+    }
+
+    public ActionResult AsUnorderedList()
+    {
+      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "s) AsUnorderedList action");
+
+      var options = new WeKnowTreeOptions()
+      {
+        IncludeRaw = false
+      };
+
+      var viewModel = CommonDataHarvest(options);
+
+      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "e) AsUnorderedList action");
+      return View(ProjectConst.Views.WhatWeKnow.AsUnorderedList, viewModel);
+    }
+
+    public ActionResult AsFancyTree()
+    {
+      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "s) AsFancyTree action");
+
+      var options = new WeKnowTreeOptions();
+      var viewModel = CommonDataHarvest(options);
+
+      Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "e) AsFancyTree action");
+      return View(ProjectConst.Views.WhatWeKnow.AsFancyTree, viewModel);
     }
   }
 }

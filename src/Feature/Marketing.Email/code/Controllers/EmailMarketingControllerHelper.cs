@@ -23,7 +23,7 @@ namespace LearnEXM.Feature.Marketing.Email.Controllers
           var colorItem = Sitecore.Context.Database.GetItem(new ID(itemGuid));
           if (colorItem != null)
           {
-            toReturn = colorItem[Const.Fields.BackgroundColor.ColorHex];
+            toReturn = colorItem[ProjConstants.Fields.BackgroundColor.ColorHex];
           }
         }
       }
@@ -55,7 +55,7 @@ namespace LearnEXM.Feature.Marketing.Email.Controllers
         }
         catch (Exception ex)
         {
-          Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix, ex, this);
+          Sitecore.Diagnostics.Log.Error(ProjConstants.Diagnostics.Prefix, ex, this);
           date = fallback;
         }
       }
@@ -64,7 +64,7 @@ namespace LearnEXM.Feature.Marketing.Email.Controllers
         date = fallback;
       }
 
-      toReturn = date.ToString(Const.Styling.TextFormat.Date);
+      toReturn = date.ToString(ProjConstants.Styling.TextFormat.Date);
 
       return toReturn;
     }
@@ -91,15 +91,15 @@ namespace LearnEXM.Feature.Marketing.Email.Controllers
           }
           catch (Exception ex)
           {
-            Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix, ex, this);
+            Sitecore.Diagnostics.Log.Error(ProjConstants.Diagnostics.Prefix, ex, this);
             toReturn.LinkText = fallbackValue;
           }
         }
       }
       else
       {
-        Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix + " GetLinkText. dataSource is null: " + (dataSource == null), this);
-        Sitecore.Diagnostics.Log.Error(Const.Diagnostics.Prefix + " GetLinkText. fieldName is null: " + string.IsNullOrEmpty(fieldName), this);
+        Sitecore.Diagnostics.Log.Error(ProjConstants.Diagnostics.Prefix + " GetLinkText. dataSource is null: " + (dataSource == null), this);
+        Sitecore.Diagnostics.Log.Error(ProjConstants.Diagnostics.Prefix + " GetLinkText. fieldName is null: " + string.IsNullOrEmpty(fieldName), this);
       }
 
       return toReturn;

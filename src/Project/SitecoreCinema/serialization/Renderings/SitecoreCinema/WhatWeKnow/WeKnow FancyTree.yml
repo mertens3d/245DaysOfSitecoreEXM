@@ -2,12 +2,12 @@
 ID: "ab18d40f-597c-4105-a003-f26aa8adb39d"
 Parent: "75032344-661d-4f62-a680-e24833517653"
 Template: "2a3e91a0-7987-44b5-ab34-35c2d9de83b9"
-Path: /sitecore/layout/Renderings/Feature/SitecoreCinema/WhatWeKnow/WhatWeKnowSitecoreCinema
+Path: /sitecore/layout/Renderings/Feature/SitecoreCinema/WhatWeKnow/WeKnow FancyTree
 DB: master
 SharedFields:
 - ID: "ded9e431-3604-4921-a4b3-a6ec7636a5b6"
   Hint: Controller Action
-  Value: WhatWeKnow
+  Value: AsFancyTree
 - ID: "e64ad073-dfcc-4d20-8c0b-fe5aa6226cd7"
   Hint: Controller
   Value: LearnEXM.Feature.SitecoreCinema.Controllers.WhatWeKnowController,LearnEXM.Feature.SitecoreCinema

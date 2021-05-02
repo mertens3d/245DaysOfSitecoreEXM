@@ -97,7 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="ProjConstants.cs" />
     <Compile Include="Controllers\EmailMarketingController.cs" />
     <Compile Include="Controllers\EmailMarketingControllerHelper.cs" />
     <Compile Include="Extensions\extensions.cs" />
@@ -117,20 +117,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\EmailMainLayout.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\footer.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\Header.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\Hero.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\ImageBesideText.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\ImageOverTextFullWidth.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\ImageOverTextThreeColumn.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\Social.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\_EmailBaseLayout.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\_partials\ImageBesideText\TextAndCTA.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\_partials\ImageBesideText\Image.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\_partials\ImageOverTextThreeColumn\LinkTD.cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\_partials\ImageOverTextThreeColumn\TextTD..cshtml" />
-    <None Include="Views\SitecoreCinema\MarketingEmail\_partials\ImageOverTextThreeColumn\ImageTD.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\MarketingEmailMainLayout.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\footer.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\Header.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\Hero.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\ImageBesideText.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\ImageOverTextFullWidth.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\ImageOverTextThreeColumn.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\Social.cshtml" />
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\_EmailBaseLayout.cshtml" />
+    <None Include="Views\Feature\SitecoreCinema\MarketingEmail\_partials\ImageBesideText\TextAndCTA.cshtml" />
+    <None Include="Views\Feature\SitecoreCinema\MarketingEmail\_partials\ImageBesideText\Image.cshtml" />
+    <None Include="Views\Feature\SitecoreCinema\MarketingEmail\_partials\ImageOverTextThreeColumn\LinkTD.cshtml" />
+    <None Include="Views\Feature\SitecoreCinema\MarketingEmail\_partials\ImageOverTextThreeColumn\TextTD..cshtml" />
+    <None Include="Views\Feature\SitecoreCinema\MarketingEmail\_partials\ImageOverTextThreeColumn\ImageTD.cshtml" />
     <None Include="Views\web.config" />
     <None Include="web.config" />
   </ItemGroup>

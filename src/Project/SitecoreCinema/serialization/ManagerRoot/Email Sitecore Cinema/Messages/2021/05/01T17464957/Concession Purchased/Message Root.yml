@@ -9,7 +9,7 @@ SharedFields:
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
   Type: Checkbox
-  Value: 1
+  Value: 0
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Type: layout
@@ -17,49 +17,13 @@ SharedFields:
     <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <d
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
-        l="{9BE56802-4ADD-46F6-BEDC-B89EA88D5C83}">
+        l="{E5174D01-39C1-438B-8168-7D877D64AF4E}">
         <r
           ds=""
-          id="{69EB7A6D-ACEF-4D06-A923-804918AA245E}"
+          id="{AED14A03-7092-4971-A7D5-248E63FE73F9}"
           par=""
-          ph="msg-html-title"
-          uid="{526AFB07-CE11-43CC-A8A1-4B906BC54FE6}" />
-        <r
-          ds="{F0D30A4D-C24D-4B7C-8D6D-FFE796950F55}"
-          id="{5A67BD04-F5C3-4114-98CE-B4DB50DC980B}"
-          par=""
-          ph="preview-area"
-          uid="{757549A5-5B45-4AF8-A37F-D5D4B7B9D1C4}" />
-        <r
-          ds="{814E39B7-D65E-4FEF-8F92-E8DB916C11EB}"
-          id="{E89D305C-CF92-4445-ABC1-9EAB38F72ED7}"
-          par=""
-          ph="header-area"
-          uid="{FC745491-FBE9-4361-BEC6-9E10580ABFA2}" />
-        <r
-          ds="{239D3C20-B4BA-4F0F-B322-A585DF680FB5}"
-          id="{EF1E93F3-9F52-4D3E-9A98-E7718D59557D}"
-          par=""
-          ph="header-area"
-          uid="{B5637155-4BE0-4A3A-B7A2-3BFB3D95497B}" />
-        <r
-          ds="{EC002F80-D814-4071-8618-8B786CCF3979}"
-          id="{BFAF85F4-0256-4846-BDE3-D44C74FE6A42}"
-          par=""
-          ph="body-area"
-          uid="{F5732F2A-0913-45B2-B68F-C4E07AECA369}" />
-        <r
-          ds="{043173E4-5D6B-441B-A460-4346CC253BDD}"
-          id="{340A8528-3E66-4DF6-82E0-4228CC8C684F}"
-          par=""
-          ph="body-area"
-          uid="{BB09D4AC-2CB1-49FD-9F45-00AE88BDE543}" />
-        <r
-          ds="{4AA46028-FFF7-410C-A89F-1F985E72056C}"
-          id="{BF323449-F257-4EFB-9FF5-8248CA227393}"
-          par=""
-          ph="footer-area"
-          uid="{D655EFD4-23A4-40EC-A4DD-FC06413C8C52}" />
+          ph="marketing-main"
+          uid="{2AEB9864-5A6A-408C-8C55-0D0327BE33EF}" />
       </d>
     </r>
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"

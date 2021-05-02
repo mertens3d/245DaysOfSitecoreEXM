@@ -9,7 +9,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
     {
       if (node != null)
       {
-        title = node.TitleValue();
+        title = node.TitleAndValue();
         folder = node.HasLeaves;
         if (node.ValueIsJson)
         {

@@ -1,4 +1,5 @@
 ﻿@inherits System.Web.Mvc.WebViewPage
+@using LearnEXM.Feature.Marketing.Email;
 @using Feature.Marketing.Email;
 @using Sitecore.Mvc
 @{
@@ -9,10 +10,10 @@
 <head>
   @RenderSection("head", false)
 </head>
-<body style="margin: 0; padding: 0; word-spacing: normal; background-color:@Const.Styling.HexColors.WhiteSmoke;">
+<body style="margin: 0; padding: 0; word-spacing: normal; background-color:@ProjConstants.Styling.HexColors.WhiteSmoke;">
   <p style="display: none">Preheader text</p>
-  <div role="article" aria-roledescription="email" lang="en" style="text-size-adjust: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color:@Const.Styling.HexColors.WhiteSmoke;">
-    <table role="presentation" style="width: 100%; border: none; border-spacing: 0; color: @Const.Styling.HexColors.OuterSpace; font-size: 12px; line-height: 12px; text-decoration: none;">
+  <div role="article" aria-roledescription="email" lang="en" style="text-size-adjust: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color:@ProjConstants.Styling.HexColors.WhiteSmoke;">
+    <table role="presentation" style="width: 100%; border: none; border-spacing: 0; color: @ProjConstants.Styling.HexColors.OuterSpace; font-size: 12px; line-height: 12px; text-decoration: none;">
       <tr>
         <td align="center" style=" text-align: center; padding: 0;">
           <!--[if mso]>

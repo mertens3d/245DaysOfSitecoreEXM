@@ -10,13 +10,13 @@ namespace LearnEXM.Feature.Marketing.Email.Models
     public ImageOverTextSmall(Item dataSource, string suffix, EmailMarketingControllerHelper controllerHelper)
     {
       Suffix = suffix;
-      LinkData = controllerHelper.GetLinkData(DataSource, Link, Const.Fields.ImageOverTextThreeColumn.LinkTextFallBack);
+      LinkData = controllerHelper.GetLinkData(DataSource, Link, ProjConstants.Fields.ImageOverTextThreeColumn.LinkTextFallBack);
     }
 
-    public string Image { get { return Const.Fields.ImageOverTextThreeColumn.ImagePrefix + Suffix; } }
-    public string Link { get { return Const.Fields.ImageOverTextThreeColumn.LinkPrefix + Suffix; } }
+    public string Image { get { return ProjConstants.Fields.ImageOverTextThreeColumn.ImagePrefix + Suffix; } }
+    public string Link { get { return ProjConstants.Fields.ImageOverTextThreeColumn.LinkPrefix + Suffix; } }
     public LinkData LinkData { get; set; }
-    public string Text { get { return Const.Fields.ImageOverTextThreeColumn.TextPrefix + Suffix; } }
-    public string Title { get { return Const.Fields.ImageOverTextThreeColumn.TitlePrefix + Suffix; } }
+    public string Text { get { return ProjConstants.Fields.ImageOverTextThreeColumn.TextPrefix + Suffix; } }
+    public string Title { get { return ProjConstants.Fields.ImageOverTextThreeColumn.TitlePrefix + Suffix; } }
   }
 }

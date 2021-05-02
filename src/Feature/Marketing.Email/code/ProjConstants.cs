@@ -2,7 +2,7 @@
 
 namespace LearnEXM.Feature.Marketing.Email
 {
-  public static class Const
+  public static class ProjConstants
   {
     public struct Diagnostics
     {

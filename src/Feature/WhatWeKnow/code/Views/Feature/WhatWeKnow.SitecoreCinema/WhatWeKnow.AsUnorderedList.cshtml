@@ -1,0 +1,35 @@
+﻿@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
+@model LearnEXM.Feature.SitecoreCinema.Models.WhatWeKnowViewModel
+
+@helper DrawNode(LearnEXM.Foundation.WhatWeKnowTree.Interfaces.IWeKnowTreeNode treeNode)
+{
+  if (treeNode != null)
+  {
+
+    if (treeNode.HasLeaves)
+    {
+      <li>
+        @treeNode.Title
+        <ul>
+          @foreach (var node in treeNode.GetLeaves())
+          {
+            @DrawNode(node)
+          }
+        </ul>
+      </li>
+    }
+    else
+    {
+      <li>@treeNode.TitleAndValue()</li>
+    }
+  }
+
+}
+
+@if (Model?.WhatWeKnowTree?.Root != null)
+{
+
+  <ul>
+    @DrawNode(Model.WhatWeKnowTree.Root)
+  </ul>
+}

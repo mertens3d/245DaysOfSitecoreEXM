@@ -4,18 +4,21 @@ using LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect.Client;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 {
   public class FacetBranchHelper
   {
-    public FacetBranchHelper( XConnectClient xConnectClient, IXConnectFacets xConnectFacets)
+    public FacetBranchHelper( XConnectClient xConnectClient, IXConnectFacets xConnectFacets, WeKnowTreeOptions treeOptions)
     {
       XConnectClient = xConnectClient;
       XConnectFacets = xConnectFacets;
+      TreeOptions = treeOptions;
     }
 
-    public IXConnectFacets XConnectFacets { get; set; }
+    private IXConnectFacets XConnectFacets { get; set; }
+    private WeKnowTreeOptions TreeOptions { get; }
     private XConnectClient XConnectClient { get; }
 
     public Sitecore.XConnect.Facet GetFacetByKey(string facetKey)
@@ -47,7 +50,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       else
       {
         Sitecore.XConnect.Facet facet = GetFacetByKey(targetFacetKey);
-        treeFactory = new GenericTreeFactory(targetFacetKey);
+        treeFactory = new GenericTreeFactory(targetFacetKey, TreeOptions);
 
         if (facet != null)
         {
@@ -64,13 +67,13 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 
     public IWeKnowTreeNode FoundFacetKeys()
     {
-      var toReturn = new WeKnowTreeNode("Found Facet Keys");
+      var toReturn = new WeKnowTreeNode("Found Facet Keys", TreeOptions);
 
       if (XConnectFacets?.Facets != null)
       {
         foreach (KeyValuePair<string, Sitecore.XConnect.Facet> facetPair in XConnectFacets.Facets)
         {
-          toReturn.AddNode(new WeKnowTreeNode(facetPair.Key));
+          toReturn.AddNode(new WeKnowTreeNode(facetPair.Key, TreeOptions));
         }
       }
 
