@@ -35,36 +35,6 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
       return toReturn;
     }
 
-    public string SerializeFacet(Facet facet)
-    {
-      var toReturn = string.Empty;
-
-      if (XConnectClient != null)
-      {
-        var ContractResolver = new XdbJsonContractResolver(XConnectClient.Model, true, true);
-
-        var serializerSettings = new JsonSerializerSettings
-        {
-          ContractResolver = ContractResolver,
-          DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-          DefaultValueHandling = DefaultValueHandling.Ignore,
-          Formatting = Formatting.Indented,
-        };
-
-        var serialized = string.Empty;
-
-        try
-        {
-          serialized = JsonConvert.SerializeObject(facet, serializerSettings);
-          toReturn = serialized;
-        }
-        catch (System.Exception ex)
-        {
-          toReturn = "{couldn't serialize}";
-        }
-      }
-
-      return toReturn;
-    }
+   
   }
 }

@@ -9,7 +9,6 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Interfaces
 
     IWeKnowTreeNode BuildTreeNode(Facet facet);
 
-    string SerializeFacet(Facet facet);
 
     void SetClient(XConnectClient xConnectClient);
   }

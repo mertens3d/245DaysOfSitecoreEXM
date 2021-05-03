@@ -94,11 +94,9 @@
   <ItemGroup>
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\FacetEditHelper.cs" />
-    <Compile Include="Helpers\InteractionHelper.cs" />
     <Compile Include="Helpers\xConnectHelper.cs" />
     <Compile Include="ProjConstants.cs" />
     <Compile Include="Proxies\EventRecordProxy.cs" />
-    <Compile Include="Proxies\InteractionProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,8 @@
 ﻿using LearnEXM.Foundation.WhatWeKnowTree.Concretions;
+using LearnEXM.Foundation.WhatWeKnowTree.Helpers.NodeBuilders;
 using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
-using LearnEXM.Foundation.xConnectHelper.Helpers;
 using Newtonsoft.Json;
 using Sitecore.Analytics.XConnect.Facets;
-using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Serialization;
 using System.Collections.Generic;
@@ -51,13 +50,13 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       {
         toReturn = new WeKnowTreeNode("Facets", TreeOptions);
 
-        var FacetTreeHelper = new FacetBranchHelper(xConnectClient, XConnectFacets, TreeOptions);
+        var FacetTreeHelper = new FacetsNodeBuilder(xConnectClient, XConnectFacets, TreeOptions);
 
         if (XConnectFacets != null)
         {
           foreach (var targetFacetKey in TargetedFacetKeys)
           {
-            toReturn.AddNode(FacetTreeHelper.GetFacetTreeNode(targetFacetKey));
+            toReturn.AddNode(FacetTreeHelper.BuildFacetsNode(targetFacetKey));
           }
         }
 
@@ -85,43 +84,44 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return toReturn;
     }
 
-    public IWeKnowTreeNode InteractionsNode(Contact xConnectContact, XConnectClient xConnectClient)
+    public IWeKnowTreeNode InteractionsNode(Sitecore.XConnect.Contact xConnectContact, XConnectClient xConnectClient)
     {
       WeKnowTreeNode toReturn = null;
 
       if (TreeOptions.IncludeInteractions)
       {
         toReturn = new WeKnowTreeNode("Interactions", TreeOptions);
-        var interactionHelper = new InteractionHelper();
+        var interactionHelper = new InteractionsNodeBuilder(TreeOptions);
 
-        var knownInteractions = interactionHelper.GetKnownInteractions(xConnectContact, xConnectClient);
+        toReturn.AddNode(interactionHelper.Something(xConnectContact, xConnectClient));
 
-        if (knownInteractions != null && knownInteractions.Any())
-        {
-          foreach (var knownInteraction in knownInteractions)
-          {
-            var treeNode = new WeKnowTreeNode(knownInteraction.ChannelName, TreeOptions);
+        //var knownInteractions = interactionHelper.GetKnownInteractions(xConnectContact, xConnectClient);
 
-            treeNode.AddNode(EventsNode(knownInteraction.EventsB));
+        //if (knownInteractions != null && knownInteractions.Any())
+        //{
+        //  foreach (var knownInteraction in knownInteractions)
+        //  {
+        //    var treeNode = new WeKnowTreeNode(knownInteraction.ChannelName, TreeOptions);
 
-            treeNode.AddRawNode(knownInteraction.SerializedAsJson);
+        //    treeNode.AddNode(EventsNode(knownInteraction.EventsB));
 
-            toReturn.AddNode(treeNode);
-          }
-        }
+        //    toReturn.AddNode(treeNode);
+        //  }
+        //}
       }
       return toReturn;
     }
 
-    public List<IWeKnowTreeNode> Tier1NodeBuilder(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient, Contact xConnectContact)
+    public List<IWeKnowTreeNode> Tier1NodeBuilder(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient, Sitecore.XConnect.Contact xConnectContact)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) Tier1NodeBuilder");
-      var toReturn = new List<IWeKnowTreeNode>();
-
-      toReturn.Add(TrackingContactNode(trackingContact, xConnectClient));
-      toReturn.Add(IdentifiersNode(trackingContact.Identifiers.ToList()));
-      toReturn.Add(FacetsNode(xConnectClient));
-      toReturn.Add(InteractionsNode(xConnectContact, xConnectClient));
+      var toReturn = new List<IWeKnowTreeNode>
+      {
+        TrackingContactNode(trackingContact, xConnectClient),
+        IdentifiersNode(trackingContact.Identifiers.ToList()),
+        FacetsNode(xConnectClient),
+        InteractionsNode(xConnectContact, xConnectClient)
+      };
 
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) Tier1NodeBuilder");
       return toReturn;

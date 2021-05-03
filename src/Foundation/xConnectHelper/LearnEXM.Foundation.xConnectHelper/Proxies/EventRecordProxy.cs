@@ -5,11 +5,11 @@ namespace LearnEXM.Foundation.xConnectHelper.Proxies
 {
   public class EventRecordProxy
   {
-    public string TypeName { get; internal set; }
-    public Dictionary<string, string> CustomValues { get; internal set; }
-    public DateTime TimeStamp { get; internal set; }
-    public string ItemDisplayName { get; internal set; }
-    public Guid ItemId { get; internal set; }
-    public TimeSpan Duration { get; internal set; }
+    public string TypeName { get;  set; }
+    public Dictionary<string, string> CustomValues { get;  set; }
+    public DateTime TimeStamp { get;  set; }
+    public string ItemDisplayName { get;  set; }
+    public Guid ItemId { get;  set; }
+    public TimeSpan Duration { get;  set; }
   }
 }

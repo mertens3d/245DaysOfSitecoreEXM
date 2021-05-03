@@ -1,6 +1,9 @@
 ﻿using LearnEXM.Foundation.WhatWeKnowTree.Concretions;
 using LearnEXM.Foundation.WhatWeKnowTree.Helpers;
 using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
+using Newtonsoft.Json;
+using Sitecore.XConnect.Client.Serialization;
+using Sitecore.XConnect.Client;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,12 +17,14 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
   {
     private int MaxDepth = 10;
 
-    public ObjectToTreeNode(WeKnowTreeOptions treeOptions)
+    public ObjectToTreeNode(WeKnowTreeOptions treeOptions, XConnectClient xconnectClient)
     {
       TreeOptions = treeOptions;
+      XConnectClient = xconnectClient;
     }
 
-    public WeKnowTreeOptions TreeOptions { get; }
+    private WeKnowTreeOptions TreeOptions { get; }
+    private XConnectClient XConnectClient { get; }
     private List<string> PropertyNamesToIgnore { get; } = new List<string>
     {
       "ClrTypePresent",
@@ -34,17 +39,13 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
       typeof(Guid),
       typeof(int),
       typeof(string),
+      typeof(TimeSpan),
     };
 
     private List<Type> TypesToIgnore { get; } = new List<Type>
     {
       typeof(Sitecore.XConnect.XObject)
     };
-    internal IWeKnowTreeNode MakeTreeNodeFromFacet(object facet, string nodeTitle)
-    {
-      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "MakeTreeNodeFromFacet: " + typeof(ObjectToTreeNode).Name);
-      return MakeTreeNodeFromObject(facet, nodeTitle, 0);
-    }
 
     private IEnumerable<IWeKnowTreeNode> HandlePropertyValueOfTypeBranch(Type valueType, object propValue, int depth)
     {
@@ -166,17 +167,48 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 
       return toReturn;
     }
+    public string SerializeObject(Object xconnectObject)
+    {
+      var toReturn = string.Empty;
 
-    private IWeKnowTreeNode MakeTreeNodeFromObject(object targetObject, string nodeTitle, int depth)
+      if (XConnectClient != null)
+      {
+        var ContractResolver = new XdbJsonContractResolver(XConnectClient.Model, true, true);
+
+        var serializerSettings = new JsonSerializerSettings
+        {
+          ContractResolver = ContractResolver,
+          DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+          DefaultValueHandling = DefaultValueHandling.Ignore,
+          Formatting = Formatting.Indented,
+        };
+
+        var serialized = string.Empty;
+
+        try
+        {
+          serialized = JsonConvert.SerializeObject(xconnectObject, serializerSettings);
+          toReturn = serialized;
+        }
+        catch (System.Exception ex)
+        {
+          toReturn = "{couldn't serialize}";
+          Sitecore.Diagnostics.Log.Error("Couldn't serialize", ex, this);
+        }
+      }
+
+      return toReturn;
+    }
+    public IWeKnowTreeNode MakeTreeNodeFromObject(object targetObject, string nodeTitle, int depth = 0)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) MakeTreeNodeFromObject: " + nodeTitle);
 
       var toReturn = new WeKnowTreeNode(nodeTitle, TreeOptions);
 
-      PropertyInfo[] facetProperties = targetObject.GetType().GetProperties();
-      if (facetProperties != null && facetProperties.Any())
+      PropertyInfo[] objectProperties = targetObject.GetType().GetProperties();
+      if (objectProperties != null && objectProperties.Any())
       {
-        foreach (var property in facetProperties)
+        foreach (var property in objectProperties)
         {
           if (property != null)
           {

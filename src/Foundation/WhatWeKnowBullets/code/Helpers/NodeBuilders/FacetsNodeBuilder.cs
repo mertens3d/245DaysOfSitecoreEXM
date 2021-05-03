@@ -4,13 +4,12 @@ using LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect.Client;
 using System.Collections.Generic;
-using System.Diagnostics;
 
-namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
+namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers.NodeBuilders
 {
-  public class FacetBranchHelper
+  public class FacetsNodeBuilder
   {
-    public FacetBranchHelper( XConnectClient xConnectClient, IXConnectFacets xConnectFacets, WeKnowTreeOptions treeOptions)
+    public FacetsNodeBuilder(XConnectClient xConnectClient, IXConnectFacets xConnectFacets, WeKnowTreeOptions treeOptions)
     {
       XConnectClient = xConnectClient;
       XConnectFacets = xConnectFacets;
@@ -32,36 +31,22 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
       return toReturn;
     }
 
-    public IWeKnowTreeNode GetFacetTreeNode(string targetFacetKey)
+    public IWeKnowTreeNode BuildFacetsNode(string targetFacetKey)
     {
-      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) GetFacetTreeNode: " + typeof(FacetBranchHelper).Name);
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) GetFacetTreeNode: " + typeof(FacetsNodeBuilder).Name);
       IWeKnowTreeNode toReturn = null;
 
-      IFacetNodeFactory treeFactory = null; // GetFacetTreeFactoryByKey(targetFacetKey);
-      if (treeFactory != null)
-      {
-        Sitecore.XConnect.Facet facet = GetFacetByKey(targetFacetKey);
-        if (facet != null)
-        {
-          treeFactory.SetClient(XConnectClient);
-          toReturn = treeFactory.BuildTreeNode(facet);
-        }
-      }
-      else
-      {
-        Sitecore.XConnect.Facet facet = GetFacetByKey(targetFacetKey);
-        treeFactory = new GenericTreeFactory(targetFacetKey, TreeOptions);
 
-        if (facet != null)
-        {
-          treeFactory.SetClient(XConnectClient);
-          toReturn = treeFactory.BuildTreeNode(facet);
-        }
+      Sitecore.XConnect.Facet facet = GetFacetByKey(targetFacetKey);
+      IFacetNodeFactory treeFactory = new GenericFacetBranchFactory(targetFacetKey, TreeOptions, XConnectClient);
 
-        Sitecore.Diagnostics.Log.Error(ProjConstants.Logger.Prefix + "treeFactory is null", this);
+      if (facet != null)
+      {
+        treeFactory.SetClient(XConnectClient);
+        toReturn = treeFactory.BuildTreeNode(facet);
       }
 
-      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "e) GetFacetTreeNode: " + typeof(FacetBranchHelper).Name);
+      Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "e) GetFacetTreeNode: " + typeof(FacetsNodeBuilder).Name);
       return toReturn;
     }
 

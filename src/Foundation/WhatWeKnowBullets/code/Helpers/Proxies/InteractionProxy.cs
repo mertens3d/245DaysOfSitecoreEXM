@@ -1,13 +1,13 @@
-﻿using Sitecore.XConnect;
+﻿using LearnEXM.Foundation.xConnectHelper.Proxies;
+using Sitecore.XConnect;
 using System;
 using System.Collections.Generic;
 
-namespace LearnEXM.Foundation.xConnectHelper.Proxies
+namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers.Proxies
 {
   public class InteractionProxy
   {
     public Guid ChannelId { get; internal set; }
-    public string SerializedAsJson { get; set; }
     public string ChannelName { get; internal set; }
     public Interaction RawInteraction { get; internal set; }
     public IEntityReference<DeviceProfile> DeviceProfile { get; internal set; }
