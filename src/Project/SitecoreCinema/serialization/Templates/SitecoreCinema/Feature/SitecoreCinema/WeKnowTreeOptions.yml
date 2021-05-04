@@ -1,0 +1,22 @@
+﻿---
+ID: "a669e427-eca3-48b6-8f7c-8d5c2d373aad"
+Parent: "948c1d90-44c6-488a-b57f-18d0e90ae59e"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/WeKnowTreeOptions
+DB: master
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Type: tree list
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{C0D899A1-F1A2-410B-9F5D-93FC69981F94}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210503T163956Z

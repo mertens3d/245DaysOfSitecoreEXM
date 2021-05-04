@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Sitecore.Analytics.XConnect.Facets;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Serialization;
+using Sitecore.XConnect.Collection.Model;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,7 +28,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
     {
       WeKnowTreeNode toReturn = null;
 
-      if (events != null && events.Any() && TreeOptions.IncludeEvents)
+      if (events != null && events.Any() && TreeOptions.Interactions.IncludeInteractionEvents)
       {
         toReturn = new WeKnowTreeNode("Events", TreeOptions);
         foreach (var eventProxy in events)
@@ -54,6 +55,24 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 
         if (XConnectFacets != null)
         {
+
+          //          Emails
+          //Personal
+          //Addresses
+          //ListSubscriptions
+          //AutomationPlanExit
+          //AutomationPlanEnrollmentCache
+          //KeyBehaviorCache
+          //EngagementMeasures
+          //CinemaVisitorInfo
+
+          TargetedFacetKeys.Add("ListSubscriptions");
+          TargetedFacetKeys.Add("AutomationPlanExit");
+          TargetedFacetKeys.Add("AutomationPlanEnrollmentCache");
+          TargetedFacetKeys.Add("KeyBehaviorCache");
+          TargetedFacetKeys.Add("EngagementMeasures");
+
+
           foreach (var targetFacetKey in TargetedFacetKeys)
           {
             toReturn.AddNode(FacetTreeHelper.BuildFacetsNode(targetFacetKey));
@@ -88,7 +107,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
     {
       WeKnowTreeNode toReturn = null;
 
-      if (TreeOptions.IncludeInteractions)
+      if (TreeOptions.Interactions.IncludeInteractions)
       {
         toReturn = new WeKnowTreeNode("Interactions", TreeOptions);
         var interactionHelper = new InteractionsNodeBuilder(TreeOptions);

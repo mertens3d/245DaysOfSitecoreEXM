@@ -2,12 +2,11 @@
 using LearnEXM.Foundation.WhatWeKnowTree.Helpers;
 using LearnEXM.Foundation.WhatWeKnowTree.Interfaces;
 using Newtonsoft.Json;
-using Sitecore.XConnect.Client.Serialization;
 using Sitecore.XConnect.Client;
+using Sitecore.XConnect.Client.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -25,6 +24,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 
     private WeKnowTreeOptions TreeOptions { get; }
     private XConnectClient XConnectClient { get; }
+
     private List<string> PropertyNamesToIgnore { get; } = new List<string>
     {
       "ClrTypePresent",
@@ -34,11 +34,13 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
     private List<Type> SingleValueTypes { get; set; } = new List<Type>
     {
       typeof(bool),
-      typeof(DateTime),
+      typeof(decimal),
       typeof(double),
+      typeof(Enum),
       typeof(Guid),
       typeof(int),
       typeof(string),
+      typeof(System.DateTime),
       typeof(TimeSpan),
     };
 
@@ -113,7 +115,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
       {
         toReturn = value.ToString();
       }
-      else if (valueType.Equals(typeof(DateTime)))
+      else if (valueType.Equals(typeof(System.DateTime)))
       {
         toReturn = value.ToString(); ;
       }
@@ -128,6 +130,25 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
       else if (valueType.Equals(typeof(double)))
       {
         toReturn = value.ToString();
+      }
+      else if (valueType.Equals(typeof(int)))
+      {
+        toReturn = value.ToString();
+      }
+      else if (valueType.IsEnum)
+      {
+        toReturn = Enum.GetName(valueType, value);
+      }
+      else
+      {
+        try
+        {
+          toReturn = value.ToString();
+        }
+        catch (Exception ex)
+        {
+          Sitecore.Diagnostics.Log.Error("tried to .toString() type " + valueType.Name, ex, this);
+        }
       }
 
       return toReturn;
@@ -154,6 +175,11 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
       return toReturn;
     }
 
+    private bool IsEnumerable(object targetObject)
+    {
+      return targetObject != null && targetObject is ICollection;
+    }
+
     //            object propValue = property.GetValue(facetPart, null);
     private bool IsList(object o)
     {
@@ -167,6 +193,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 
       return toReturn;
     }
+
     public string SerializeObject(Object xconnectObject)
     {
       var toReturn = string.Empty;
@@ -199,6 +226,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 
       return toReturn;
     }
+
     public IWeKnowTreeNode MakeTreeNodeFromObject(object targetObject, string nodeTitle, int depth = 0)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) MakeTreeNodeFromObject: " + nodeTitle);
@@ -270,10 +298,13 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 
         if (propValue == null)
         {
-          toReturn = new WeKnowTreeNode(property.Name,TreeOptions)
+          if (TreeOptions.IncludeNullAndEmptyValueLeaves)
           {
-            Value = "{null}"
-          };
+            toReturn = new WeKnowTreeNode(property.Name, TreeOptions)
+            {
+              Value = "{null}"
+            };
+          }
         }
         else
         {
@@ -283,30 +314,49 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
           {
             Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "value type: " + valueType.Name);
 
-            if (SingleValueTypes.Contains(valueType))
-{
-              toReturn = new WeKnowTreeNode(property.Name, TreeOptions)
+            if (SingleValueTypes.Contains(valueType) || valueType.IsEnum)
+            {
+              var nodeValue = HandlePropertyValueOfTypeLeaf(valueType, propValue);
+
+              if (!string.IsNullOrEmpty(nodeValue)
+                     || TreeOptions.IncludeNullAndEmptyValueLeaves)
               {
-                Value = HandlePropertyValueOfTypeLeaf(valueType, propValue)
-              };
+                toReturn = new WeKnowTreeNode(property.Name, TreeOptions)
+                {
+                  Value = HandlePropertyValueOfTypeLeaf(valueType, propValue)
+                };
+              }
             }
             else
 
             {
-              if (IsList(propValue))
+              if (IsList(propValue) || IsEnumerable(propValue))
               {
-                toReturn = new WeKnowTreeNode(property.Name, TreeOptions);
-                foreach (var listItem in propValue as IEnumerable)
+                if (IsDictionary(propValue))
                 {
-                  var listItemType = listItem.GetType();
-                  if (SingleValueTypes.Contains(listItemType))
+                  var asEnumberable = propValue as IEnumerable;
+                }
+                else
+                {
+                  toReturn = new WeKnowTreeNode(property.Name, TreeOptions);
+                  foreach (var listItem in propValue as IEnumerable)
                   {
-                    var nodeValue = HandlePropertyValueOfTypeLeaf(listItemType, listItem);
-                    toReturn.AddNode(new WeKnowTreeNode(nodeValue, TreeOptions));
-                  }
-                  else
-                  {
-                    toReturn.AddNode( MakeTreeNodeFromObject(listItem, listItemType.Name, depth + 1));
+                    var listItemType = listItem.GetType();
+                    if (SingleValueTypes.Contains(listItemType))
+                    {
+                      var nodeValue = HandlePropertyValueOfTypeLeaf(listItemType, listItem);
+
+                      if (!string.IsNullOrEmpty(nodeValue)
+                        || TreeOptions.IncludeNullAndEmptyValueLeaves
+                        )
+                      {
+                        toReturn.AddNode(new WeKnowTreeNode(nodeValue, TreeOptions));
+                      }
+                    }
+                    else
+                    {
+                      toReturn.AddNode(MakeTreeNodeFromObject(listItem, listItemType.Name, depth + 1));
+                    }
                   }
                 }
               }

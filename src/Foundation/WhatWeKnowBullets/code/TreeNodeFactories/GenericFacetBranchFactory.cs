@@ -31,13 +31,18 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.TreeNodeFactories
 
     public IWeKnowTreeNode BuildTreeNode(Facet facet)
     {
-      var toReturn = new WeKnowTreeNode(AssociatedDefaultFacetKey, TreeOptions);
+      IWeKnowTreeNode toReturn = null;// new WeKnowTreeNode(AssociatedDefaultFacetKey, TreeOptions);
 
       if (facet != null)
       {
         var objectToTreeNode = new ObjectToTreeNode(TreeOptions, XConnectClient);
-        toReturn.AddNode(objectToTreeNode.MakeTreeNodeFromObject(facet, AssociatedDefaultFacetKey));
-        toReturn.AddRawNode(objectToTreeNode.SerializeObject(facet));
+        
+        toReturn = objectToTreeNode.MakeTreeNodeFromObject(facet, AssociatedDefaultFacetKey);
+        if (TreeOptions.IncludeRaw)
+        {
+          toReturn.AddRawNode(objectToTreeNode.SerializeObject(facet));
+
+        }
       }
 
       return toReturn;

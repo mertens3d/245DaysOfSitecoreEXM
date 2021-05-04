@@ -11,6 +11,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
       {
         title = node.TitleAndValue();
         folder = node.HasLeaves;
+        icon = node.HasLeaves ? "fancytree-icon" : string.Empty;
         if (node.ValueIsJson)
         {
           extraClasses = "json-data";
@@ -28,9 +29,10 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 
 #pragma warning disable IDE1006 // Naming Styles
     public List<FancyTreeNode> children { get; set; } = new List<FancyTreeNode>();
-    public bool folder { get; set; } = false;
+    public bool  folder { get; set; } 
     public string extraClasses { get; set; } = string.Empty;
     public string title { get; set; } = string.Empty;
+    public string icon { get;  set; } 
 #pragma warning restore IDE1006 // Naming Styles
   }
 }

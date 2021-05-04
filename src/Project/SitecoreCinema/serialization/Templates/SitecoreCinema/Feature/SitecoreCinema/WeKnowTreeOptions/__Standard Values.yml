@@ -1,0 +1,46 @@
+﻿---
+ID: "c0d899a1-f1a2-410b-9f5d-93fc69981f94"
+Parent: "a669e427-eca3-48b6-8f7c-8d5c2d373aad"
+Template: "a669e427-eca3-48b6-8f7c-8d5c2d373aad"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/WeKnowTreeOptions/__Standard Values
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210503T164050Z
+    - ID: "25e2bb7b-c0aa-4623-8bc3-6d118fb9955e"
+      Hint: IncludeIdentifiers
+      Type: Checkbox
+      Value: 1
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "798fe167-58a7-4134-aded-a770c19ea66c"
+      Hint: IncludeInteractionEvents
+      Type: Checkbox
+      Value: 1
+    - ID: "7e765ef2-165f-435f-ba4d-866f4cd1dce3"
+      Hint: IncludeTrackingContact
+      Type: Checkbox
+      Value: 1
+    - ID: "cddd572c-9a59-4f0a-ad26-88829aabd28d"
+      Hint: IncludeInteractions
+      Type: Checkbox
+      Value: 1
+    - ID: "f425937a-09a1-460e-8245-7c4c9a3dfcf5"
+      Hint: IncludeFacets
+      Type: Checkbox
+      Value: 1
+    - ID: "f8f22460-65d0-48a5-8f5d-70a9ecd6733a"
+      Hint: IncludeLastModified
+      Type: Checkbox
+      Value: 1
+    - ID: "fd359cbf-6fb9-49df-bf11-93078b9838b0"
+      Hint: Include Raw Node
+      Type: Checkbox
+      Value: 1

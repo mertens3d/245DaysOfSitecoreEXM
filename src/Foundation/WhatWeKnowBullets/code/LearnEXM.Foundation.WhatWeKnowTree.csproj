@@ -108,11 +108,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\NodeBuilders\InteractionsNodeBuilder.cs" />
+    <Compile Include="Helpers\OptionsItemToOptions.cs" />
     <Compile Include="Helpers\Proxies\InteractionProxy.cs" />
     <Compile Include="Helpers\Tier1Nodes.cs" />
     <Compile Include="Helpers\Tier2Nodes.cs" />
     <Compile Include="Helpers\TrackingHelper.cs" />
     <Compile Include="Helpers\WeKnowTreeOptions.cs" />
+    <Compile Include="Helpers\WeKnowTreeOptionsInteractions.cs" />
     <Compile Include="TreeNodeFactories\GenericFacetBranchFactory.cs" />
     <Compile Include="TreeNodeFactories\ObjectToTreeNode.cs" />
     <Compile Include="TreeNodeFactories\_baseFacetTreeNode.cs" />

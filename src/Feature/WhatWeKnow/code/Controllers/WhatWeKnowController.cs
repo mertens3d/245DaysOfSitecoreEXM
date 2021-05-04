@@ -1,7 +1,10 @@
 ﻿using LearnEXM.Feature.SitecoreCinema.Models;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
+using LearnEXM.Foundation.Extensions;
 using LearnEXM.Foundation.WhatWeKnowTree.Helpers;
 using Sitecore.Analytics;
+using Sitecore.Data;
+using Sitecore.Data.Items;
 using Sitecore.XConnect.Collection.Model;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -54,8 +57,18 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
     public ActionResult AsFancyTree()
     {
       Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "s) AsFancyTree action");
+      var dataSourceStr = Sitecore.Mvc.Presentation.RenderingContext.CurrentOrNull.Rendering.DataSource;
+      Item dataSource = null;
 
-      var options = new WeKnowTreeOptions();
+      if (!string.IsNullOrEmpty(dataSourceStr))
+      {
+        dataSource = Sitecore.Context.Database.GetItem(new ID(dataSourceStr));
+      }
+      else
+      {
+        Sitecore.Diagnostics.Log.Warn(ProjConstants.Logger.LoggingPrefix + "null or empty datasource", this);
+      }
+      var options = new OptionsItemToOptions(dataSource).WeKnowTreeOptions;// WeKnowTreeOptions();
       var viewModel = CommonDataHarvest(options);
 
       Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "e) AsFancyTree action");

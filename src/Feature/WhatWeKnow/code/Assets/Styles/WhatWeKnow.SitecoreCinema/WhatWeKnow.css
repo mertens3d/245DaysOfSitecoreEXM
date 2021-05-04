@@ -2,3 +2,14 @@
   font-family: monospace;
   white-space: pre;
 }
+
+
+span.fancytree-custom-icon {
+  width: 0;
+  height: 0;
+}
+
+  span.fancytree-custom-icon.fancytree-icon {
+    width: 16px;
+    height: 16px;
+  }

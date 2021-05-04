@@ -1,0 +1,14 @@
+﻿---
+ID: "4b3e3d0f-f0c2-4d9f-92e8-ad682ee8b328"
+Parent: "a669e427-eca3-48b6-8f7c-8d5c2d373aad"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/WeKnowTreeOptions/Nodes
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210503T164029Z

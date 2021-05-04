@@ -44,7 +44,13 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 
     public void AddNodes(IEnumerable<IWeKnowTreeNode> treeNodes)
     {
-      Leaves.AddRange(treeNodes);
+      if (treeNodes != null && treeNodes.Any())
+      {
+        treeNodes
+          .Where(x => x != null)
+          .ToList()
+          .ForEach(x => Leaves.Add(x));
+      }
     }
 
     public void AddRawNode(string serialized)

@@ -1,0 +1,36 @@
+﻿---
+ID: "8c153210-3ff5-4cdb-bc27-f09c0532426d"
+Parent: "9c8efdfc-2adb-4e56-85fb-138b3c5fe464"
+Template: "a669e427-eca3-48b6-8f7c-8d5c2d373aad"
+Path: /sitecore/content/sitecorecinema/Global/WeKnow/Tree Options A
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210304T025749Z
+    - ID: "5d277163-578e-4d57-83bb-92402f990d32"
+      Hint: ChannelFilter
+      Type: Treelist
+      Value: |
+        {ADA3552B-264F-4B5F-BDEF-73463AF33290}
+        {FD61A37C-14D6-49C8-843A-DCE74AE9147E}
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "798fe167-58a7-4134-aded-a770c19ea66c"
+      Hint: IncludeInteractionEvents
+      Type: Checkbox
+      Value: 0
+    - ID: "cddd572c-9a59-4f0a-ad26-88829aabd28d"
+      Hint: IncludeInteractions
+      Type: Checkbox
+      Value: 0
+    - ID: "f425937a-09a1-460e-8245-7c4c9a3dfcf5"
+      Hint: IncludeFacets
+      Type: Checkbox
+      Value: 1
