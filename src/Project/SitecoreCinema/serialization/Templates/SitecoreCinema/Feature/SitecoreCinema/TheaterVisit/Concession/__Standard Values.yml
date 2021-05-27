@@ -1,0 +1,23 @@
+﻿---
+ID: "4b5a1202-6d84-4e98-a716-89d6af2927db"
+Parent: "02e5d189-d5d6-406c-b150-cd9a3662708b"
+Template: "02e5d189-d5d6-406c-b150-cd9a3662708b"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/TheaterVisit/Concession/__Standard Values
+DB: master
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: "{8AADEC50-24C0-4516-85B2-041B82F83CB2}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T161058Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

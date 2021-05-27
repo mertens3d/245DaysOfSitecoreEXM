@@ -1,0 +1,14 @@
+﻿---
+ID: "bf576597-1e9c-40cb-bced-599f024fcb14"
+Parent: "bdf6e511-f91e-4137-93a9-af835a7ffb3f"
+Template: "cf9c8a2a-2794-4fea-980a-ef8426f3d6c3"
+Path: /sitecore/templates/Branches/User Defined/SitecoreCinema/CinemaMarketingEmail/Manager Root/$name
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210527T021827Z

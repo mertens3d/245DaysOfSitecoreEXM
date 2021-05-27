@@ -1,11 +1,13 @@
 ﻿using LearnEXM.Feature.SitecoreCinema.Models;
 using LearnEXM.Foundation.CollectionModel.Builder.Models.Facets;
 using LearnEXM.Foundation.Extensions;
+using LearnEXM.Foundation.WeKnowTree.Helpers;
 using LearnEXM.Foundation.WhatWeKnowTree.Helpers;
 using Sitecore.Analytics;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.XConnect.Collection.Model;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -13,7 +15,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
 {
   public class WhatWeKnowController : Controller
   {
-    private WhatWeKnowViewModel CommonDataHarvest(WeKnowTreeOptions options)
+    private WeKnowViewModel CommonDataHarvest(WeKnowTreeOptions weKnowTreeOptions)
     {
       Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "s) CommonDataHarvest");
 
@@ -27,11 +29,13 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
        AddressList.DefaultFacetKey,
       };
 
-      var whatWeKnowTreeBuilder = new WhatWeKnowTreeBuilder(targetFacetsTypes, options);
-      var whatWeKnowTree = whatWeKnowTreeBuilder.GetWhatWeKnowTree(Tracker.Current.Contact);
-      var viewModel = new WhatWeKnowViewModel
+      weKnowTreeOptions.TargetedFacetKeys.AddRange(targetFacetsTypes);
+
+      var whatWeKnowTreeBuilder = new WeKnowTreeBuilder(weKnowTreeOptions);//.targetFacetsTypes, options);
+      var whatWeKnowTree = whatWeKnowTreeBuilder.GetWeKnowTreeFromTrackingContact(Tracker.Current.Contact);
+      var viewModel = new WeKnowViewModel
       {
-        WhatWeKnowTree = whatWeKnowTree,
+        WeKnowTree = whatWeKnowTree,
       };
 
       Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "e) CommonDataHarvest");
@@ -39,6 +43,18 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
       return viewModel;
     }
 
+    public ActionResult XLogy(Guid? contactId, Guid? optionsId )
+    {
+
+      var options = new WeKnowTreeOptions()
+      {
+        IncludeRaw = false
+      };
+
+      var viewModel = CommonDataHarvest(options);
+
+      return View(ProjectConst.Views.WhatWeKnow.XLogy, viewModel);
+    }
     public ActionResult AsUnorderedList()
     {
       Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "s) AsUnorderedList action");
@@ -68,7 +84,7 @@ namespace LearnEXM.Feature.SitecoreCinema.Controllers
       {
         Sitecore.Diagnostics.Log.Warn(ProjConstants.Logger.LoggingPrefix + "null or empty datasource", this);
       }
-      var options = new OptionsItemToOptions(dataSource).WeKnowTreeOptions;// WeKnowTreeOptions();
+      var options = new WeKnowTreeOptionsFactory().GetWeKnowTreeOptions(dataSource);
       var viewModel = CommonDataHarvest(options);
 
       Sitecore.Diagnostics.Log.Debug(ProjectConst.Logging.prefix + "e) AsFancyTree action");

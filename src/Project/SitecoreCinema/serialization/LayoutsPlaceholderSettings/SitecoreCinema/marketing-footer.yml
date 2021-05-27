@@ -1,0 +1,18 @@
+﻿---
+ID: "19f2a8e3-86b3-46df-9fe4-3d45595bb748"
+Parent: "7e54321d-988e-43e5-b30e-12c66e3dba9a"
+Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
+Path: "/sitecore/layout/Placeholder Settings/SitecoreCinema/marketing-footer"
+DB: master
+SharedFields:
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: Placeholder Key
+  Value: "marketing-footer"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210502T030108Z

@@ -13,14 +13,19 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 {
   public class Tier1Nodes
   {
-    public Tier1Nodes(Sitecore.Analytics.Tracking.Contact trackingContact, List<string> targetedFacetKeys, WeKnowTreeOptions options)
+    public Tier1Nodes(Sitecore.XConnect.Contact XConnectContact ,  WeKnowTreeOptions options)
+    {
+      var facets = XConnectContact.Facets;
+      this.XConnectFacets = null;
+      TreeOptions = options;
+
+    }
+    public Tier1Nodes(Sitecore.Analytics.Tracking.Contact trackingContact,  WeKnowTreeOptions options)
     {
       this.XConnectFacets = trackingContact.GetFacet<IXConnectFacets>("XConnectFacets"); ;
-      TargetedFacetKeys = targetedFacetKeys;
       TreeOptions = options;
     }
 
-    private List<string> TargetedFacetKeys { get; }
     private WeKnowTreeOptions TreeOptions { get; }
     private IXConnectFacets XConnectFacets { get; set; }
 
@@ -66,14 +71,14 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
           //EngagementMeasures
           //CinemaVisitorInfo
 
-          TargetedFacetKeys.Add("ListSubscriptions");
-          TargetedFacetKeys.Add("AutomationPlanExit");
-          TargetedFacetKeys.Add("AutomationPlanEnrollmentCache");
-          TargetedFacetKeys.Add("KeyBehaviorCache");
-          TargetedFacetKeys.Add("EngagementMeasures");
+      TreeOptions.    TargetedFacetKeys.Add("ListSubscriptions");
+          TreeOptions.TargetedFacetKeys.Add("AutomationPlanExit");
+          TreeOptions.TargetedFacetKeys.Add("AutomationPlanEnrollmentCache");
+          TreeOptions.TargetedFacetKeys.Add("KeyBehaviorCache");
+          TreeOptions.TargetedFacetKeys.Add("EngagementMeasures");
 
 
-          foreach (var targetFacetKey in TargetedFacetKeys)
+          foreach (var targetFacetKey in TreeOptions.TargetedFacetKeys)
           {
             toReturn.AddNode(FacetTreeHelper.BuildFacetsNode(targetFacetKey));
           }
@@ -134,10 +139,14 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
     public List<IWeKnowTreeNode> Tier1NodeBuilder(Sitecore.Analytics.Tracking.Contact trackingContact, XConnectClient xConnectClient, Sitecore.XConnect.Contact xConnectContact)
     {
       Sitecore.Diagnostics.Log.Debug(ProjConstants.Logger.Prefix + "s) Tier1NodeBuilder");
+
+      var identifies = trackingContact?.Identifiers != null ? trackingContact.Identifiers.ToList() : null;
+
+
       var toReturn = new List<IWeKnowTreeNode>
       {
         TrackingContactNode(trackingContact, xConnectClient),
-        IdentifiersNode(trackingContact.Identifiers.ToList()),
+        IdentifiersNode(identifies),
         FacetsNode(xConnectClient),
         InteractionsNode(xConnectContact, xConnectClient)
       };

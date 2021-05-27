@@ -426,9 +426,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\WhatWeKnowBullets\code\LearnEXM.Foundation.WhatWeKnowTree.csproj">
+    <ProjectReference Include="..\..\..\WhatWeKnowBullets\code\LearnEXM.Foundation.WeKnowTree.csproj">
       <Project>{33af1e5d-dc13-4153-864f-785b55d2cd95}</Project>
-      <Name>LearnEXM.Foundation.WhatWeKnowTree</Name>
+      <Name>LearnEXM.Foundation.WeKnowTree</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

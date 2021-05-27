@@ -1,0 +1,33 @@
+﻿---
+ID: "09fba810-8045-4ec1-a4c6-83fbfc3a893d"
+Parent: "31ce4b97-e746-491d-9645-96301309b95f"
+Template: "3f12d78c-b7b7-4157-98fc-da3322ee1a5b"
+Path: /sitecore/templates/Branches/User Defined/SitecoreCinema/Branded Marketing Announcement by Gregory/Branded Marketing Announcement by Gregory/$name/Message Root
+DB: master
+SharedFields:
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{FD315707-CC93-4D81-AA5B-79F6307341A3}">
+        <p
+          uid="{5A49EA9B-9A7C-4E95-AAF9-B2D24C3D7314}"
+          key="primary-content"
+          md="{66C804F3-8265-4A2E-AFD9-4F2631844AAF}" />
+        <r
+          id="{493B3A83-0FA7-4484-8FC9-4680991CF743}"
+          ph="primary-content"
+          uid="{03CBA677-C3F1-4E33-BD94-0D78F2408BA3}" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210204T161851Z

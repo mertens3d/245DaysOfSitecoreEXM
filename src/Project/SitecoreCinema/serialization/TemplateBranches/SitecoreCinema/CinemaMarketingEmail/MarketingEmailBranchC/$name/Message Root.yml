@@ -1,0 +1,31 @@
+﻿---
+ID: "d2fe9675-bfaf-4f5b-bf18-2a6be334e4bc"
+Parent: "8b341695-1678-4bc3-87c2-8e0e799f0ee4"
+Template: "3f12d78c-b7b7-4157-98fc-da3322ee1a5b"
+Path: /sitecore/templates/Branches/User Defined/SitecoreCinema/CinemaMarketingEmail/MarketingEmailBranchC/$name/Message Root
+DB: master
+SharedFields:
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{E5174D01-39C1-438B-8168-7D877D64AF4E}">
+        <r
+          ds=""
+          id="{B307F4A8-B3E5-44EE-96D8-B42D0FCE5562}"
+          par=""
+          ph="marketing-main"
+          uid="{A926798E-0F6B-4918-B966-558163F2B8FF}" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210527T022735Z

@@ -58,6 +58,7 @@ namespace LearnEXM.Foundation.xConnectHelper.Helpers
       return toReturn;
     }
 
+
     public IdentifiedContactReference GetIdentifierFromTrackingContact(Sitecore.Analytics.Tracking.Contact trackingContact)
     {
       // moved

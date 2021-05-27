@@ -1,0 +1,18 @@
+﻿---
+ID: "854836bb-7894-4565-a294-b57f1b9b39fb"
+Parent: "da04b275-8838-4a3a-afee-817cf1fdd2eb"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/layout/Layouts/Project/SitecoreCinema
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: network/32x32/earth.png
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210502T025357Z

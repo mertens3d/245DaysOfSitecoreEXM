@@ -24,26 +24,29 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers.NodeBuilders
     {
       WeKnowTreeNode toReturn = null;
 
-      var interactions = xconnectContact.Interactions.OrderByDescending(x => x.LastModified);
-      if (interactions != null && interactions.Any())
+      if (xconnectContact?.Interactions != null)
       {
-        toReturn = new WeKnowTreeNode("Interactions", TreeOptions);
-        var objectToTreeNode = new ObjectToTreeNode(TreeOptions, xConnectClient);
-
-        foreach (var interaction in interactions)
+        var interactions = xconnectContact.Interactions.OrderByDescending(x => x.LastModified);
+        if (interactions != null && interactions.Any())
         {
-          var nodeName = "Interaction";
+          toReturn = new WeKnowTreeNode("Interactions", TreeOptions);
+          var objectToTreeNode = new ObjectToTreeNode(TreeOptions, xConnectClient);
 
-          if (interaction.Id != null)
+          foreach (var interaction in interactions)
           {
-            nodeName = GetDisplayName((Guid)interaction.ChannelId);
+            var nodeName = "Interaction";
+
+            if (interaction.Id != null)
+            {
+              nodeName = GetDisplayName((Guid)interaction.ChannelId);
+            }
+            var interactionNode = objectToTreeNode.MakeTreeNodeFromObject(interaction, "Channel: " + nodeName);
+            if (interactionNode != null)
+            {
+              interactionNode.AddRawNode(objectToTreeNode.SerializeObject(interaction));
+            }
+            toReturn.AddNode(interactionNode);
           }
-          var interactionNode = objectToTreeNode.MakeTreeNodeFromObject(interaction, "Channel: " + nodeName);
-          if (interactionNode != null)
-          {
-            interactionNode.AddRawNode(objectToTreeNode.SerializeObject(interaction));
-          }
-          toReturn.AddNode(interactionNode);
         }
       }
 

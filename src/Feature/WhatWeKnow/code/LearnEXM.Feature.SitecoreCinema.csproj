@@ -348,7 +348,7 @@
     <Content Include="Assets\Scripts\WhatWeKnow.SitecoreCinema\WhatWeKnow.js" />
     <Content Include="Assets\Styles\WhatWeKnow.SitecoreCinema\ConcessionStand.css" />
     <Content Include="Assets\Styles\WhatWeKnow.SitecoreCinema\WhatWeKnow.css" />
-    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.FancyTree.cshtml" />
+    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.XLogy.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Bullet.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Facets.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\_partials\_whatWeKnow.Interactions.cshtml" />
@@ -357,6 +357,7 @@
     <Content Include="Views\Feature\SitecoreCinema\_concessionItems.cshtml" />
     <Content Include="Views\Feature\SitecoreCinema\_concessionStand.cshtml" />
     <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.AsUnorderedList.cshtml" />
+    <Content Include="Views\Feature\WhatWeKnow.SitecoreCinema\WhatWeKnow.FancyTree - Copy.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -379,7 +380,7 @@
     <Compile Include="Models\ViewModels\BuyConcessionsViewModel.cs" />
     <Compile Include="Models\ViewModels\ConcessionCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\SelfServiceMachineViewModel.cs" />
-    <Compile Include="Models\WhatWeKnowViewModel.cs" />
+    <Compile Include="Models\WeKnowViewModel.cs" />
     <Compile Include="ProjectConst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -410,9 +411,9 @@
       <Project>{b366bdc0-c89c-42ef-af69-69ef880f78b8}</Project>
       <Name>LearnEXM.Foundation.LearnEXMRoot</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Foundation\WhatWeKnowBullets\code\LearnEXM.Foundation.WhatWeKnowTree.csproj">
+    <ProjectReference Include="..\..\..\Foundation\WhatWeKnowBullets\code\LearnEXM.Foundation.WeKnowTree.csproj">
       <Project>{33af1e5d-dc13-4153-864f-785b55d2cd95}</Project>
-      <Name>LearnEXM.Foundation.WhatWeKnowTree</Name>
+      <Name>LearnEXM.Foundation.WeKnowTree</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\xConnectHelper\LearnEXM.Foundation.xConnectHelper\LearnEXM.Foundation.xConnectHelper.csproj">
       <Project>{b3d715b9-fa7d-47b4-9263-a2f13705057b}</Project>

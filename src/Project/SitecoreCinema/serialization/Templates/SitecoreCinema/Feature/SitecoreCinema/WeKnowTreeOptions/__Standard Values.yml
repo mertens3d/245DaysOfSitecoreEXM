@@ -41,6 +41,6 @@ Languages:
       Type: Checkbox
       Value: 1
     - ID: "fd359cbf-6fb9-49df-bf11-93078b9838b0"
-      Hint: Include Raw Node
+      Hint: IncludeRaw
       Type: Checkbox
       Value: 1

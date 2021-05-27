@@ -95,7 +95,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Feature.SitecoreCi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WhatWeKnowTree", "WhatWeKnowTree", "{21E3E415-FE75-497F-BB7F-062CE3FD498D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Foundation.WhatWeKnowTree", "src\Foundation\WhatWeKnowBullets\code\LearnEXM.Foundation.WhatWeKnowTree.csproj", "{33AF1E5D-DC13-4153-864F-785B55D2CD95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnEXM.Foundation.WeKnowTree", "src\Foundation\WhatWeKnowBullets\code\LearnEXM.Foundation.WeKnowTree.csproj", "{33AF1E5D-DC13-4153-864F-785B55D2CD95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{B00966C5-632F-4C6D-9D4C-5D10CD93CA11}"
 EndProject
@@ -235,7 +235,7 @@ Global
 		{736E87BD-03A8-45A1-B7FD-F457FAB0F118} = {001515D2-AE10-4866-84D7-2FA92FECE088}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
+		SolutionGuid = {633E5E78-5F75-4BBF-9CB8-C20BCED897CA}
 	EndGlobalSection
 EndGlobal

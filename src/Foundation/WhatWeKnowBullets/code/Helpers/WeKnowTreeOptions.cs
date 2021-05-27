@@ -1,4 +1,6 @@
-﻿namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
+﻿using System.Collections.Generic;
+
+namespace LearnEXM.Foundation.WhatWeKnowTree.Helpers
 {
   public class WeKnowTreeOptions
   {
@@ -10,5 +12,7 @@
     public bool IncludeRaw { get; set; } = true;
     public bool IncludeTrackingContact { get; set; } = true;
     public WeKnowTreeOptionsInteractions Interactions { get; set; } = new WeKnowTreeOptionsInteractions();
+    public List<string> TargetedFacetKeys { get; set; } = new List<string>();
+    public bool IncludeTreeSettings { get; set; } = true;
   }
 }

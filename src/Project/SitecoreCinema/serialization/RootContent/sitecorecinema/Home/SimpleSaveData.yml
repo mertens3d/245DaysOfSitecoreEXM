@@ -1,0 +1,56 @@
+﻿---
+ID: "376a599d-d0b7-4a14-8260-40d9fbcf9ae5"
+Parent: "fdb3abe4-1b96-404e-82e2-ed8fe745c876"
+Template: "76036f5e-cbce-46d1-af0a-4143f9b557aa"
+Path: /sitecore/content/sitecorecinema/Home/SimpleSaveData
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: 
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 0
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        s:l="{A7DAD79B-01AC-4FF7-94C4-56946B499A91}">
+        <r
+          uid="{43222D12-08C9-453B-AE96-D406EBB95126}">
+          <p:d />
+        </r>
+        <r
+          uid="{4C820C60-0241-4DE2-8981-438303209747}"
+          s:ds="{853EF71F-579C-47F7-BB42-141E8F22AE1E}"
+          s:id="{6B5B0FE6-5C85-4487-BA7E-F8C2ECC186A8}"
+          s:par=""
+          s:ph="main" />
+        <r
+          uid="{CF044AD9-0332-407A-ABDE-587214A2C808}">
+          <p:d />
+        </r>
+        <r
+          uid="{B343725A-3A93-446E-A9C8-3A2CBD3DB489}">
+          <p:d />
+        </r>
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210215T191716Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{190B1C84-F1BE-47ED-AA41-F42193D9C8FC}"
+    - ID: "75577384-3c97-45da-a847-81b00500e250"
+      Hint: Title
+      Value: New Sample Item ddd

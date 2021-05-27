@@ -1,0 +1,22 @@
+﻿---
+ID: "8b341695-1678-4bc3-87c2-8e0e799f0ee4"
+Parent: "12fc2450-6841-4bb1-babf-198770e1afbc"
+Template: "078d8a76-f971-4891-b422-76c0bcf9fa03"
+Path: /sitecore/templates/Branches/User Defined/SitecoreCinema/CinemaMarketingEmail/MarketingEmailBranchC/$name
+DB: master
+SharedFields:
+- ID: "09ad7c00-a8de-46f7-bc54-e7572e38c136"
+  Hint: Body
+  Value: "{D2FE9675-BFAF-4F5B-BF18-2A6BE334E4BC}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210527T022329Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

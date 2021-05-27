@@ -1,0 +1,24 @@
+﻿---
+ID: "3a1b2d74-4e4b-4a5d-bff7-3fe3b5c90e41"
+Parent: "e1c52bc6-2976-47ba-9210-7634ce9e8810"
+Template: "2a3e91a0-7987-44b5-ab34-35c2d9de83b9"
+Path: /sitecore/layout/Renderings/Feature/SitecoreCinema/TheaterVisit/StartJourney
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Applications/32x32/arrow_right_green.png
+- ID: "ded9e431-3604-4921-a4b3-a6ec7636a5b6"
+  Hint: Controller Action
+  Value: StartJourney
+- ID: "e64ad073-dfcc-4d20-8c0b-fe5aa6226cd7"
+  Hint: Controller
+  Value: LearnEXM.Project.SitecoreCinema.Controllers.SitecoreCinemaController,LearnEXM.Project.SitecoreCinema
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210216T024307Z

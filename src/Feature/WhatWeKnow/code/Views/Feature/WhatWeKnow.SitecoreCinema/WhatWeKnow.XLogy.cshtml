@@ -1,0 +1,17 @@
+﻿@using LearnEXM.Foundation.Extensions.Extensions.AssetsHelper
+@model LearnEXM.Feature.SitecoreCinema.Models.WeKnowViewModel
+
+<aside>
+  <div id="tree"></div>
+  @if (Model?.WeKnowTree != null)
+  {
+    <div id="what-we-know-data-island" style="display:none">
+      @Html.Raw(Model.WeKnowTree.TreeWriter.DrawDataForTree())
+    </div>
+
+  }
+  else
+  {
+    <h3>Null Model</h3>
+  }
+</aside>

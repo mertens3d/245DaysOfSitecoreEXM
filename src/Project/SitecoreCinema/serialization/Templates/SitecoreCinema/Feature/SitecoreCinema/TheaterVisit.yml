@@ -1,0 +1,14 @@
+﻿---
+ID: "11edd0fa-5cb2-47c9-96e4-f6eb6196c351"
+Parent: "948c1d90-44c6-488a-b57f-18d0e90ae59e"
+Template: "0437fee2-44c9-46a6-abe9-28858d9fee8c"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/TheaterVisit
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210527T024033Z

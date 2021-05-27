@@ -1,0 +1,21 @@
+﻿---
+ID: "c2bc8013-04d4-4014-8aee-cb1c5b63afa8"
+Parent: "1295c943-75fd-4a36-b0e8-84c5613620a3"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/TheaterVisit/ConcessionCategory/Concession Group/GroupName
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T024604Z

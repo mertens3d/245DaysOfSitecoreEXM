@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
 {
-  public class WhatWeKnowTree : IWhatWeKnowTree
+  public class WhatWeKnowTree : IWeKnowTree
 {
 
     public WhatWeKnowTree(string rootTitle, WeKnowTreeOptions TreeOptions)
@@ -12,7 +12,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree.Concretions
       Root = new WeKnowTreeNode(rootTitle, TreeOptions);
     }
 
-    public IWhatWeKnowTreeWriter TreeWriter
+    public IWeKnowTreeWriter TreeWriter
     {
       get
       {

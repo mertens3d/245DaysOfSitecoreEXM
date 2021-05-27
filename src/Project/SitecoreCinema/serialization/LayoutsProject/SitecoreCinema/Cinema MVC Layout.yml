@@ -1,0 +1,14 @@
+﻿---
+ID: "99a2f8ce-2ee6-4620-b4e7-6503fb82271e"
+Parent: "854836bb-7894-4565-a294-b57f1b9b39fb"
+Template: "3a45a723-64ee-4919-9d41-02fd40fd1466"
+Path: /sitecore/layout/Layouts/Project/SitecoreCinema/Cinema MVC Layout
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210225T212826Z

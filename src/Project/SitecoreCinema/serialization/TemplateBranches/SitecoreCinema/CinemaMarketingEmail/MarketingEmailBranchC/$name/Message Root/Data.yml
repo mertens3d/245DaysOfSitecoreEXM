@@ -1,0 +1,14 @@
+﻿---
+ID: "e0146c0b-9ef8-46a2-983d-159bee8dbd2c"
+Parent: "d2fe9675-bfaf-4f5b-bf18-2a6be334e4bc"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/templates/Branches/User Defined/SitecoreCinema/CinemaMarketingEmail/MarketingEmailBranchC/$name/Message Root/Data
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210527T025346Z

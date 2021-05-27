@@ -24,6 +24,7 @@ namespace LearnEXM.Foundation.WhatWeKnowTree
           public static ID IncludeLeavesWithNullOrEmptyValues = new ID("{7EB7D037-CED1-43C4-A2F3-5741D1C9409C}");
           public static ID IncludeRaw = new ID("{FD359CBF-6FB9-49DF-BF11-93078B9838B0}");
           public static ID IncludeTrackingContact = new ID("{7E765EF2-165F-435F-BA4D-866F4CD1DCE3}");
+          public static ID IncludeTreeSettings = new ID("{913C2007-A5C5-4EDD-A431-67345A80FF27}");
           public static ID IncludeLastModified = new ID("{F8F22460-65D0-48A5-8F5D-70A9ECD6733A}");
         }
       }

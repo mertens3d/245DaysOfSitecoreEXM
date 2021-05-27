@@ -1,0 +1,29 @@
+﻿---
+ID: "02e5d189-d5d6-406c-b150-cd9a3662708b"
+Parent: "11edd0fa-5cb2-47c9-96e4-f6eb6196c351"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/SitecoreCinema/Feature/SitecoreCinema/TheaterVisit/Concession
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: office/32x32/drink.png
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: "{8AADEC50-24C0-4516-85B2-041B82F83CB2}"
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Type: tree list
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{4B5A1202-6D84-4E98-A716-89D6AF2927DB}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T024451Z

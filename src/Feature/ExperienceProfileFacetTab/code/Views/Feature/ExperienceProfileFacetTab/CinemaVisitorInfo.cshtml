@@ -4,4 +4,47 @@
 {
   <div>The ID is @Model.ContactId</div>
   <div>Favorite Movie: @Model.FavoriteMovie</div>
+
+  <div id="tree"></div>
+  if (Model?.WeKnowTree != null)
+  {
+    <div id="what-we-know-data-island" style="display:none">
+      @Html.Raw(Model.WeKnowTree.TreeWriter.DrawDataForTree())
+    </div>
+
+    <script>
+
+      function defer(method) {
+        if (window.jQuery) {
+          console.log('Found!');
+          var script = document.createElement('script');
+          //script.type = "text/javascript";
+          script.src = '@LearnEXM.Foundation.LearnEXMRoot.RootConst.Assets.Vendors.FancyTreeJs';
+
+          document.body.appendChild(script);
+
+          script.onload = function () {
+            //do stuff with the script
+            alert('document loaded');
+            $("#tree").fancytree();
+          };
+        } else {
+          setTimeout(function () {
+            console.log('deferring')
+            defer(method)
+          }, 50);
+        }
+      }
+
+      //defer();
+      //window.addEventListener('DOMContentLoaded', (event) => {
+
+      //});
+    </script>
+  }
+  else
+  {
+    <h3>Null Model</h3>
+  }
+
 }
