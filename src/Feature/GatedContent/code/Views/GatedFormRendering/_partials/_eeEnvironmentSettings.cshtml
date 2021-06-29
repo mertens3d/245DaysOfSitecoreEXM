@@ -1,0 +1,33 @@
+﻿@using Feature.GatedContent.Extensions
+@using Feature.GatedContent.Models
+@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.RenderingVariants.Extensions
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@using Sitecore.XA.Foundation.Variants.Abstractions.Fields
+@using System.Linq
+@model Feature.GatedContent.Models.GatedFormViewModel
+
+<div class="@FormsConstants.EE.HelpWrapperClass">
+
+  @if (Model?.CaptchaGatedFormSettings?.CaptchaV3EnvironmentSettings != null)
+  {
+    using (Html.EEAccordianPanel("Environment Settings Valid: " + Html.StyledBool(Model.CaptchaGatedFormSettings.CaptchaV3EnvironmentSettings.IsValidForRendering), Model.CaptchaGatedFormSettings.CaptchaV3EnvironmentSettings.IsValidForRendering))
+    {
+      <ul class="@FormsConstants.EE.UlStylingClass">
+
+        @using (Html.Sxa().BeginEditFrame(Html.Sitecore().CurrentRendering.DataSource, FormsConstants.Core.EditFrameButtons.GatedFormTestSettings.ToString(), Model.DataModel.IsControlEditable))
+        {
+          <li>Has Host Name: @Model.CaptchaGatedFormSettings.CaptchaV3EnvironmentSettings.DetectedHost</li>
+          <li>Detected Host Name: @Html.StyledBool(Model.CaptchaGatedFormSettings.CaptchaV3EnvironmentSettings.HasHostName)</li>
+          <li>Matching Item Found: @Html.StyledBool(Model.CaptchaGatedFormSettings.CaptchaV3EnvironmentSettings.HasItem) &nbsp; @Model.CaptchaGatedFormSettings.CaptchaV3EnvironmentSettings.SettingItemId</li>
+          <li>Has Public Key: @Html.StyledBool(Model.CaptchaGatedFormSettings.CaptchaV3EnvironmentSettings.HasPublicSiteKey)</li>
+          <li>Has Secret Key: @Html.StyledBool(Model.CaptchaGatedFormSettings.CaptchaV3EnvironmentSettings.HasSecretKey)</li>
+        }
+      </ul>
+    }
+  }
+  else
+  {
+    <p>Null Model</p>
+  }
+</div>

@@ -1,0 +1,25 @@
+﻿---
+ID: "3149d87c-81d7-4878-83b1-fe100ce32815"
+Parent: "a79f71e7-3754-4d71-9a75-b85509d010fc"
+Template: "a79f71e7-3754-4d71-9a75-b85509d010fc"
+Path: /sitecore/templates/Feature/GatedContent/Gated Content Folder/__Standard Values
+DB: master
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: |
+    {2AD23D55-AECD-43DD-AE0D-72D2EBCBA60F}
+    {5AB4AE85-0E97-4AFB-8498-B93C657A0DF0}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20160708T110525Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

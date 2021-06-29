@@ -1,0 +1,18 @@
+﻿---
+ID: "bb9e025a-0ac2-45da-a650-b7beb1959411"
+Parent: "29af8be5-3e25-4cce-9d14-c5e9530ea81f"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Feature/GatedContent/Gated Form/Testing
+DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210617T190834Z

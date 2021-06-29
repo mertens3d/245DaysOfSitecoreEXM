@@ -1,0 +1,78 @@
+﻿@model Feature.GatedContent.Models.GatedFormViewModel
+@using Feature.GatedContent.Models
+@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.RenderingVariants.Extensions
+@using Sitecore.XA.Foundation.RenderingVariants.Fields
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@using Sitecore.XA.Foundation.Variants.Abstractions.Fields
+@using System.Linq
+
+@if (Model?.DataModel != null)
+{
+
+  <div @Html.Sxa().Component(Model.DataModel.Rendering.RenderingCssClass ?? FormsConstants.Views.Css.DefaultRenderingCssClass, Model.DataModel.Attributes)>
+    <div class="component-content">
+
+      @if (Html.Sxa().IsEdit || Html.Sxa().IsDesign)
+      {
+        @Html.Partial(FormsConstants.Views.Partials.EeComponentHelp, Model)
+
+        @Html.Partial(FormsConstants.Views.Partials.EeEnvironmentSettings, Model)
+        @Html.Partial(FormsConstants.Views.Partials.EeFormMarkupValidation, Model)
+        @Html.Partial(FormsConstants.Views.Partials.EeRedirectsValidation, Model)
+        @Html.Partial(FormsConstants.Views.Partials.EeTestingSwitches, Model)
+        @Html.Partial(FormsConstants.Views.Partials.EeTestNuaireAPIEndPoint, Model)
+
+      }
+
+      @if (Model.DataModel.DataSourceItem == null)
+      {
+        @Model.DataModel.MessageIsEmpty
+      }
+      else
+      {
+
+        @Model.DataModel.MessageEditHere
+
+        if ((Html.Sxa().IsEdit || Html.Sxa().IsDesign)
+          && !Html.Sxa().IsPreview)
+        {
+          <div style="@FormsConstants.EE.ScrollableDivFormHtml">
+            @Html.Sitecore().Field(FormsConstants.Templates.GatedForm.Fields.Form.FormHtmlCode.ToString(), Model.DataModel.DataSourceItem)
+          </div>
+        }
+
+        if (Model.DataSourceItemProxy.IsValidForRendering && Model.FormProxy.IsValidForRendering)
+        {
+
+          @Html.Raw(Model.FormProxy.ModifiedHtmlCode)
+
+        }
+        else
+        {
+
+          <div class="ee-global-note-warning">
+            @Html.Sitecore().Field(FormsConstants.Templates.GlobalGatedFormSettings.Fields.ProdMessages.UnableToRenderForm.ToString(), Model.CaptchaGatedFormSettings.GatedFormGlobalSettings.SettingItem)
+          </div>
+
+          if (Html.Sxa().IsEdit || Html.Sxa().IsDesign || Html.Sxa().IsPreview)
+          {
+
+            <div class="@(FormsConstants.EE.HelpWrapperClass + " ee-global-note-warning")">
+              @Html.Sitecore().Field(FormsConstants.Templates.GlobalGatedFormSettings.Fields.EEMessages.FormWillNotEnterWithError.ToString(), Model.CaptchaGatedFormSettings.GatedFormGlobalSettings.SettingItem)
+            </div>
+          }
+        }
+
+      }
+    </div>
+
+    @Html.Partial(FormsConstants.Views.Partials.RecaptchaScript)
+
+    @if (Html.Sxa().IsEdit || Html.Sxa().IsDesign || Html.Sxa().IsPreview)
+    {
+      @Html.Partial(FormsConstants.Views.Partials.EeAccordianScript, Model)
+    }
+  </div>
+
+}

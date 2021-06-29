@@ -1,0 +1,14 @@
+﻿---
+ID: "bed52df1-3965-473c-9e07-66d1ec1bf998"
+Parent: "54dc4859-5055-4b8c-93ec-6f2431df569c"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Feature/GatedContent/GlobalGatedFormSettings/Production Messages/Error Unable to Render Form
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: "20210618T164327:637596314076399744Z"

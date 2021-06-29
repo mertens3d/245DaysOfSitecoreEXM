@@ -1,0 +1,31 @@
+﻿@using Feature.GatedContent.Extensions
+@using Feature.GatedContent.Models
+@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.RenderingVariants.Extensions
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@using Sitecore.XA.Foundation.Variants.Abstractions.Fields
+@using System.Linq
+@model Feature.GatedContent.Models.GatedFormViewModel
+
+<div class="@FormsConstants.EE.HelpWrapperClass">
+  @if (Model != null)
+  {
+    using (Html.EEAccordianPanel("Redirects - All Valid? " + Html.StyledBool(Model.DataSourceItemProxy.HasValidRedirects), Model.DataSourceItemProxy.HasValidRedirects))
+    {
+
+      using (Html.Sxa().BeginEditFrame(Html.Sitecore().CurrentRendering.DataSource, FormsConstants.Core.EditFrameButtons.GatedFormLinks.ToString(), Model.DataModel.IsControlEditable))
+      {
+        <ul class="@FormsConstants.EE.UlStylingClass">
+          <li>Has Captcha Fail Redirect: @Html.StyledBool(Model.DataSourceItemProxy.HasCaptchaFailUrl) @Model.DataSourceItemProxy.OnCaptchFailUrlFriendly</li>
+          <li>Has Form Submit Success Redirect: @Html.StyledBool(Model.DataSourceItemProxy.HasOnFormSubmitSuccessUrl)  @Model.DataSourceItemProxy.OnFormSubmitSuccess</li>
+          <li>Has Form Submit Fail Redirect: @Html.StyledBool(Model.DataSourceItemProxy.HasOnFormSubmitFailUrl)  @Model.DataSourceItemProxy.OnFormSubmitFailUrlStr</li>
+        </ul>
+      }
+    }
+  }
+  else
+  {
+
+    <p> Null Model </p>
+  }
+</div>

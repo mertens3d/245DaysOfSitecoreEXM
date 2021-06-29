@@ -1,0 +1,56 @@
+﻿---
+ID: "03018b6c-5dc1-4a1e-8c9d-4512e3899a18"
+Parent: "4345d5be-e43f-4131-8775-305849dff2db"
+Template: "2a3e91a0-7987-44b5-ab34-35c2d9de83b9"
+Path: /sitecore/layout/Renderings/Feature/GatedContent/Gated Form
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: applicationsv2/32x32/door_open.png
+- ID: "13f89250-ad6b-4548-882e-118a12c18094"
+  Hint: Parameters Template
+  Value: "{59D680C0-529E-40CD-AB69-E5CC854D8499}"
+- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+  Hint: Datasource Template
+  Value: /sitecore/templates/Feature/GatedContent
+- ID: "34e81e40-1d4d-45b0-bcf1-a0ffe5521685"
+  Hint: RenderingCssClass
+  Value: "gated-form"
+- ID: "49b9d6c5-9551-4ba4-840e-74d5582256c0"
+  Hint: RenderingViewPath
+  Value: 
+- ID: "94069f66-609c-48b0-8281-521c30fb269d"
+  Hint: Open Properties after Add
+  Value: 0
+- ID: "a2f5d9df-8cba-4a1d-99eb-51acb94cb057"
+  Hint: Page Editor Buttons
+  Type: Treelist
+  Value: "{7D0F2B30-301D-44F1-913C-BF5FC1672A6E}"
+- ID: "b0b15510-b138-470e-8f33-8da2e228aafe"
+  Hint: Rendering Contents Resolver
+  Value: "{89661D30-CF7D-479F-A3C4-D61C289A41E2}"
+- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+  Hint: Datasource Location
+  Value: 
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "ded9e431-3604-4921-a4b3-a6ec7636a5b6"
+  Hint: Controller Action
+  Value: PlainHtmlFormGated
+- ID: "e64ad073-dfcc-4d20-8c0b-fe5aa6226cd7"
+  Hint: Controller
+  Value: Feature.GatedContent.Controllers.GatedFormRenderingController,Feature.GatedContent
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: 
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20150311T085705Z

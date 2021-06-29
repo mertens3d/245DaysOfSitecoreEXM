@@ -1,0 +1,57 @@
+﻿@using Feature.GatedContent.Extensions
+@using Feature.GatedContent.Models
+@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@using System.Linq
+@model Feature.GatedContent.Models.GatedFormViewModel
+
+<div class="@FormsConstants.EE.HelpWrapperClass">
+  @if (Model != null)
+  {
+    using (Html.EEAccordianPanel("Nuraire API Test", true))
+    {
+      <ul class="@FormsConstants.EE.UlStylingClass">
+        <li>API test result: <pre id="@FormsConstants.EE.ApiTestResultElemId"></pre></li>
+      </ul>
+
+      <script>
+
+            function defer() {
+              if (window.jQuery) {
+                console.log('jQuery found');
+                method();
+              } else {
+                setTimeout(function () { defer(method) }, 50);
+              }
+            }
+
+            function method() {
+              let result = "{none}";
+
+              jQuery.post("@FormsConstants.Endpoints.Nuaire.ApiPostTestRelativeEndpoint", { name: "John", time: "2pm" })
+                .done(function (data) {
+                  console.log("here is the data");
+                  console.log(data);
+                  result = data;
+
+                  console.log(result);
+
+                  const target = document.getElementById(@FormsConstants.EE.ApiTestResultElemId);
+
+                  if (target) {
+                    target.innerHTML = result;
+
+                  } else {
+                    console.log("target not found");
+                  }
+
+                  });
+
+            }
+
+            defer();
+      </script>
+    }
+  }
+
+</div>

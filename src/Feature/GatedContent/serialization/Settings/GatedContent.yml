@@ -1,0 +1,14 @@
+﻿---
+ID: "049cc2a2-8b27-43c2-a549-1dd8e0240b49"
+Parent: "256655ec-8f3a-45b5-ad90-b63bc25b8067"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Settings/Feature/GatedContent
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: "20181120T112033:636783096339330407Z"

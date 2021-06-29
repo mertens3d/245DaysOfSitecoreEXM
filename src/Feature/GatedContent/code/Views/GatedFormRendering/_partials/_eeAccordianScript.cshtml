@@ -1,0 +1,31 @@
+﻿@model Feature.GatedContent.Models.GatedFormViewModel
+@using Feature.GatedContent.Models
+@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.RenderingVariants.Extensions
+@using Sitecore.XA.Foundation.RenderingVariants.Fields
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@using Sitecore.XA.Foundation.Variants.Abstractions.Fields
+@using System.Linq
+<script>
+
+  var acc = document.getElementsByClassName('@FormsConstants.EE.AccordianButtonClass');
+
+  console.log("Accordians found: " + (acc? acc.length : 0));
+
+  if (acc) {
+    
+    for (let idx = 0; idx < acc.length; idx++) {
+      acc[idx].addEventListener("click", (function ()  {
+        this.classList.toggle("acc-active");
+        let panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+
+      }));
+    }
+  } 
+
+</script>
