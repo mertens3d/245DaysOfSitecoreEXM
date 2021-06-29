@@ -1,15 +1,15 @@
-﻿@using Feature.Marketing.Email;
-@model Feature.Marketing.Email.Models.ImageBesideTextViewModel
+﻿@using LearnEXM.Feature.Marketing.Email;
+@model LearnEXM.Feature.Marketing.Email.Models.ImageBesideTextViewModel
 
 @if (Model?.DataSource != null)
 {
   <td align="@Html.Raw(Model.ImageAlignAttrValue)" style="text-align: @Model.ImageAlignAttrValue; width: 40%;">
-    @Html.Sitecore().Field(Const.Fields.ImageBesideText.Image, Model.DataSource,
+    @Html.Sitecore().Field(ProjConstantsFields.ImageBesideText.Image, Model.DataSource,
         new
            {
                width = "230",
                height = "170",
-               style = "width: 230px; height: 170px; margin: 0; border: 2px solid " + @Const.Styling.HexColors.Grey + ";"
+               style = "width: 230px; height: 170px; margin: 0; border: 2px solid " + @ProjConstants.Styling.HexColors.Grey + ";"
            }
     )
   </td>

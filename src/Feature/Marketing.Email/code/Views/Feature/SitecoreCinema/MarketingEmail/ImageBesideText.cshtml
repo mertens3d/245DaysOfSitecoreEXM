@@ -1,5 +1,6 @@
-﻿@using Feature.Marketing.Email;
-@model Feature.Marketing.Email.Models.ImageBesideTextViewModel
+﻿@using LearnEXM.Feature.Marketing.Email;
+@using LearnEXM.Feature.Marketing.Email.Extensions
+@model LearnEXM.Feature.Marketing.Email.Models.ImageBesideTextViewModel
 
 @Html.EETableStart()
 @if (Model?.DataSource != null)
@@ -11,13 +12,13 @@
         <tr>
           @if (Model.ImageIsLeft)
           {
-            @Html.Partial(Const.Views.Partials.ImageBesideText.ImageBesideText_Image, Model)
-            @Html.Partial(Const.Views.Partials.ImageBesideText.ImageBesideText_Text, Model)
+            @Html.Partial(ProjConstants.Views.Partials.ImageBesideText.ImageBesideText_Image, Model)
+            @Html.Partial(ProjConstants.Views.Partials.ImageBesideText.ImageBesideText_Text, Model)
           }
           else
           {
-            @Html.Partial(Const.Views.Partials.ImageBesideText.ImageBesideText_Text, Model)
-            @Html.Partial(Const.Views.Partials.ImageBesideText.ImageBesideText_Image, Model)
+            @Html.Partial(ProjConstants.Views.Partials.ImageBesideText.ImageBesideText_Text, Model)
+            @Html.Partial(ProjConstants.Views.Partials.ImageBesideText.ImageBesideText_Image, Model)
           }
         </tr>
       </table>

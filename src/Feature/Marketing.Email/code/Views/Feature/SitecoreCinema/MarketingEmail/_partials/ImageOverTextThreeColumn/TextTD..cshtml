@@ -1,14 +1,14 @@
 ﻿@using Sitecore.Foundation.SitecoreExtensions.Extensions;
-@using Feature.Marketing.Email;
-@model Feature.Marketing.Email.Models.ImageOverTextSmall
+@using LearnEXM.Feature.Marketing.Email;
+@model LearnEXM.Feature.Marketing.Email.Models.ImageOverTextSmall
 
 @if (Model?.DataSource != null)
 {
-  <td align="center" valign="top" style="color: @Const.Styling.HexColors.AliceBlue;  text-align: center; width: 33.3%; padding: 0 8px;">
-    <p style="color: @Const.Styling.HexColors.AliceBlue; font-size: 12px; line-height: 20px; font-weight: bold; margin-top: 0; margin-bottom: 0;">
+  <td align="center" valign="top" style="color: @ProjConstants.Styling.HexColors.AliceBlue;  text-align: center; width: 33.3%; padding: 0 8px;">
+    <p style="color: @ProjConstants.Styling.HexColors.AliceBlue; font-size: 12px; line-height: 20px; font-weight: bold; margin-top: 0; margin-bottom: 0;">
       @Html.Sitecore().Field(@Model.Title, Model.DataSource)
     </p>
-    <p style="color: @Const.Styling.HexColors.AliceBlue; font-size: 12px; line-height: 20px; margin-top: 0; margin-bottom: 30px;">
+    <p style="color: @ProjConstants.Styling.HexColors.AliceBlue; font-size: 12px; line-height: 20px; margin-top: 0; margin-bottom: 30px;">
       @Html.Sitecore().Field(@Model.Text, Model.DataSource)
     </p>
   </td>

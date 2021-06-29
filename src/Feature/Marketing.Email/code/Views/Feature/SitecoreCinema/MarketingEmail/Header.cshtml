@@ -1,8 +1,8 @@
-﻿@using Feature.Marketing.Email.Controllers
-@using Feature.Marketing.Email
-@using Feature.Marketing.Email.Models
-@using Feature.Marketing.Email.Extensions
-@model Feature.Marketing.Email.Models.HeaderViewModel
+﻿@using LearnEXM.Feature.Marketing.Email.Controllers
+@using LearnEXM.Feature.Marketing.Email
+@using LearnEXM.Feature.Marketing.Email.Models
+@using LearnEXM.Feature.Marketing.Email.Extensions
+@model LearnEXM.Feature.Marketing.Email.Models.HeaderViewModel
 
 @Html.EETableStart()
 
@@ -10,18 +10,18 @@
 {
 
   <tr>
-    <td style="padding: 30px 20px; background-color:@Const.Styling.HexColors.White; text-align: center">
+    <td style="padding: 30px 20px; background-color:@ProjConstants.Styling.HexColors.White; text-align: center">
       <table role="presentation" style="width: 100%; border: none; border-spacing: 0;">
         <tr>
           <td align="left" style="text-align: left; width: 50%;">
-            @Html.Sitecore().BeginField(Const.Fields.Header.Link, Model.DataSource,
+            @Html.Sitecore().BeginField(ProjConstantsFields.Header.Link, Model.DataSource,
                new
                {
-                   style = "background: " + @Const.Styling.HexColors.White + "; text-transform: uppercase; text-decoration: none; padding: 10px 38px; border: 1px solid " + @Const.Styling.HexColors.BrightBlue + "; color: " + @Const.Styling.HexColors.BrightBlue + "; display: inline-block; mso-padding-alt: 0;",
+                   style = "background: " + @ProjConstants.Styling.HexColors.White + "; text-transform: uppercase; text-decoration: none; padding: 10px 38px; border: 1px solid " + @ProjConstants.Styling.HexColors.BrightBlue + "; color: " + @ProjConstants.Styling.HexColors.BrightBlue + "; display: inline-block; mso-padding-alt: 0;",
                    text = " "
                })
 
-            @Html.Sitecore().Field(Const.Fields.Header.Logo, Model.DataSource,
+            @Html.Sitecore().Field(ProjConstantsFields.Header.Logo, Model.DataSource,
                 new
                      {
                        width = "130",
@@ -31,7 +31,7 @@
             @Html.Sitecore().EndField()
           </td>
           <td align="right" style="text-align: right; width: 50%;">
-            <span style="color: @Const.Styling.HexColors.OuterSpace; font-size: 13px;">
+            <span style="color: @ProjConstants.Styling.HexColors.OuterSpace; font-size: 13px;">
               @Model.FormattedDate
             </span>
           </td>
@@ -42,7 +42,7 @@
 
   <tr>
     <td style="display: block; padding: 0;">
-      @Html.Sitecore().Field(Const.Fields.Header.Bar,
+      @Html.Sitecore().Field(ProjConstantsFields.Header.Bar,
          new
               {
              width = "600",

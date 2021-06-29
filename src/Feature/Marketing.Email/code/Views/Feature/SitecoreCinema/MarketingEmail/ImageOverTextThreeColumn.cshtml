@@ -1,8 +1,8 @@
-﻿@using Feature.Marketing.Email
-@using Feature.Marketing.Email.Extensions
+﻿@using LearnEXM.Feature.Marketing.Email
+@using LearnEXM.Feature.Marketing.Email.Extensions
 @using Sitecore.Foundation.SitecoreExtensions.Extensions;
 
-@model Feature.Marketing.Email.Models.ImageOverTextThreeColumnViewModel
+@model LearnEXM.Feature.Marketing.Email.Models.ImageOverTextThreeColumnViewModel
 
 @Html.EETableStart()
 
@@ -17,22 +17,22 @@
   }
 
   <tr @Html.Raw(eeFixClass)>
-    <td style="padding: 30px 20px; background-color:@Const.Styling.HexColors.CobaltBlue;">
+    <td style="padding: 30px 20px; background-color:@ProjConstants.Styling.HexColors.CobaltBlue;">
       <table role="presentation" valign="top" style="width: 100%; border: none; border-spacing: 0;">
         <tr>
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Left)
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Middle)
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Right)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Left)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Middle)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.ImageTD, Model.Right)
         </tr>
         <tr>
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Left)
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Middle)
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Right)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Left)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Middle)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.TextTD, Model.Right)
         </tr>
         <tr>
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Left)
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Middle)
-          @Html.Partial(Const.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Right)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Left)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Middle)
+          @Html.Partial(ProjConstants.Views.Partials.ImageOverTextThreeColumn.LinkTD, Model.Right)
         </tr>
       </table>
     </td>

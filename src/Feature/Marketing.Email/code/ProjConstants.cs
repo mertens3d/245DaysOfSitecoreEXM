@@ -133,7 +133,7 @@ namespace LearnEXM.Feature.Marketing.Email
 
     public struct Views
     {
-      public const string _base = "/views/SitecoreCinema/MarketingEmail";
+      public const string _base = "/views/Feature/SitecoreCinema/MarketingEmail";
       public static readonly string Footer = _base + "/Footer.cshtml";
       public static readonly string Header = _base + "/Header.cshtml";
       public static readonly string Hero = _base + "/Hero.cshtml";

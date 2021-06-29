@@ -1,6 +1,6 @@
 ﻿@using Sitecore.Foundation.SitecoreExtensions.Extensions;
-@using Feature.Marketing.Email;
-@model Feature.Marketing.Email.Models.ImageOverTextSmall
+@using LearnEXM.Feature.Marketing.Email;
+@model LearnEXM.Feature.Marketing.Email.Models.ImageOverTextSmall
 
 @if (Model?.DataSource != null)
 {
@@ -10,7 +10,7 @@
              {
             width = "88",
             height = "88",
-            style = "display: inline-block; width: 88px; height: 88px; border: 2px solid " + @Const.Styling.HexColors.Grey + "; "
+            style = "display: inline-block; width: 88px; height: 88px; border: 2px solid " + @ProjConstants.Styling.HexColors.Grey + "; "
         })
   </td>
 }

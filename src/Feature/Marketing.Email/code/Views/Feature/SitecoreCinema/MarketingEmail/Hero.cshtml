@@ -1,5 +1,5 @@
-﻿@using Feature.Marketing.Email
-@model Feature.Marketing.Email.Models.SocialViewModel
+﻿@using LearnEXM.Feature.Marketing.Email
+@model LearnEXM.Feature.Marketing.Email.Models.SocialViewModel
 
 @if (Model?.DataSource != null)
 {
@@ -16,7 +16,7 @@
 
   @Html.Raw(Environment.NewLine)
 
-  @Html.Sitecore().BeginField(Const.Fields.Social.Link, Model.DataSource,
+  @Html.Sitecore().BeginField(ProjConstantsFields.Social.Link, Model.DataSource,
       new
           {
          style = "display: inline-block; text-decoration: none;",
@@ -24,7 +24,7 @@
       })
 
   @Html.Raw(Environment.NewLine)
-  @Html.Sitecore().Field(Const.Fields.SocialTarget.Icon, Model.DataSource,
+  @Html.Sitecore().Field(ProjConstantsFields.SocialTarget.Icon, Model.DataSource,
       new
            {
           width = "54",

@@ -116,6 +116,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\_partials\TextFile1.txt" />
     <None Include="packages.config" />
     <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\MarketingEmailMainLayout.cshtml" />
     <Content Include="Views\Feature\SitecoreCinema\MarketingEmail\footer.cshtml" />
